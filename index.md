@@ -36,6 +36,8 @@ the same concepts as make.
 3.  [Automatic Variables and Wildcards](03-automatic-variables.html)
 4.  [Patterns](04-patterns.html)
 5.  [Variables](05-variables.html)
+6.  [Functions](06-functions.html)
+7.  [Conclusion](07-conclusion.html)
 
 ## Other Resources
 
