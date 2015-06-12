@@ -7,8 +7,8 @@ minutes: TBC
 
 > ## Learning Objectives {.objectives}
 >
-> * Explain what
-> * Explain why make
+> * Explain what make is for.
+> * Explain why make differs from shell scripts.
 > * Name other popular build tools.
 
 We have a script, `wordcount.py`, that reads in a text file, counts the words in this text file, and outputs a data file:
