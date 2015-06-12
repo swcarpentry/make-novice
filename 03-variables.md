@@ -83,35 +83,3 @@ As there are no files that match the pattern `*.dat` the name `*.dat` is used as
 $ make dats
 $ make analysis.tar.gz
 ~~~
-
-
-
-
-
-
-
-Dependencies on data and code
------------------------------
-
-Output data depends on both input data and programs that create it:
-
-    isles.data : books/isles.txt wordcount.py
-    ...
-    abyss.dat : books/abyss.txt wordcount.py
-    ...
-    last.dat : books/last.txt wordcount.py
-    ...
-
-Let's recreate them all:
-
-    touch wordcount.py
-    make dats
-
-Question: why don't we make the `.txt` files depend on `wordcount.py`?
-
-Answer: `.txt` files are input files and have no dependencies. To make these depend on `wordcount.py` would introduce a 'false dependency'.
-
-Let's add our analysis script to the archive too:
-
-    analysis.tar.gz : *.dat wordcount.py
-            tar -czf $@ $^

@@ -5,26 +5,53 @@ subtitle: Dependencies on data and code
 minutes: TBC
 ---
 
-Output data depends on both input data and programs that create it. In our workflow, each data file depends on
+Our data files are a product not only of our text files but the script, `wordcount.py`, that processes the text files and creates the data files. We should add `workflow.py` as a dependency of each of our data files also:
 
+~~~ {.make}
+isles.dat : books/isles.txt wordcount.py
+        python wordcount.py books/isles.txt isles.dat
 
-isles.data : books/isles.txt wordcount.py
-...
 abyss.dat : books/abyss.txt wordcount.py
-...
+        python wordcount.py books/abyss.txt abyss.dat
+
 last.dat : books/last.txt wordcount.py
-...
+        python wordcount.py books/last.txt last.dat
+~~~
 
-Let's recreate them all:
+If we pretend to edit `wordcount.py` and re-run Make:
 
-touch wordcount.py
-make dats
+~~~ {.bash}
+$ touch wordcount.py
+$ make dats
+~~~
 
-Question: why don't we make the `.txt` files depend on `wordcount.py`?
+We get:
 
-Answer: `.txt` files are input files and have no dependencies. To make these depend on `wordcount.py` would introduce a 'false dependency'.
+~~~ {.output}
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/last.txt last.dat
+~~~
+
+> ## Why don't the `.txt` files depend on `wordcount.py`? {.callout}
+>
+> `.txt` files are input files and have no dependencies. To make these depend on `wordcount.py` would introduce a 'false dependency'.
 
 Let's add our analysis script to the archive too:
 
+~~~ {.make}
 analysis.tar.gz : *.dat wordcount.py
         tar -czf $@ $^
+~~~
+
+If we re-run Make:
+
+~~~ {.bash}
+$ make analysis.tar.gz
+~~~
+
+We get:
+
+~~~ {.output}
+tar -czf analysis.tar.gz abyss.dat isles.dat last.dat wordcount.py
+~~~
