@@ -7,77 +7,50 @@ minutes: TBC
 
 > ## Learning Objectives {.objectives}
 >
-> * Use macros 
-> * Use the Make wild-card `%` in targets and dependencies.
+> * Use variables in a Makefile.
 
+Despite our efforts, our Makefile still has repeated content, namely the name of our script, `wordcount.py`. If we renamed our script we'd have to update our Makefile in multiple places.
 
-Macros
-------
+We can introduce a Make *variable* (called a *macro* in some versions of Make). To hold our script name:
 
-Question: there's still duplication in our makefile, where?
+~~~ {.make}
+COUNT_SRC=wordcount.py
+~~~
 
-Answer: the program name. Suppose the name of our program changes?
+`wordcount.py` is our script and it is invoked by passing it to `python`. We can introduce a variable to represent this execution:
 
-    COUNT=wordcount.py
+~~~ {.make}
+COUNT_EXE=python $(COUNT_SRC)
+~~~
 
-Question: is there an alternative to this?
+`$(...)` tells Make to replace the variable with its value when Make is run.
 
-Answer: we might change our programming language or the way in which our command is invoked, so we can instead define:
+This allows us to easily change how our script is run (if, for example, we changed the language used to implement our script from Python to R).
 
-    COUNT_SRC=wordcount.py
-    COUNT_EXE=python $(COUNT_SRC)
-
-`$(...)` tells Make to replace the macro with its value when Make is run.
-
-Exercise 3 - use macros (10 minutes)
------------------------
-
-See [exercises](MakeExercises.md).
-
-Solution:
-
-    COUNT_SRC=wordcount.py
-    COUNT_EXE=python $(COUNT_SRC)
-
-    # Count words.
-    %.dat : books/%.txt $(COUNT_SRC)
-            $(COUNT_EXE) $< $@
-
-    analysis.tar.gz : *.dat $(COUNT_SRC)
-            tar -czf $@ $^
-
-    .PHONY : dats
-    dats : isles.dat abyss.dat last.dat
-
-Let's check:
-
-    rm *.dat
-    make dats
-
-Keeping macros at the top of a Makefile means they are easy to find and modify. Alternatively, we can pull them out into a configuration file, `config.mk`:
-
-    # Count words script.
-    COUNT_SRC=wordcount.py
-    COUNT_EXE=python $(COUNT_SRC)
-
-We can then import these into our Makefile using:
-
-    include config.mk
-
-And, let's see that it still works:
-
-    rm *.dat
-    make dats
-
-This is an example of good programming practice:
-
-* It separates code from data.
-* There is no need to edit the code to change its configuration which reduces the risk of introducing a bug.
-* Code that is configurable is more modular, flexible and reusable.
-
-
-
-> ## Use macros {.challenge}
+> ## Use variables {.challenge}
 >
-> Replace `wordcount.py` and `python wordcount.py` with the macros
-> `$(COUNT_SRC)` and `$(COUNT_EXE)`.
+> Update `Makefile` so that the `%.dat` and `analysis.tar.gz` rules use the variables `COUNT_SRC` and `COUNT_EXE`.
+
+We place variables at the top of a Makefile means they are easy to find and modify. Alternatively, we can pull them out into a new Makefile that just holds variable definitions. Let us create `config.mk`:
+
+~~~ {.make}
+# Count words script.
+COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)
+~~~
+
+We can then import this Makefile into `Makefile` using:
+
+~~~ {.make}
+include config.mk
+~~~
+
+We can re-run Make to see that everything still works:
+
+~~~ {.bash}
+$ make clean
+$ make dats
+$ make analysis.tar.gz
+~~~
+
+We have separated the configuration of our Makefile from its rules, the parts that do all the work. If we want to change our script name or how it is executed we just need to edit our configuration file, not our source code in `Makefile`. Decoupling code from configuration in this way is good programming practice, as it promotes more modular, flexible and reusable code.

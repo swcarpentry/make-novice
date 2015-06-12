@@ -56,7 +56,7 @@ We don't have to call our Makefile `Makefile`. However, if we call it something 
 $ make -f Makefile
 ~~~
 
-As we have rerun our Makefile, Make now informs us that:
+As we have re-run our Makefile, Make now informs us that:
 
 ~~~ {.output}
 make: `isles.dat' is up to date.

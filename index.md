@@ -29,7 +29,7 @@ There are now many build tools available, all of which are based on the same con
 3.  [Automatic variables](03-variables.html)
 4.  [Dependencies on data and code](04-dependencies.html)
 5.  [Pattern rules](05-patterns.html)
-6.  [Macros](06-macros.html)
+6.  [Variables](06-variables.html)
 7.  [Functions](07-functions.html)
 8.  [Conclusion](08-conclusion.html)
 
