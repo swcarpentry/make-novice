@@ -5,98 +5,228 @@ subtitle: Makefiles
 minutes: TBC
 ---
 
-Create a `Makefile`:
+> ## Learning Objectives {.objectives}
+>
+> * Recognise the key parts of a Makefile, rules, targets, dependencies and actions.
+> * Write a simple Makefile.
+> * Run Make from the shell.
+> * Know when and why to mark targets as .PHONY.
 
-    # Count words.
-    isles.dat : books/isles.txt
-            python wordcount.py books/isles.txt isles.dat
- 
-Makefile's structure:
+Create a file, called `Makefile`, with the following content:
 
-* # denotes comments.
-* `isles.dat` is a target.
-  - Some 'thing' to be built.
+~~~ {.make}
+# Count words.
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
+~~~
+
+This is a simple *Makefile* - a file executed by Make. Let us go through each line in turn:
+
+* `#` denotes a *comment*. Any text from `#` to the end of the line is ignored by Make.
+* `isles.dat` is a *target*, a file to be created, or built.
+* `books/isles.dat` is a *dependency*, a file that is needed to build the target. Targets can have zero or more dependencies.
 * `:` separates targets from dependencies.
-* `books/isles.dat` is a dependency.
-  - Some 'thing' that is needed to build the target.
-* `python wordcount.py books/isles.txt isles.dat` is an action.
-  - A command to run to build the target ('thing'), or update it.
-  - Actions are indented using TAB, not 8 spaces. 
-  - A legacy of Make's 1970's origins.
+* `python wordcount.py books/isles.txt isles.dat` is an *action*, a command to run to build the target using the dependencies. Targets can have zero or more actions.
+* Actions are indented using the TAB character, *not* 8 spaces. This is a legacy of Make's 1970's origins.
+* Together, the target, prerequisites, and actions form a *rule*.
 
-To use the default Makefile:
+By default, Make looks for a Makefile, called `Makefile`, and we can run Make as follows:
 
-    make
+~~~ {.bash}
+$ make
+~~~
 
-To use a named Makefile:
+Make prints out the actions it executes:
 
-    make -f Makefile
+~~~ {.output}
+python wordcount.py books/isles.txt isles.dat
+~~~
 
-Question: why did nothing happen?
+If you see:
 
-Answer: the target is now up-to-date and newer than its dependency. Make uses a file's 'last modification time'.
+~~~ {.error}
+Makefile:3: *** missing separator.  Stop.
+~~~
 
-Let's pretend we update books/isles.txt and try again:
+Then you have used spaces instead of a TAB to indent your actions.
 
-    touch books/isles.txt
-    make
+We don't have to call our Makefile `Makefile`. However, if we call it something else we need to tell Make where to find it. This we can do using `-f` flag. For example:
 
-Let's add another target:
+~~~ {.bash}
+$ make -f Makefile
+~~~
 
-    abyss.dat : books/abyss.txt
-            python wordcount.py books/abyss.txt abyss.dat
+As we have rerun our Makefile, Make now informs us that:
+
+~~~ {.output}
+make: `isles.dat' is up to date.
+~~~
+
+This is because our target, `isles.dat`, has now been created, and Make will not create it again. To see how this works, let's pretend to update one of the text files. Rather than opening the file in an editor, we can use the shell `touch` command to update its timestamp (which would happen if we did edit the file):
+
+~~~ {.bash}
+$ touch books/isles.txt
+~~~
+
+If we compare the timestamps of `isles.txt` and `isles.dat`,
+
+~~~ {.bash}
+$ ls -l books/isles.txt isles.dat
+~~~
+
+we see that `isles.dat`, the target, is now older than`books/isles.txt`, its dependency:
+
+~~~ {.output}
+-rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
+-rw-r--r--    1 mjj      Administ   182273 Jun 12 09:58 isles.dat
+~~~
+
+If we run Make again:
+
+~~~ {.bash}
+$ make
+~~~
+
+It recreates `isles.dat`.
+
+~~~ {.output}
+python wordcount.py books/isles.txt isles.dat
+~~~
+
+When it is asked to build a target, Make checks the 'last modification time' of both the target and its dependencies. If any dependency has been updated since the target, then the actions are re-run to update the target.
+
+Let's add another rule to the end of `Makefile`:
+
+~~~ {.make}
+abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
+~~~
 
 And, run Make:
 
-    make
-    touch books/abyss.txt
-    make
+~~~ {.bash}
+$ make
+~~~
 
-Nothing happens as the first, default, target in the makefile, is used. We can explicitly state which target to build:
+We get:
 
-    make abyss.dat
+~~~ {.output}
+make: `isles.dat' is up to date.
+~~~
 
-Let's add a target to allow us to build both data files:
+Nothing happens because Make attempts to rebuild the first, default, target in the Makefile, which is `isles.dat` which is already up-to-date. We need to explicitly tell Make we want to build `abyss.dat`:
 
-    .PHONY : dats
-    dats : isles.dat abyss.dat
+~~~ {.bash}
+$ make abyss.dat
+~~~
 
-`dats` is not a file or directory but depends on files and directories, so can trigger their rebuilding. It is a 'phony' target so we mark it as such.
+We get:
 
-A dependency in one rule can be a target in another. For example, isles.dat is a dependency in this rule and a target in our earlier rule.
+~~~ {.output}
+python wordcount.py books/abyss.txt abyss.dat
+~~~
 
-We can now use this phony target:
+We may want to remove all our data files so we can explicitly recreate them all. We can introduce a new target, and associated rule, `clean`:
 
-    make dats
-    touch books/isles.txt books/abyss.txt
-    make dats
+~~~ {.make}
+clean : 
+        rm -f *.dat
+~~~
 
-The order of rebuilding dependencies is arbitrary.
+This is an example of a rule that has no dependencies. `clean` has no dependencies on any `.dat` file as it makes no sense to create these just to remove them. We just want to remove the data files whether or not they exist. If we run this target:
 
-Dependencies must make up a directed acyclic graph.
+~~~ {.bash}
+$ make clean
+~~~
 
-Exercise 1 - write a new rule (5 minutes)
------------------------------
+We get:
 
-See [exercises](MakeExercises.md).
+~~~ {.output}
+rm -f *.dat
+~~~
 
-Solution:
+There is no actual thing built called `clean`. Rather, it is a short-hand that we can use to execute a useful sequence of actions. Such targets, though very useful, can lead to problems. For example, let us recreate our data files, create a directory called `clean`, then run Make:
 
-    # Count words.
-    isles.dat : books/isles.txt
-            python wordcount.py books/isles.txt isles.dat
+~~~ {.bash}
+$ make isles.txt abyss.dat
+$ mkdir clean
+$ make clean
+~~~
 
-    abyss.dat : books/abyss.txt
-            python wordcount.py books/abyss.txt abyss.dat
+We get:
 
-    last.dat : books/last.txt
-            python wordcount.py books/last.txt last.dat
+~~~ {.outputs}
+make: `clean' is up to date.
+~~~
 
-    .PHONY : dats
-    dats : isles.dat abyss.dat last.dat
+Make finds a file (or directory) called `clean` and, as its `clean` rule has no dependencies, assumes that `clean` has been built and is up-to-date and so does not execute its actions. As we are using `clean` as a short-hand, we need to tell Make to always execute its rule, by marking the target as `.PHONY`:
 
-Let's check:
+~~~ {.make}
+.PHONY : clean
+clean : 
+        rm -f *.dat
+~~~
 
-    rm *.dat
-    make dats
+If we run Make:
 
+~~~ {.bash}
+$ make clean
+~~~
+
+We get:
+
+~~~ {.outputs}
+rm -f *.dat
+~~~
+
+We can add a similar command to create all the data files:
+
+~~~ {.make}
+.PHONY : dats
+dats : isles.dat abyss.dat
+~~~
+
+This is an example of a rule that has dependencies that are targets of other rules. When Make runs, it will check to see if the dependencies exist and, if not, will see if rules are available that will create these. If such rules exist it will invoke these first. 
+
+> ## Dependencies {.callout}
+>
+> The order of rebuilding dependencies is arbitrary. You should not assume that they will be built in the order in which they are listed.
+>
+> Dependencies must form a directed acyclic graph. A target cannot depend on a dependency which itself, or one of its dependencies, depends on that target.
+
+This rule is also an example of a rule that has no actions. It is used purely to trigger the build of its dependencies, if needed.
+
+If we run:
+
+~~~ {.bash}
+$ make dats
+~~~
+
+Make creates the data files:
+
+~~~ {.output}
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+~~~
+
+If we run `dats` again:
+
+~~~ {.bash}
+$ make dats
+~~~
+
+Make sees that the data files exist:
+
+~~~ {.output}
+make: Nothing to be done for `dats'.
+~~~
+
+> ## Challenge 1 - qrite a new rule {.challenge}
+
+Write a new rule for `last.dat`, created from `books/last.txt`.
+
+Update the `dats` rule with this target.
+
+`touch` all the `books/*.txt` files to update their time-stamps.
+
+Re-run `make` and all the `.dat` files should be rebuilt.
