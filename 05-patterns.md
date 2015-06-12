@@ -5,60 +5,62 @@ subtitle: Pattern rules
 minutes: TBC
 ---
 
-Question: our Makefile still has repeated content. Where?
+> ## Learning Objectives {.objectives}
+>
+> * Write Make pattern rules.
+> * Use the Make wild-card `%` in targets and dependencies.
 
-Answer: the rules for each .dat file.
+Our Makefile still has repeated code. The rules for each `.dat` file are identical apart from the text and data file names. We can replace these rules with a single *pattern rule*.
 
-Let's replace the rules with a single 'pattern rule':
+~~~ {.make}
+%.dat : books/%.txt wordcount.py
+        python wordcount.py books/%.txt %.dat
+~~~
 
-    %.dat : books/%.txt wordcount.py
+`%` is a Make *wild-card*.
 
-`%` is a Make wild-card.
+However, if we remove `isles.dat` and try to recreate it:
 
-We now need to provide a body for the rule. Let's try:
+~~~ {.bash}
+$ rm isles.dat
+$ make isles.dat
+~~~
 
-	python wordcount.py books/%.txt %.dat
+We get:
+
+~~~ {.output}
+$ make last.dat
+python wordcount.py books/%.txt %.dat
+Traceback (most recent call last):
+  File "wordcount.py", line 126, in <module>
+    word_count(input_file, output_file, min_length)
+  File "wordcount.py", line 113, in word_count
+    lines = load_text(input_file)
+  File "wordcount.py", line 14, in load_text
+    with open(file) as f:
+IOError: [Errno 2] No such file or directory: 'books/%.txt'
+make: *** [last.dat] Error 1
+~~~
 
 This does **not** work. 
 
-We can use `-n` to see what make would do - the commands it will run - without it actually running them:
+We can use `-n` to see what make would do - the actions it will run - without it actually running them:
 
-    touch books/*.txt
-    make -n analysis.tar.gz
+~~~ {.bash}
+$ touch books/last.txt
+$ make -n last.dat
+~~~
 
-It is treating `%.dat` as an actual file name in the action - the `%` wild-card is only expanded in the target and dependencies. 
+We get:
 
-We need to rewrite the action.
+~~~ {.output}
+python wordcount.py books/%.txt %.dat
+~~~
 
-Exercise 2 - change an action (10 minutes)
------------------------------
+It is treating `%.dat` as an actual file name in the action. The Make `%` wild-card can only be used in a target and in its dependencies. It cannot be used in actions.
 
-See [exercises](MakeExercises.md).
+We need to rewrite the action and, for that, we will need the Make automatic variable, `$@` (the target of the current rule). We will also need `$<`, which means 'the first dependency of the current rule'.
 
-You will need another special macro, `$<` which means 'the first dependency of the current rule'.
-
-Solution: 
-
-    # Count words.
-    %.dat : books/%.txt wordcount.py
-	    python wordcount.py $< $@
-
-    analysis.tar.gz : *.dat wordcount.py
-        tar -czf $@ $^
-
-    .PHONY : dats
-    dats : isles.dat abyss.dat last.dat
-
-Let's check:
-
-    rm *.dat
-    make dats
-
-> ## Change an action {.challenge}
+> ## Write an action for a pattern rule {.challenge}
 >
-> Change the action of the `%.dat` rule so that the rule works. 
-> Use the following special macros:
->
-> * `$@` is the target of the current rule.
-> * `$<` is the first dependency only.
-> You will need another special macro, `$<` which means 'the first dependency of the current rule'.
+> Rewrite the action of the `%.dat` rule, using automatic variables `$@` and `$<`, so that the pattern rule works.

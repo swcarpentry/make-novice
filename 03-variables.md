@@ -5,6 +5,13 @@ subtitle: Automatic variables
 minutes: TBC
 ---
 
+> ## Learning Objectives {.objectives}
+>
+> * Use Make automatic variables to remove duplication in a Makefile.
+> * Use `$@` to refer to the target of the current rule.
+> * Use `$^` to refer to the dependencies of the current rule.
+> * Explain why bash wild-cards in dependencies can cause problems.
+
 Our Makefile has a lot of duplication. For example, the names of text files and data files are repeated in many places throughout the Makefile. Makefiles are a form of code and, in any code, repeated code can lead to problems e.g. we rename a data file in one part of the Makefile but forget the rename it elsewhere. Let us set about removing some of this repetition.
 
 In our `analysis.tar.gz` rule we duplicate the data file names and the archive name:
