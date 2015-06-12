@@ -3,39 +3,32 @@ layout: lesson
 title: Automation and Make
 ---
 
-Originally invented in 1977 to manage the compilation of programs,
- `make` can be used to automate any repetitive sequence of commands
- which create, or 'build' files. For this reason, make is called a
- 'build tool'. make can be used, amongst other things, to invoke
- commands that: 
+make is a tool which can run commands to read files, process these files in some way, and write out the processed files. make can be used to:
 
-* Run analysis scripts on data files to produce new data files.
+* Run analysis scripts on raw data files to get data files that summarise the raw data.
 * Run visualisation scripts on data files to produce plots.
-* Process text files and plots to create papers.
-* Compile source code into executable programs.
+* Parse and combine text files and plots to create papers.
+* Compile source code into executable programs or libraries.
 
-'make' records the dependencies between the files it builds and the
-files that are needed to build these. 
+make is called a build tool - it builds data files, plots, papers, programs or libraries. 
 
-There are now many build tools available, all of which are based on
-the same concepts as make.
+make records the dependencies between the files it creates and the files used to create these. If one of the original files (e.g. a data file) is changed, then make knows to recreate the files that depend upon this file (e.g. a plot).
+
+There are now many build tools available, all of which are based on the same concepts as make.
 
 > ## Prerequisites {.prereq}
 >
 > In this lesson we use make from the Unix Shell. Some previous
-> experience with the shell is expected, *but isn't mandatory*.
-
-> ## Getting ready {.getready}
->
-> Nothing to do: you're ready to go!
+> experience with using the shell would be useful but is not
+> mandatory. 
 
 ## Topics
 
 1.  [Introduction](01-intro.html)
-2.  [Basic Tasks](02-basics.html)
-3.  [Automatic Variables and Wildcards](03-automatic-variables.html)
-4.  [Patterns](04-patterns.html)
-5.  [Variables](05-variables.html)
+2.  [Makefiles](02-makefiles.html)
+3.  [Automatic variables and wildcards](03-variables.html)
+4.  [Pattern rules](04-patterns.html)
+5.  [Macros](05-macros.html)
 6.  [Functions](06-functions.html)
 7.  [Conclusion](07-conclusion.html)
 

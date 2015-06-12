@@ -1,3 +1,9 @@
+---
+layout: page
+title: Automation and Make
+subtitle: Makefiles
+minutes: TBC
+---
 
 wildcard and patsubst
 ---------------------

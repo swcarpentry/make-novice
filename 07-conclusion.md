@@ -1,3 +1,10 @@
+---
+layout: page
+title: Automation and Make
+subtitle: Conclusion
+minutes: TBC
+---
+
 Parallel jobs
 -------------
 
