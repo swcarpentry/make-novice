@@ -1,34 +1,42 @@
 ---
 layout: page
 title: Automation and Make
-subtitle: Makefiles
+subtitle: Conclusion
 minutes: TBC
 ---
 
-wildcard and patsubst
----------------------
+Parallel jobs
+-------------
 
-Make has many functions. 
+Make can run on multiple cores if available:
 
-`wildcard` gets files matching a pattern and save these in a macro:
+    make -j 4 analysis.tar.gz
 
-    TXT_FILES=$(wildcard books/*.txt)
+Conclusion
+----------
 
-`patsubst` substitutes patterns in files e.g. change one suffix to another:
+See [the purpose of Make](MakePurpose.png).
 
-    DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
+Why use Make if it is so old?
 
-With these we can rewrite `dats` to remove the list of files:
+* It is still very prevalent.
+* It runs on Unix/Linux, Windows and Mac.
+* The concepts - targets, dependencies, actions, rules - are common to
+  most build tools.
 
-    .PHONY : dats
-    dats : $(DAT_FILES)
+Automated build scripts help us in a number of ways. They:
 
-Let's check:
+* Automate repetitive tasks.
+* Reduce errors that we might make if typing commands manually.
+* Document how software is built, data is created, graphs are plotted, papers are composed.
+* Document dependencies between code, scripts, tools, inputs, configurations, outputs.
 
-    make clean
-    make dats
+Automated scripts are code so:
 
-Note how `sierra.txt` is now processed too.
+* Use meaningful variable names.
+* Provide comments to explain anything that is not clear.
+* Separate configuration from computation via the use of configuration files.
+* Keep under revision control.
 
 Exercise 4 - extend the Makefile to create jpgs (15 minutes)
 -----------------------------------------------
