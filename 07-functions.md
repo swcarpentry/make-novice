@@ -68,9 +68,14 @@ TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat
 ~~~
 
-With these we can rewrite `dats`:
+With these we can rewrite `clean` and `data`:
 
 ~~~ {.make}
+.PHONY : clean
+clean :
+        rm -f $(DAT_FILES)
+        rm -f analysis.tar.gz
+
 .PHONY : dats
 dats : $(DAT_FILES)
 ~~~
