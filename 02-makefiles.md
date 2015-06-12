@@ -221,7 +221,7 @@ Make sees that the data files exist:
 make: Nothing to be done for `dats'.
 ~~~
 
-> ## Challenge 1 - qrite a new rule {.challenge}
+> ## Write a new rule {.challenge}
 
 Write a new rule for `last.dat`, created from `books/last.txt`.
 
