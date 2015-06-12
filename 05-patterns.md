@@ -10,7 +10,7 @@ minutes: TBC
 > * Write Make pattern rules.
 > * Use the Make wild-card `%` in targets and dependencies.
 
-Our Makefile still has repeated code. The rules for each `.dat` file are identical apart from the text and data file names. We can replace these rules with a single *pattern rule*.
+Our Makefile still has repeated content. The rules for each `.dat` file are identical apart from the text and data file names. We can replace these rules with a single *pattern rule*.
 
 ~~~ {.make}
 %.dat : books/%.txt wordcount.py
