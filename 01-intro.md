@@ -84,3 +84,8 @@ Running `wordcount.py` and `plotcount.py` at the shell promot, as we have been d
 * Compile source code into executable programs or libraries.
 
 There are now many build tools available, for example [Apache ANT](http://ant.apache.org/, [doit](http://pydoit.org/) and [nmake](https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx) for Windows. There are also build tools that build scripts for use with these build tools and others e.g. [GNU Autoconf](http://www.gnu.org/software/autoconf/autoconf.html) and [CMake](http://www.cmake.org/). Which is best for you depends on your requirements, intended usage, and operating system etc. However, they all share the same basic concepts as Make.
+
+> ## Why use Make if it is almost 40 years old? {.callout}
+>
+> Make is still prevalent in many scientific computing environments, particularly those with legacy C/C++ or FORTRAN codes, which includes many codes used in high-performance computing.
+> Make's fundamental concepts are common to many build tools.
