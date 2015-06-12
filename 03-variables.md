@@ -2,7 +2,7 @@
 layout: page
 title: Automation and Make
 subtitle: Automatic variables
-minutes: TBC
+minutes: 0
 ---
 
 > ## Learning Objectives {.objectives}

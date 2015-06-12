@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Functions
-subtitle: Makefiles
-minutes: TBC
+title: Automation and Make
+subtitle: Functions
+minutes: 0
 ---
 
 > ## Learning Objectives {.objectives}

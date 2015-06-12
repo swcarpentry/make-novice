@@ -2,7 +2,7 @@
 layout: page
 title: Automation and Make
 subtitle: Makefiles
-minutes: TBC
+minutes: 0
 ---
 
 > ## Learning Objectives {.objectives}
