@@ -1,5 +1,9 @@
-Pattern rules
--------------
+---
+layout: page
+title: Automation and Make
+subtitle: Pattern rules
+minutes: TBC
+---
 
 Question: our Makefile still has repeated content. Where?
 

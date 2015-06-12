@@ -1,3 +1,9 @@
+---
+layout: page
+title: Automation and Make
+subtitle: Macros
+minutes: TBC
+---
 
 Macros
 ------

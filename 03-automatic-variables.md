@@ -1,5 +1,9 @@
-Automatic variables
--------------------
+---
+layout: page
+title: Automation and Make
+subtitle: Automatic variables and wild-cards
+minutes: TBC
+---
 
 Let's add a rule to create an archive with all the data files:
 

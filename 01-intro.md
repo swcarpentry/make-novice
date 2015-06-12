@@ -1,5 +1,9 @@
-Automation and Make
-===================
+---
+layout: page
+title: Automation and Make
+subtitle: Introduction
+minutes: TBC
+---
 
 Question: what are the problems with this?
 
