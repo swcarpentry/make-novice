@@ -13,13 +13,13 @@ Our data files are a product not only of our text files but the script, `wordcou
 
 ~~~ {.make}
 isles.dat : books/isles.txt wordcount.py
-        python wordcount.py books/isles.txt isles.dat
+	python wordcount.py $< $@
 
 abyss.dat : books/abyss.txt wordcount.py
-        python wordcount.py books/abyss.txt abyss.dat
+	python wordcount.py $< $@
 
 last.dat : books/last.txt wordcount.py
-        python wordcount.py books/last.txt last.dat
+	python wordcount.py $< $@
 ~~~
 
 If we pretend to edit `wordcount.py` and re-run Make:
