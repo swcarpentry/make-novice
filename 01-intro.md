@@ -5,98 +5,82 @@ subtitle: Introduction
 minutes: TBC
 ---
 
-Question: what are the problems with this?
+> ## Learning Objectives {.objectives}
+>
+> * Explain what
+> * Explain why make
+> * Name other popular build tools.
 
-    cc -o scheduler main.o schedule.o optimise.o io.o utils.o -I./include -L./lib -lm -lblas -llapack -lrng
+We have a script, `wordcount.py`, that reads in a text file, counts the words in this text file, and outputs a data file:
 
-Answer: we need to
+~~~ {.bash}
+$ python wordcount.py books/isles.txt isles.dat
+~~~
 
-* Type a lot.
-* Remember syntax, flags, inputs, libraries, dependencies.
-* Ensure .o files have been created.
+If we view the first 5 rows of the data file using `head`,
 
-Automation allows us to:
+~~~ {.bash}
+$ head -5 isles.dat
+~~~
 
-* "write once, run many" instead of typing the same commands over and over. 
-* Document syntax, flags, inputs, libraries, dependencies.
-* Recreate files (e.g. binaries, output data, graphs) only when needed.
-  - Input files => process => output files.
-  - Source code => compiler => library or executable.
-  - Configuration and data files => analysis program => data files.
-  - Data files => visualisation program => images.
+we can see that the file consists of one row per word. 
 
-Make:
+~~~ {.output}
+the 3822 6.7371760973
+of 2460 4.33632998414
+and 1723 3.03719372466
+to 1479 2.60708619778
+a 1308 2.30565838181
+~~~
 
-* A widely-used, fast, free, well-documented, build tool.
-* Developed by Stuart Feldman:
-  - Bell Labs summer intern, 1977.
-  - Vice President of Computer Science at IBM Research and Google ACM
-    Software System Award winner, 2003. 
+Each row shows the word itself, the number of occurrences of that word, and the number of occurrences as a percentage of the total number of words in the text file. As another example:
 
-Other build tools:
+~~~ {.bash}
+$ python wordcount.py books/abyss.txt abyss.dat
+$ head -5 abyss.dat
+~~~
 
-* Apache ANT designed for Java.
-* Python doit.
-* CMake and Autoconf/Automake generate platform-dependent build
-  scripts e.g. Make, Visual Studio project files etc. 
+~~~ {.output}
+the 4044 6.35449402891
+and 2807 4.41074795726
+of 1907 2.99654305468
+a 1594 2.50471401634
+to 1515 2.38057825267
+~~~
 
-Which is best?
+> ## Zipf's Law {.callout}
+>
+> The most frequently-occurring word occurs approximately twice as often as the second most frequent word. This is [Zipf's Law](http://en.wikipedia.org/wiki/Zipf%27s_law).
 
-* Depends on your requirements, intended usage, operating system etc.
+We also have a script, `plotcount.py`, that reads in a data file and plots the 10 most frequently occurring words:
 
-Data processing pipeline
-------------------------
+~~~ {.bash}
+$ python plotcount.py isles.dat show
+~~~
 
-Suppose we have scripts that implement a workflow to:
+Close the window to exit the plot.
 
-* Read data files e.g. a text file.
-* Perform an analysis e.g. count the number of occurrences of each
-  word in the file. 
-* Write the results to a file e.g. a file with each word and its
-  number of occurrences. 
-* Plot the data e.g. a graph of the most frequently occurring words.
-* Save the graph as an image e.g. a PDF or a JPG.
+`plotcount.py` can also save the plot as an image (e.g. a JPEG):
 
-Count words in a text file:
+~~~ {.bash}
+$ python plotcount.py isles.dat isles.jpg
+~~~
 
-    python wordcount.py books/isles.txt isles.dat
-    head isles.dat
-    python wordcount.py books/abyss.txt abyss.dat
-    head abyss.dat
+Together these scripts implement a common workflow:
 
-Count words in a text file, whose length is >= 12 characters:
+1.  Read a data file.
+2.  Perform an analysis on this data file.
+3.  Write the analysis results to a new file.
+4.  Plot a graph of the analysis results.
+5.  Save the graph as an image, so we can put it in a paper.
 
-    python wordcount.py books/isles.txt isles.dat 12
-    head isles.dat
+Running `wordcount.py` and `plotcount.py` at the shell promot, as we have been doing, is fine for one or two files. If, however, we had 5 or 10 or 20 text files, this would quickly become monotonous. We could write a shell script to loop over our text files and create data files and images for each in turn, but this too can cause problems. If a text file changes then we need to rerun our analysis and recreate our graph, but only for the text file that changed, not all of them. Furthermore, we only want do this if and only if the text file has changed.
 
-Plot top 10 most frequently occuring words:
+[Make](http://www.gnu.org/software/make/) (also known as GNU Make) is a fast, free and well-documented build tool. Make was developed by Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in widespread use today. Make can execute the commands needed to run our analysis and plot our results. Like shell scripts it allows us to execute complex sequences of commands via a single shell command. Unlike shell scripts it records the dependencies between files and so can determine when to recreate our data files or image files, if our text files change. Make can be used for any commands that follow the general pattern of processing files to create new files, for example:
 
-    python plotcount.py isles.dat show
-    python plotcount.py abyss.dat show
+* Run analysis scripts on raw data files to get data files that summarise the raw data.
+* Run visualisation scripts on data files to produce plots.
+* Parse and combine text files and plots to create papers.
+* Compile source code into executable programs or libraries.
 
-Aside: note how the most frequent word occurs approximately twice as often as the second most frequent word - this is [Zipf's Law](http://en.wikipedia.org/wiki/Zipf%27s_law).
-
-Plot top 5 most frequently occuring words:
-
-    python plotcount.py isles.dat show 5
-    python plotcount.py abyss.dat show 5
-
-Plot top 5 most frequently occuring words and save as a JPG:
-
-    python plotcount.py isles.dat isles.jpg 5
-
-    python wordcount.py books/isles.txt isles.dat
-    head isles.dat
-
-Let's pretend we update one of the input files. We can use `touch` to update its timestamp:
-
-    touch books/isles.txt
-    ls -l books/isles.txt isles.dat
-
-Output file `isles.dat` is now older than input `books/isles.txt`, so we need to recreate it.
-
-Question: we could write a shell script but what might be the problems?
-
-Answer: if we have many source files to compile or data files to analyse, we don't want to recreate everything, just those outputs that depend on the changed files.
-
-We'll use make!
+There are now many build tools available, for example [Apache ANT](http://ant.apache.org/, [doit](http://pydoit.org/) and [nmake](https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx) for Windows. There are also build tools that build scripts for use with these build tools and others e.g. [GNU Autoconf](http://www.gnu.org/software/autoconf/autoconf.html) and [CMake](http://www.cmake.org/). Which is best for you depends on your requirements, intended usage, and operating system etc. However, they all share the same basic concepts as Make.
