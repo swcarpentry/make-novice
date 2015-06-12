@@ -221,12 +221,13 @@ Make sees that the data files exist:
 make: Nothing to be done for `dats'.
 ~~~
 
-> ## Write a new rule {.challenge}
+> ## Write two new rules {.challenge}
 >
 > Write a new rule for `last.dat`, created from `books/last.txt`.
 >
 > Update the `dats` rule with this target.
 >
-> `touch` all the `books/*.txt` files to update their time-stamps.
+> Write a new rule for `analysis.tar.gz`, which creates an archive of the data files. The rule needs to:
 > 
-> Re-run `make` and all the `.dat` files should be rebuilt.
+> * Depend upon each of the three `.dat` files.
+> * Invokes the action `tar -czf analysis.tar.gz isles.dat abyss.dat last.dat`
