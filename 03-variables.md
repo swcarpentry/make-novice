@@ -5,16 +5,10 @@ subtitle: Automatic variables and wild-cards
 minutes: TBC
 ---
 
-Let's add a rule to create an archive with all the data files:
+Our Makefile has a lot of duplication. For example, the names of text files and data files are repeated in many places throughout the Makefile. Makefiles are a form of code and, in any code, repeated code can lead to problems e.g. we rename a data file in one part of the Makefile but forget the rename it elsewhere. Let us set about removing some of this repetition.
 
-    analysis.tar.gz : isles.dat abyss.dat last.dat
-            tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
 
-And, run our rule:
 
-    make analysis.tar.gz
-
-Makefiles are code. Repeated code can lead to maintainability problems (e.g. we fix a typo in one repeated chunk of code but forget to fix it in another). So let's rewrite the rule as:
 
     tar -czf $@ isles.dat abyss.dat last.dat
 

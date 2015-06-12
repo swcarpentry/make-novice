@@ -82,3 +82,14 @@ Let's check:
     make clean
     make analysis.tar.gz
 
+
+
+
+> ## Extend the Makefile to create jpgs {.challenge}
+>
+> Add new rules, update existing rules, and add new macros to:
+> 
+> * Create `.jpg` files from `.dat` files using `plotcount.py`.
+> * Add the script and `.jpg` files to the archive.
+> * Remove all auto-generated files (`.dat`, `.jpg`, `analysis.tar.gz`).
+

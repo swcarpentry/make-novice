@@ -53,3 +53,12 @@ Let's check:
 
     rm *.dat
     make dats
+
+> ## Change an action {.challenge}
+>
+> Change the action of the `%.dat` rule so that the rule works. 
+> Use the following special macros:
+>
+> * `$@` is the target of the current rule.
+> * `$<` is the first dependency only.
+> You will need another special macro, `$<` which means 'the first dependency of the current rule'.

@@ -68,3 +68,10 @@ This is an example of good programming practice:
 * It separates code from data.
 * There is no need to edit the code to change its configuration which reduces the risk of introducing a bug.
 * Code that is configurable is more modular, flexible and reusable.
+
+
+
+> ## Use macros {.challenge}
+>
+> Replace `wordcount.py` and `python wordcount.py` with the macros
+> `$(COUNT_SRC)` and `$(COUNT_EXE)`.

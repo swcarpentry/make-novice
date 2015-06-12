@@ -231,3 +231,5 @@ make: Nothing to be done for `dats'.
 > 
 > * Depend upon each of the three `.dat` files.
 > * Invokes the action `tar -czf analysis.tar.gz isles.dat abyss.dat last.dat`
+>
+> Update `clean` to remove `analysis.tar.gz`.
