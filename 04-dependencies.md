@@ -2,7 +2,7 @@
 layout: page
 title: Automation and Make
 subtitle: Dependencies on data and code
-minutes: TBC
+minutes: 0
 ---
 
 > ## Learning Objectives {.objectives}

@@ -20,6 +20,10 @@ There are now many build tools available, all of which are based on the same con
 >
 > In this lesson we use Make from the Unix Shell. Some previous experience with using the shell to list directories, create, copy, remove and list files and directories, and run simple scripts would be useful.
 
+> ## Getting ready {.getready}
+>
+> Nothing to do: you're ready to go!
+
 ## Topics
 
 1.  [Introduction](01-intro.html)
