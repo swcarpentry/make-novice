@@ -90,3 +90,7 @@ As there are no files that match the pattern `*.dat` the name `*.dat` is used as
 $ make dats
 $ make analysis.tar.gz
 ~~~
+
+> ## Rewrite `.dat` rules to use automatic variables {.challenge}
+>
+> Rewrite each `.dat` rule to automatic variables `$@` and `$<`, which means 'the first dependency of the current rule'.

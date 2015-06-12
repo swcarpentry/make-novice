@@ -14,53 +14,26 @@ Our Makefile still has repeated content. The rules for each `.dat` file are iden
 
 ~~~ {.make}
 %.dat : books/%.txt wordcount.py
-        python wordcount.py books/%.txt %.dat
+        python wordcount.py $< $@
 ~~~
 
 `%` is a Make *wild-card*.
 
-However, if we remove `isles.dat` and try to recreate it:
+Re-run Make:
 
 ~~~ {.bash}
-$ rm isles.dat
-$ make isles.dat
+$ make clean
+$ make dats
 ~~~
 
 We get:
 
 ~~~ {.output}
-$ make last.dat
-python wordcount.py books/%.txt %.dat
-Traceback (most recent call last):
-  File "wordcount.py", line 126, in <module>
-    word_count(input_file, output_file, min_length)
-  File "wordcount.py", line 113, in word_count
-    lines = load_text(input_file)
-  File "wordcount.py", line 14, in load_text
-    with open(file) as f:
-IOError: [Errno 2] No such file or directory: 'books/%.txt'
-make: *** [last.dat] Error 1
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/last.txt last.dat
 ~~~
 
-This does **not** work. 
-
-We can use `-n` to see what make would do - the actions it will run - without it actually running them:
-
-~~~ {.bash}
-$ touch books/last.txt
-$ make -n last.dat
-~~~
-
-We get:
-
-~~~ {.output}
-python wordcount.py books/%.txt %.dat
-~~~
-
-It is treating `%.dat` as an actual file name in the action. The Make `%` wild-card can only be used in a target and in its dependencies. It cannot be used in actions.
-
-We need to rewrite the action and, for that, we will need the Make automatic variable, `$@` (the target of the current rule). We will also need `$<`, which means 'the first dependency of the current rule'.
-
-> ## Write an action for a pattern rule {.challenge}
+> ## Using Make wild-cards {.callout}
 >
-> Rewrite the action of the `%.dat` rule, using automatic variables `$@` and `$<`, so that the pattern rule works.
+> The Make `%` wild-card can only be used in a target and in its dependencies. It cannot be used in actions.
