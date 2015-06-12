@@ -222,11 +222,11 @@ make: Nothing to be done for `dats'.
 ~~~
 
 > ## Write a new rule {.challenge}
-
-Write a new rule for `last.dat`, created from `books/last.txt`.
-
-Update the `dats` rule with this target.
-
-`touch` all the `books/*.txt` files to update their time-stamps.
-
-Re-run `make` and all the `.dat` files should be rebuilt.
+>
+> Write a new rule for `last.dat`, created from `books/last.txt`.
+>
+> Update the `dats` rule with this target.
+>
+> `touch` all the `books/*.txt` files to update their time-stamps.
+> 
+> Re-run `make` and all the `.dat` files should be rebuilt.
