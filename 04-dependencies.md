@@ -5,6 +5,10 @@ subtitle: Dependencies on data and code
 minutes: TBC
 ---
 
+> ## Learning Objectives {.objectives}
+>
+> * Output files are a product not only of input files but of the scripts or code that created the output files.
+
 Our data files are a product not only of our text files but the script, `wordcount.py`, that processes the text files and creates the data files. We should add `workflow.py` as a dependency of each of our data files also:
 
 ~~~ {.make}
