@@ -26,7 +26,10 @@ There are now many build tools available, all of which are based on the same con
 
 1.  [Introduction](01-intro.html)
 2.  [Makefiles](02-makefiles.html)
-3.  [Automatic variables and wildcards](03-variables.html)
+3.  [Automatic variables](03-variables.html)
+4.  [Dependencies on data and code](04-dependencies.html)
+
+
 4.  [Pattern rules](04-patterns.html)
 5.  [Macros](05-macros.html)
 6.  [Functions](06-functions.html)
