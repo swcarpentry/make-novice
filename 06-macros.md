@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Automation and Make
-subtitle: Macros
+subtitle: Variables
 minutes: TBC
 ---
+
+> ## Learning Objectives {.objectives}
+>
+> * Use macros 
+> * Use the Make wild-card `%` in targets and dependencies.
+
 
 Macros
 ------
