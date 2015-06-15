@@ -7,10 +7,15 @@ minutes: 0
 
 > ## Learning Objectives {.objectives}
 >
-> * Use Make's `wildcard` function to get lists of files matching a pattern.
+> * Use Make's `wildcard` function to get lists of files matching a
+>   pattern. 
 > * Use Make's `patsubst` function to rewrite file names.
 
-Make has many functions which can be used to write more complex rules. One example is `wildcard`. `wildcard` gets a list of files matching some pattern, which we can then save in a variable. So, for example, we can get a list of all our text files (files ending in `.txt`) and save these in a variable:
+Make has many [function](reference.html#function) which can be used to
+write more complex rules. One example is `wildcard`. `wildcard` gets a
+list of files matching some pattern, which we can then save in a
+variable. So, for example, we can get a list of all our text files
+(files ending in `.txt`) and save these in a variable:
 
 ~~~ {.make}
 TXT_FILES=$(wildcard books/*.txt)
@@ -26,7 +31,10 @@ variables:
 
 > ## @echo {.callout}
 >
-> Make prints actions as it executes them. Using `@` at the start of an action tells Make not to print this action. So, by using `@echo` instead of `echo`, we can see the result of `echo` (the variable's value being printed) but not the echo command itself.
+> Make prints actions as it executes them. Using `@` at the start of
+> an action tells Make not to print this action. So, by using `@echo`
+> instead of `echo`, we can see the result of `echo` (the variable's
+> value being printed) but not the echo command itself.
 
 If we run Make:
 
@@ -40,7 +48,11 @@ We get:
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 ~~~
 
-`patsubst` ('pattern substitution') takes a list of names and rewrites these according to a pattern. Again, we can save the result in a variable. So, for example, we can rewrite our list of text files into a list of data files (files ending in `.dat`) and save these in a variable:
+`patsubst` ('pattern substitution') takes a list of names and rewrites
+these according to a pattern. Again, we can save the result in a
+variable. So, for example, we can rewrite our list of text files into
+a list of data files (files ending in `.dat`) and save these in a
+variable:
 
 ~~~ {.make}
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
@@ -55,13 +67,13 @@ variables:
 	@echo DAT_FILES: $(DAT_FILES)
 ~~~
 
-If we run Make:
+If we run Make,
 
 ~~~ {.bash}
 $ make variables
 ~~~
 
-We get:
+then we get:
 
 ~~~ {.output}
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
@@ -123,4 +135,6 @@ python wordcount.py books/sierra.txt sierra.dat
 tar -czf analysis.tar.gz abyss.dat isles.dat last.dat sierra.dat wordcount.py
 ~~~
 
-We see that the problem we had when using the bash wild-card, `*.dat`, which required us to run `make dats` before `make analysis.tar.gz` has now disappeared.
+We see that the problem we had when using the bash wild-card, `*.dat`,
+which required us to run `make dats` before `make analysis.tar.gz` has
+now disappeared.

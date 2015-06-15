@@ -218,8 +218,11 @@ build manager
     other things.
 
 default rule
-:   The [rule](#rule) that is executed if no rule is specified when a
-    [build manager](#build-manager) is run.
+:   The [rule](#rule) that is executed if no [target](#target) is 
+    specified when a [build manager](#build-manager) is run.
+
+default target
+:   The [target](#target) of the [default rule](#default-rule).
 
 dependency
 :   A file that a [target](#target) depends on. If any of a target's
