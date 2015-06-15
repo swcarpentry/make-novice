@@ -28,7 +28,7 @@ This is a simple *Makefile* - a file executed by Make. Let us go through each li
 * `:` separates targets from dependencies.
 * `python wordcount.py books/isles.txt isles.dat` is an *action*, a command to run to build the target using the dependencies. Targets can have zero or more actions.
 * Actions are indented using the TAB character, *not* 8 spaces. This is a legacy of Make's 1970's origins.
-* Together, the target, prerequisites, and actions form a *rule*.
+* Together, the target, dependencies, and actions form a *rule*.
 
 By default, Make looks for a Makefile, called `Makefile`, and we can run Make as follows:
 
