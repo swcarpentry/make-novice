@@ -197,87 +197,90 @@ Default targets:
 ## Glossary
 
 action
-:   The steps a **build manager** must take to create or update a file
-    or other object.
+:   The steps a [build manager](#build-manager) must take to create or
+    update a file or other object.
 
 automatic variable
-:   A variable whose value is automatically redefined for each rule.
-    **Make**'s automatic variables include `$@`, which holds the
-    rule's **target**, `$^`, which holds its **dependencies**, and,
-    `$<`, which holds the first of its **dependencies**.
-    Automatic variables are typically used in **pattern rules**.
+:   A variable whose value is automatically redefined for each
+    [rule](#rule). [Make](#make)'s automatic variables include `$@`,
+    which holds the rule's [target](#target), `$^`, which holds its
+    [dependencies](#dependency), and, `$<`, which holds the first of
+    its dependencies. Automatic variables are typically used in
+    [pattern rules](#pattern-rule).
 
 build file
-:   A description of **dependencies** and **rules** for a **build
-    manager**.
+:   A description of [dependencies](#dependency) and [rules](#rule)
+    for a [build manager](#build-manager).
 
 build manager
-:   A program, such as **Make**, whose main purpose is to build or
+:   A program, such as [Make](#make), whose main purpose is to build or
     update software, documentation, web sites, data files, images, and
     other things.
 
 default rule
-:   The **rule** that is executed if no **rule** is specified when a
-    **build manager** is run.
+:   The [rule](#rule) that is executed if no rule is specified when a
+    [build manager](#build-manager) is run.
 
-dependencies
-:   A file that a **target** depends on. If any of a **target**'s
-    dependencies are newer than the **target** itself, the **target**
-    needs to be updated. A **target**'s dependencies are also called
-    its **prerequisites**. If a **target**'s dependencies do not
-    exist, then they need to be built first.
+dependency
+:   A file that a [target](#target) depends on. If any of a target's
+    [dependencies](#dependency) are newer than the target itself, the
+    target needs to be updated. A target's dependencies are also
+    called its prerequisites. If a target's dependencies do not exist,
+    then they need to be built first.
 
 false dependency
-:   A **dependency** used to trigger some other **actions** which are
-    useful, but are not needed to build or update the **target**.
+:   A [dependency](#dependency) used to trigger some other
+    [actions](#action) which are useful, but are not needed to build
+    or update the [target](#target).
 
 function
-:   A built-in **Make** utility that performs some operation, for
+:   A built-in [Make](#make) utility that performs some operation, for
     example gets a list of files matching a pattern.
 
 Make:
-:   A popular **build manager**, from GNU, created in 1977.
+:   A popular [build manager](#build-manager), from GNU, created in 1977.
 
 macro
-:   Used as a synonym for **variable** in certain versions of
-    **Make**.
+:   Used as a synonym for [variable](#variable) in certain versions of
+    [Make](#make).
 
 Makefile
-:   A **build file** used by **Make**, which, by default, are named
-    `Makefile`.
+:   A [build file](#build-file) used by [Make](#make), which, by
+    default, are named `Makefile`.
 
 pattern rule
-:   A **rule** that specifies a general way to build or update an
+:   A [rule](#rule) that specifies a general way to build or update an
     entire class of files that can be managed the same way. For
     example, a pattern rule can specify how to compile any C file
     rather than a single, specific C file, or, to analyse any data
     file rather than a single, specific data file. Pattern rules
-    typically make use of **automatic variables** and **wild-cards**. 
+    typically make use of [automatic variables](#automatic-variable)
+    and [wild-cards](#wild-card).
 
 phony target
-:   A **target** that does not correspond to a file or other object.
-    Phony targets are usually symbolic names for sequences of
-    **actions*.
+:   A [target](#target) that does not correspond to a file or other
+    object. Phony targets are usually symbolic names for sequences of
+    [actions](#action).
 
-prerequisites
-:   A synonym for **dependencies**.
+prerequisite
+:   A synonym for [dependency](#dependency).
 
 rule
-:   A specification of a **target**'s **dependencies** and what
-    **actions** need to be executed to build or update the
-    **target**.
+:   A specification of a [target](#target)'s
+    [dependencies](#dependency) and what [actions](#action) need to be
+    executed to build or update the target.
 
 target
 :   A thing to be created or updated, for example a file. Targets can
-    have **dependencies** that must exist, and be up-to-date, before
-    the target itself can be built or updated.
+    have [dependencies](#dependency) that must exist, and be
+    up-to-date, before the target itself can be built or updated.
 
 variable
-:   A symbolic name for something in a **Makefile**.
+:   A symbolic name for something in a [Makefile](#makefile).
 
 wild-card
-:   A pattern that can be specified in **dependencies** and
-    **targets**. If **Make** finds a **dependency** matching the
-    pattern, then the pattern is substituted into the **target**.
-    Wild-cards are often used in **pattern rules**. The **Make**
-    wild-card is `%`.
+:   A pattern that can be specified in [dependencies](#dependency) and
+    [targets](#target). If [Make](#make) finds a dependency] matching
+    the pattern, then the pattern is substituted into the
+    target. Wild-cards are often used in [pattern
+    rules](#pattern-rule). The Make wild-card is `%`.
