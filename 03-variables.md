@@ -91,7 +91,7 @@ $ make analysis.tar.gz
 
 We get:
 
-~~~ {.output}
+~~~ {.error}
 make: *** No rule to make target `*.dat', needed by `analysis.tar.gz'.  Stop.
 ~~~
 

@@ -9,6 +9,7 @@ minutes: 0
 >
 > * Output files are a product not only of input files but of the
 >   scripts or code that created the output files. 
+> * Recognise and avoid false dependencies.
 
 Our data files are a product not only of our text files but the
 script, `wordcount.py`, that processes the text files and creates the

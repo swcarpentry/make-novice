@@ -9,6 +9,7 @@ minutes: 0
 >
 > * Write Make pattern rules.
 > * Use the Make wild-card `%` in targets and dependencies.
+> * Avoid using the Make wild-card in rules.
 
 Our Makefile still has repeated content. The rules for each `.dat`
 file are identical apart from the text and data file names. We can

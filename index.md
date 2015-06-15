@@ -41,10 +41,13 @@ the same concepts as Make.
 > 3. Open a bash shell window.
 > 4. Navigate to the directory where you downloaded the file.
 > 5. Unpack `make-lesson.tar.gz`:
+>
 > ~~~ {.bash}
 > $ tar -xvf make-lesson.tar.gz
 > ~~~
-> 6 Change into the `make-lesson` directory:
+>
+> 6. Change into the `make-lesson` directory:
+>
 > ~~~ {.bash}
 > $ cd make-lesson
 > ~~~

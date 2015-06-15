@@ -11,7 +11,7 @@ minutes: 0
 >   pattern. 
 > * Use Make's `patsubst` function to rewrite file names.
 
-Make has many [function](reference.html#function) which can be used to
+Make has many [functions](reference.html#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
@@ -34,7 +34,7 @@ variables:
 > Make prints actions as it executes them. Using `@` at the start of
 > an action tells Make not to print this action. So, by using `@echo`
 > instead of `echo`, we can see the result of `echo` (the variable's
-> value being printed) but not the echo command itself.
+> value being printed) but not the `echo` command itself.
 
 If we run Make:
 
@@ -47,6 +47,8 @@ We get:
 ~~~ {.output}
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 ~~~
+
+Note how `sierra.txt` is now processed too.
 
 `patsubst` ('pattern substitution') takes a list of names and rewrites
 these according to a pattern. Again, we can save the result in a
@@ -108,8 +110,6 @@ python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat
 ~~~
 
-Note how `sierra.txt` is now processed too.
-
 We can also rewrite `analysis.tar.gz` too:
 
 ~~~ {.make}
@@ -137,4 +137,5 @@ tar -czf analysis.tar.gz abyss.dat isles.dat last.dat sierra.dat wordcount.py
 
 We see that the problem we had when using the bash wild-card, `*.dat`,
 which required us to run `make dats` before `make analysis.tar.gz` has
-now disappeared.
+now disappeared, since our functions allow us to create `.dat` file
+names from those `.txt` file names in `books/`.

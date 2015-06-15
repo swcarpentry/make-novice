@@ -11,7 +11,8 @@ minutes: 0
 >   dependencies and actions. 
 > * Write a simple Makefile.
 > * Run Make from the shell.
-> * Know when and why to mark targets as .PHONY.
+> * Explain when and why to mark targets as `.PHONY`.
+> * Explain constraints on dependencies.
 
 Create a file, called `Makefile`, with the following content:
 
@@ -97,7 +98,7 @@ If we compare the timestamps of `isles.txt` and `isles.dat`,
 $ ls -l books/isles.txt isles.dat
 ~~~
 
-we see that `isles.dat`, the target, is now older
+then we see that `isles.dat`, the target, is now older
 than`books/isles.txt`, its dependency:
 
 ~~~ {.output}

@@ -110,7 +110,7 @@ new files, for example:
 * Compile source code into executable programs or libraries.
 
 There are now many build tools available, for example [Apache
-ANT](http://ant.apache.org/, [doit](http://pydoit.org/), and
+ANT](http://ant.apache.org/), [doit](http://pydoit.org/), and
 [nmake](https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx) for
 Windows. There are also build tools that build scripts for use with
 these build tools and others e.g. [GNU
