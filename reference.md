@@ -170,7 +170,7 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 ~~~
 
 * Every string that matches `books/%.txt` in `$(TXT_FILES)` is
-  replaced by %.dat and the strings are returned in a list.
+  replaced by `%.dat` and the strings are returned in a list.
 * e.g. if `TXT_FILES` is `books/abyss.txt books/isles.txt
   books/last.txt books/sierra.txt` this sets `DAT_FILES` to `abyss.dat
   isles.dat last.dat sierra.dat`.
@@ -188,11 +188,12 @@ Default targets:
 
 ## Manuals
 
-* [GNU Make Manual](https://www.gnu.org/software/make/manual/)
-  - [Summary of Options](https://www.gnu.org/software/make/manual/html_node/Options-Summary.html) for the `make` command.
-  - [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html)of Make directives, text manipulation functions, and special variables.
-  - [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
-  - [Special Built-in Target Names](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html)
+[GNU Make Manual](https://www.gnu.org/software/make/manual/). Reference sections include:
+
+* [Summary of Options](https://www.gnu.org/software/make/manual/html_node/Options-Summary.html) for the `make` command.
+* [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html)of Make directives, text manipulation functions, and special variables.
+* [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
+* [Special Built-in Target Names](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html)
 
 ## Glossary
 
@@ -232,20 +233,21 @@ dependency
     then they need to be built first.
 
 false dependency
-:   A [dependency](#dependency) used to trigger some other
-    [actions](#action) which are useful, but are not needed to build
-    or update the [target](#target).
+:   This can refer to a [dependency](#dependency) that is artificial.
+    e.g. a false dependency is introduced if a data analysis script
+    is added as a dependency to the data files that the script 
+    analyses.
 
 function
 :   A built-in [Make](#make) utility that performs some operation, for
     example gets a list of files matching a pattern.
 
-Make:
-:   A popular [build manager](#build-manager), from GNU, created in 1977.
-
 macro
 :   Used as a synonym for [variable](#variable) in certain versions of
     [Make](#make).
+
+Make
+:   A popular [build manager](#build-manager), from GNU, created in 1977.
 
 Makefile
 :   A [build file](#build-file) used by [Make](#make), which, by

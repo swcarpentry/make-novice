@@ -8,13 +8,15 @@ minutes: 0
 > ## Learning Objectives {.objectives}
 >
 > * Use variables in a Makefile.
+> * Explain the benefits of decoupling configuration from 
+>   computation.
 
 Despite our efforts, our Makefile still has repeated content, namely
 the name of our script, `wordcount.py`. If we renamed our script we'd
 have to update our Makefile in multiple places.
 
 We can introduce a Make [variable](reference.html#variable) (called a
-[macro](#reference.html#macro) in some versions of Make) to hold our
+[macro](reference.html#macro) in some versions of Make) to hold our
 script name:
 
 ~~~ {.make}

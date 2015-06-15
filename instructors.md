@@ -33,12 +33,13 @@ challenges, are in `code/samples` and are identified below.
 
 ## Setting up Make
 
-* Recommend instructors and students use `nano` as the text editor for
-  this lesson because 
-  - it runs in all three major operating systems,
-  - it runs inside the shell (switching windows can be confusing to
-    students), and
-  - it has shortcut help at the bottom of the window.
+Recommend instructors and students use `nano` as the text editor for
+this lesson because 
+
+* it runs in all three major operating systems,
+* it runs inside the shell (switching windows can be confusing to
+  students), and
+* it has shortcut help at the bottom of the window.
 
 Please point out to students during setup that they can and should use
 another text editor if they're already familiar with it.
@@ -51,7 +52,8 @@ correctly, before beginning the session.
 
 ## Code and data files
 
-Python scripts to be invoked by Make are in `code/wordcount.py` and `code/plotcount.py`.
+Python scripts to be invoked by Make are in `code/wordcount.py` and
+`code/plotcount.py`.
 
 Data files are in `data/books`.
 
@@ -63,7 +65,7 @@ which contains:
 * `books/`
 
 Or, ask students to download
-`[make-lesson.tar.gz](./make-lesson.tar.gz)` from this repository.
+[make-lesson.tar.gz](./make-lesson.tar.gz) from this repository.
 
 To recreate `make-lesson.tar.gz`, run:
 
