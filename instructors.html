@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Instructor’s Guide</h2>
+          <h2 id="legend">Legend</h2>
+<p>Make is a popular tool for automating the building of software - compiling source code into executable programs.</p>
+<p>Though Make is nearly 40 years old, and there are many other build tools available, its fundamental concepts are common across build tools.</p>
+<p>Today, researchers working with legacy codes in C or FORTRAN, which are very common in high-performance computing, will, very likely encounter Make.</p>
+<p>Researchers are also finding Make of use in implementing reproducible research workflows, automating data analysis and visualisation (using Python or R) and combining tables and plots with text to produce reports and papers for publication.</p>
+<h2 id="overall">Overall</h2>
+<p>The overall lesson can be done in a 2 hour slot.</p>
+<p>Solutions for challenges are used in subsequent topics.</p>
+<p>A number of example Makefiles, including sample solutions to challenges, are in <code>code/samples</code> and are identified below.</p>
+<h2 id="setting-up-make">Setting up Make</h2>
+<p>Recommend instructors and students use <code>nano</code> as the text editor for this lesson because</p>
+<ul>
+<li>it runs in all three major operating systems,</li>
+<li>it runs inside the shell (switching windows can be confusing to students), and</li>
+<li>it has shortcut help at the bottom of the window.</li>
+</ul>
+<p>Please point out to students during setup that they can and should use another text editor if they’re already familiar with it.</p>
+<p>Instructors and students should use two shell windows: one for running nano, and one for running Make.</p>
+<p>Check that all attendees have Make installed and that it runs correctly, before beginning the session.</p>
+<h2 id="code-and-data-files">Code and data files</h2>
+<p>Python scripts to be invoked by Make are in <code>code/wordcount.py</code> and <code>code/plotcount.py</code>.</p>
+<p>Data files are in <code>data/books</code>.</p>
+<p>You can either create a simple Git repository for students to clone which contains:</p>
+<ul>
+<li><code>wordcount.py</code></li>
+<li><code>plotcount.py</code></li>
+<li><code>books/</code></li>
+</ul>
+<p>Or, ask students to download <a href="./make-lesson.tar.gz">make-lesson.tar.gz</a> from this repository.</p>
+<p>To recreate <code>make-lesson.tar.gz</code>, run:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> make-lesson.tar.gz</code></pre>
+<h2 id="beware-of-spaces">Beware of spaces!</h2>
+<p>The single most commonly occurring problem will be students using spaces instead of TABs when intending actions.</p>
+<h2 id="introduction"><a href="01-intro.html">Introduction</a></h2>
+<h2 id="makefiles"><a href="02-makefiles.html">Makefiles</a></h2>
+<p><code>02-makefile/Makefile</code> contains an example of the Makefile, immediately before the challenge is attempted.</p>
+<p>Write two new rules - challenge</p>
+<ul>
+<li>Allow 10 minutes.</li>
+<li><code>02-makefile-challenge/Makefile</code> contains a solution.</li>
+</ul>
+<h2 id="automatic-variables"><a href="03-variables.html">Automatic variables</a></h2>
+<p><code>03-variables/Makefile</code> contains an example of the Makefile, immediately before the challenge is attempted.</p>
+<p>Rewrite <code>.dat</code> rules to use automatic variables - challenge</p>
+<ul>
+<li>Allow 5 minutes.</li>
+<li><code>03-variables-challenge/Makefile</code> contains a solution.</li>
+</ul>
+<h2 id="dependencies-on-data-and-code"><a href="04-dependencies.html">Dependencies on data and code</a></h2>
+<p><code>04-dependencies/Makefile</code> contains an example of the Makefile on completion of the topic.</p>
+<h2 id="pattern-rules"><a href="05-patterns.html">Pattern rules</a></h2>
+<p><code>04-patterns/Makefile</code> contains an example of the Makefile on completion of the topic.</p>
+<h2 id="variables"><a href="06-variables.html">Variables</a></h2>
+<p>Use variables - challenge</p>
+<ul>
+<li>Allow 10 minutes.</li>
+<li><code>06-variables-challenge/Makefile</code> contains a solution.</li>
+</ul>
+<p><code>06-variables/Makefile</code> and <code>06-variables/config.mk</code> contains an example of the Makefiles on completion of the topic.</p>
+<h2 id="functions"><a href="07-functions.html">Functions</a></h2>
+<p><code>07-functions/Makefile</code> and <code>07-functions/config.mk</code> contains an example of the Makefiles on completion of the topic.</p>
+<h2 id="conclusion"><a href="08-conclusion.html">Conclusion</a></h2>
+<p>Extend the Makefile to create JPEGs - challenge</p>
+<ul>
+<li>Allow 15 minutes.</li>
+<li><code>08-conclusion-challenge/Makefile</code> and <code>08-conclusion-challenge/config.mk</code> contain a solution.</li>
+</ul>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

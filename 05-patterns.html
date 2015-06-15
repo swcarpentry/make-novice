@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Pattern rules</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Write Make pattern rules.</li>
+<li>Use the Make wild-card <code>%</code> in targets and dependencies.</li>
+<li>Avoid using the Make wild-card in rules.</li>
+</ul>
+</div>
+</section>
+<p>Our Makefile still has repeated content. The rules for each <code>.dat</code> file are identical apart from the text and data file names. We can replace these rules with a single <a href="reference.html#pattern-rule">pattern rule</a> which can be used to build any <code>.dat</code> file from a <code>.txt</code> file in <code>books/</code>:</p>
+<pre class="make"><code>%.dat : books/%.txt wordcount.py
+        python wordcount.py $&lt; $@</code></pre>
+<p><code>%</code> is a Make <a href="reference.html#wild-card">wild-card</a>.</p>
+<p>If we re-run Make,</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats</code></pre>
+<p>then we get:</p>
+<pre class="output"><code>python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/last.txt last.dat</code></pre>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Using Make wild-cards</h2>
+</div>
+<div class="panel-body">
+<p>The Make <code>%</code> wild-card can only be used in a target and in its dependencies. It cannot be used in actions.</p>
+</div>
+</aside>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
