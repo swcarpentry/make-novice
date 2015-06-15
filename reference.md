@@ -20,13 +20,13 @@ $ make -f analyse.mk
 
 To build a specific target, provide it as an argument e.g.
 
-~~~ {.make}
+~~~ {.bash}
 $ make isles.dat
 ~~~
 
 To see actions Make will run when building a target, without running those actions, use `-n` e.g.
 
-~~~ {.make}
+~~~ {.bash}
 $ make -n isles.dat
 ~~~
 
@@ -36,13 +36,22 @@ If the target is up-to-date, Make will print a message like:
 make: `isles.dat' is up to date.
 ~~~
 
-If Make prints:
+If Make prints a message like:
 
 ~~~ {.error}
 Makefile:3: *** missing separator.  Stop.
 ~~~
 
 then check your actions are indented by TAB characters and not spaces.
+
+If Make prints a message like:
+
+~~~ {.error}
+No such file or directory: 'books/%.txt'
+make: *** [isles.dat] Error 1
+~~~
+
+Then you may have a pattern rule that has used the Make wild-card `%` in an action.
 
 ## Makefiles
 
