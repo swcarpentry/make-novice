@@ -24,10 +24,12 @@ reports and papers for publication.
 
 ## Overall
 
-* The overall lesson can be done in a 2 hour slot.
-* Solutions for challenges are used in subsequent topics.
-* A number of example Makefiles, including sample solutions to
-  challenges, are in `code/samples` and are identified below.
+The overall lesson can be done in a 2 hour slot.
+
+Solutions for challenges are used in subsequent topics.
+
+A number of example Makefiles, including sample solutions to
+challenges, are in `code/samples` and are identified below.
 
 ## Setting up Make
 
@@ -46,6 +48,28 @@ nano, and one for running Make.
 
 Check that all attendees have Make installed and that it runs
 correctly, before beginning the session.
+
+## Code and data files
+
+Python scripts to be invoked by Make are in `code/wordcount.py` and `code/plotcount.py`.
+
+Data files are in `data/books`.
+
+You can either create a simple Git repository for students to clone
+which contains:
+
+* `wordcount.py`
+* `plotcount.py`
+* `books/`
+
+Or, ask students to download
+`[make-lesson.tar.gz](./make-lesson.tar.gz)` from this repository.
+
+To recreate `make-lesson.tar.gz`, run:
+
+~~~ {.bash}
+$ make make-lesson.tar.gz
+~~~
 
 ## Beware of spaces!
 
