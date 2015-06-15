@@ -37,7 +37,6 @@ There are now many build tools available, all of which are based on the same con
 
 ## Other Resources
 
-*   [Motivation](motivation.html)
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
 *   [Instructor's Guide](instructors.html)
