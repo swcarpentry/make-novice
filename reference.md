@@ -40,7 +40,7 @@ running the actions, use the `-n` flag e.g.
 $ make -n isles.dat
 ~~~
 
-### Make trouble-shooting
+## Make trouble-shooting
 
 If Make prints a message like,
 
