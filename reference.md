@@ -6,16 +6,19 @@ subtitle: Reference
 
 ## Running Make
 
+To run Make:
+
 ~~~ {.bash}
 $ make
 ~~~
 
-Make assumes the Makefile is called `Makefile` and runs the default target.
+Make will look for a Makefile called `Makefile` and will build the
+default target, the first target in the Makefile.
 
-To use a Makefile with a different name, use `-f` e.g.
+To use a Makefile with a different name, use the `-f` flag e.g.
 
 ~~~ {.bash}
-$ make -f analyse.mk
+$ make -f build-files/analyse.mk
 ~~~
 
 To build a specific target, provide it as an argument e.g.
@@ -24,34 +27,39 @@ To build a specific target, provide it as an argument e.g.
 $ make isles.dat
 ~~~
 
-To see actions Make will run when building a target, without running those actions, use `-n` e.g.
-
-~~~ {.bash}
-$ make -n isles.dat
-~~~
-
 If the target is up-to-date, Make will print a message like:
 
 ~~~ {.output}
 make: `isles.dat' is up to date.
 ~~~
 
-If Make prints a message like:
+To see the actions Make will run when building a target, without
+running the actions, use the `-n` flag e.g.
+
+~~~ {.bash}
+$ make -n isles.dat
+~~~
+
+### Make trouble-shooting
+
+If Make prints a message like,
 
 ~~~ {.error}
 Makefile:3: *** missing separator.  Stop.
 ~~~
 
-then check your actions are indented by TAB characters and not spaces.
+then check that all the actions are indented by TAB characters and not
+spaces.
 
-If Make prints a message like:
+If Make prints a message like,
 
 ~~~ {.error}
 No such file or directory: 'books/%.txt'
 make: *** [isles.dat] Error 1
 ~~~
 
-Then you may have a pattern rule that has used the Make wild-card `%` in an action.
+then you may have used the Make wild-card, `%`, in an action in a
+pattern rule. Make wild-cards cannot be used in actions.
 
 ## Makefiles
 
@@ -65,16 +73,28 @@ target : dependency1 dependency2 ...
 ~~~
 
 * Each rule has a target, a file to be created, or built.
-* Each rule has zero or more dependencies, files that are needed to build the target.
-* `:` separates targets from dependencies.
+* Each rule has zero or more dependencies, files that are needed to
+  build the target.
+* `:` separates the target and the dependencies.
 * Dependencies are separated by spaces.
-* Each rule has zero or more actions, commands to run to build the target using the dependencies.
-* Actions are indented using the TAB character, *not* 8 spaces.
+* Each rule has zero or more actions, commands to run to build the
+  target using the dependencies.
+* Actions are indented using the TAB character, not 8 spaces.
+
+Dependencies:
+
+* If any dependency does not exist then Make will look for a rule to
+  build it.
+* The order of rebuilding dependencies is arbitrary. You should not
+  assume that they will be built in the order in which they are listed.
+* Dependencies must form a directed acyclic graph. A target cannot
+  depend on a dependency which, in turn depends upon, or has a
+  dependency which depends upon, that target.
 
 Comments:
 
 ~~~ {.make}
-# This is a comment!
+# This is a Make comment.
 ~~~
 
 Phony targets:
@@ -85,14 +105,15 @@ clean :
        rm -f *.dat
 ~~~
 
-* Phony targets are a short-hand for sequences of actions. 
-* In this example, no thing called `clean` is built.
+* Phony targets are a short-hand for sequences of actions.
+* No file with the target name is built when a rule with a phony
+  target is run.
 
 Automatic variables:
 
-* `$<` - the first dependency of the current rule.
-* `$@` - the target of the current rule.
-* `$^` - the dependencies of the current rule.
+* `$<` denotes 'the first dependency of the current rule'.
+* `$@` denotes 'the target of the current rule'.
+* `$^` denotes 'the dependencies of the current rule'.
 
 Pattern rules:
 
@@ -101,8 +122,12 @@ Pattern rules:
         $(COUNT_EXE) $< $@
 ~~~
 
-* Pattern rules use the Make wild-card `%`.
-* The wild-card can only be used in targets and dependencies.
+* The Make wild-card, `%`, specifies a pattern.
+* If Make finds a dependency matching the pattern, then the pattern is
+  substituted into the target.
+* The Make wild-card can only be used in targets and dependencies.
+* e.g. if Make found a file called `books/abyss.txt`, it would set the
+  target to be `abyss.dat`.
 
 Defining and using variables:
 
@@ -133,8 +158,10 @@ wildcard function:
 TXT_FILES=$(wildcard books/*.txt)
 ~~~
 
-* Looks for all files matching a pattern e.g. `books/*.txt`, and return these in a list.
-* e.g. `TXT_FILES` is set to `books/abyss.txt books/isles.txt books/last.txt books/sierra.txt`.
+* Looks for all files matching a pattern e.g. `books/*.txt`, and
+  return these in a list.
+* e.g. `TXT_FILES` is set to `books/abyss.txt books/isles.txt
+  books/last.txt books/sierra.txt`.
 
 patsubst ('path substitution') function:
 
@@ -142,90 +169,115 @@ patsubst ('path substitution') function:
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 ~~~
 
-* Every string that matches `books/%.txt` in `$(TXT_FILES)` is replaced by %.dat and the strings are returned in a list.
-* e.g. if `TXT_FILES` is `books/abyss.txt books/isles.txt books/last.txt books/sierra.txt` this sets `DAT_FILES` to `abyss.dat isles.dat last.dat sierra.dat`.
+* Every string that matches `books/%.txt` in `$(TXT_FILES)` is
+  replaced by %.dat and the strings are returned in a list.
+* e.g. if `TXT_FILES` is `books/abyss.txt books/isles.txt
+  books/last.txt books/sierra.txt` this sets `DAT_FILES` to `abyss.dat
+  isles.dat last.dat sierra.dat`.
+
+Default targets:
+
+* In Make version 3.79 the default target is the first target in the
+  Makefile.
+* In Make 3.81, the default target can be explicitly set using the
+  special variable `.DEFAULT_GOAL` e.g.
+
+~~~ {.make}
+.DEFAULT_GOAL := all
+~~~
 
 ## Manuals
 
 * [GNU Make Manual](https://www.gnu.org/software/make/manual/)
-  - [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html)
-  - [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html) - summary of automatic variables.
+  - [Summary of Options](https://www.gnu.org/software/make/manual/html_node/Options-Summary.html) for the `make` command.
+  - [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html)of Make directives, text manipulation functions, and special variables.
+  - [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
+  - [Special Built-in Target Names](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html)
 
 ## Glossary
 
 action
-:   The steps a **build manager** must take to bring a file or other
-    object up to date.
+:   The steps a **build manager** must take to create or update a file
+    or other object.
 
 automatic variable
 :   A variable whose value is automatically redefined for each rule.
-    Automatic variables include `$@`, which holds the rule's
-    **target**, `$^`, which holds its **prerequisites**, and, `$<`,
-    which holds the first of its **prerequisites**.
+    **Make**'s automatic variables include `$@`, which holds the
+    rule's **target**, `$^`, which holds its **dependencies**, and,
+    `$<`, which holds the first of its **dependencies**.
     Automatic variables are typically used in **pattern rules**.
 
 build file
-:   A description of dependencies and rules for a **build manager**.
+:   A description of **dependencies** and **rules** for a **build
+    manager**.
 
 build manager
-:   A program such as Make whose main purpose is to rebuild software,
-    documentation, web sites, and other things after changes have been
-    made.
+:   A program, such as **Make**, whose main purpose is to build or
+    update software, documentation, web sites, data files, images, and
+    other things.
 
 default rule
-:   The rule that is executed if no other rule is specified.
+:   The **rule** that is executed if no **rule** is specified when a
+    **build manager** is run.
 
-dependency
-:   A file that some other file depends on. If any of a file's
-    dependencies are newer than the file itself, the file must be
-    updated. A file's dependencies are also called its
-    **prerequisites**.
+dependencies
+:   A file that a **target** depends on. If any of a **target**'s
+    dependencies are newer than the **target** itself, the **target**
+    needs to be updated. A **target**'s dependencies are also called
+    its **prerequisites**. If a **target**'s dependencies do not
+    exist, then they need to be built first.
 
 false dependency
-:   A **dependency** used to trigger some other action.
+:   A **dependency** used to trigger some other **actions** which are
+    useful, but are not needed to build or update the **target**.
 
 function
-:   A built-in Make utility that performs some operation, for example 
-    gets a list of files matching a pattern.    
+:   A built-in **Make** utility that performs some operation, for
+    example gets a list of files matching a pattern.
+
+Make:
+:   A popular **build manager**, from GNU, created in 1977.
 
 macro
-:   Used as a synonym for **variable** in certain versions of Make.
+:   Used as a synonym for **variable** in certain versions of
+    **Make**.
 
 Makefile
-:   The default build file used by Make. The term is also used
-    for any **build file** that Make understands.
+:   A **build file** used by **Make**, which, by default, are named
+    `Makefile`.
 
 pattern rule
-:   A rule that specifies a general way to manage an entire class of
-    files. For example, a pattern rule might specify how to compile
-    any C file, rather than just a particular C file. Pattern rules
-    typically make use of **automatic variables**.
+:   A **rule** that specifies a general way to build or update an
+    entire class of files that can be managed the same way. For
+    example, a pattern rule can specify how to compile any C file
+    rather than a single, specific C file, or, to analyse any data
+    file rather than a single, specific data file. Pattern rules
+    typically make use of **automatic variables** and **wild-cards**. 
 
 phony target
 :   A **target** that does not correspond to a file or other object.
-    Phony targets are usually just symbolic names for sequences of
-    actions.
+    Phony targets are usually symbolic names for sequences of
+    **actions*.
 
 prerequisites
-:   A file that some other file depends on. If any of a file's
-    prerequisites are newer than the file itself, the file must be
-    updated. A file's prerequisites are also called its
-    **dependencies**.
+:   A synonym for **dependencies**.
 
 rule
-:   In a build system, a specification of a **target**'s
-    **prerequisites** and what **actions** to take to bring the
-    target up to date.
+:   A specification of a **target**'s **dependencies** and what
+    **actions** need to be executed to build or update the
+    **target**.
 
 target
-:   A thing that may be created or updated. Targets typically have
-    **prerequisites** that must be up to date before the target itself
-    can be updated.
+:   A thing to be created or updated, for example a file. Targets can
+    have **dependencies** that must exist, and be up-to-date, before
+    the target itself can be built or updated.
 
 variable
 :   A symbolic name for something in a **Makefile**.
 
 wild-card
-:   A single file name that specifies many files. For example `%.dat`
-    specifies all files ending in `.dat`. Wild-cards are often used
-    in **pattern rules**.
+:   A pattern that can be specified in **dependencies** and
+    **targets**. If **Make** finds a **dependency** matching the
+    pattern, then the pattern is substituted into the **target**.
+    Wild-cards are often used in **pattern rules**. The **Make**
+    wild-card is `%`.
