@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Variables</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Use variables in a Makefile.</li>
+<li>Explain the benefits of decoupling configuration from computation.</li>
+</ul>
+</div>
+</section>
+<p>Despite our efforts, our Makefile still has repeated content, namely the name of our script, <code>wordcount.py</code>. If we renamed our script we’d have to update our Makefile in multiple places.</p>
+<p>We can introduce a Make <a href="reference.html#variable">variable</a> (called a <a href="reference.html#macro">macro</a> in some versions of Make) to hold our script name:</p>
+<pre class="make"><code>COUNT_SRC=wordcount.py</code></pre>
+<p><code>wordcount.py</code> is our script and it is invoked by passing it to <code>python</code>. We can introduce a variable to represent this execution:</p>
+<pre class="make"><code>COUNT_EXE=python $(COUNT_SRC)</code></pre>
+<p><code>$(...)</code> tells Make to replace the variable with its value when Make is run.</p>
+<p>This allows us to easily change how our script is run (if, for example, we changed the language used to implement our script from Python to R).</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
+</div>
+<div class="panel-body">
+<p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules use the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
+</div>
+</section>
+<p>We place variables at the top of a Makefile means they are easy to find and modify. Alternatively, we can pull them out into a new Makefile that just holds variable definitions. Let us create <code>config.mk</code>:</p>
+<pre class="make"><code># Count words script.
+COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)</code></pre>
+<p>We can then import this Makefile into <code>Makefile</code> using:</p>
+<pre class="make"><code>include config.mk</code></pre>
+<p>We can re-run Make to see that everything still works:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats
+$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<p>We have separated the configuration of our Makefile from its rules, the parts that do all the work. If we want to change our script name or how it is executed we just need to edit our configuration file, not our source code in <code>Makefile</code>. Decoupling code from configuration in this way is good programming practice, as it promotes more modular, flexible and reusable code.</p>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

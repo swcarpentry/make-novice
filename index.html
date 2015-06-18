@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <h1 class="title">Automation and Make</h1>
+          <p>Make is a tool which can run commands to read files, process these files in some way, and write out the processed files. Make can be used to:</p>
+<ul>
+<li>Run analysis scripts on raw data files to get data files that summarise the raw data.</li>
+<li>Run visualisation scripts on data files to produce plots.</li>
+<li>Parse and combine text files and plots to create papers.</li>
+<li>Compile source code into executable programs or libraries.</li>
+</ul>
+<p>Make is called a build tool - it builds data files, plots, papers, programs or libraries. It can also update existing files if desired.</p>
+<p>Make tracks the dependencies between the files it creates and the files used to create these. If one of the original files (e.g. a data file) is changed, then Make knows to recreate, or update, the files that depend upon this file (e.g. a plot).</p>
+<p>There are now many build tools available, all of which are based on the same concepts as Make.</p>
+<section class="prereq panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-education"></span>Prerequisites</h2>
+</div>
+<div class="panel-body">
+<p>In this lesson we use Make from the Unix Shell. Some previous experience with using the shell to list directories, create, copy, remove and list files and directories, and run simple scripts would be useful.</p>
+</div>
+</section>
+<section class="getready panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-check"></span>Getting ready</h2>
+</div>
+<div class="panel-body">
+<p>You need to download some files to follow this lesson:</p>
+<ol style="list-style-type: decimal">
+<li>Download <a href="./make-lesson.tar.gz">make-lesson.tar.gz</a>.</li>
+<li>Move <code>make-lesson.tar.gz</code> into a directory which you can access via your bash shell.</li>
+<li>Open a bash shell window.</li>
+<li>Navigate to the directory where you downloaded the file.</li>
+<li>Unpack <code>make-lesson.tar.gz</code>:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">tar</span> -xvf make-lesson.tar.gz</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Change into the <code>make-lesson</code> directory:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> make-lesson</code></pre>
+</div>
+</section>
+<h2 id="topics">Topics</h2>
+<ol style="list-style-type: decimal">
+<li><a href="01-intro.html">Introduction</a></li>
+<li><a href="02-makefiles.html">Makefiles</a></li>
+<li><a href="03-variables.html">Automatic variables</a></li>
+<li><a href="04-dependencies.html">Dependencies on data and code</a></li>
+<li><a href="05-patterns.html">Pattern rules</a></li>
+<li><a href="06-variables.html">Variables</a></li>
+<li><a href="07-functions.html">Functions</a></li>
+<li><a href="08-conclusion.html">Conclusion</a></li>
+</ol>
+<h2 id="other-resources">Other Resources</h2>
+<ul>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="discussion.html">Discussion</a></li>
+<li><a href="instructors.html">Instructor’s Guide</a></li>
+</ul>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

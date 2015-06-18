@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Reference</h2>
+          <h2 id="running-make">Running Make</h2>
+<p>To run Make:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
+<p>Make will look for a Makefile called <code>Makefile</code> and will build the default target, the first target in the Makefile.</p>
+<p>To use a Makefile with a different name, use the <code>-f</code> flag e.g.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f build-files/analyse.mk</code></pre>
+<p>To build a specific target, provide it as an argument e.g.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.dat</code></pre>
+<p>If the target is up-to-date, Make will print a message like:</p>
+<pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
+<p>To see the actions Make will run when building a target, without running the actions, use the <code>-n</code> flag e.g.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -n isles.dat</code></pre>
+<h2 id="make-trouble-shooting">Make trouble-shooting</h2>
+<p>If Make prints a message like,</p>
+<pre class="error"><code>Makefile:3: *** missing separator.  Stop.</code></pre>
+<p>then check that all the actions are indented by TAB characters and not spaces.</p>
+<p>If Make prints a message like,</p>
+<pre class="error"><code>No such file or directory: &#39;books/%.txt&#39;
+make: *** [isles.dat] Error 1</code></pre>
+<p>then you may have used the Make wild-card, <code>%</code>, in an action in a pattern rule. Make wild-cards cannot be used in actions.</p>
+<h2 id="makefiles">Makefiles</h2>
+<p>Rules:</p>
+<pre class="make"><code>target : dependency1 dependency2 ...
+    action1
+    action2
+        ...</code></pre>
+<ul>
+<li>Each rule has a target, a file to be created, or built.</li>
+<li>Each rule has zero or more dependencies, files that are needed to build the target.</li>
+<li><code>:</code> separates the target and the dependencies.</li>
+<li>Dependencies are separated by spaces.</li>
+<li>Each rule has zero or more actions, commands to run to build the target using the dependencies.</li>
+<li>Actions are indented using the TAB character, not 8 spaces.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>If any dependency does not exist then Make will look for a rule to build it.</li>
+<li>The order of rebuilding dependencies is arbitrary. You should not assume that they will be built in the order in which they are listed.</li>
+<li>Dependencies must form a directed acyclic graph. A target cannot depend on a dependency which, in turn depends upon, or has a dependency which depends upon, that target.</li>
+</ul>
+<p>Comments:</p>
+<pre class="make"><code># This is a Make comment.</code></pre>
+<p>Phony targets:</p>
+<pre class="make"><code>.PHONY : clean
+clean :
+       rm -f *.dat</code></pre>
+<ul>
+<li>Phony targets are a short-hand for sequences of actions.</li>
+<li>No file with the target name is built when a rule with a phony target is run.</li>
+</ul>
+<p>Automatic variables:</p>
+<ul>
+<li><code>$&lt;</code> denotes ‘the first dependency of the current rule’.</li>
+<li><code>$@</code> denotes ‘the target of the current rule’.</li>
+<li><code>$^</code> denotes ‘the dependencies of the current rule’.</li>
+</ul>
+<p>Pattern rules:</p>
+<pre class="make"><code>%.dat : books/%.txt $(COUNT_SRC)
+        $(COUNT_EXE) $&lt; $@</code></pre>
+<ul>
+<li>The Make wild-card, <code>%</code>, specifies a pattern.</li>
+<li>If Make finds a dependency matching the pattern, then the pattern is substituted into the target.</li>
+<li>The Make wild-card can only be used in targets and dependencies.</li>
+<li>e.g. if Make found a file called <code>books/abyss.txt</code>, it would set the target to be <code>abyss.dat</code>.</li>
+</ul>
+<p>Defining and using variables:</p>
+<pre class="make"><code>COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)</code></pre>
+<p>Suppress printing of actions:</p>
+<pre class="make"><code>.PHONY : variables
+variables:
+        @echo TXT_FILES: $(TXT_FILES)</code></pre>
+<ul>
+<li>Prefix an action by <code>@</code> to instruct Make not to print that action.</li>
+</ul>
+<p>Include the contents of a Makefile in another Makefile:</p>
+<pre class="make"><code>include config.mk</code></pre>
+<p>wildcard function:</p>
+<pre class="make"><code>TXT_FILES=$(wildcard books/*.txt)</code></pre>
+<ul>
+<li>Looks for all files matching a pattern e.g. <code>books/*.txt</code>, and return these in a list.</li>
+<li>e.g. <code>TXT_FILES</code> is set to <code>books/abyss.txt books/isles.txt   books/last.txt books/sierra.txt</code>.</li>
+</ul>
+<p>patsubst (‘path substitution’) function:</p>
+<pre class="make"><code>DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))</code></pre>
+<ul>
+<li>Every string that matches <code>books/%.txt</code> in <code>$(TXT_FILES)</code> is replaced by <code>%.dat</code> and the strings are returned in a list.</li>
+<li>e.g. if <code>TXT_FILES</code> is <code>books/abyss.txt books/isles.txt   books/last.txt books/sierra.txt</code> this sets <code>DAT_FILES</code> to <code>abyss.dat   isles.dat last.dat sierra.dat</code>.</li>
+</ul>
+<p>Default targets:</p>
+<ul>
+<li>In Make version 3.79 the default target is the first target in the Makefile.</li>
+<li>In Make 3.81, the default target can be explicitly set using the special variable <code>.DEFAULT_GOAL</code> e.g.</li>
+</ul>
+<pre class="make"><code>.DEFAULT_GOAL := all</code></pre>
+<h2 id="manuals">Manuals</h2>
+<p><a href="https://www.gnu.org/software/make/manual/">GNU Make Manual</a>. Reference sections include:</p>
+<ul>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Options-Summary.html">Summary of Options</a> for the <code>make</code> command.</li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html">Quick Reference</a>of Make directives, text manipulation functions, and special variables.</li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html">Automatic Variables</a>.</li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Special-Targets.html">Special Built-in Target Names</a></li>
+</ul>
+<h2 id="glossary">Glossary</h2>
+<dl>
+<dt><span id="action">action</span></dt>
+<dd><p>The steps a <a href="#build-manager">build manager</a> must take to create or update a file or other object.</p>
+</dd>
+<dt><span id="automatic-variable">automatic variable</span></dt>
+<dd><p>A variable whose value is automatically redefined for each <a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code>$@</code>, which holds the rule’s <a href="#target">target</a>, <code>$^</code>, which holds its <a href="#dependency">dependencies</a>, and, <code>$&lt;</code>, which holds the first of its dependencies. Automatic variables are typically used in <a href="#pattern-rule">pattern rules</a>.</p>
+</dd>
+<dt><span id="build-file">build file</span></dt>
+<dd><p>A description of <a href="#dependency">dependencies</a> and <a href="#rule">rules</a> for a <a href="#build-manager">build manager</a>.</p>
+</dd>
+<dt><span id="build-manager">build manager</span></dt>
+<dd><p>A program, such as <a href="#make">Make</a>, whose main purpose is to build or update software, documentation, web sites, data files, images, and other things.</p>
+</dd>
+<dt><span id="default-rule">default rule</span></dt>
+<dd><p>The <a href="#rule">rule</a> that is executed if no <a href="#target">target</a> is specified when a <a href="#build-manager">build manager</a> is run.</p>
+</dd>
+<dt><span id="default-target">default target</span></dt>
+<dd><p>The <a href="#target">target</a> of the <a href="#default-rule">default rule</a>.</p>
+</dd>
+<dt><span id="dependency">dependency</span></dt>
+<dd><p>A file that a <a href="#target">target</a> depends on. If any of a target’s <a href="#dependency">dependencies</a> are newer than the target itself, the target needs to be updated. A target’s dependencies are also called its prerequisites. If a target’s dependencies do not exist, then they need to be built first.</p>
+</dd>
+<dt><span id="false-dependency">false dependency</span></dt>
+<dd><p>This can refer to a <a href="#dependency">dependency</a> that is artificial. e.g. a false dependency is introduced if a data analysis script is added as a dependency to the data files that the script analyses.</p>
+</dd>
+<dt><span id="function">function</span></dt>
+<dd><p>A built-in <a href="#make">Make</a> utility that performs some operation, for example gets a list of files matching a pattern.</p>
+</dd>
+<dt><span id="macro">macro</span></dt>
+<dd><p>Used as a synonym for <a href="#variable">variable</a> in certain versions of <a href="#make">Make</a>.</p>
+</dd>
+<dt><span id="make">Make</span></dt>
+<dd><p>A popular <a href="#build-manager">build manager</a>, from GNU, created in 1977.</p>
+</dd>
+<dt><span id="makefile">Makefile</span></dt>
+<dd><p>A <a href="#build-file">build file</a> used by <a href="#make">Make</a>, which, by default, are named <code>Makefile</code>.</p>
+</dd>
+<dt><span id="pattern-rule">pattern rule</span></dt>
+<dd><p>A <a href="#rule">rule</a> that specifies a general way to build or update an entire class of files that can be managed the same way. For example, a pattern rule can specify how to compile any C file rather than a single, specific C file, or, to analyse any data file rather than a single, specific data file. Pattern rules typically make use of <a href="#automatic-variable">automatic variables</a> and <a href="#wild-card">wild-cards</a>.</p>
+</dd>
+<dt><span id="phony-target">phony target</span></dt>
+<dd><p>A <a href="#target">target</a> that does not correspond to a file or other object. Phony targets are usually symbolic names for sequences of <a href="#action">actions</a>.</p>
+</dd>
+<dt><span id="prerequisite">prerequisite</span></dt>
+<dd><p>A synonym for <a href="#dependency">dependency</a>.</p>
+</dd>
+<dt><span id="rule">rule</span></dt>
+<dd><p>A specification of a <a href="#target">target</a>’s <a href="#dependency">dependencies</a> and what <a href="#action">actions</a> need to be executed to build or update the target.</p>
+</dd>
+<dt><span id="target">target</span></dt>
+<dd><p>A thing to be created or updated, for example a file. Targets can have <a href="#dependency">dependencies</a> that must exist, and be up-to-date, before the target itself can be built or updated.</p>
+</dd>
+<dt><span id="variable">variable</span></dt>
+<dd><p>A symbolic name for something in a <a href="#makefile">Makefile</a>.</p>
+</dd>
+<dt><span id="wild-card">wild-card</span></dt>
+<dd><p>A pattern that can be specified in <a href="#dependency">dependencies</a> and <a href="#target">targets</a>. If <a href="#make">Make</a> finds a dependency] matching the pattern, then the pattern is substituted into the target. Wild-cards are often used in <a href="#pattern-rule">pattern rules</a>. The Make wild-card is <code>%</code>.</p>
+</dd>
+</dl>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

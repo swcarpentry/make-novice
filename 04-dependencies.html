@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Dependencies on data and code</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Output files are a product not only of input files but of the scripts or code that created the output files.</li>
+<li>Recognise and avoid false dependencies.</li>
+</ul>
+</div>
+</section>
+<p>Our data files are a product not only of our text files but the script, <code>wordcount.py</code>, that processes the text files and creates the data files. We should add <code>workflow.py</code> as a dependency of each of our data files also:</p>
+<pre class="make"><code>isles.dat : books/isles.txt wordcount.py
+    python wordcount.py $&lt; $@
+
+abyss.dat : books/abyss.txt wordcount.py
+    python wordcount.py $&lt; $@
+
+last.dat : books/last.txt wordcount.py
+    python wordcount.py $&lt; $@</code></pre>
+<p>If we pretend to edit <code>wordcount.py</code> and re-run Make,</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> wordcount.py
+$ <span class="kw">make</span> dats</code></pre>
+<p>then we get:</p>
+<pre class="output"><code>python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/last.txt last.dat</code></pre>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Why don’t the <code>.txt</code> files depend on <code>wordcount.py</code>?</h2>
+</div>
+<div class="panel-body">
+<p><code>.txt</code> files are input files and have no dependencies. To make these depend on <code>wordcount.py</code> would introduce a <a href="reference.html#false-dependency">false dependency</a>.</p>
+</div>
+</aside>
+<p>Let’s add our analysis script to the archive too:</p>
+<pre class="make"><code>analysis.tar.gz : *.dat wordcount.py
+        tar -czf $@ $^</code></pre>
+<p>If we re-run Make,</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<p>then we get:</p>
+<pre class="output"><code>tar -czf analysis.tar.gz abyss.dat isles.dat last.dat wordcount.py</code></pre>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
