@@ -83,6 +83,8 @@ TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat
 ~~~
 
+Now, `sierra.txt` is processed too.
+
 With these we can rewrite `clean` and `data`:
 
 ~~~ {.make}
