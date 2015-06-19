@@ -46,6 +46,13 @@ by Make. Let us go through each line in turn:
 Our rule above describes how to build the target `isles.dat` using the
 action `python wordcount.py` and the dependency `books/isles.txt`.
 
+Let's first sure we start from scratch and delete the `.dat` and `.jpg`
+files we created:
+
+~~~ {.bash}
+$ rm *.dat *.jpg
+~~~
+
 By default, Make looks for a Makefile, called `Makefile`, and we can
 run Make as follows:
 
@@ -188,7 +195,7 @@ example, let us recreate our data files, create a directory called
 `clean`, then run Make:
 
 ~~~ {.bash}
-$ make isles.txt abyss.dat
+$ make isles.dat abyss.dat
 $ mkdir clean
 $ make clean
 ~~~
