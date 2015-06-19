@@ -29,8 +29,8 @@ the same concepts as Make.
 >
 > In this lesson we use Make from the Unix Shell. Some previous
 > experience with using the shell to list directories, create, copy,
-> remove and list files and directories, and run simple scripts would
-> be useful.
+> remove and list files and directories, and run simple scripts is
+> necessary.
 
 > ## Getting ready {.getready}
 >
