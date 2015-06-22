@@ -105,6 +105,20 @@ $ make dats
 $ make analysis.tar.gz
 ~~~
 
+> ## Update dependencies {.challenge}
+> 
+> What will happen if you now execute:
+> 
+> ~~~ {.bash}
+> $ touch *.dat
+> $ make analysis.tar.gz
+> ~~~
+> 
+> 1. nothing
+> 2. all files recreated
+> 3. only .dat files recreated
+> 4. only analysis.tar.gz recreated
+
 > ## Rewrite `.dat` rules to use automatic variables {.challenge}
 >
 > Rewrite each `.dat` rule to automatic variables `$@` and `$<`, which
