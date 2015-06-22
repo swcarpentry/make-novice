@@ -11,6 +11,28 @@ minutes: 0
 >   pattern. 
 > * Use Make's `patsubst` function to rewrite file names.
 
+At this point, we have the following Makefile:
+
+~~~ {.make}
+include config.mk
+
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+%.dat : books/%.txt $(COUNT_SRC)
+	$(COUNT_EXE) $< $@
+
+# Generate archive file.
+analysis.tar.gz : *.dat $(COUNT_SRC)
+	tar -czf $@ $^
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f analysis.tar.gz
+~~~
+
 Make has many [functions](reference.html#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
@@ -139,3 +161,41 @@ We see that the problem we had when using the bash wild-card, `*.dat`,
 which required us to run `make dats` before `make analysis.tar.gz` has
 now disappeared, since our functions allow us to create `.dat` file
 names from those `.txt` file names in `books/`.
+
+Here is our final Makefile:
+
+~~~ {.make}
+include config.mk
+
+TXT_FILES=$(wildcard books/*.txt)
+DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
+
+.PHONY: variables
+variables:
+	@echo TXT_FILES: $(TXT_FILES)
+	@echo DAT_FILES: $(DAT_FILES)
+
+# Count words.
+.PHONY : dats
+dats : $(DAT_FILES)
+
+%.dat : books/%.txt $(COUNT_SRC)
+	$(COUNT_EXE) $< $@
+
+# Generate archive file.
+analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
+	tar -czf $@ $^
+
+.PHONY : clean
+clean :
+	rm -f $(DAT_FILES)
+	rm -f analysis.tar.gz
+~~~
+
+Remember, the `config.mk` file contains:
+
+~~~ {.make}
+# Count words script.
+COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)
+~~~

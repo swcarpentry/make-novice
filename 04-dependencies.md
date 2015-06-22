@@ -11,6 +11,32 @@ minutes: 0
 >   scripts or code that created the output files. 
 > * Recognise and avoid false dependencies.
 
+Our Makefile now looks like this:
+
+~~~ {.make}
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+isles.dat : books/isles.txt
+	python wordcount.py $< $@
+
+abyss.dat : books/abyss.txt
+	python wordcount.py $< $@
+
+last.dat : books/last.txt
+	python wordcount.py $< $@
+
+# Generate archive file.
+analysis.tar.gz : *.dat
+	tar -czf $@ $^
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f analysis.tar.gz
+~~~
+
 Our data files are a product not only of our text files but the
 script, `wordcount.py`, that processes the text files and creates the
 data files. We should add `workflow.py` as a dependency of each of our
