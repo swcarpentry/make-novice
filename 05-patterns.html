@@ -59,6 +59,22 @@ python wordcount.py books/last.txt last.dat</code></pre>
 <p>The Make <code>%</code> wild-card can only be used in a target and in its dependencies. It cannot be used in actions.</p>
 </div>
 </aside>
+<p>Our Makefile is now much shorter and cleaner:</p>
+<pre class="make"><code># Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+%.dat : books/%.txt wordcount.py
+    python wordcount.py $&lt; $@
+
+# Generate archive file.
+analysis.tar.gz : *.dat wordcount.py
+    tar -czf $@ $^
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f analysis.tar.gz</code></pre>
         </div>
       </div>
       </article>

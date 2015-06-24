@@ -41,6 +41,28 @@
 </ul>
 </div>
 </section>
+<p>After the exercise at the end of the previous part, our Makefile look like this:</p>
+<pre class="make"><code># Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
+
+abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
+
+last.dat : books/last.txt
+        python wordcount.py books/last.txt last.dat
+
+# Generate archive file.
+analysis.tar.gz : isles.dat abyss.dat last.dat
+        tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f analysis.tar.gz</code></pre>
 <p>Our Makefile has a lot of duplication. For example, the names of text files and data files are repeated in many places throughout the Makefile. Makefiles are a form of code and, in any code, repeated code can lead to problems e.g. we rename a data file in one part of the Makefile but forget the rename it elsewhere. Let us set about removing some of this repetition.</p>
 <p>In our <code>analysis.tar.gz</code> rule we duplicate the data file names and the archive name:</p>
 <pre class="make"><code>analysis.tar.gz : isles.dat abyss.dat last.dat
@@ -76,6 +98,22 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <p>As there are no files that match the pattern <code>*.dat</code> the name <code>*.dat</code> is used as a file name itself, and there is no file matching that, nor any rule so we get an error. We need to explicitly rebuild the <code>.dat</code> files first:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats
 $ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Update dependencies</h2>
+</div>
+<div class="panel-body">
+<p>What will happen if you now execute:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
+$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<ol style="list-style-type: decimal">
+<li>nothing</li>
+<li>all files recreated</li>
+<li>only .dat files recreated</li>
+<li>only analysis.tar.gz recreated</li>
+</ol>
+</div>
+</section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>

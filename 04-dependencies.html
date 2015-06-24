@@ -39,7 +39,29 @@
 </ul>
 </div>
 </section>
-<p>Our data files are a product not only of our text files but the script, <code>wordcount.py</code>, that processes the text files and creates the data files. We should add <code>workflow.py</code> as a dependency of each of our data files also:</p>
+<p>Our Makefile now looks like this:</p>
+<pre class="make"><code># Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+isles.dat : books/isles.txt
+    python wordcount.py $&lt; $@
+
+abyss.dat : books/abyss.txt
+    python wordcount.py $&lt; $@
+
+last.dat : books/last.txt
+    python wordcount.py $&lt; $@
+
+# Generate archive file.
+analysis.tar.gz : *.dat
+    tar -czf $@ $^
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f analysis.tar.gz</code></pre>
+<p>Our data files are a product not only of our text files but the script, <code>wordcount.py</code>, that processes the text files and creates the data files. We should add <code>wordcount.py</code> as a dependency of each of our data files also:</p>
 <pre class="make"><code>isles.dat : books/isles.txt wordcount.py
     python wordcount.py $&lt; $@
 

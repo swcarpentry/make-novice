@@ -50,13 +50,15 @@ isles.dat : books/isles.txt
 <ul>
 <li><code>#</code> denotes a <em>comment</em>. Any text from <code>#</code> to the end of the line is ignored by Make.</li>
 <li><code>isles.dat</code> is a <a href="reference.html#target">target</a>, a file to be created, or built.</li>
-<li><code>books/isles.dat</code> is a <a href="reference.html#dependency">dependency</a>, a file that is needed to build or update the target. Targets can have zero or more dependencies.</li>
+<li><code>books/isles.txt</code> is a <a href="reference.html#dependency">dependency</a>, a file that is needed to build or update the target. Targets can have zero or more dependencies.</li>
 <li><code>:</code> separates targets from dependencies.</li>
 <li><code>python wordcount.py books/isles.txt isles.dat</code> is an <a href="reference.html#action">action</a>, a command to run to build or update the target using the dependencies. Targets can have zero or more actions.</li>
 <li>Actions are indented using the TAB character, <em>not</em> 8 spaces. This is a legacy of Make’s 1970’s origins.</li>
 <li>Together, the target, dependencies, and actions form a <a href="reference.html#rule">rule</a>.</li>
 </ul>
 <p>Our rule above describes how to build the target <code>isles.dat</code> using the action <code>python wordcount.py</code> and the dependency <code>books/isles.txt</code>.</p>
+<p>Let’s first sure we start from scratch and delete the <code>.dat</code> and <code>.jpg</code> files we created:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">rm</span> *.dat *.jpg</code></pre>
 <p>By default, Make looks for a Makefile, called <code>Makefile</code>, and we can run Make as follows:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
 <p>Make prints out the actions it executes:</p>
@@ -70,7 +72,7 @@ isles.dat : books/isles.txt
 <pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
 <p>This is because our target, <code>isles.dat</code>, has now been created, and Make will not create it again. To see how this works, let’s pretend to update one of the text files. Rather than opening the file in an editor, we can use the shell <code>touch</code> command to update its timestamp (which would happen if we did edit the file):</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/isles.txt</code></pre>
-<p>If we compare the timestamps of <code>isles.txt</code> and <code>isles.dat</code>,</p>
+<p>If we compare the timestamps of <code>books/isles.txt</code> and <code>isles.dat</code>,</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -l books/isles.txt isles.dat</code></pre>
 <p>then we see that <code>isles.dat</code>, the target, is now older than<code>books/isles.txt</code>, its dependency:</p>
 <pre class="output"><code>-rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
@@ -99,7 +101,7 @@ isles.dat : books/isles.txt
 <p>then we get:</p>
 <pre class="output"><code>rm -f *.dat</code></pre>
 <p>There is no actual thing built called <code>clean</code>. Rather, it is a short-hand that we can use to execute a useful sequence of actions. Such targets, though very useful, can lead to problems. For example, let us recreate our data files, create a directory called <code>clean</code>, then run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.txt abyss.dat
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.dat abyss.dat
 $ <span class="kw">mkdir</span> clean
 $ <span class="kw">make</span> clean</code></pre>
 <p>We get:</p>
@@ -135,6 +137,20 @@ python wordcount.py books/abyss.txt abyss.dat</code></pre>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats</code></pre>
 <p>then Make sees that the data files exist:</p>
 <pre class="output"><code>make: Nothing to be done for `dats&#39;.</code></pre>
+<p>Our Makefile now looks like this:</p>
+<pre class="make"><code># Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat
+
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
+
+abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
+
+.PHONY : clean
+clean :
+        rm -f *.dat</code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
