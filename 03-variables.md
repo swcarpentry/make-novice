@@ -10,6 +10,7 @@ minutes: 0
 > * Use Make automatic variables to remove duplication in a Makefile.
 > * Use `$@` to refer to the target of the current rule.
 > * Use `$^` to refer to the dependencies of the current rule.
+> * Use `$<` to refer to the first dependency of the current rule.
 > * Explain why bash wild-cards in dependencies can cause problems.
 
 After the exercise at the end of the previous part, our Makefile look like this:
@@ -145,7 +146,23 @@ $ make analysis.tar.gz
 > 3. only .dat files recreated
 > 4. only analysis.tar.gz recreated
 
+As we saw, `$^` means 'all the dependencies of the current
+rule'. This works well for `analysis.tar.gz` as its action 
+treats all the dependencies the same - as the contents of the
+archive.
+
+However, for some rules, we may want to treat the first dependency
+differently. For example, our rules for `.dat` use their first (and
+only) dependency specifically as the input file to `workflow.py`. If
+we add additional dependencies (as we will soon do) then we don't want
+these being passed as input files to `workflow.py` as it expects only
+one input file to be named when it is invoked.
+
+Make provides an automatic variable for this, `$<` which means 'the
+first dependency of the current rule'. 
+
 > ## Rewrite `.dat` rules to use automatic variables {.challenge}
 >
-> Rewrite each `.dat` rule to automatic variables `$@` and `$<`, which
-> means 'the first dependency of the current rule'. 
+> Rewrite each `.dat` rule to use the automatic variables `$@` ('the
+> target of the current rule') and `$<` ('the first dependency of the
+> current rule').
