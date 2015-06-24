@@ -136,6 +136,11 @@ COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 ~~~
 
+* A variable is assigned a value. For example, `COUNT_SRC` 
+  is assigned the value `wordcount.py`.
+* `$(...)` is a reference to a variable. It requests that 
+  Make substitutes the name of a variable for its value.
+
 Suppress printing of actions:
 
 ~~~ {.make}
@@ -200,6 +205,10 @@ Default targets:
 action
 :   The steps a [build manager](#build-manager) must take to create or
     update a file or other object.
+
+assignment
+:   A request that [Make](#make) stores something in a 
+    [variable](#variable).
 
 automatic variable
 :   A variable whose value is automatically redefined for each
@@ -269,6 +278,10 @@ phony target
 
 prerequisite
 :   A synonym for [dependency](#dependency).
+
+reference
+:   A request that [Make](#make) substitutes the name of a 
+    [variable](#variable) for its value.
 
 rule
 :   A specification of a [target](#target)'s

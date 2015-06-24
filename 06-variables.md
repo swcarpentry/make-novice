@@ -8,6 +8,8 @@ minutes: 0
 > ## Learning Objectives {.objectives}
 >
 > * Use variables in a Makefile.
+> * Assign values to variables.
+> * Reference variables.
 > * Explain the benefits of decoupling configuration from 
 >   computation.
 
@@ -23,24 +25,35 @@ script name:
 COUNT_SRC=wordcount.py
 ~~~
 
+This is a variable [assignment](reference.html#assignment) -
+`COUNT_SRC` is assigned the value `wordcount.py`.
+
 `wordcount.py` is our script and it is invoked by passing it to
-`python`. We can introduce a variable to represent this execution:
+`python`. We can introduce another variable to represent this
+execution:
 
 ~~~ {.make}
 COUNT_EXE=python $(COUNT_SRC)
 ~~~
 
-`$(...)` tells Make to replace the variable with its value when Make
-is run.
+`$(...)` tells Make to replace a variable with its value when Make
+is run. This is a variable [reference](reference.html#reference). At 
+any place where we want to use the value of a variable we have to
+write it, or reference it, in this way.
 
-This allows us to easily change how our script is run (if, for
-example, we changed the language used to implement our script from
-Python to R).
+Here we reference the variable `COUNT_SRC`. This tells Make to 
+replace the variable `COUNT_SRC` with its value `wordcount.py`. When
+Make is run it will assign to `COUNT_EXE` the value `python
+wordcount.py`.
+
+Defining the variable `COUNT_EXE` in this way allows us to easily
+change how our script is run (if, for example, we changed the language
+used to implement our script from Python to R).
 
 > ## Use variables {.challenge}
 >
 > Update `Makefile` so that the `%.dat` and `analysis.tar.gz` rules
-> use the variables `COUNT_SRC` and `COUNT_EXE`. 
+> reference the variables `COUNT_SRC` and `COUNT_EXE`.
 
 We place variables at the top of a Makefile means they are easy to
 find and modify. Alternatively, we can pull them out into a new
