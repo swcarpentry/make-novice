@@ -30,7 +30,7 @@ by Make. Let us go through each line in turn:
   ignored by Make.
 * `isles.dat` is a [target](reference.html#target), a file to be
   created, or built.
-* `books/isles.dat` is a [dependency](reference.html#dependency), a
+* `books/isles.txt` is a [dependency](reference.html#dependency), a
   file that is needed to build or update the target. Targets can have
   zero or more dependencies.
 * `:` separates targets from dependencies.
@@ -99,7 +99,7 @@ editor, we can use the shell `touch` command to update its timestamp
 $ touch books/isles.txt
 ~~~
 
-If we compare the timestamps of `isles.txt` and `isles.dat`,
+If we compare the timestamps of `books/isles.txt` and `isles.dat`,
 
 ~~~ {.bash}
 $ ls -l books/isles.txt isles.dat
