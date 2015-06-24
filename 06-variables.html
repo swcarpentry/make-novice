@@ -35,6 +35,8 @@
 <div class="panel-body">
 <ul>
 <li>Use variables in a Makefile.</li>
+<li>Assign values to variables.</li>
+<li>Reference variables.</li>
 <li>Explain the benefits of decoupling configuration from computation.</li>
 </ul>
 </div>
@@ -42,16 +44,18 @@
 <p>Despite our efforts, our Makefile still has repeated content, namely the name of our script, <code>wordcount.py</code>. If we renamed our script we’d have to update our Makefile in multiple places.</p>
 <p>We can introduce a Make <a href="reference.html#variable">variable</a> (called a <a href="reference.html#macro">macro</a> in some versions of Make) to hold our script name:</p>
 <pre class="make"><code>COUNT_SRC=wordcount.py</code></pre>
-<p><code>wordcount.py</code> is our script and it is invoked by passing it to <code>python</code>. We can introduce a variable to represent this execution:</p>
+<p>This is a variable <a href="reference.html#assignment">assignment</a> - <code>COUNT_SRC</code> is assigned the value <code>wordcount.py</code>.</p>
+<p><code>wordcount.py</code> is our script and it is invoked by passing it to <code>python</code>. We can introduce another variable to represent this execution:</p>
 <pre class="make"><code>COUNT_EXE=python $(COUNT_SRC)</code></pre>
-<p><code>$(...)</code> tells Make to replace the variable with its value when Make is run.</p>
-<p>This allows us to easily change how our script is run (if, for example, we changed the language used to implement our script from Python to R).</p>
+<p><code>$(...)</code> tells Make to replace a variable with its value when Make is run. This is a variable <a href="reference.html#reference">reference</a>. At any place where we want to use the value of a variable we have to write it, or reference it, in this way.</p>
+<p>Here we reference the variable <code>COUNT_SRC</code>. This tells Make to replace the variable <code>COUNT_SRC</code> with its value <code>wordcount.py</code>. When Make is run it will assign to <code>COUNT_EXE</code> the value <code>python wordcount.py</code>.</p>
+<p>Defining the variable <code>COUNT_EXE</code> in this way allows us to easily change how our script is run (if, for example, we changed the language used to implement our script from Python to R).</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
 </div>
 <div class="panel-body">
-<p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules use the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
+<p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
 </div>
 </section>
 <p>We place variables at the top of a Makefile means they are easy to find and modify. Alternatively, we can pull them out into a new Makefile that just holds variable definitions. Let us create <code>config.mk</code>:</p>

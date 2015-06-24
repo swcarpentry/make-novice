@@ -96,6 +96,10 @@ clean :
 <p>Defining and using variables:</p>
 <pre class="make"><code>COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)</code></pre>
+<ul>
+<li>A variable is assigned a value. For example, <code>COUNT_SRC</code> is assigned the value <code>wordcount.py</code>.</li>
+<li><code>$(...)</code> is a reference to a variable. It requests that Make substitutes the name of a variable for its value.</li>
+</ul>
 <p>Suppress printing of actions:</p>
 <pre class="make"><code>.PHONY : variables
 variables:
@@ -135,6 +139,9 @@ variables:
 <dl>
 <dt><span id="action">action</span></dt>
 <dd><p>The steps a <a href="#build-manager">build manager</a> must take to create or update a file or other object.</p>
+</dd>
+<dt><span id="assignment">assignment</span></dt>
+<dd><p>A request that <a href="#make">Make</a> stores something in a <a href="#variable">variable</a>.</p>
 </dd>
 <dt><span id="automatic-variable">automatic variable</span></dt>
 <dd><p>A variable whose value is automatically redefined for each <a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code>$@</code>, which holds the rule’s <a href="#target">target</a>, <code>$^</code>, which holds its <a href="#dependency">dependencies</a>, and, <code>$&lt;</code>, which holds the first of its dependencies. Automatic variables are typically used in <a href="#pattern-rule">pattern rules</a>.</p>
@@ -177,6 +184,9 @@ variables:
 </dd>
 <dt><span id="prerequisite">prerequisite</span></dt>
 <dd><p>A synonym for <a href="#dependency">dependency</a>.</p>
+</dd>
+<dt><span id="reference">reference</span></dt>
+<dd><p>A request that <a href="#make">Make</a> substitutes the name of a <a href="#variable">variable</a> for its value.</p>
 </dd>
 <dt><span id="rule">rule</span></dt>
 <dd><p>A specification of a <a href="#target">target</a>’s <a href="#dependency">dependencies</a> and what <a href="#action">actions</a> need to be executed to build or update the target.</p>
