@@ -15,7 +15,8 @@ Make has many [functions](reference.html#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
-(files ending in `.txt`) and save these in a variable:
+(files ending in `.txt`) and save these in a variable by adding this at
+the beginning of our makefile:
 
 ~~~ {.make}
 TXT_FILES=$(wildcard books/*.txt)
@@ -48,7 +49,7 @@ We get:
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 ~~~
 
-Note how `sierra.txt` is now processed too.
+Note how `sierra.txt` is now included too.
 
 `patsubst` ('pattern substitution') takes a list of names and rewrites
 these according to a pattern. Again, we can save the result in a
@@ -81,6 +82,8 @@ then we get:
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat
 ~~~
+
+Now, `sierra.txt` is processed too.
 
 With these we can rewrite `clean` and `data`:
 
