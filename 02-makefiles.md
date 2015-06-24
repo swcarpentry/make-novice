@@ -283,6 +283,26 @@ then Make sees that the data files exist:
 make: Nothing to be done for `dats'.
 ~~~
 
+Our Makefile now looks like this:
+
+~~~ {.make}
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat
+
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
+
+abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+~~~
+
+
+
 > ## Write two new rules {.challenge}
 >
 > Write a new rule for `last.dat`, created from `books/last.txt`.

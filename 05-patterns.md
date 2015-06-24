@@ -43,3 +43,23 @@ python wordcount.py books/last.txt last.dat
 >
 > The Make `%` wild-card can only be used in a target and in its
 > dependencies. It cannot be used in actions. 
+
+Our Makefile is now much shorter and cleaner:
+
+~~~ {.make}
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+%.dat : books/%.txt wordcount.py
+	python wordcount.py $< $@
+
+# Generate archive file.
+analysis.tar.gz : *.dat wordcount.py
+	tar -czf $@ $^
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f analysis.tar.gz
+~~~
