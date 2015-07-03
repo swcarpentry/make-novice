@@ -73,8 +73,9 @@ TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 
 Note how `sierra.txt` is now included too.
 
-`patsubst` ('pattern substitution') takes a list of names and rewrites
-these according to a pattern. Again, we can save the result in a
+`patsubst` ('pattern substitution') takes a pattern, a replacement string and a
+list of names in that order; each name in the list that matches the pattern is 
+replaced by the replacement string. Again, we can save the result in a
 variable. So, for example, we can rewrite our list of text files into
 a list of data files (files ending in `.dat`) and save these in a
 variable:
