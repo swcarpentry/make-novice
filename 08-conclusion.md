@@ -10,7 +10,7 @@ minutes: 0
 > * Advantages of automated build tools such as Make.
 
 Automated build tools such as Make can help us in a number of
-ways. They help ups to automate repetitive commands and, so, save us
+ways. They help us to automate repetitive commands and, so, save us
 time and reduce the risk of us making errors we might make if running
 these commands manually.
 
