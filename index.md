@@ -68,3 +68,4 @@ the same concepts as Make.
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
 *   [Instructor's Guide](instructors.html)
+*   [Solutions](09-solutions.html)
