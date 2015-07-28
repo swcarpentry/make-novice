@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Solutions</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>To verify the solutions to the challenges presented within the lessons.</li>
+</ul>
+</div>
+</section>
+<h3 id="makefiles">02-makefiles</h3>
+<blockquote>
+<p>Write two new rules</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
+<span class="kw">.PHONY</span> : dats
+<span class="kw">dats</span> : isles.dat abyss.dat last.dat
+
+<span class="kw">isles.dat</span> : books/isles.txt
+        <span class="kw">python</span> wordcount.py books/isles.txt isles.dat
+
+<span class="kw">abyss.dat</span> : books/abyss.txt
+        <span class="kw">python</span> wordcount.py books/abyss.txt abyss.dat
+
+<span class="kw">last.dat</span>: books/last.txt
+        <span class="kw">python</span> wordcount.py books/last.txt last.dat
+
+<span class="kw">analysis.tar.gz</span>: isles.dat abyss.dat last.dat
+        <span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat last.dat
+
+<span class="kw">.PHONY</span> : clean
+<span class="kw">clean</span> :
+        <span class="kw">rm</span> -f *.dat
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+<h3 id="variables">03-variables</h3>
+<blockquote>
+<p>Update Dependencies</p>
+</blockquote>
+<pre><code>    ANSWER: only analysis.tar.gz recreated</code></pre>
+<blockquote>
+<p>Rewrite .dat rules to use automatic variables</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
+<span class="kw">.PHONY</span> : dats
+<span class="kw">dats</span> : isles.dat abyss.dat last.dat
+
+<span class="kw">isles.dat</span> : books/isles.txt
+        <span class="kw">python</span> wordcount.py $<span class="kw">&lt;</span> <span class="ot">$@</span>
+
+<span class="kw">abyss.dat</span> : books/abyss.txt
+        <span class="kw">python</span> wordcount.py $<span class="kw">&lt;</span> <span class="ot">$@</span>
+
+<span class="kw">last.dat</span>: books/last.txt
+        <span class="kw">python</span> wordcount.py $<span class="kw">&lt;</span> <span class="ot">$@</span>
+
+<span class="kw">analysis.tar.gz</span>: *.dat
+        <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
+
+<span class="kw">.PHONY</span> : clean
+<span class="kw">clean</span> :
+        <span class="kw">rm</span> -f *.dat
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+<h3 id="variables-1">06-variables</h3>
+<blockquote>
+<p>Use variables</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
+<span class="ot">COUNT_SRC=</span>wordcount.py
+<span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
+
+<span class="kw">.PHONY</span> : dats
+<span class="kw">dats</span> : isles.dat abyss.dat last.dat
+
+<span class="kw">%.dat</span> : books/%.txt COUNT_SRC
+    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$@</span>
+
+<span class="co"># Generate archive file.</span>
+<span class="kw">analysis.tar.gz</span> : *.dat COUNT_SRC
+    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
+
+<span class="kw">.PHONY</span> : clean
+<span class="kw">clean</span> :
+        <span class="kw">rm</span> -f *.dat
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
