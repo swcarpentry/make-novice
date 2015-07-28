@@ -4,14 +4,15 @@ title: Automation and Make
 ---
 
 Make is a tool which can run commands to read files, process these
-files in some way, and write out the processed files. Make can be used
+files in some way, and write out the processed files. For example,
+in software development, Make is used to compile source code
+into executable programs or libraries, but Make can also be used
 to:
 
-* Run analysis scripts on raw data files to get data files that
-  summarise the raw data.
-* Run visualisation scripts on data files to produce plots.
-* Parse and combine text files and plots to create papers.
-* Compile source code into executable programs or libraries.
+* run analysis scripts on raw data files to get data files that
+  summarize the raw data;
+* run visualisation scripts on data files to produce plots; and to
+* parse and combine text files and plots to create papers.
 
 Make is called a build tool - it builds data files, plots, papers,
 programs or libraries. It can also update existing files if
@@ -27,7 +28,7 @@ the same concepts as Make.
 
 > ## Prerequisites {.prereq}
 >
-> In this lesson we use Make from the Unix Shell. Some previous
+> In this lesson we use `make` from the Unix Shell. Some previous
 > experience with using the shell to list directories, create, copy,
 > remove and list files and directories, and run simple scripts is
 > necessary.
