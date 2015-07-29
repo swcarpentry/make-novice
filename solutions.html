@@ -28,20 +28,22 @@
         <div class="col-md-10 col-md-offset-1">
                     <a href="index.html"><h1 class="title">Automation and Make</h1></a>
           <h2 class="subtitle">Solutions</h2>
-          <section class="objectives panel panel-warning">
+          <h2 id="lesson-02-makefiles">Lesson 02-makefiles</h2>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="write-two-new-rules"><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
 </div>
 <div class="panel-body">
+<p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
+<p>Update the <code>dats</code> rule with this target.</p>
+<p>Write a new rule for <code>analysis.tar.gz</code>, which creates an archive of the data files. The rule needs to:</p>
 <ul>
-<li>To verify the solutions to the challenges presented within the lessons.</li>
+<li>Depend upon each of the three <code>.dat</code> files.</li>
+<li>Invoke the action <code>tar -czf analysis.tar.gz isles.dat abyss.dat   last.dat</code></li>
 </ul>
+<p>Update <code>clean</code> to remove <code>analysis.tar.gz</code>.</p>
 </div>
 </section>
-<h3 id="makefiles">02-makefiles</h3>
-<blockquote>
-<p>Write two new rules</p>
-</blockquote>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
 <span class="kw">.PHONY</span> : dats
 <span class="kw">dats</span> : isles.dat abyss.dat last.dat
@@ -62,14 +64,32 @@
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
         <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
-<h3 id="variables">03-variables</h3>
-<blockquote>
-<p>Update Dependencies</p>
-</blockquote>
+<h2 id="lesson-03-variables">Lesson 03-variables</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="update-dependencies"><span class="glyphicon glyphicon-pencil"></span>Update dependencies</h2>
+</div>
+<div class="panel-body">
+<p>What will happen if you now execute:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
+$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+<ol style="list-style-type: decimal">
+<li>nothing</li>
+<li>all files recreated</li>
+<li>only .dat files recreated</li>
+<li>only analysis.tar.gz recreated</li>
+</ol>
+</div>
+</section>
 <pre><code>    ANSWER: only analysis.tar.gz recreated</code></pre>
-<blockquote>
-<p>Rewrite .dat rules to use automatic variables</p>
-</blockquote>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="rewrite-.dat-rules-to-use-automatic-variables"><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>
+</div>
+<div class="panel-body">
+<p>Rewrite each <code>.dat</code> rule to use the automatic variables <code>$@</code> (‘the target of the current rule’) and <code>$&lt;</code> (‘the first dependency of the current rule’).</p>
+</div>
+</section>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
 <span class="kw">.PHONY</span> : dats
 <span class="kw">dats</span> : isles.dat abyss.dat last.dat
@@ -90,10 +110,15 @@
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
         <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
-<h3 id="variables-1">06-variables</h3>
-<blockquote>
-<p>Use variables</p>
-</blockquote>
+<h2 id="lesson-06-variables">Lesson 06-variables</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="use-variables"><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
+</div>
+<div class="panel-body">
+<p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
+</div>
+</section>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
 <span class="ot">COUNT_SRC=</span>wordcount.py
 <span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
