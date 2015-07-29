@@ -5,13 +5,22 @@ subtitle: Solutions
 minutes: 0
 ---
 
-> ## Learning Objectives {.objectives}
+## Lesson 02-makefiles
+
+> ## Write two new rules {.challenge}
 >
-> * To verify the solutions to the challenges presented within the lessons.
-
-
-###02-makefiles
-> Write two new rules
+> Write a new rule for `last.dat`, created from `books/last.txt`.
+>
+> Update the `dats` rule with this target.
+>
+> Write a new rule for `analysis.tar.gz`, which creates an archive of
+> the data files. The rule needs to: 
+> 
+> * Depend upon each of the three `.dat` files.
+> * Invoke the action `tar -czf analysis.tar.gz isles.dat abyss.dat
+>   last.dat` 
+>
+> Update `clean` to remove `analysis.tar.gz`.
 
 ~~~ {.bash}
 # Count words.
@@ -36,13 +45,30 @@ clean :
     	rm -f analysis.tar.gz
 ~~~
 
-###03-variables
->Update Dependencies
+## Lesson 03-variables
+> ## Update dependencies {.challenge}
+> 
+> What will happen if you now execute:
+> 
+> ~~~ {.bash}
+> $ touch *.dat
+> $ make analysis.tar.gz
+> ~~~
+> 
+> 1. nothing
+> 2. all files recreated
+> 3. only .dat files recreated
+> 4. only analysis.tar.gz recreated
 
 ~~~
 	ANSWER: only analysis.tar.gz recreated
 ~~~
-> Rewrite .dat rules to use automatic variables
+
+> ## Rewrite `.dat` rules to use automatic variables {.challenge}
+>
+> Rewrite each `.dat` rule to use the automatic variables `$@` ('the
+> target of the current rule') and `$<` ('the first dependency of the
+> current rule').
 
 ~~~ {.bash}
 # Count words.
@@ -68,8 +94,12 @@ clean :
 ~~~
 
 
-###06-variables
-> Use variables
+## Lesson 06-variables
+
+> ## Use variables {.challenge}
+>
+> Update `Makefile` so that the `%.dat` and `analysis.tar.gz` rules
+> reference the variables `COUNT_SRC` and `COUNT_EXE`.
 
 ~~~ {.bash}
 # Count words.
