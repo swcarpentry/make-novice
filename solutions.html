@@ -137,6 +137,63 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
         <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+<h2 id="lesson-08-variables">Lesson 08-variables</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="extend-the-makefile-to-create-jpegs"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create JPEGs</h2>
+</div>
+<div class="panel-body">
+<p>Add new rules, update existing rules, and add new macros to:</p>
+<ul>
+<li>Create <code>.jpg</code> files from <code>.dat</code> files using <code>plotcount.py</code>.</li>
+<li>Add the script and <code>.jpg</code> files to the archive.</li>
+<li>Remove all auto-generated files (<code>.dat</code>, <code>.jpg</code>, <code>analysis.tar.gz</code>).</li>
+</ul>
+</div>
+</section>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"> <span class="co"># config.mk</span>
+ <span class="co"># Count words script.</span>
+<span class="ot">COUNT_SRC=</span>wordcount.py
+<span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
+
+<span class="co"># Plot word counts script.</span>
+<span class="ot">PLOT_SRC=</span>plotcount.py
+<span class="ot">PLOT_EXE=</span>python <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Makefile</span>
+<span class="kw">include</span> config.mk
+
+<span class="ot">TXT_FILES=$(</span><span class="kw">wildcard</span> books/*.txt<span class="ot">)</span>
+<span class="ot">DAT_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.dat, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
+<span class="ot">JPG_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.jpg, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
+
+<span class="co"># Count words.</span>
+<span class="kw">%.dat</span> : books/%.txt <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
+    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$@</span>
+
+<span class="co"># Plot word counts.</span>
+<span class="kw">%.jpg</span> : %.dat <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
+    <span class="ot">$(</span><span class="kw">PLOT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$@</span>
+
+<span class="kw">.PHONY</span> : clean
+<span class="kw">clean</span> :
+    <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
+    <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span>
+    <span class="kw">rm</span> -f analysis.tar.gz
+
+<span class="kw">.PHONY</span> : dats
+<span class="kw">dats</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
+
+<span class="kw">.PHONY</span> : jpgs
+<span class="kw">jpgs</span> : <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span>
+
+<span class="kw">analysis.tar.gz</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
+    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
+
+<span class="kw">.PHONY</span> : variables
+<span class="kw">variables</span>:
+    <span class="kw">@echo</span> TXT_FILES: <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">)</span>
+    <span class="kw">@echo</span> DAT_FILES: <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
+    <span class="kw">@echo</span> JPG_FILES: <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span></code></pre></div>
         </div>
       </div>
       </article>
