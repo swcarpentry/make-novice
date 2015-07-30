@@ -84,14 +84,14 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <hr />
 <p>4.) only analysis.tar.gz recreated.</p>
 <p>You can check that *.dat is being expanded in the target of the rule for analysis.tar.gz by echoing the value of the automatic variable $^ (all dependencies of the current rule).</p>
-<pre><code>analysis.tar.gz: *.dat
-    @echo $^
-    tar -czf $@ $^</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
+    <span class="kw">@echo</span> $^
+    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre></div>
 <p>The rules for *.dat are not executed because their corresponding .txt files haven’t been modified.</p>
 <p>If you run:</p>
-<pre><code>$ touch *.dat
-$ touch books/*.txt
-$ make analysis.tar.gz</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
+    $ <span class="kw">touch</span> books/*.txt
+    $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>You will find that the .dat files as well as analysis.tar.gz are recreated.</p>
 <hr />
 <section class="challenge panel panel-success">
