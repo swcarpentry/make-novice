@@ -67,18 +67,21 @@ You can check that *.dat is being expanded in the target of the rule for
     analysis.tar.gz by echoing the value of the automatic variable $^ 
     (all dependencies of the current rule).
 
-    analysis.tar.gz: *.dat
-        @echo $^
-        tar -czf $@ $^
-
+~~~ {.bash}
+analysis.tar.gz: *.dat
+    @echo $^
+    tar -czf $@ $^
+~~~
 The rules for *.dat are not executed because their corresponding .txt files
 haven't been modified.
 
 If you run:
 
+~~~ {.bash}
     $ touch *.dat
     $ touch books/*.txt
     $ make analysis.tar.gz
+~~~
 
 You will find that the .dat files as well as analysis.tar.gz are recreated.
 
