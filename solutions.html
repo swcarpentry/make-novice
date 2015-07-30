@@ -81,25 +81,19 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 </ol>
 </div>
 </section>
-<pre><code>    ANSWER: only analysis.tar.gz recreated. 
-
-    You can check that *.dat is being expanded in the target of the rule for
-    analysis.tar.gz by echoing the value of the automatic variable $^ 
-    (all dependencies of the current rule).
-
-    analysis.tar.gz: *.dat
-        @echo $^
-        tar -czf $@ $^
-
-    The rules for *.dat are not executed because their corresponding .txt files
-    haven&#39;t been modified.
-
-    If you run:
-     $ touch *.dat
-     $ touch books/*.txt
-     $ make analysis.tar.gz
-
-     You will find that the .dat files as well as analysis.tar.gz are recreated.</code></pre>
+<hr />
+<p>4.) only analysis.tar.gz recreated.</p>
+<p>You can check that *.dat is being expanded in the target of the rule for analysis.tar.gz by echoing the value of the automatic variable $^ (all dependencies of the current rule).</p>
+<pre><code>analysis.tar.gz: *.dat
+    @echo $^
+    tar -czf $@ $^</code></pre>
+<p>The rules for *.dat are not executed because their corresponding .txt files haven’t been modified.</p>
+<p>If you run:</p>
+<pre><code>$ touch *.dat
+$ touch books/*.txt
+$ make analysis.tar.gz</code></pre>
+<p>You will find that the .dat files as well as analysis.tar.gz are recreated.</p>
+<hr />
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="rewrite-.dat-rules-to-use-automatic-variables"><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>
