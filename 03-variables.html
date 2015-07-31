@@ -116,7 +116,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 </div>
 </section>
 <p>As we saw, <code>$^</code> means ‘all the dependencies of the current rule’. This works well for <code>analysis.tar.gz</code> as its action treats all the dependencies the same - as the contents of the archive.</p>
-<p>However, for some rules, we may want to treat the first dependency differently. For example, our rules for <code>.dat</code> use their first (and only) dependency specifically as the input file to <code>workflow.py</code>. If we add additional dependencies (as we will soon do) then we don’t want these being passed as input files to <code>workflow.py</code> as it expects only one input file to be named when it is invoked.</p>
+<p>However, for some rules, we may want to treat the first dependency differently. For example, our rules for <code>.dat</code> use their first (and only) dependency specifically as the input file to <code>wordcount.py</code>. If we add additional dependencies (as we will soon do) then we don’t want these being passed as input files to <code>wordcount.py</code> as it expects only one input file to be named when it is invoked.</p>
 <p>Make provides an automatic variable for this, <code>$&lt;</code> which means ‘the first dependency of the current rule’.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">

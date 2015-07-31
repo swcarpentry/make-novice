@@ -153,9 +153,9 @@ archive.
 
 However, for some rules, we may want to treat the first dependency
 differently. For example, our rules for `.dat` use their first (and
-only) dependency specifically as the input file to `workflow.py`. If
+only) dependency specifically as the input file to `wordcount.py`. If
 we add additional dependencies (as we will soon do) then we don't want
-these being passed as input files to `workflow.py` as it expects only
+these being passed as input files to `wordcount.py` as it expects only
 one input file to be named when it is invoked.
 
 Make provides an automatic variable for this, `$<` which means 'the
