@@ -81,7 +81,19 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 </ol>
 </div>
 </section>
-<pre><code>    ANSWER: only analysis.tar.gz recreated</code></pre>
+<hr />
+<p>4.) only <code>analysis.tar.gz</code> recreated.</p>
+<p>You can check that <code>*.dat</code> is being expanded in the target of the rule for <code>analysis.tar.gz</code> by echoing the value of the automatic variable <code>$^</code> (all dependencies of the current rule).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
+    <span class="kw">@echo</span> $^
+    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre></div>
+<p>The rules for <code>*.dat</code> are not executed because their corresponding <code>.txt</code> files haven’t been modified.</p>
+<p>If you run:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
+    $ <span class="kw">touch</span> books/*.txt
+    $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+<p>You will find that the <code>.dat</code> files as well as <code>analysis.tar.gz</code> are recreated.</p>
+<hr />
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="rewrite-.dat-rules-to-use-automatic-variables"><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>

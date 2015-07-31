@@ -30,7 +30,7 @@
           <h2 class="subtitle">Functions</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -65,14 +65,14 @@ variables:
     @echo TXT_FILES: $(TXT_FILES)</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span><span class="citation">@echo</span></h2>
+<h2 id="echo"><span class="glyphicon glyphicon-pushpin"></span><span class="citation">@echo</span></h2>
 </div>
 <div class="panel-body">
 <p>Make prints actions as it executes them. Using <code>@</code> at the start of an action tells Make not to print this action. So, by using <code>@echo</code> instead of <code>echo</code>, we can see the result of <code>echo</code> (the variable’s value being printed) but not the <code>echo</code> command itself.</p>
 </div>
 </aside>
 <p>If we run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
 <p>We get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt</code></pre>
 <p>Note how <code>sierra.txt</code> is now included too.</p>
@@ -84,7 +84,7 @@ variables:
     @echo TXT_FILES: $(TXT_FILES)
     @echo DAT_FILES: $(DAT_FILES)</code></pre>
 <p>If we run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat</code></pre>
@@ -98,8 +98,8 @@ clean :
 .PHONY : dats
 dats : $(DAT_FILES)</code></pre>
 <p>Let’s check:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> dats</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats</code></pre></div>
 <p>We get:</p>
 <pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
@@ -109,8 +109,8 @@ python wordcount.py books/sierra.txt sierra.dat</code></pre>
 <pre class="make"><code>analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
     tar -czf $@ $^</code></pre>
 <p>If we re-run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>We get:</p>
 <pre class="output"><code>$ make analysis.tar.gz
 python wordcount.py books/abyss.txt abyss.dat
