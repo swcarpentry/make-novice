@@ -22,7 +22,7 @@ rule](reference.html#pattern-rule) which can be used to build any
         python wordcount.py $< $*.dat
 ~~~
 
-`%` is a Make [wild-card](reference.html#wild-card), and `$*` is a special variable which gets replaced by the stemwith which the rule matched.
+`%` is a Make [wild-card](reference.html#wild-card), and `$*` is a special variable which gets replaced by the stem with which the rule matched.
 
 If we re-run Make,
 
