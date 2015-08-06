@@ -76,7 +76,7 @@ count). The list is ordered by decreasing count, unless increase is
 True.
 """
 def word_count_dict_to_tuples(counts, decrease = True):
-  return sorted(counts.iteritems(), key=lambda (key,value): value, \
+  return sorted(iter(list(counts.items())), key=lambda key_value: key_value[1], \
     reverse = decrease)
 
 """
