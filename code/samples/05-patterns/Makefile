@@ -1,6 +1,6 @@
 # Count words.
 %.dat : books/%.txt wordcount.py
-	python wordcount.py $< $@
+	python wordcount.py $< $*.dat
 
 .PHONY : clean
 clean :
