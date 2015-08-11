@@ -215,7 +215,8 @@ automatic variable
     [rule](#rule). [Make](#make)'s automatic variables include `$@`,
     which holds the rule's [target](#target), `$^`, which holds its
     [dependencies](#dependency), and, `$<`, which holds the first of
-    its dependencies. Automatic variables are typically used in
+    its dependencies, and `$*`, which holds the [stem](#stem) with which
+    the pattern was matched. Automatic variables are typically used in
     [pattern rules](#pattern-rule).
 
 build file
@@ -286,7 +287,12 @@ reference
 rule
 :   A specification of a [target](#target)'s
     [dependencies](#dependency) and what [actions](#action) need to be
-    executed to build or update the target.
+    executed to build or update the target. 
+
+stem
+:   The part of the target that was matched by the pattern rule. If
+    the target is `file.dat` and the target pattern was `%.dat`, then
+    the stem `$*` is `file`. 
 
 target
 :   A thing to be created or updated, for example a file. Targets can
