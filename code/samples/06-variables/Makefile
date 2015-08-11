@@ -2,7 +2,7 @@ include config.mk
 
 # Count words.
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+	$(COUNT_EXE) $< $*.dat
 
 .PHONY : clean
 clean :
