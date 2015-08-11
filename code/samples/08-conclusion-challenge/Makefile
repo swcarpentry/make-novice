@@ -6,11 +6,11 @@ JPG_FILES=$(patsubst books/%.txt, %.jpg, $(TXT_FILES))
 
 # Count words.
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+	$(COUNT_EXE) $< $*.dat
 
 # Plot word counts.
 %.jpg : %.dat $(PLOT_SRC)
-	$(PLOT_EXE) $< $@
+	$(PLOT_EXE) $*.dat $*.jpg
 
 .PHONY : clean
 clean :
