@@ -8,7 +8,8 @@ minutes: 0
 > ## Learning Objectives {.objectives}
 >
 > * Write Make pattern rules.
-> * Use the Make wild-card `%` in targets and dependencies and `$*` in actions.
+> * Use the Make wild-card `%` in targets and dependencies.
+> * Use the Make special variable `$*` in actions.
 > * Avoid using the Make wild-card in rules.
 
 Our Makefile still has repeated content. The rules for each `.dat`
@@ -22,7 +23,7 @@ rule](reference.html#pattern-rule) which can be used to build any
         python wordcount.py $< $*.dat
 ~~~
 
-`%` is a Make [wild-card](reference.html#wild-card), and `$*` is a special variable which gets replaced by the stem with which the rule matched.
+`%` is a Make [wild-card](reference.html#wild-card). `$*` is a special variable which gets replaced by the stem with which the rule matched.
 
 If we re-run Make,
 
