@@ -114,6 +114,7 @@ Automatic variables:
 * `$<` denotes 'the first dependency of the current rule'.
 * `$@` denotes 'the target of the current rule'.
 * `$^` denotes 'the dependencies of the current rule'.
+* `$*` denotes 'the stem with which the pattern of the current rule matched'.
 
 Pattern rules:
 
@@ -196,7 +197,7 @@ Default targets:
 [GNU Make Manual](https://www.gnu.org/software/make/manual/). Reference sections include:
 
 * [Summary of Options](https://www.gnu.org/software/make/manual/html_node/Options-Summary.html) for the `make` command.
-* [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html)of Make directives, text manipulation functions, and special variables.
+* [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html) of Make directives, text manipulation functions, and special variables.
 * [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
 * [Special Built-in Target Names](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html)
 
