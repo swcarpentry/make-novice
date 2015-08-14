@@ -21,7 +21,7 @@ include config.mk
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+	$(COUNT_EXE) $< $*.dat
 
 # Generate archive file.
 analysis.tar.gz : *.dat $(COUNT_SRC)
@@ -184,7 +184,7 @@ variables:
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+	$(COUNT_EXE) $< $*.dat
 
 # Generate archive file.
 analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
