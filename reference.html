@@ -83,6 +83,7 @@ clean :
 <li><code>$&lt;</code> denotes ‘the first dependency of the current rule’.</li>
 <li><code>$@</code> denotes ‘the target of the current rule’.</li>
 <li><code>$^</code> denotes ‘the dependencies of the current rule’.</li>
+<li><code>$*</code> denotes ‘the stem with which the pattern of the current rule matched’.</li>
 </ul>
 <p>Pattern rules:</p>
 <pre class="make"><code>%.dat : books/%.txt $(COUNT_SRC)
@@ -131,7 +132,7 @@ variables:
 <p><a href="https://www.gnu.org/software/make/manual/">GNU Make Manual</a>. Reference sections include:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/make/manual/html_node/Options-Summary.html">Summary of Options</a> for the <code>make</code> command.</li>
-<li><a href="https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html">Quick Reference</a>of Make directives, text manipulation functions, and special variables.</li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html">Quick Reference</a> of Make directives, text manipulation functions, and special variables.</li>
 <li><a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html">Automatic Variables</a>.</li>
 <li><a href="https://www.gnu.org/software/make/manual/html_node/Special-Targets.html">Special Built-in Target Names</a></li>
 </ul>
@@ -144,7 +145,7 @@ variables:
 <dd><p>A request that <a href="#make">Make</a> stores something in a <a href="#variable">variable</a>.</p>
 </dd>
 <dt><span id="automatic-variable">automatic variable</span></dt>
-<dd><p>A variable whose value is automatically redefined for each <a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code>$@</code>, which holds the rule’s <a href="#target">target</a>, <code>$^</code>, which holds its <a href="#dependency">dependencies</a>, and, <code>$&lt;</code>, which holds the first of its dependencies. Automatic variables are typically used in <a href="#pattern-rule">pattern rules</a>.</p>
+<dd><p>A variable whose value is automatically redefined for each <a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code>$@</code>, which holds the rule’s <a href="#target">target</a>, <code>$^</code>, which holds its <a href="#dependency">dependencies</a>, and, <code>$&lt;</code>, which holds the first of its dependencies, and <code>$*</code>, which holds the <a href="#stem">stem</a> with which the pattern was matched. Automatic variables are typically used in <a href="#pattern-rule">pattern rules</a>.</p>
 </dd>
 <dt><span id="build-file">build file</span></dt>
 <dd><p>A description of <a href="#dependency">dependencies</a> and <a href="#rule">rules</a> for a <a href="#build-manager">build manager</a>.</p>
@@ -190,6 +191,9 @@ variables:
 </dd>
 <dt><span id="rule">rule</span></dt>
 <dd><p>A specification of a <a href="#target">target</a>’s <a href="#dependency">dependencies</a> and what <a href="#action">actions</a> need to be executed to build or update the target.</p>
+</dd>
+<dt><span id="stem">stem</span></dt>
+<dd><p>The part of the target that was matched by the pattern rule. If the target is <code>file.dat</code> and the target pattern was <code>%.dat</code>, then the stem <code>$*</code> is <code>file</code>.</p>
 </dd>
 <dt><span id="target">target</span></dt>
 <dd><p>A thing to be created or updated, for example a file. Targets can have <a href="#dependency">dependencies</a> that must exist, and be up-to-date, before the target itself can be built or updated.</p>

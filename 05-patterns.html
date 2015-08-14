@@ -36,14 +36,15 @@
 <ul>
 <li>Write Make pattern rules.</li>
 <li>Use the Make wild-card <code>%</code> in targets and dependencies.</li>
+<li>Use the Make special variable <code>$*</code> in actions.</li>
 <li>Avoid using the Make wild-card in rules.</li>
 </ul>
 </div>
 </section>
 <p>Our Makefile still has repeated content. The rules for each <code>.dat</code> file are identical apart from the text and data file names. We can replace these rules with a single <a href="reference.html#pattern-rule">pattern rule</a> which can be used to build any <code>.dat</code> file from a <code>.txt</code> file in <code>books/</code>:</p>
 <pre class="make"><code>%.dat : books/%.txt wordcount.py
-        python wordcount.py $&lt; $@</code></pre>
-<p><code>%</code> is a Make <a href="reference.html#wild-card">wild-card</a>.</p>
+        python wordcount.py $&lt; $*.dat</code></pre>
+<p><code>%</code> is a Make <a href="reference.html#wild-card">wild-card</a>. <code>$*</code> is a special variable which gets replaced by the <a href="reference.html#stem">stem</a> with which the rule matched.</p>
 <p>If we re-run Make,</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
 $ <span class="kw">make</span> dats</code></pre>
@@ -56,7 +57,7 @@ python wordcount.py books/last.txt last.dat</code></pre>
 <h2><span class="glyphicon glyphicon-pushpin"></span>Using Make wild-cards</h2>
 </div>
 <div class="panel-body">
-<p>The Make <code>%</code> wild-card can only be used in a target and in its dependencies. It cannot be used in actions.</p>
+<p>The Make <code>%</code> wild-card can only be used in a target and in its dependencies. It cannot be used in actions. In actions, you may however use <code>$*</code>, which will be replaced by the stem with which the rule matched.</p>
 </div>
 </aside>
 <p>Our Makefile is now much shorter and cleaner:</p>
@@ -65,7 +66,7 @@ python wordcount.py books/last.txt last.dat</code></pre>
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt wordcount.py
-    python wordcount.py $&lt; $@
+    python wordcount.py $&lt; $*.dat
 
 # Generate archive file.
 analysis.tar.gz : *.dat wordcount.py

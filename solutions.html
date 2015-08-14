@@ -31,7 +31,7 @@
           <h2 id="lesson-02-makefiles">Lesson 02-makefiles</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="write-two-new-rules"><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
 </div>
 <div class="panel-body">
 <p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
@@ -44,7 +44,7 @@
 <p>Update <code>clean</code> to remove <code>analysis.tar.gz</code>.</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
 <span class="kw">.PHONY</span> : dats
 <span class="kw">dats</span> : isles.dat abyss.dat last.dat
 
@@ -63,16 +63,16 @@
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre>
 <h2 id="lesson-03-variables">Lesson 03-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="update-dependencies"><span class="glyphicon glyphicon-pencil"></span>Update dependencies</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Update dependencies</h2>
 </div>
 <div class="panel-body">
 <p>What will happen if you now execute:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
-$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
+$ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <ol style="list-style-type: decimal">
 <li>nothing</li>
 <li>all files recreated</li>
@@ -84,25 +84,25 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <hr />
 <p>4.) only <code>analysis.tar.gz</code> recreated.</p>
 <p>You can check that <code>*.dat</code> is being expanded in the target of the rule for <code>analysis.tar.gz</code> by echoing the value of the automatic variable <code>$^</code> (all dependencies of the current rule).</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
     <span class="kw">@echo</span> $^
-    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre></div>
+    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre>
 <p>The rules for <code>*.dat</code> are not executed because their corresponding <code>.txt</code> files haven’t been modified.</p>
 <p>If you run:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
+<pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
     $ <span class="kw">touch</span> books/*.txt
-    $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+    $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <p>You will find that the <code>.dat</code> files as well as <code>analysis.tar.gz</code> are recreated.</p>
 <hr />
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="rewrite-.dat-rules-to-use-automatic-variables"><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>
 </div>
 <div class="panel-body">
 <p>Rewrite each <code>.dat</code> rule to use the automatic variables <code>$@</code> (‘the target of the current rule’) and <code>$&lt;</code> (‘the first dependency of the current rule’).</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
 <span class="kw">.PHONY</span> : dats
 <span class="kw">dats</span> : isles.dat abyss.dat last.dat
 
@@ -121,17 +121,17 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre>
 <h2 id="lesson-06-variables">Lesson 06-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="use-variables"><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
 </div>
 <div class="panel-body">
 <p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Count words.</span>
 <span class="ot">COUNT_SRC=</span>wordcount.py
 <span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
 
@@ -139,7 +139,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <span class="kw">dats</span> : isles.dat abyss.dat last.dat
 
 <span class="kw">%.dat</span> : books/%.txt COUNT_SRC
-    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$@</span>
+    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$*</span><span class="kw">.dat</span>
 
 <span class="co"># Generate archive file.</span>
 <span class="kw">analysis.tar.gz</span> : *.dat COUNT_SRC
@@ -148,11 +148,11 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre>
 <h2 id="lesson-08-variables">Lesson 08-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="extend-the-makefile-to-create-jpegs"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create JPEGs</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create JPEGs</h2>
 </div>
 <div class="panel-body">
 <p>Add new rules, update existing rules, and add new macros to:</p>
@@ -163,15 +163,15 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 </ul>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"> <span class="co"># config.mk</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"> <span class="co"># config.mk</span>
  <span class="co"># Count words script.</span>
 <span class="ot">COUNT_SRC=</span>wordcount.py
 <span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
 
 <span class="co"># Plot word counts script.</span>
 <span class="ot">PLOT_SRC=</span>plotcount.py
-<span class="ot">PLOT_EXE=</span>python <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Makefile</span>
+<span class="ot">PLOT_EXE=</span>python <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span></code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Makefile</span>
 <span class="kw">include</span> config.mk
 
 <span class="ot">TXT_FILES=$(</span><span class="kw">wildcard</span> books/*.txt<span class="ot">)</span>
@@ -180,11 +180,11 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 
 <span class="co"># Count words.</span>
 <span class="kw">%.dat</span> : books/%.txt <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
-    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$@</span>
+    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$*</span><span class="kw">.dat</span>
 
 <span class="co"># Plot word counts.</span>
 <span class="kw">%.jpg</span> : %.dat <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
-    <span class="ot">$(</span><span class="kw">PLOT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$@</span>
+    <span class="ot">$(</span><span class="kw">PLOT_EXE</span><span class="ot">)</span> <span class="ot">$*</span><span class="kw">.dat</span> <span class="ot">$*</span>.jpg
 
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
@@ -205,7 +205,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <span class="kw">variables</span>:
     <span class="kw">@echo</span> TXT_FILES: <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">)</span>
     <span class="kw">@echo</span> DAT_FILES: <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
-    <span class="kw">@echo</span> JPG_FILES: <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span></code></pre></div>
+    <span class="kw">@echo</span> JPG_FILES: <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span></code></pre>
         </div>
       </div>
       </article>

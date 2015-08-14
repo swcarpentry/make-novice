@@ -27,27 +27,26 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
                     <h1 class="title">Automation and Make</h1>
-          <p>Make is a tool which can run commands to read files, process these files in some way, and write out the processed files. Make can be used to:</p>
+          <p>Make is a tool which can run commands to read files, process these files in some way, and write out the processed files. For example, in software development, Make is used to compile source code into executable programs or libraries, but Make can also be used to:</p>
 <ul>
-<li>Run analysis scripts on raw data files to get data files that summarise the raw data.</li>
-<li>Run visualisation scripts on data files to produce plots.</li>
-<li>Parse and combine text files and plots to create papers.</li>
-<li>Compile source code into executable programs or libraries.</li>
+<li>run analysis scripts on raw data files to get data files that summarize the raw data;</li>
+<li>run visualisation scripts on data files to produce plots; and to</li>
+<li>parse and combine text files and plots to create papers.</li>
 </ul>
 <p>Make is called a build tool - it builds data files, plots, papers, programs or libraries. It can also update existing files if desired.</p>
 <p>Make tracks the dependencies between the files it creates and the files used to create these. If one of the original files (e.g. a data file) is changed, then Make knows to recreate, or update, the files that depend upon this file (e.g. a plot).</p>
 <p>There are now many build tools available, all of which are based on the same concepts as Make.</p>
 <section class="prereq panel panel-warning">
 <div class="panel-heading">
-<h2 id="prerequisites"><span class="glyphicon glyphicon-education"></span>Prerequisites</h2>
+<h2><span class="glyphicon glyphicon-education"></span>Prerequisites</h2>
 </div>
 <div class="panel-body">
-<p>In this lesson we use Make from the Unix Shell. Some previous experience with using the shell to list directories, create, copy, remove and list files and directories, and run simple scripts is necessary.</p>
+<p>In this lesson we use <code>make</code> from the Unix Shell. Some previous experience with using the shell to list directories, create, copy, remove and list files and directories, and run simple scripts is necessary.</p>
 </div>
 </section>
 <section class="getready panel panel-warning">
 <div class="panel-heading">
-<h2 id="getting-ready"><span class="glyphicon glyphicon-check"></span>Getting ready</h2>
+<h2><span class="glyphicon glyphicon-check"></span>Getting ready</h2>
 </div>
 <div class="panel-body">
 <p>You need to download some files to follow this lesson:</p>
@@ -58,11 +57,11 @@
 <li>Navigate to the directory where you downloaded the file.</li>
 <li>Unpack <code>make-lesson.tar.gz</code>:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">tar</span> -xvf make-lesson.tar.gz</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">tar</span> -xvf make-lesson.tar.gz</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Change into the <code>make-lesson</code> directory:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> make-lesson</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> make-lesson</code></pre>
 </div>
 </section>
 <h2 id="topics">Topics</h2>
