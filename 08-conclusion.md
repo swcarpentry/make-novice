@@ -31,3 +31,7 @@ papers.
 > * Add the script and `.jpg` files to the archive.
 > * Remove all auto-generated files (`.dat`, `.jpg`,
 >   `analysis.tar.gz`). 
+
+The following figure shows the dependencies involved in building the `analysis.tar.gz` target, once we've added support for images:
+
+![analysis.tar.gz dependencies once images have been added](img/08-conclusion-challenge.png "analysis.tar.gz dependencies once images have been added")

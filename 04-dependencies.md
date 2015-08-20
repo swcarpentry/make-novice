@@ -68,6 +68,10 @@ python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat
 ~~~
 
+The following figure shows the dependencies embodied within our Makefile, involved in building the `analysis.tar.gz` target, after adding `wordcount.py` as a dependency to the `.dat` files:
+
+![analysis.tar.gz dependencies after adding wordcount.py as a dependency](img/04-dependencies.png "analysis.tar.gz dependencies after adding wordcount.py as a dependency")
+
 > ## Why don't the `.txt` files depend on `wordcount.py`? {.callout}
 >
 > `.txt` files are input files and have no dependencies. To make these

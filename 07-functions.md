@@ -73,6 +73,10 @@ TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 
 Note how `sierra.txt` is now included too.
 
+The following figure shows the dependencies embodied within our Makefile, involved in building the `analysis.tar.gz` target, once we have introduced our function:
+
+![analysis.tar.gz dependencies after introducing a function](img/07-functions.png "analysis.tar.gz dependencies after introducing a function")
+
 `patsubst` ('pattern substitution') takes a pattern, a replacement string and a
 list of names in that order; each name in the list that matches the pattern is 
 replaced by the replacement string. Again, we can save the result in a
