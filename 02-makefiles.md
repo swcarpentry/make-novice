@@ -301,7 +301,9 @@ clean :
         rm -f *.dat
 ~~~
 
+The following figure shows the dependencies embodied within our Makefile, involved in building the `dats` target:
 
+![Dependencies represented within the Makefile](img/02-makefile.png "Dependencies represented within the Makefile")
 
 > ## Write two new rules {.challenge}
 >
@@ -317,3 +319,7 @@ clean :
 >   last.dat` 
 >
 > Update `clean` to remove `analysis.tar.gz`.
+
+The following figure shows the dependencies embodied within our Makefile, involved in building the `analysis.tar.gz` target:
+
+![analysis.tar.gz dependencies represented within the Makefile](img/02-makefile-challenge-analysis.png "analysis.tar.gz dependencies represented within the Makefile")
