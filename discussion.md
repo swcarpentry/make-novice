@@ -31,3 +31,7 @@ Blog articles and tutorials on automating data analysis using Make:
   Hyndman. Another example of using Make with R and LaTeX. 
 * [GNU Make for Reproducible Data Analysis](http://zmjones.com/make/)
   by Zachary Jones. Using Make with Python and LaTeX. 
+* Shaun Jackman's [Using Make to increase Automation &
+  Reproducibility](https://www.youtube.com/watch?v=_F5f0qi-aEc)
+  lesson, and accompanying
+  [example](https://github.com/sjackman/makefile-example).
