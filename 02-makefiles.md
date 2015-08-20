@@ -322,4 +322,4 @@ The following figure shows the dependencies embodied within our Makefile, involv
 
 The following figure shows the dependencies embodied within our Makefile, involved in building the `analysis.tar.gz` target:
 
-![analysis.tar.gz dependencies represented within the Makefile](img/02-makefile-challenge-analysis.png "analysis.tar.gz dependencies represented within the Makefile")
+![analysis.tar.gz dependencies represented within the Makefile](img/02-makefile-challenge.png "analysis.tar.gz dependencies represented within the Makefile")
