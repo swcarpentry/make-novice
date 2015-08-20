@@ -82,3 +82,37 @@ make-lesson.tar.gz : code data/books
 	cp -r code/*.py make-lesson
 	cp -r data/books/ make-lesson
 	tar -cvzf $@ make-lesson
+
+build:
+	mkdir -p $@
+	cp code/*.py $@
+	cp -r data/books $@
+
+MAKE2PNG = make2graph | dot -Tpng -o
+
+.PHONY: img/02-makefile.png
+img/02-makefile.png: build
+	cp code/samples/02-makefile/* $<
+	cd build && make -Bnd dats | $(MAKE2PNG) $(CURDIR)/$@
+
+.PHONY: img/02-makefile-challenge.png
+img/02-makefile-challenge.png: build
+	cp code/samples/02-makefile-challenge/* $<
+	cd build && make dats && make -Bnd analysis.tar.gz | $(MAKE2PNG) $(CURDIR)/$@
+
+.PHONY: img/04-dependencies.png
+img/04-dependencies.png: build
+	cp code/samples/04-dependencies/* $<
+	cd build && make dats && make -Bnd analysis.tar.gz | $(MAKE2PNG) $(CURDIR)/$@
+
+.PHONY: img/07-functions.png
+img/07-functions.png: build
+	cp code/samples/07-functions/* $<
+	cd build && make -Bnd analysis.tar.gz | $(MAKE2PNG) $(CURDIR)/$@
+
+.PHONY: img/08-conclusion-challenge.png
+img/08-conclusion-challenge.png: $<
+	cp code/samples/08-conclusion-challenge/* build
+	cd build && make -Bnd analysis.tar.gz | $(MAKE2PNG) $(CURDIR)/$@ 
+
+imgs: img/02-makefile.png img/02-makefile-challenge.png img/04-dependencies.png img/07-functions.png img/08-conclusion-challenge.png
