@@ -1,8 +1,7 @@
 #!/usr/bin/env python
- 
+
 import numpy as np
 import matplotlib.pyplot as plt
-import string
 import sys
 
 from wordcount import load_word_counts
