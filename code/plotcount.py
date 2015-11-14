@@ -6,11 +6,11 @@ import sys
 
 from wordcount import load_word_counts
 
-"""
-Given a list of (word, count, percentage) tuples, plot the counts as a
-histogram. Only the first limit tuples are plotted.
-"""
 def plot_word_counts(counts, limit = 10):
+  """
+  Given a list of (word, count, percentage) tuples, plot the counts as a
+  histogram. Only the first limit tuples are plotted.
+  """
   plt.title("Word Counts")
   limited_counts = counts[0:limit]
   word_data = [word for (word, _, _) in limited_counts]
