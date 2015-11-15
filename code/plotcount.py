@@ -27,11 +27,11 @@ if __name__ == '__main__':
     input_file = sys.argv[1]
     output_file = sys.argv[2]
     limit = 10
-    if (len(sys.argv) > 3):
+    if len(sys.argv) > 3:
         limit = int(sys.argv[3])
     counts = load_word_counts(input_file)
     plot_word_counts(counts, limit)
-    if (output_file == "show"):
+    if output_file == "show":
         plt.show()
     else:
         plt.savefig(output_file)
