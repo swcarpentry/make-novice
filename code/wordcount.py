@@ -5,41 +5,38 @@ import sys
 DELIMITERS = ". , ; : ? $ @ ^ < > # % ` ! * - = ( ) [ ] { } / \" '".split()
 
 
-def load_text(file):
+def load_text(filename):
     """
     Load lines from a plain-text file and return these as a list, with
     trailing newlines stripped.
     """
-    text = ""
-    with open(file) as f:
-        lines = f.read().splitlines()
+    with open(filename) as input_fd:
+        lines = input_fd.read().splitlines()
     return lines
 
 
-def save_word_counts(file, counts):
+def save_word_counts(filename, counts):
     """
     Save a list of [word, count, percentage] lists to a file, in the form
     "word count percentage", one tuple per line.
     """
-    f = open(file, 'w')
-    for count in counts:
-        f.write("%s\n" % " ".join(map(str, count)))
-    f.close()
+    with open(filename, 'w') as output:
+        for count in counts:
+            output.write("%s\n" % " ".join(str(c) for c in count))
 
 
-def load_word_counts(file):
+def load_word_counts(filename):
     """
     Load a list of (word, count, percentage) tuples from a file where each
     line is of the form "word count percentage". Lines starting with # are
     ignored.
     """
     counts = []
-    f = open(file, "r")
-    for line in f:
-        if (not line.startswith("#")):
-            fields = line.split()
-            counts.append((fields[0], int(fields[1]), float(fields[2])))
-    f.close()
+    with open(filename, "r") as input_fd:
+        for line in input_fd:
+            if not line.startswith("#"):
+                fields = line.split()
+                counts.append((fields[0], int(fields[1]), float(fields[2])))
     return counts
 
 
@@ -92,7 +89,7 @@ def filter_word_counts(counts, min_length=1):
     """
     stripped = []
     for (word, count) in counts:
-        if (len(word) >= min_length):
+        if len(word) >= min_length:
             stripped.append((word, count))
     return stripped
 
@@ -129,6 +126,6 @@ if __name__ == '__main__':
     input_file = sys.argv[1]
     output_file = sys.argv[2]
     min_length = 1
-    if (len(sys.argv) > 3):
+    if len(sys.argv) > 3:
         min_length = int(sys.argv[3])
     word_count(input_file, output_file, min_length)
