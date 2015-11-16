@@ -90,9 +90,7 @@ graph, but only for the text file that changed, not all of
 them. Furthermore, we only want do this if and only if the text file
 has changed.
 
-[Make](http://www.gnu.org/software/make/) (also known as GNU Make) is
-a fast, free and well-documented [build
-manager](reference.html#build-manager). Make was developed by 
+Make was developed by 
 Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
 widespread use today. Make can execute the commands needed to run our
 analysis and plot our results. Like shell scripts it allows us to
@@ -131,3 +129,9 @@ all share the same fundamental concepts as Make.
 > with text to produce reports and papers for publication.
 >
 > Make's fundamental concepts are common across build tools.
+
+[GNU Make](http://www.gnu.org/software/make/) is a free, fast, 
+well-documented, very popular and highly extended one of some 
+Make implements. From now on, we will focus on it, then when 
+we say Make, we mean GNU Make.
+
