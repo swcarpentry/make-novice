@@ -127,7 +127,7 @@ example of the Makefiles on completion of the topic.
 
 ## [Conclusion](08-conclusion.html)
 
-Extend the Makefile to create JPEGs - challenge
+Extend the Makefile to create PNGs - challenge
 
 * Allow 15 minutes.
 * `08-conclusion-challenge/Makefile` and
