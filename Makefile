@@ -75,13 +75,13 @@ unittest: tools/check.py tools/validation_helpers.py tools/test_check.py
 	cd tools/ && python2 test_check.py
 	cd tools/ && python3 test_check.py
 
-## make-lesson.tar.gz : Make code and data bundle for students.
-make-lesson.tar.gz : code data/books
+## make-lesson.zip : Make code and data bundle for students.
+make-lesson.zip : code data/books
 	rm -rf make-lesson
 	mkdir make-lesson
 	cp -r code/*.py make-lesson
 	cp -r data/books/ make-lesson
-	tar -cvzf $@ make-lesson
+	zip -r $@ make-lesson
 
 build:
 	mkdir -p $@

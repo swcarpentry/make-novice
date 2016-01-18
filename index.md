@@ -37,14 +37,14 @@ the same concepts as Make.
 >
 > You need to download some files to follow this lesson:
 > 
-> 1. Download [make-lesson.tar.gz](./make-lesson.tar.gz).
-> 2. Move `make-lesson.tar.gz` into a directory which you can access via your bash shell.
+> 1. Download [make-lesson.zip](./make-lesson.zip).
+> 2. Move `make-lesson.zip` into a directory which you can access via your bash shell.
 > 3. Open a bash shell window.
 > 4. Navigate to the directory where you downloaded the file.
-> 5. Unpack `make-lesson.tar.gz`:
+> 5. Unpack `make-lesson.zip`:
 >
 > ~~~ {.bash}
-> $ tar -xvf make-lesson.tar.gz
+> $ unzip make-lesson.zip
 > ~~~
 >
 > 6. Change into the `make-lesson` directory:

@@ -65,12 +65,12 @@ which contains:
 * `books/`
 
 Or, ask students to download
-[make-lesson.tar.gz](./make-lesson.tar.gz) from this repository.
+[make-lesson.zip](./make-lesson.zip) from this repository.
 
-To recreate `make-lesson.tar.gz`, run:
+To recreate `make-lesson.zip`, run:
 
 ~~~ {.bash}
-$ make make-lesson.tar.gz
+$ make make-lesson.zip
 ~~~
 
 ## Beware of spaces!
