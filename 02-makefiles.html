@@ -57,8 +57,8 @@ isles.dat : books/isles.txt
 <li>Together, the target, dependencies, and actions form a <a href="reference.html#rule">rule</a>.</li>
 </ul>
 <p>Our rule above describes how to build the target <code>isles.dat</code> using the action <code>python wordcount.py</code> and the dependency <code>books/isles.txt</code>.</p>
-<p>Let’s first sure we start from scratch and delete the <code>.dat</code> and <code>.jpg</code> files we created:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">rm</span> *.dat *.jpg</code></pre>
+<p>Let’s first sure we start from scratch and delete the <code>.dat</code> and <code>.png</code> files we created:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">rm</span> *.dat *.png</code></pre>
 <p>By default, Make looks for a Makefile, called <code>Makefile</code>, and we can run Make as follows:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
 <p>Make prints out the actions it executes:</p>

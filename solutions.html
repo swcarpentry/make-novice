@@ -154,14 +154,14 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <h2 id="lesson-08-variables">Lesson 08-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="extend-the-makefile-to-create-jpegs"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create JPEGs</h2>
+<h2 id="extend-the-makefile-to-create-pngs"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create PNGs</h2>
 </div>
 <div class="panel-body">
 <p>Add new rules, update existing rules, and add new macros to:</p>
 <ul>
-<li>Create <code>.jpg</code> files from <code>.dat</code> files using <code>plotcount.py</code>.</li>
-<li>Add the script and <code>.jpg</code> files to the archive.</li>
-<li>Remove all auto-generated files (<code>.dat</code>, <code>.jpg</code>, <code>analysis.tar.gz</code>).</li>
+<li>Create <code>.png</code> files from <code>.dat</code> files using <code>plotcount.py</code>.</li>
+<li>Add the script and <code>.png</code> files to the archive.</li>
+<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>analysis.tar.gz</code>).</li>
 </ul>
 </div>
 </section>
@@ -178,10 +178,10 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 
 <span class="ot">TXT_FILES=$(</span><span class="kw">wildcard</span> books/*.txt<span class="ot">)</span>
 <span class="ot">DAT_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.dat, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
-<span class="ot">JPG_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.jpg, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
+<span class="ot">PNG_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.png, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
 
 <span class="co"># Generate archive file.</span>
-<span class="kw">analysis.tar.gz</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
+<span class="kw">analysis.tar.gz</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
     <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
 
 <span class="co"># Count words.</span>
@@ -192,23 +192,23 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
     <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$*</span><span class="kw">.dat</span>
 
 <span class="co"># Plot word counts.</span>
-<span class="kw">.PHONY</span> : jpgs
-<span class="kw">jpgs</span> : <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span>
+<span class="kw">.PHONY</span> : pngs
+<span class="kw">pngs</span> : <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span>
 
-<span class="kw">%.jpg</span> : %.dat <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
-    <span class="ot">$(</span><span class="kw">PLOT_EXE</span><span class="ot">)</span> <span class="ot">$*</span><span class="kw">.dat</span> <span class="ot">$*</span>.jpg
+<span class="kw">%.png</span> : %.dat <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
+    <span class="ot">$(</span><span class="kw">PLOT_EXE</span><span class="ot">)</span> <span class="ot">$*</span><span class="kw">.dat</span> <span class="ot">$*</span>.png
 
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
     <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
-    <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span>
+    <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span>
     <span class="kw">rm</span> -f analysis.tar.gz
 
 <span class="kw">.PHONY</span> : variables
 <span class="kw">variables</span>:
     <span class="kw">@echo</span> TXT_FILES: <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">)</span>
     <span class="kw">@echo</span> DAT_FILES: <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
-    <span class="kw">@echo</span> JPG_FILES: <span class="ot">$(</span><span class="kw">JPG_FILES</span><span class="ot">)</span></code></pre>
+    <span class="kw">@echo</span> PNG_FILES: <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span></code></pre>
         </div>
       </div>
       </article>
