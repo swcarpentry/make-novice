@@ -139,70 +139,70 @@ variables:
 <h2 id="glossary">Glossary</h2>
 <dl>
 <dt><span id="action">action</span></dt>
-<dd><p>The steps a <a href="#build-manager">build manager</a> must take to create or update a file or other object.</p>
+<dd>The steps a <a href="#build-manager">build manager</a> must take to create or update a file or other object.
 </dd>
 <dt><span id="assignment">assignment</span></dt>
-<dd><p>A request that <a href="#make">Make</a> stores something in a <a href="#variable">variable</a>.</p>
+<dd>A request that <a href="#make">Make</a> stores something in a <a href="#variable">variable</a>.
 </dd>
 <dt><span id="automatic-variable">automatic variable</span></dt>
-<dd><p>A variable whose value is automatically redefined for each <a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code>$@</code>, which holds the rule’s <a href="#target">target</a>, <code>$^</code>, which holds its <a href="#dependency">dependencies</a>, and, <code>$&lt;</code>, which holds the first of its dependencies, and <code>$*</code>, which holds the <a href="#stem">stem</a> with which the pattern was matched. Automatic variables are typically used in <a href="#pattern-rule">pattern rules</a>.</p>
+<dd>A variable whose value is automatically redefined for each <a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code>$@</code>, which holds the rule’s <a href="#target">target</a>, <code>$^</code>, which holds its <a href="#dependency">dependencies</a>, and, <code>$&lt;</code>, which holds the first of its dependencies, and <code>$*</code>, which holds the <a href="#stem">stem</a> with which the pattern was matched. Automatic variables are typically used in <a href="#pattern-rule">pattern rules</a>.
 </dd>
 <dt><span id="build-file">build file</span></dt>
-<dd><p>A description of <a href="#dependency">dependencies</a> and <a href="#rule">rules</a> for a <a href="#build-manager">build manager</a>.</p>
+<dd>A description of <a href="#dependency">dependencies</a> and <a href="#rule">rules</a> for a <a href="#build-manager">build manager</a>.
 </dd>
 <dt><span id="build-manager">build manager</span></dt>
-<dd><p>A program, such as <a href="#make">Make</a>, whose main purpose is to build or update software, documentation, web sites, data files, images, and other things.</p>
+<dd>A program, such as <a href="#make">Make</a>, whose main purpose is to build or update software, documentation, web sites, data files, images, and other things.
 </dd>
 <dt><span id="default-rule">default rule</span></dt>
-<dd><p>The <a href="#rule">rule</a> that is executed if no <a href="#target">target</a> is specified when a <a href="#build-manager">build manager</a> is run.</p>
+<dd>The <a href="#rule">rule</a> that is executed if no <a href="#target">target</a> is specified when a <a href="#build-manager">build manager</a> is run.
 </dd>
 <dt><span id="default-target">default target</span></dt>
-<dd><p>The <a href="#target">target</a> of the <a href="#default-rule">default rule</a>.</p>
+<dd>The <a href="#target">target</a> of the <a href="#default-rule">default rule</a>.
 </dd>
 <dt><span id="dependency">dependency</span></dt>
-<dd><p>A file that a <a href="#target">target</a> depends on. If any of a target’s <a href="#dependency">dependencies</a> are newer than the target itself, the target needs to be updated. A target’s dependencies are also called its prerequisites. If a target’s dependencies do not exist, then they need to be built first.</p>
+<dd>A file that a <a href="#target">target</a> depends on. If any of a target’s <a href="#dependency">dependencies</a> are newer than the target itself, the target needs to be updated. A target’s dependencies are also called its prerequisites. If a target’s dependencies do not exist, then they need to be built first.
 </dd>
 <dt><span id="false-dependency">false dependency</span></dt>
-<dd><p>This can refer to a <a href="#dependency">dependency</a> that is artificial. e.g. a false dependency is introduced if a data analysis script is added as a dependency to the data files that the script analyses.</p>
+<dd>This can refer to a <a href="#dependency">dependency</a> that is artificial. e.g. a false dependency is introduced if a data analysis script is added as a dependency to the data files that the script analyses.
 </dd>
 <dt><span id="function">function</span></dt>
-<dd><p>A built-in <a href="#make">Make</a> utility that performs some operation, for example gets a list of files matching a pattern.</p>
+<dd>A built-in <a href="#make">Make</a> utility that performs some operation, for example gets a list of files matching a pattern.
 </dd>
 <dt><span id="macro">macro</span></dt>
-<dd><p>Used as a synonym for <a href="#variable">variable</a> in certain versions of <a href="#make">Make</a>.</p>
+<dd>Used as a synonym for <a href="#variable">variable</a> in certain versions of <a href="#make">Make</a>.
 </dd>
 <dt><span id="make">Make</span></dt>
-<dd><p>A popular <a href="#build-manager">build manager</a>, from GNU, created in 1977.</p>
+<dd>A popular <a href="#build-manager">build manager</a>, from GNU, created in 1977.
 </dd>
 <dt><span id="makefile">Makefile</span></dt>
-<dd><p>A <a href="#build-file">build file</a> used by <a href="#make">Make</a>, which, by default, are named <code>Makefile</code>.</p>
+<dd>A <a href="#build-file">build file</a> used by <a href="#make">Make</a>, which, by default, are named <code>Makefile</code>.
 </dd>
 <dt><span id="pattern-rule">pattern rule</span></dt>
-<dd><p>A <a href="#rule">rule</a> that specifies a general way to build or update an entire class of files that can be managed the same way. For example, a pattern rule can specify how to compile any C file rather than a single, specific C file, or, to analyse any data file rather than a single, specific data file. Pattern rules typically make use of <a href="#automatic-variable">automatic variables</a> and <a href="#wild-card">wild-cards</a>.</p>
+<dd>A <a href="#rule">rule</a> that specifies a general way to build or update an entire class of files that can be managed the same way. For example, a pattern rule can specify how to compile any C file rather than a single, specific C file, or, to analyse any data file rather than a single, specific data file. Pattern rules typically make use of <a href="#automatic-variable">automatic variables</a> and <a href="#wild-card">wild-cards</a>.
 </dd>
 <dt><span id="phony-target">phony target</span></dt>
-<dd><p>A <a href="#target">target</a> that does not correspond to a file or other object. Phony targets are usually symbolic names for sequences of <a href="#action">actions</a>.</p>
+<dd>A <a href="#target">target</a> that does not correspond to a file or other object. Phony targets are usually symbolic names for sequences of <a href="#action">actions</a>.
 </dd>
 <dt><span id="prerequisite">prerequisite</span></dt>
-<dd><p>A synonym for <a href="#dependency">dependency</a>.</p>
+<dd>A synonym for <a href="#dependency">dependency</a>.
 </dd>
 <dt><span id="reference">reference</span></dt>
-<dd><p>A request that <a href="#make">Make</a> substitutes the name of a <a href="#variable">variable</a> for its value.</p>
+<dd>A request that <a href="#make">Make</a> substitutes the name of a <a href="#variable">variable</a> for its value.
 </dd>
 <dt><span id="rule">rule</span></dt>
-<dd><p>A specification of a <a href="#target">target</a>’s <a href="#dependency">dependencies</a> and what <a href="#action">actions</a> need to be executed to build or update the target.</p>
+<dd>A specification of a <a href="#target">target</a>’s <a href="#dependency">dependencies</a> and what <a href="#action">actions</a> need to be executed to build or update the target.
 </dd>
 <dt><span id="stem">stem</span></dt>
-<dd><p>The part of the target that was matched by the pattern rule. If the target is <code>file.dat</code> and the target pattern was <code>%.dat</code>, then the stem <code>$*</code> is <code>file</code>.</p>
+<dd>The part of the target that was matched by the pattern rule. If the target is <code>file.dat</code> and the target pattern was <code>%.dat</code>, then the stem <code>$*</code> is <code>file</code>.
 </dd>
 <dt><span id="target">target</span></dt>
-<dd><p>A thing to be created or updated, for example a file. Targets can have <a href="#dependency">dependencies</a> that must exist, and be up-to-date, before the target itself can be built or updated.</p>
+<dd>A thing to be created or updated, for example a file. Targets can have <a href="#dependency">dependencies</a> that must exist, and be up-to-date, before the target itself can be built or updated.
 </dd>
 <dt><span id="variable">variable</span></dt>
-<dd><p>A symbolic name for something in a <a href="#makefile">Makefile</a>.</p>
+<dd>A symbolic name for something in a <a href="#makefile">Makefile</a>.
 </dd>
 <dt><span id="wild-card">wild-card</span></dt>
-<dd><p>A pattern that can be specified in <a href="#dependency">dependencies</a> and <a href="#target">targets</a>. If <a href="#make">Make</a> finds a dependency] matching the pattern, then the pattern is substituted into the target. Wild-cards are often used in <a href="#pattern-rule">pattern rules</a>. The Make wild-card is <code>%</code>.</p>
+<dd>A pattern that can be specified in <a href="#dependency">dependencies</a> and <a href="#target">targets</a>. If <a href="#make">Make</a> finds a dependency] matching the pattern, then the pattern is substituted into the target. Wild-cards are often used in <a href="#pattern-rule">pattern rules</a>. The Make wild-card is <code>%</code>.
 </dd>
 </dl>
         </div>
@@ -210,7 +210,7 @@ variables:
       </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/make-novice">Source</a>
         <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>

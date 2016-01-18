@@ -30,7 +30,7 @@
           <h2 class="subtitle">Functions</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -65,7 +65,7 @@ variables:
     @echo TXT_FILES: $(TXT_FILES)</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span><span class="citation">@echo</span></h2>
+<h2 id="echo"><span class="glyphicon glyphicon-pushpin"></span><span class="citation">@echo</span></h2>
 </div>
 <div class="panel-body">
 <p>Make prints actions as it executes them. Using <code>@</code> at the start of an action tells Make not to print this action. So, by using <code>@echo</code> instead of <code>echo</code>, we can see the result of <code>echo</code> (the variable’s value being printed) but not the <code>echo</code> command itself.</p>
@@ -78,7 +78,8 @@ variables:
 <p>Note how <code>sierra.txt</code> is now included too.</p>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target, once we have introduced our function:</p>
 <div class="figure">
-<img src="img/07-functions.png" title="analysis.tar.gz dependencies after introducing a function" alt="analysis.tar.gz dependencies after introducing a function" /><p class="caption">analysis.tar.gz dependencies after introducing a function</p>
+<img src="img/07-functions.png" title="analysis.tar.gz dependencies after introducing a function" alt="analysis.tar.gz dependencies after introducing a function" />
+<p class="caption">analysis.tar.gz dependencies after introducing a function</p>
 </div>
 <p><code>patsubst</code> (‘pattern substitution’) takes a pattern, a replacement string and a list of names in that order; each name in the list that matches the pattern is replaced by the replacement string. Again, we can save the result in a variable. So, for example, we can rewrite our list of text files into a list of data files (files ending in <code>.dat</code>) and save these in a variable:</p>
 <pre class="make"><code>DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))</code></pre>
@@ -158,7 +159,7 @@ COUNT_EXE=python $(COUNT_SRC)</code></pre>
       </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/make-novice">Source</a>
         <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>

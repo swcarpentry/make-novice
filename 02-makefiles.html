@@ -30,7 +30,7 @@
           <h2 class="subtitle">Makefiles</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -120,7 +120,7 @@ dats : isles.dat abyss.dat</code></pre>
 <p>This is an example of a rule that has dependencies that are targets of other rules. When Make runs, it will check to see if the dependencies exist and, if not, will see if rules are available that will create these. If such rules exist it will invoke these first, otherwise Make will raise an error.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Dependencies</h2>
+<h2 id="dependencies"><span class="glyphicon glyphicon-pushpin"></span>Dependencies</h2>
 </div>
 <div class="panel-body">
 <p>The order of rebuilding dependencies is arbitrary. You should not assume that they will be built in the order in which they are listed.</p>
@@ -153,11 +153,12 @@ clean :
         rm -f *.dat</code></pre>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>dats</code> target:</p>
 <div class="figure">
-<img src="img/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" /><p class="caption">Dependencies represented within the Makefile</p>
+<img src="img/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" />
+<p class="caption">Dependencies represented within the Makefile</p>
 </div>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
+<h2 id="write-two-new-rules"><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
 </div>
 <div class="panel-body">
 <p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
@@ -172,14 +173,15 @@ clean :
 </section>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target:</p>
 <div class="figure">
-<img src="img/02-makefile-challenge.png" title="analysis.tar.gz dependencies represented within the Makefile" alt="analysis.tar.gz dependencies represented within the Makefile" /><p class="caption">analysis.tar.gz dependencies represented within the Makefile</p>
+<img src="img/02-makefile-challenge.png" title="analysis.tar.gz dependencies represented within the Makefile" alt="analysis.tar.gz dependencies represented within the Makefile" />
+<p class="caption">analysis.tar.gz dependencies represented within the Makefile</p>
 </div>
         </div>
       </div>
       </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/make-novice">Source</a>
         <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
