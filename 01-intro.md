@@ -66,10 +66,10 @@ $ python plotcount.py isles.dat show
 
 Close the window to exit the plot.
 
-`plotcount.py` can also save the plot as an image (e.g. a JPEG):
+`plotcount.py` can also save the plot as an image (e.g. a PNG file):
 
 ~~~ {.bash}
-$ python plotcount.py isles.dat isles.jpg
+$ python plotcount.py isles.dat isles.png
 ~~~
 
 Together these scripts implement a common workflow:
