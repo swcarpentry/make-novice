@@ -16,16 +16,16 @@ At this point, we have the following Makefile:
 ~~~ {.make}
 include config.mk
 
+# Generate archive file.
+analysis.tar.gz : *.dat $(COUNT_SRC)
+	tar -czf $@ $^
+
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt $(COUNT_SRC)
 	$(COUNT_EXE) $< $*.dat
-
-# Generate archive file.
-analysis.tar.gz : *.dat $(COUNT_SRC)
-	tar -czf $@ $^
 
 .PHONY : clean
 clean :
@@ -115,13 +115,13 @@ Now, `sierra.txt` is processed too.
 With these we can rewrite `clean` and `dats`:
 
 ~~~ {.make}
+.PHONY : dats
+dats : $(DAT_FILES)
+
 .PHONY : clean
 clean :
         rm -f $(DAT_FILES)
         rm -f analysis.tar.gz
-
-.PHONY : dats
-dats : $(DAT_FILES)
 ~~~
 
 Let's check:
@@ -178,10 +178,9 @@ include config.mk
 TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
-.PHONY: variables
-variables:
-	@echo TXT_FILES: $(TXT_FILES)
-	@echo DAT_FILES: $(DAT_FILES)
+# Generate archive file.
+analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
+	tar -czf $@ $^
 
 # Count words.
 .PHONY : dats
@@ -190,14 +189,15 @@ dats : $(DAT_FILES)
 %.dat : books/%.txt $(COUNT_SRC)
 	$(COUNT_EXE) $< $*.dat
 
-# Generate archive file.
-analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
-	tar -czf $@ $^
-
 .PHONY : clean
 clean :
 	rm -f $(DAT_FILES)
 	rm -f analysis.tar.gz
+
+.PHONY: variables
+variables:
+	@echo TXT_FILES: $(TXT_FILES)
+	@echo DAT_FILES: $(DAT_FILES)
 ~~~
 
 Remember, the `config.mk` file contains:

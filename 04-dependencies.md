@@ -14,6 +14,10 @@ minutes: 0
 Our Makefile now looks like this:
 
 ~~~ {.make}
+# Generate archive file.
+analysis.tar.gz : *.dat
+	tar -czf $@ $^
+
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
@@ -26,10 +30,6 @@ abyss.dat : books/abyss.txt
 
 last.dat : books/last.txt
 	python wordcount.py $< $@
-
-# Generate archive file.
-analysis.tar.gz : *.dat
-	tar -czf $@ $^
 
 .PHONY : clean
 clean :

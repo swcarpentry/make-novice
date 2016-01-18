@@ -1,4 +1,11 @@
+# Generate archive file.
+analysis.tar.gz : isles.dat abyss.dat last.dat
+	tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+
 # Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
 isles.dat : books/isles.txt
 	python wordcount.py books/isles.txt isles.dat
 
@@ -12,10 +19,3 @@ last.dat : books/last.txt
 clean :
 	rm -f *.dat
 	rm -f analysis.tar.gz
-
-.PHONY : dats
-dats : isles.dat abyss.dat last.dat
-
-analysis.tar.gz : isles.dat abyss.dat last.dat
-	tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
-

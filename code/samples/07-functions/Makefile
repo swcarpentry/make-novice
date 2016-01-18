@@ -3,7 +3,14 @@ include config.mk
 TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
+# Generate archive file.
+analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
+	tar -czf $@ $^
+
 # Count words.
+.PHONY : dats
+dats : $(DAT_FILES)
+
 %.dat : books/%.txt $(COUNT_SRC)
 	$(COUNT_EXE) $< $*.dat
 
@@ -11,12 +18,6 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 clean :
 	rm -f $(DAT_FILES)
 	rm -f analysis.tar.gz
-
-.PHONY : dats
-dats : $(DAT_FILES)
-
-analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
-	tar -czf $@ $^
 
 .PHONY : variables
 variables:
