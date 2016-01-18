@@ -16,6 +16,10 @@ minutes: 0
 After the exercise at the end of the previous part, our Makefile look like this:
 
 ~~~ {.make}
+# Generate archive file.
+analysis.tar.gz : isles.dat abyss.dat last.dat
+        tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
@@ -28,10 +32,6 @@ abyss.dat : books/abyss.txt
 
 last.dat : books/last.txt
         python wordcount.py books/last.txt last.dat
-
-# Generate archive file.
-analysis.tar.gz : isles.dat abyss.dat last.dat
-        tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
 
 .PHONY : clean
 clean :

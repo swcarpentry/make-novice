@@ -232,7 +232,10 @@ then we get:
 rm -f *.dat
 ~~~
 
-We can add a similar command to create all the data files:
+We can add a similar command to create all the data files. We can put
+this at the top of our Makefile so that it is the [default
+target](reference.html#default-target), which is executed by default 
+if no target is given to the `make` command:
 
 ~~~ {.make}
 .PHONY : dats
@@ -318,7 +321,9 @@ The following figure shows the dependencies embodied within our Makefile, involv
 > * Invoke the action `tar -czf analysis.tar.gz isles.dat abyss.dat
 >   last.dat` 
 >
-> Update `clean` to remove `analysis.tar.gz`.
+> Put this rule at the top of the Makefile so that it is the default target.
+>
+> Update `clean` so that it removes `analysis.tar.gz`.
 
 The following figure shows the dependencies embodied within our Makefile, involved in building the `analysis.tar.gz` target:
 

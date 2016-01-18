@@ -4,11 +4,21 @@ TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 JPG_FILES=$(patsubst books/%.txt, %.jpg, $(TXT_FILES))
 
+# Generate archive file.
+analysis.tar.gz : $(DAT_FILES) $(JPG_FILES) $(COUNT_SRC) $(PLOT_SRC)
+	tar -czf $@ $^
+
 # Count words.
+.PHONY : dats
+dats : $(DAT_FILES)
+
 %.dat : books/%.txt $(COUNT_SRC)
 	$(COUNT_EXE) $< $*.dat
 
 # Plot word counts.
+.PHONY : jpgs
+jpgs : $(JPG_FILES)
+
 %.jpg : %.dat $(PLOT_SRC)
 	$(PLOT_EXE) $*.dat $*.jpg
 
@@ -17,15 +27,6 @@ clean :
 	rm -f $(DAT_FILES)
 	rm -f $(JPG_FILES)
 	rm -f analysis.tar.gz
-
-.PHONY : dats
-dats : $(DAT_FILES)
-
-.PHONY : jpgs
-jpgs : $(JPG_FILES)
-
-analysis.tar.gz : $(DAT_FILES) $(JPG_FILES) $(COUNT_SRC) $(PLOT_SRC)
-	tar -czf $@ $^
 
 .PHONY : variables
 variables:

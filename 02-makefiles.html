@@ -114,7 +114,7 @@ clean :
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean</code></pre>
 <p>then we get:</p>
 <pre class="outputs"><code>rm -f *.dat</code></pre>
-<p>We can add a similar command to create all the data files:</p>
+<p>We can add a similar command to create all the data files. We can put this at the top of our Makefile so that it is the <a href="reference.html#default-target">default target</a>, which is executed by default if no target is given to the <code>make</code> command:</p>
 <pre class="make"><code>.PHONY : dats
 dats : isles.dat abyss.dat</code></pre>
 <p>This is an example of a rule that has dependencies that are targets of other rules. When Make runs, it will check to see if the dependencies exist and, if not, will see if rules are available that will create these. If such rules exist it will invoke these first, otherwise Make will raise an error.</p>
@@ -168,7 +168,8 @@ clean :
 <li>Depend upon each of the three <code>.dat</code> files.</li>
 <li>Invoke the action <code>tar -czf analysis.tar.gz isles.dat abyss.dat   last.dat</code></li>
 </ul>
-<p>Update <code>clean</code> to remove <code>analysis.tar.gz</code>.</p>
+<p>Put this rule at the top of the Makefile so that it is the default target.</p>
+<p>Update <code>clean</code> so that it removes <code>analysis.tar.gz</code>.</p>
 </div>
 </section>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target:</p>

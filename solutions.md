@@ -23,6 +23,10 @@ minutes: 0
 > Update `clean` to remove `analysis.tar.gz`.
 
 ~~~ {.bash}
+# Generate archive file.
+analysis.tar.gz: isles.dat abyss.dat last.dat
+    	tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
@@ -35,9 +39,6 @@ abyss.dat : books/abyss.txt
 
 last.dat: books/last.txt
     	python wordcount.py books/last.txt last.dat
-
-analysis.tar.gz: isles.dat abyss.dat last.dat
-    	tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
 
 .PHONY : clean
 clean :
@@ -96,6 +97,10 @@ You will find that the `.dat` files as well as `analysis.tar.gz` are recreated.
 > current rule').
 
 ~~~ {.bash}
+# Generate archive file.
+analysis.tar.gz: *.dat
+    	tar -czf $@ $^
+
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
@@ -108,9 +113,6 @@ abyss.dat : books/abyss.txt
 
 last.dat: books/last.txt
     	python wordcount.py $< $@
-
-analysis.tar.gz: *.dat
-    	tar -czf $@ $^
 
 .PHONY : clean
 clean :
@@ -127,19 +129,19 @@ clean :
 > reference the variables `COUNT_SRC` and `COUNT_EXE`.
 
 ~~~ {.bash}
-# Count words.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 
+# Generate archive file.
+analysis.tar.gz : *.dat COUNT_SRC
+    tar -czf $@ $^
+
+# Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt COUNT_SRC
     $(COUNT_EXE) $< $*.dat
-
-# Generate archive file.
-analysis.tar.gz : *.dat COUNT_SRC
-    tar -czf $@ $^
 
 .PHONY : clean
 clean :
@@ -159,8 +161,8 @@ clean :
 >   `analysis.tar.gz`). 
 
 ~~~{.bash}
- # config.mk
- # Count words script.
+# config.mk
+# Count words script.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 
@@ -177,11 +179,21 @@ TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 JPG_FILES=$(patsubst books/%.txt, %.jpg, $(TXT_FILES))
 
+# Generate archive file.
+analysis.tar.gz : $(DAT_FILES) $(JPG_FILES) $(COUNT_SRC) $(PLOT_SRC)
+    tar -czf $@ $^
+
 # Count words.
+.PHONY : dats
+dats : $(DAT_FILES)
+
 %.dat : books/%.txt $(COUNT_SRC)
     $(COUNT_EXE) $< $*.dat
 
 # Plot word counts.
+.PHONY : jpgs
+jpgs : $(JPG_FILES)
+
 %.jpg : %.dat $(PLOT_SRC)
     $(PLOT_EXE) $*.dat $*.jpg
 
@@ -191,19 +203,9 @@ clean :
     rm -f $(JPG_FILES)
     rm -f analysis.tar.gz
 
-.PHONY : dats
-dats : $(DAT_FILES)
-
-.PHONY : jpgs
-jpgs : $(JPG_FILES)
-
-analysis.tar.gz : $(DAT_FILES) $(JPG_FILES) $(COUNT_SRC) $(PLOT_SRC)
-    tar -czf $@ $^
-
 .PHONY : variables
 variables:
     @echo TXT_FILES: $(TXT_FILES)
     @echo DAT_FILES: $(DAT_FILES)
     @echo JPG_FILES: $(JPG_FILES)
 ~~~
-
