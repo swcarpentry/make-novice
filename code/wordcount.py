@@ -78,9 +78,8 @@ def word_count_dict_to_tuples(counts, decrease=True):
     count). The list is ordered by decreasing count, unless increase is
     True.
     """
-    return sorted(counts.items(), key=lambda key_value: key_value[1],
+    return sorted(list(counts.items()), key=lambda key_value: key_value[1],
                   reverse=decrease)
-
 
 def filter_word_counts(counts, min_length=1):
     """
