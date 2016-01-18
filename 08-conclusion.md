@@ -23,13 +23,13 @@ as a form of documentation, recording dependencies between code,
 scripts, tools, configurations, raw data, derived data, plots and
 papers.
 
-> ## Extend the Makefile to create JPEGs {.challenge}
+> ## Extend the Makefile to create PNGs {.challenge}
 >
 > Add new rules, update existing rules, and add new macros to:
 > 
-> * Create `.jpg` files from `.dat` files using `plotcount.py`.
-> * Add the script and `.jpg` files to the archive.
-> * Remove all auto-generated files (`.dat`, `.jpg`,
+> * Create `.png` files from `.dat` files using `plotcount.py`.
+> * Add the script and `.png` files to the archive.
+> * Remove all auto-generated files (`.dat`, `.png`,
 >   `analysis.tar.gz`). 
 
 The following figure shows the dependencies involved in building the `analysis.tar.gz` target, once we've added support for images:

@@ -151,13 +151,13 @@ clean :
 
 ## Lesson 08-variables
 
-> ## Extend the Makefile to create JPEGs {.challenge}
+> ## Extend the Makefile to create PNGs {.challenge}
 >
 > Add new rules, update existing rules, and add new macros to:
 > 
-> * Create `.jpg` files from `.dat` files using `plotcount.py`.
-> * Add the script and `.jpg` files to the archive.
-> * Remove all auto-generated files (`.dat`, `.jpg`,
+> * Create `.png` files from `.dat` files using `plotcount.py`.
+> * Add the script and `.png` files to the archive.
+> * Remove all auto-generated files (`.dat`, `.png`,
 >   `analysis.tar.gz`). 
 
 ~~~{.bash}
@@ -177,10 +177,10 @@ include config.mk
 
 TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
-JPG_FILES=$(patsubst books/%.txt, %.jpg, $(TXT_FILES))
+PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 
 # Generate archive file.
-analysis.tar.gz : $(DAT_FILES) $(JPG_FILES) $(COUNT_SRC) $(PLOT_SRC)
+analysis.tar.gz : $(DAT_FILES) $(PNG_FILES) $(COUNT_SRC) $(PLOT_SRC)
     tar -czf $@ $^
 
 # Count words.
@@ -191,21 +191,21 @@ dats : $(DAT_FILES)
     $(COUNT_EXE) $< $*.dat
 
 # Plot word counts.
-.PHONY : jpgs
-jpgs : $(JPG_FILES)
+.PHONY : pngs
+pngs : $(PNG_FILES)
 
-%.jpg : %.dat $(PLOT_SRC)
-    $(PLOT_EXE) $*.dat $*.jpg
+%.png : %.dat $(PLOT_SRC)
+    $(PLOT_EXE) $*.dat $*.png
 
 .PHONY : clean
 clean :
     rm -f $(DAT_FILES)
-    rm -f $(JPG_FILES)
+    rm -f $(PNG_FILES)
     rm -f analysis.tar.gz
 
 .PHONY : variables
 variables:
     @echo TXT_FILES: $(TXT_FILES)
     @echo DAT_FILES: $(DAT_FILES)
-    @echo JPG_FILES: $(JPG_FILES)
+    @echo PNG_FILES: $(PNG_FILES)
 ~~~
