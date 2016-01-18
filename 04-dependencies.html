@@ -30,7 +30,7 @@
           <h2 class="subtitle">Dependencies on data and code</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -79,11 +79,12 @@ python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat</code></pre>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target, after adding <code>wordcount.py</code> as a dependency to the <code>.dat</code> files:</p>
 <div class="figure">
-<img src="img/04-dependencies.png" title="analysis.tar.gz dependencies after adding wordcount.py as a dependency" alt="analysis.tar.gz dependencies after adding wordcount.py as a dependency" /><p class="caption">analysis.tar.gz dependencies after adding wordcount.py as a dependency</p>
+<img src="img/04-dependencies.png" title="analysis.tar.gz dependencies after adding wordcount.py as a dependency" alt="analysis.tar.gz dependencies after adding wordcount.py as a dependency" />
+<p class="caption">analysis.tar.gz dependencies after adding wordcount.py as a dependency</p>
 </div>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Why don’t the <code>.txt</code> files depend on <code>wordcount.py</code>?</h2>
+<h2 id="why-dont-the-.txt-files-depend-on-wordcount.py"><span class="glyphicon glyphicon-pushpin"></span>Why don’t the <code>.txt</code> files depend on <code>wordcount.py</code>?</h2>
 </div>
 <div class="panel-body">
 <p><code>.txt</code> files are input files and have no dependencies. To make these depend on <code>wordcount.py</code> would introduce a <a href="reference.html#false-dependency">false dependency</a>.</p>
@@ -101,7 +102,7 @@ python wordcount.py books/last.txt last.dat</code></pre>
       </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/make-novice">Source</a>
         <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
