@@ -131,7 +131,5 @@ all share the same fundamental concepts as Make.
 > Make's fundamental concepts are common across build tools.
 
 [GNU Make](http://www.gnu.org/software/make/) is a free, fast, 
-well-documented, very popular and highly extended one of some 
-Make implements. From now on, we will focus on it, then when 
-we say Make, we mean GNU Make.
-
+well-documented, and very popular Make implementation. From now on, 
+we will focus on it, and when we say Make, we mean GNU Make.
