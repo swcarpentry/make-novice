@@ -2,7 +2,7 @@
 layout: page
 title: Automation and Make
 subtitle: Introduction
-minutes: 0
+minutes: 30
 ---
 
 > ## Learning Objectives {.objectives}
@@ -11,20 +11,33 @@ minutes: 0
 > * Explain why Make differs from shell scripts.
 > * Name other popular build tools.
 
-Suppose we have a script, `wordcount.py`, that reads in a text file,
-counts the words in this text file, and outputs a data file:
+Let's imagine that we're interested in
+testing Zipf's Law in some of our favorite books.
+
+> ## Zipf's Law {.callout}
+>
+> The most frequently-occurring word occurs approximately twice as
+> often as the second most frequent word. This is [Zipf's
+> Law](http://en.wikipedia.org/wiki/Zipf%27s_law).
+
+We've compiled our raw data, the books we want to analyze
+(check out e.g. `head books/isles.txt`)
+and have prepared several Python scripts that together make up our
+analysis pipeline.
+
+The first step is to count the frequency of each word in the book.
 
 ~~~ {.bash}
 $ python wordcount.py books/isles.txt isles.dat
 ~~~
 
-If we view the first 5 rows of the data file using `head`,
+Let's take a quick peek at the result.
 
 ~~~ {.bash}
 $ head -5 isles.dat
 ~~~
 
-we can see that the file consists of one row per word. 
+This shows us the top 5 lines in the output file:
 
 ~~~ {.output}
 the 3822 6.7371760973
@@ -34,9 +47,12 @@ to 1479 2.60708619778
 a 1308 2.30565838181
 ~~~
 
+We can see that the file consists of one row per word.
 Each row shows the word itself, the number of occurrences of that
 word, and the number of occurrences as a percentage of the total
-number of words in the text file. As another example:
+number of words in the text file.
+
+We can do the same thing for a different book:
 
 ~~~ {.bash}
 $ python wordcount.py books/abyss.txt abyss.dat
@@ -51,14 +67,10 @@ a 1594 2.50471401634
 to 1515 2.38057825267
 ~~~
 
-> ## Zipf's Law {.callout}
->
-> The most frequently-occurring word occurs approximately twice as
-> often as the second most frequent word. This is [Zipf's
-> Law](http://en.wikipedia.org/wiki/Zipf%27s_law). 
 
-Suppose we also have a script, `plotcount.py`, that reads in a data
-file and plots the 10 most frequently occurring words:
+Finally, let's visualize the results.
+The script `plotcount.py` reads in a data
+file and plots the 10 most frequently occurring words.
 
 ~~~ {.bash}
 $ python plotcount.py isles.dat show
@@ -80,15 +92,102 @@ Together these scripts implement a common workflow:
 4. Plot a graph of the analysis results.
 5. Save the graph as an image, so we can put it in a paper.
 
+To wrap it all up, let's archive our results to share with a collaborator.
+
+~~~ {.bash}
+tar -czf analysis.tar.gz isles.dat abyss.dat
+~~~
+
 Running `wordcount.py` and `plotcount.py` at the shell prompt, as we
 have been doing, is fine for one or two files. If, however, we had 5
-or 10 or 20 text files, this would quickly become monotonous. We could
-write a shell script to loop over our text files and create data files
-and images for each in turn, but this too can cause problems. If a
-text file changes then we need to re-run our analysis and recreate our
-graph, but only for the text file that changed, not all of
-them. Furthermore, we only want do this if and only if the text file
-has changed.
+or 10 or 20 text files,
+or if the number of steps in the pipeline were to expand, this could turn into
+a lot of work.
+Plus, no one wants to sit and wait for a command to finish, even just for 30
+seconds.
+
+The most common solution to the tedium of data processing is to write
+a master script that runs the whole pipeline from start to finish.
+
+Using your text editor of choice (e.g. nano), add the following to a file named
+`run_pipeline.sh`.
+
+~~~ {.bash}
+# USAGE: bash run_pipeline.sh
+# to produce plots for isles and abyss.
+
+python wordcount.py isles.txt isles.dat
+python wordcount.py abyss.txt abyss.dat
+
+python plotcount.py isles.dat isles.png
+python plotcount.py abyss.dat abyss.png
+
+tar -czf analysis.tar.gz isles.dat abyss.dat
+~~~
+
+This master script solved several problems in computational reproducibility:
+
+1.  It explicitly documents our pipeline,
+    making communication with colleagues (and our future selves) more efficient.
+2.  It allows us to type a single command, `bash run_pipeline.sh`, to
+    reproduce the full analysis.
+3.  It prevents us from _repeating_ typos or mistakes.
+    You might not get it right the first time, but once you fix something
+    it'll stay fixed.
+
+Despite these benefits it has a few shortcomings.
+
+Let's adjust the width of the bars in our plot produced by `plotcount.py`.
+Edit the script so that the bars are 0.8 units wide instead of 1 unit.
+(Hint: replace `width = 1.0` with `width = 1.0` in the definition of
+`plot_word_counts`.)
+
+Now we want to recreate our figures.
+We _could_ just `bash run_pipeline.sh` again.
+That would work, but it could also be a big pain if counting words takes
+more than a few seconds.
+The word counting routine hasn't changed; we shouldn't need to recreate
+those files.
+
+Alternatively, we could manually rerun the plotting for each word-count file.
+(Experienced shell scripters can make this easier on themselves using a
+for-loop.)
+
+~~~ {.bash}
+for book in abyss isles; do
+    python plotcount.py $book.dat $book.png
+done
+
+tar -czf analysis.tar.gz isles.dat abyss.dat
+~~~
+
+With this approach, however,
+we don't get many of the benefits of having a master script in the first place.
+
+Another popular option is to comment out a subset of the lines in
+`run_pipeline.sh`:
+
+~~~ {.bash}
+# USAGE: bash run_pipeline.sh
+# to produce plots for isles and abyss.
+
+#python wordcount.py isles.txt isles.dat
+#python wordcount.py abyss.txt abyss.dat
+
+python plotcount.py isles.dat isles.png
+python plotcount.py abyss.dat abyss.png
+
+tar -czf analysis.tar.gz isles.dat abyss.dat
+~~~
+
+Followed by `bash run_pipeline.sh`.
+
+But this process, and subsequently undoing it,
+can be a hassle and source of errors in complicated pipelines.
+
+What we really want is an executable _description_ of our pipeline that
+allows software to do the tricky part for us:
+figuring out what steps need to be rerun.
 
 Make was developed by 
 Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
