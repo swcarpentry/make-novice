@@ -116,8 +116,8 @@ Using your text editor of choice (e.g. nano), add the following to a file named
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss.
 
-python wordcount.py isles.txt isles.dat
-python wordcount.py abyss.txt abyss.dat
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
 
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
@@ -139,7 +139,7 @@ Despite these benefits it has a few shortcomings.
 
 Let's adjust the width of the bars in our plot produced by `plotcount.py`.
 Edit the script so that the bars are 0.8 units wide instead of 1 unit.
-(Hint: replace `width = 1.0` with `width = 1.0` in the definition of
+(Hint: replace `width = 1.0` with `width = 0.8` in the definition of
 `plot_word_counts`.)
 
 Now we want to recreate our figures.
@@ -171,8 +171,8 @@ Another popular option is to comment out a subset of the lines in
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss.
 
-#python wordcount.py isles.txt isles.dat
-#python wordcount.py abyss.txt abyss.dat
+#python wordcount.py books/isles.txt isles.dat
+#python wordcount.py books/abyss.txt abyss.dat
 
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
