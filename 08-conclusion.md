@@ -31,6 +31,8 @@ papers.
 > * Add the script and `.png` files to the archive.
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `analysis.tar.gz`). 
+>
+> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` that will build what the Makefile has been written to build (e.g. in our case, `analysis.tar.gz`). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has a single dependency but no actions).
 
 The following figure shows the dependencies involved in building the `analysis.tar.gz` target, once we've added support for images:
 
