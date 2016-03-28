@@ -39,7 +39,17 @@ clean :
 
 Our data files are a product not only of our text files but the
 script, `wordcount.py`, that processes the text files and creates the
-data files. We should add `wordcount.py` as a dependency of each of our
+data files. A change to `wordcount.py` (e.g. add a new column of summary data or remove an existing one) results in changes to the `.dat` files it outputs. So, let's pretend to edit `wordcount.py`, using `touch`, and re-run Make:
+
+~~~ {.bash}
+$ make dats
+$ touch wordcount.py
+$ make dats
+~~~
+
+Nothing happens! Though we've updated `wordcount.py` our data files are not updated because our rules for creating `.dat` files don't record any dependencies on `wordcount.py`.
+
+We need to add `wordcount.py` as a dependency of each of our
 data files also:
 
 ~~~ {.make}
