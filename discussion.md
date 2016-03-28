@@ -18,7 +18,8 @@ Execution](https://www.gnu.org/software/make/manual/html_node/Parallel.html).
 
 ## Make and reproducible research
 
-Blog articles and tutorials on automating data analysis using Make:
+Blog articles, papers, and tutorials on automating commonly
+occurring research activities using Make:
 
 * [minimal make](http://kbroman.org/minimal_make/) by Karl Broman. A
   minimal tutorial on using Make with R and LaTeX to automate data
@@ -35,3 +36,8 @@ Blog articles and tutorials on automating data analysis using Make:
   Reproducibility](https://www.youtube.com/watch?v=_F5f0qi-aEc)
   video lesson, and accompanying
   [example](https://github.com/sjackman/makefile-example).
+* Askren MK, McAllister-Day TK, Koh N, Mestre Z, Dines JN, Korman BA,
+  Melhorn SJ, Peterson DJ, Peverill M, Qin X, Rane SD, Reilly MA,
+  Reiter MA, Sambrook KA, Woelfer KA, Grabowski TJ and Madhyastha 
+  TM (2016) [Using Make for Reproducible and Parallel Neuroimaging
+  Workflow and Quality-Assurance](http://journal.frontiersin.org/article/10.3389/fninf.2016.00002/full). Front. Neuroinform. 10:2. doi: 10.3389/fninf.2016.00002 
