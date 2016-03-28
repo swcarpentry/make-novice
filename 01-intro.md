@@ -25,7 +25,21 @@ We've compiled our raw data, the books we want to analyze
 and have prepared several Python scripts that together make up our
 analysis pipeline.
 
-The first step is to count the frequency of each word in the book.
+Our directory has the Python scripts and data files we
+we will be working with:
+
+~~~ {.output}
+|- books
+|  |- abyss.txt
+|  |- isles.txt
+|  |- last.txt
+|  |- LICENSE_TEXTS.md
+|  |- sierra.txt
+|- plotcount.py
+|- wordcount.py
+~~~
+
+The first step is to count the frequency of each word in a book.
 
 ~~~ {.bash}
 $ python wordcount.py books/isles.txt isles.dat
@@ -67,7 +81,6 @@ a 1594 2.50471401634
 to 1515 2.38057825267
 ~~~
 
-
 Finally, let's visualize the results.
 The script `plotcount.py` reads in a data
 file and plots the 10 most frequently occurring words.
@@ -78,7 +91,7 @@ $ python plotcount.py isles.dat show
 
 Close the window to exit the plot.
 
-`plotcount.py` can also save the plot as an image (e.g. a PNG file):
+`plotcount.py` can also create the plot as an image file (e.g. a PNG file):
 
 ~~~ {.bash}
 $ python plotcount.py isles.dat isles.png
@@ -107,9 +120,9 @@ Plus, no one wants to sit and wait for a command to finish, even just for 30
 seconds.
 
 The most common solution to the tedium of data processing is to write
-a master script that runs the whole pipeline from start to finish.
+a shell script that runs the whole pipeline from start to finish.
 
-Using your text editor of choice (e.g. nano), add the following to a file named
+Using your text editor of choice (e.g. nano), add the following to a new file named
 `run_pipeline.sh`.
 
 ~~~ {.bash}
@@ -122,10 +135,11 @@ python wordcount.py books/abyss.txt abyss.dat
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
 
+# Archive the results so we can share them with a colleague.
 tar -czf analysis.tar.gz isles.dat abyss.dat
 ~~~
 
-This master script solved several problems in computational reproducibility:
+This shell script solved several problems in computational reproducibility:
 
 1.  It explicitly documents our pipeline,
     making communication with colleagues (and our future selves) more efficient.
@@ -138,7 +152,7 @@ This master script solved several problems in computational reproducibility:
 Despite these benefits it has a few shortcomings.
 
 Let's adjust the width of the bars in our plot produced by `plotcount.py`.
-Edit the script so that the bars are 0.8 units wide instead of 1 unit.
+Edit `plotcount.py` so that the bars are 0.8 units wide instead of 1 unit.
 (Hint: replace `width = 1.0` with `width = 0.8` in the definition of
 `plot_word_counts`.)
 
@@ -158,11 +172,12 @@ for book in abyss isles; do
     python plotcount.py $book.dat $book.png
 done
 
+# Archive the results so we can share them with a colleague.
 tar -czf analysis.tar.gz isles.dat abyss.dat
 ~~~
 
 With this approach, however,
-we don't get many of the benefits of having a master script in the first place.
+we don't get many of the benefits of having a shell script in the first place.
 
 Another popular option is to comment out a subset of the lines in
 `run_pipeline.sh`:
@@ -171,23 +186,28 @@ Another popular option is to comment out a subset of the lines in
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss.
 
+# These lines are commented out because they don't need to be rerun.
 #python wordcount.py books/isles.txt isles.dat
 #python wordcount.py books/abyss.txt abyss.dat
 
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
 
+# Archive the results so we can share them with a colleague.
 tar -czf analysis.tar.gz isles.dat abyss.dat
 ~~~
 
-Followed by `bash run_pipeline.sh`.
+Then, we would run our modified shell script using `bash run_pipeline.sh`.
 
-But this process, and subsequently undoing it,
+But commenting out these lines, and subsequently uncommenting them,
 can be a hassle and source of errors in complicated pipelines.
 
 What we really want is an executable _description_ of our pipeline that
 allows software to do the tricky part for us:
 figuring out what steps need to be rerun.
+
+
+
 
 Make was developed by 
 Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
@@ -195,14 +215,15 @@ widespread use today. Make can execute the commands needed to run our
 analysis and plot our results. Like shell scripts it allows us to
 execute complex sequences of commands via a single shell
 command. Unlike shell scripts it explicitly records the dependencies
-between files and so can determine when to recreate our data files or
+between files - what files are needed to create what other files -
+and so can determine when to recreate our data files or
 image files, if our text files change. Make can be used for any
 commands that follow the general pattern of processing files to create
 new files, for example: 
 
 * Run analysis scripts on raw data files to get data files that
-  summarise the raw data. 
-* Run visualisation scripts on data files to produce plots.
+  summarise the raw data (e.g. creating files with word counts from book text). 
+* Run visualisation scripts on data files to produce plots (e.g. creating images of word counts).
 * Parse and combine text files and plots to create papers.
 * Compile source code into executable programs or libraries.
 
