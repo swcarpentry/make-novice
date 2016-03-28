@@ -25,6 +25,12 @@ rule](reference.html#pattern-rule) which can be used to build any
 
 `%` is a Make [wild-card](reference.html#wild-card). `$*` is a special variable which gets replaced by the [stem](reference.html#stem) with which the rule matched.
 
+This rule can be interpreted as:
+
+> In order to build a file named `[something].dat` (the target)
+> find a file named `books/[that same something].txt` (the prerequisite)
+> and run `wordcount.py [the prerequisite] [the target]`.
+
 If we re-run Make,
 
 ~~~ {.bash}
