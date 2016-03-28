@@ -43,8 +43,15 @@ Our Makefile has a lot of duplication. For example, the names of text
 files and data files are repeated in many places throughout the
 Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
-Makefile but forget the rename it elsewhere. Let us set about removing
-some of this repetition.
+Makefile but forget the rename it elsewhere.
+
+> ## D.R.Y. (Don't Repeat Yourself) {.callout}
+>
+> In many programming languages, the bulk of the language features are there  to allow the programmer to describe long-winded computational routines as short, expressive, beautiful code.
+> Features in Python or R or Java like user-defined variables and functions are useful in part because they mean we don't have to write out (or think about) all of the details over and over again.
+> This good habit of writing things out only once is known as the "Don't Repeat Yourself" priciple or D.R.Y.
+
+Let us set about removing some of the repetition from our Makefile.
 
 In our `analysis.tar.gz` rule we duplicate the data file names and the
 archive name:
