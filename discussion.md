@@ -33,5 +33,5 @@ Blog articles and tutorials on automating data analysis using Make:
   by Zachary Jones. Using Make with Python and LaTeX. 
 * Shaun Jackman's [Using Make to increase Automation &
   Reproducibility](https://www.youtube.com/watch?v=_F5f0qi-aEc)
-  lesson, and accompanying
+  video lesson, and accompanying
   [example](https://github.com/sjackman/makefile-example).
