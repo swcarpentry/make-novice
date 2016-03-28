@@ -34,11 +34,13 @@ make: `isles.dat' is up to date.
 ~~~
 
 To see the actions Make will run when building a target, without
-running the actions, use the `-n` flag e.g.
+running the actions, use the `--dry-run` flag e.g.
 
 ~~~ {.bash}
-$ make -n isles.dat
+$ make -dry-run isles.dat
 ~~~
+
+Alternatively, use the abbreviation `-n`.
 
 ## Make trouble-shooting
 
@@ -252,6 +254,11 @@ false dependency
 function
 :   A built-in [Make](#make) utility that performs some operation, for
     example gets a list of files matching a pattern.
+
+incremental build
+:   The feature of a [build manager](#build-manager) by
+    which it only rebuilds files that, either directory
+    or indirectly, depend on a file that was changed.
 
 macro
 :   Used as a synonym for [variable](#variable) in certain versions of
