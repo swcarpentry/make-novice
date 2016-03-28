@@ -231,7 +231,7 @@ rule has no dependencies, assumes that `clean` has been built and is
 up-to-date and so does not execute the rule's actions. As we are using
 `clean` as a short-hand, we need to tell Make to always execute this
 rule if we run `make clean`, by telling Make that this is a
-[phony target](#reference.html#phony-target), that it does not build
+[phony target](reference.html#phony-target), that it does not build
 anything. This we do by marking the target as `.PHONY`:
 
 ~~~ {.make}
