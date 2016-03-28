@@ -36,6 +36,9 @@ occurring research activities using Make:
   Reproducibility](https://www.youtube.com/watch?v=_F5f0qi-aEc)
   video lesson, and accompanying
   [example](https://github.com/sjackman/makefile-example).
+* Lars Yencken's [Driving experiments with make](http://lifesum.github.io/posts/2016/01/14/make-experiments/). Using Make 
+  to sandbox Python dependencies and pull down data
+  sets from Amazon S3.
 * Askren MK, McAllister-Day TK, Koh N, Mestre Z, Dines JN, Korman BA,
   Melhorn SJ, Peterson DJ, Peverill M, Qin X, Rane SD, Reilly MA,
   Reiter MA, Sambrook KA, Woelfer KA, Grabowski TJ and Madhyastha 
