@@ -28,8 +28,8 @@ rule](reference.html#pattern-rule) which can be used to build any
 This rule can be interpreted as:
 
 > In order to build a file named `[something].dat` (the target)
-> find a file named `books/[that same something].txt` (the prerequisite)
-> and run `wordcount.py [the prerequisite] [the target]`.
+> find a file named `books/[that same something].txt` (the dependency)
+> and run `wordcount.py [the dependency] [the target]`.
 
 If we re-run Make,
 
