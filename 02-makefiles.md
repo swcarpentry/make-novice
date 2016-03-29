@@ -24,7 +24,7 @@ isles.dat : books/isles.txt
 
 This is a [build file](reference.html#build-file), which for
 Make is called a [Makefile](reference.html#makefile) - a file executed
-by Make. It is pretty reminiscent of one of the lines from our shell script.
+by Make. Note how it resembles one of the lines from our shell script.
 
 Let us go through each line in turn:
 
