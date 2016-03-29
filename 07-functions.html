@@ -72,7 +72,7 @@ variables:
 </div>
 </aside>
 <p>If we run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
 <p>We get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt</code></pre>
 <p>Note how <code>sierra.txt</code> is now included too.</p>
@@ -89,7 +89,7 @@ variables:
     @echo TXT_FILES: $(TXT_FILES)
     @echo DAT_FILES: $(DAT_FILES)</code></pre>
 <p>If we run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat</code></pre>
@@ -103,8 +103,8 @@ clean :
         rm -f $(DAT_FILES)
         rm -f analysis.tar.gz</code></pre>
 <p>Let’s check:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> dats</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats</code></pre></div>
 <p>We get:</p>
 <pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
@@ -114,8 +114,8 @@ python wordcount.py books/sierra.txt sierra.dat</code></pre>
 <pre class="make"><code>analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
     tar -czf $@ $^</code></pre>
 <p>If we re-run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>We get:</p>
 <pre class="output"><code>$ make analysis.tar.gz
 python wordcount.py books/abyss.txt abyss.dat

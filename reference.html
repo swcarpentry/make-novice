@@ -30,16 +30,17 @@
           <h2 class="subtitle">Reference</h2>
           <h2 id="running-make">Running Make</h2>
 <p>To run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre></div>
 <p>Make will look for a Makefile called <code>Makefile</code> and will build the default target, the first target in the Makefile.</p>
 <p>To use a Makefile with a different name, use the <code>-f</code> flag e.g.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f build-files/analyse.mk</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f build-files/analyse.mk</code></pre></div>
 <p>To build a specific target, provide it as an argument e.g.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.dat</code></pre></div>
 <p>If the target is up-to-date, Make will print a message like:</p>
 <pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
-<p>To see the actions Make will run when building a target, without running the actions, use the <code>-n</code> flag e.g.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -n isles.dat</code></pre>
+<p>To see the actions Make will run when building a target, without running the actions, use the <code>--dry-run</code> flag e.g.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -dry-run isles.dat</code></pre></div>
+<p>Alternatively, use the abbreviation <code>-n</code>.</p>
 <h2 id="make-trouble-shooting">Make trouble-shooting</h2>
 <p>If Make prints a message like,</p>
 <pre class="error"><code>Makefile:3: *** missing separator.  Stop.</code></pre>
@@ -167,6 +168,9 @@ variables:
 </dd>
 <dt><span id="function">function</span></dt>
 <dd>A built-in <a href="#make">Make</a> utility that performs some operation, for example gets a list of files matching a pattern.
+</dd>
+<dt><span id="incremental-build">incremental build</span></dt>
+<dd>The feature of a <a href="#build-manager">build manager</a> by which it only rebuilds files that, either directory or indirectly, depend on a file that was changed.
 </dd>
 <dt><span id="macro">macro</span></dt>
 <dd>Used as a synonym for <a href="#variable">variable</a> in certain versions of <a href="#make">Make</a>.

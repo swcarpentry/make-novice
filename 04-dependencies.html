@@ -61,7 +61,12 @@ last.dat : books/last.txt
 clean :
         rm -f *.dat
         rm -f analysis.tar.gz</code></pre>
-<p>Our data files are a product not only of our text files but the script, <code>wordcount.py</code>, that processes the text files and creates the data files. We should add <code>wordcount.py</code> as a dependency of each of our data files also:</p>
+<p>Our data files are a product not only of our text files but the script, <code>wordcount.py</code>, that processes the text files and creates the data files. A change to <code>wordcount.py</code> (e.g. to add a new column of summary data or remove an existing one) results in changes to the <code>.dat</code> files it outputs. So, let’s pretend to edit <code>wordcount.py</code>, using <code>touch</code>, and re-run Make:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats
+$ <span class="kw">touch</span> wordcount.py
+$ <span class="kw">make</span> dats</code></pre></div>
+<p>Nothing happens! Though we’ve updated <code>wordcount.py</code> our data files are not updated because our rules for creating <code>.dat</code> files don’t record any dependencies on <code>wordcount.py</code>.</p>
+<p>We need to add <code>wordcount.py</code> as a dependency of each of our data files also:</p>
 <pre class="make"><code>isles.dat : books/isles.txt wordcount.py
     python wordcount.py $&lt; $@
 
@@ -71,8 +76,8 @@ abyss.dat : books/abyss.txt wordcount.py
 last.dat : books/last.txt wordcount.py
     python wordcount.py $&lt; $@</code></pre>
 <p>If we pretend to edit <code>wordcount.py</code> and re-run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> wordcount.py
-$ <span class="kw">make</span> dats</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> wordcount.py
+$ <span class="kw">make</span> dats</code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
@@ -94,7 +99,7 @@ python wordcount.py books/last.txt last.dat</code></pre>
 <pre class="make"><code>analysis.tar.gz : *.dat wordcount.py
         tar -czf $@ $^</code></pre>
 <p>If we re-run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>tar -czf analysis.tar.gz abyss.dat isles.dat last.dat wordcount.py</code></pre>
         </div>

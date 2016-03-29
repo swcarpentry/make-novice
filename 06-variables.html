@@ -65,9 +65,9 @@ COUNT_EXE=python $(COUNT_SRC)</code></pre>
 <p>We can then import this Makefile into <code>Makefile</code> using:</p>
 <pre class="make"><code>include config.mk</code></pre>
 <p>We can re-run Make to see that everything still works:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
 $ <span class="kw">make</span> dats
-$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>We have separated the configuration of our Makefile from its rules, the parts that do all the work. If we want to change our script name or how it is executed we just need to edit our configuration file, not our source code in <code>Makefile</code>. Decoupling code from configuration in this way is good programming practice, as it promotes more modular, flexible and reusable code.</p>
         </div>
       </div>

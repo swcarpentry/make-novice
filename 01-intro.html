@@ -30,7 +30,7 @@
           <h2 class="subtitle">Introduction</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -43,17 +43,26 @@
 <p>Let’s imagine that we’re interested in testing Zipf’s Law in some of our favorite books.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Zipf’s Law</h2>
+<h2 id="zipfs-law"><span class="glyphicon glyphicon-pushpin"></span>Zipf’s Law</h2>
 </div>
 <div class="panel-body">
 <p>The most frequently-occurring word occurs approximately twice as often as the second most frequent word. This is <a href="http://en.wikipedia.org/wiki/Zipf%27s_law">Zipf’s Law</a>.</p>
 </div>
 </aside>
 <p>We’ve compiled our raw data, the books we want to analyze (check out e.g. <code>head books/isles.txt</code>) and have prepared several Python scripts that together make up our analysis pipeline.</p>
-<p>The first step is to count the frequency of each word in the book.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/isles.txt isles.dat</code></pre>
+<p>Our directory has the Python scripts and data files we we will be working with:</p>
+<pre class="output"><code>|- books
+|  |- abyss.txt
+|  |- isles.txt
+|  |- last.txt
+|  |- LICENSE_TEXTS.md
+|  |- sierra.txt
+|- plotcount.py
+|- wordcount.py</code></pre>
+<p>The first step is to count the frequency of each word in a book.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/isles.txt isles.dat</code></pre></div>
 <p>Let’s take a quick peek at the result.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">head</span> -5 isles.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">head</span> -5 isles.dat</code></pre></div>
 <p>This shows us the top 5 lines in the output file:</p>
 <pre class="output"><code>the 3822 6.7371760973
 of 2460 4.33632998414
@@ -62,18 +71,18 @@ to 1479 2.60708619778
 a 1308 2.30565838181</code></pre>
 <p>We can see that the file consists of one row per word. Each row shows the word itself, the number of occurrences of that word, and the number of occurrences as a percentage of the total number of words in the text file.</p>
 <p>We can do the same thing for a different book:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/abyss.txt abyss.dat
-$ <span class="kw">head</span> -5 abyss.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/abyss.txt abyss.dat
+$ <span class="kw">head</span> -5 abyss.dat</code></pre></div>
 <pre class="output"><code>the 4044 6.35449402891
 and 2807 4.41074795726
 of 1907 2.99654305468
 a 1594 2.50471401634
 to 1515 2.38057825267</code></pre>
 <p>Finally, let’s visualize the results. The script <code>plotcount.py</code> reads in a data file and plots the 10 most frequently occurring words.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat show</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat show</code></pre></div>
 <p>Close the window to exit the plot.</p>
-<p><code>plotcount.py</code> can also save the plot as an image (e.g. a PNG file):</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat isles.png</code></pre>
+<p><code>plotcount.py</code> can also create the plot as an image file (e.g. a PNG file):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat isles.png</code></pre></div>
 <p>Together these scripts implement a common workflow:</p>
 <ol style="list-style-type: decimal">
 <li>Read a data file.</li>
@@ -83,11 +92,11 @@ to 1515 2.38057825267</code></pre>
 <li>Save the graph as an image, so we can put it in a paper.</li>
 </ol>
 <p>To wrap it all up, let’s archive our results to share with a collaborator.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre></div>
 <p>Running <code>wordcount.py</code> and <code>plotcount.py</code> at the shell prompt, as we have been doing, is fine for one or two files. If, however, we had 5 or 10 or 20 text files, or if the number of steps in the pipeline were to expand, this could turn into a lot of work. Plus, no one wants to sit and wait for a command to finish, even just for 30 seconds.</p>
-<p>The most common solution to the tedium of data processing is to write a master script that runs the whole pipeline from start to finish.</p>
-<p>Using your text editor of choice (e.g. nano), add the following to a file named <code>run_pipeline.sh</code>.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
+<p>The most common solution to the tedium of data processing is to write a shell script that runs the whole pipeline from start to finish.</p>
+<p>Using your text editor of choice (e.g. nano), add the following to a new file named <code>run_pipeline.sh</code>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
 <span class="co"># to produce plots for isles and abyss.</span>
 
 <span class="kw">python</span> wordcount.py books/isles.txt isles.dat
@@ -96,48 +105,53 @@ to 1515 2.38057825267</code></pre>
 <span class="kw">python</span> plotcount.py isles.dat isles.png
 <span class="kw">python</span> plotcount.py abyss.dat abyss.png
 
-<span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre>
-<p>This master script solved several problems in computational reproducibility:</p>
+<span class="co"># Archive the results so we can share them with a colleague.</span>
+<span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre></div>
+<p>This shell script solves several problems in computational reproducibility:</p>
 <ol style="list-style-type: decimal">
 <li>It explicitly documents our pipeline, making communication with colleagues (and our future selves) more efficient.</li>
 <li>It allows us to type a single command, <code>bash run_pipeline.sh</code>, to reproduce the full analysis.</li>
 <li>It prevents us from <em>repeating</em> typos or mistakes. You might not get it right the first time, but once you fix something it’ll stay fixed.</li>
 </ol>
 <p>Despite these benefits it has a few shortcomings.</p>
-<p>Let’s adjust the width of the bars in our plot produced by <code>plotcount.py</code>. Edit the script so that the bars are 0.8 units wide instead of 1 unit. (Hint: replace <code>width = 1.0</code> with <code>width = 0.8</code> in the definition of <code>plot_word_counts</code>.)</p>
+<p>Let’s adjust the width of the bars in our plot produced by <code>plotcount.py</code>.</p>
+<p>Edit <code>plotcount.py</code> so that the bars are 0.8 units wide instead of 1 unit. (Hint: replace <code>width = 1.0</code> with <code>width = 0.8</code> in the definition of <code>plot_word_counts</code>.)</p>
 <p>Now we want to recreate our figures. We <em>could</em> just <code>bash run_pipeline.sh</code> again. That would work, but it could also be a big pain if counting words takes more than a few seconds. The word counting routine hasn’t changed; we shouldn’t need to recreate those files.</p>
 <p>Alternatively, we could manually rerun the plotting for each word-count file. (Experienced shell scripters can make this easier on themselves using a for-loop.)</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">book</span> in abyss isles<span class="kw">;</span> <span class="kw">do</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">book</span> in abyss isles<span class="kw">;</span> <span class="kw">do</span>
     <span class="kw">python</span> plotcount.py <span class="ot">$book</span>.dat <span class="ot">$book</span>.png
 <span class="kw">done</span>
 
-<span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre>
-<p>With this approach, however, we don’t get many of the benefits of having a master script in the first place.</p>
+<span class="co"># Archive the results so we can share them with a colleague.</span>
+<span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre></div>
+<p>With this approach, however, we don’t get many of the benefits of having a shell script in the first place.</p>
 <p>Another popular option is to comment out a subset of the lines in <code>run_pipeline.sh</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
 <span class="co"># to produce plots for isles and abyss.</span>
 
+<span class="co"># These lines are commented out because they don&#39;t need to be rerun.</span>
 <span class="co">#python wordcount.py books/isles.txt isles.dat</span>
 <span class="co">#python wordcount.py books/abyss.txt abyss.dat</span>
 
 <span class="kw">python</span> plotcount.py isles.dat isles.png
 <span class="kw">python</span> plotcount.py abyss.dat abyss.png
 
-<span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre>
-<p>Followed by <code>bash run_pipeline.sh</code>.</p>
-<p>But this process, and subsequently undoing it, can be a hassle and source of errors in complicated pipelines.</p>
+<span class="co"># Archive the results so we can share them with a colleague.</span>
+<span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat</code></pre></div>
+<p>Then, we would run our modified shell script using <code>bash run_pipeline.sh</code>.</p>
+<p>But commenting out these lines, and subsequently uncommenting them, can be a hassle and source of errors in complicated pipelines.</p>
 <p>What we really want is an executable <em>description</em> of our pipeline that allows software to do the tricky part for us: figuring out what steps need to be rerun.</p>
-<p>Make was developed by Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in widespread use today. Make can execute the commands needed to run our analysis and plot our results. Like shell scripts it allows us to execute complex sequences of commands via a single shell command. Unlike shell scripts it explicitly records the dependencies between files and so can determine when to recreate our data files or image files, if our text files change. Make can be used for any commands that follow the general pattern of processing files to create new files, for example:</p>
+<p>Make was developed by Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in widespread use today. Make can execute the commands needed to run our analysis and plot our results. Like shell scripts it allows us to execute complex sequences of commands via a single shell command. Unlike shell scripts it explicitly records the dependencies between files - what files are needed to create what other files - and so can determine when to recreate our data files or image files, if our text files change. Make can be used for any commands that follow the general pattern of processing files to create new files, for example:</p>
 <ul>
-<li>Run analysis scripts on raw data files to get data files that summarise the raw data.</li>
-<li>Run visualisation scripts on data files to produce plots.</li>
+<li>Run analysis scripts on raw data files to get data files that summarise the raw data (e.g. creating files with word counts from book text).</li>
+<li>Run visualisation scripts on data files to produce plots (e.g. creating images of word counts).</li>
 <li>Parse and combine text files and plots to create papers.</li>
 <li>Compile source code into executable programs or libraries.</li>
 </ul>
 <p>There are now many build tools available, for example <a href="http://ant.apache.org/">Apache ANT</a>, <a href="http://pydoit.org/">doit</a>, and <a href="https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx">nmake</a> for Windows. There are also build tools that build scripts for use with these build tools and others e.g. <a href="http://www.gnu.org/software/autoconf/autoconf.html">GNU Autoconf</a> and <a href="http://www.cmake.org/">CMake</a>. Which is best for you depends on your requirements, intended usage, and operating system. However, they all share the same fundamental concepts as Make.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Why use Make if it is almost 40 years old?</h2>
+<h2 id="why-use-make-if-it-is-almost-40-years-old"><span class="glyphicon glyphicon-pushpin"></span>Why use Make if it is almost 40 years old?</h2>
 </div>
 <div class="panel-body">
 <p>Today, researchers working with legacy codes in C or FORTRAN, which are very common in high-performance computing, will, very likely encounter Make.</p>

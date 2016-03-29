@@ -45,9 +45,13 @@
 <pre class="make"><code>%.dat : books/%.txt wordcount.py
         python wordcount.py $&lt; $*.dat</code></pre>
 <p><code>%</code> is a Make <a href="reference.html#wild-card">wild-card</a>. <code>$*</code> is a special variable which gets replaced by the <a href="reference.html#stem">stem</a> with which the rule matched.</p>
+<p>This rule can be interpreted as:</p>
+<blockquote>
+<p>In order to build a file named <code>[something].dat</code> (the target) find a file named <code>books/[that same something].txt</code> (the dependency) and run <code>wordcount.py [the dependency] [the target]</code>.</p>
+</blockquote>
 <p>If we re-run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> dats</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats</code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat

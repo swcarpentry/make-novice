@@ -44,7 +44,7 @@
 <p>Update <code>clean</code> to remove <code>analysis.tar.gz</code>.</p>
 </div>
 </section>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Generate archive file.</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Generate archive file.</span>
 <span class="kw">analysis.tar.gz</span>: isles.dat abyss.dat last.dat
         <span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat last.dat
 
@@ -64,7 +64,7 @@
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre>
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
 <h2 id="lesson-03-variables">Lesson 03-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -72,8 +72,8 @@
 </div>
 <div class="panel-body">
 <p>What will happen if you now execute:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
-$ <span class="kw">make</span> analysis.tar.gz</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
+$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <ol style="list-style-type: decimal">
 <li>nothing</li>
 <li>all files recreated</li>
@@ -85,14 +85,14 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <hr />
 <p>4.) only <code>analysis.tar.gz</code> recreated.</p>
 <p>You can check that <code>*.dat</code> is being expanded in the target of the rule for <code>analysis.tar.gz</code> by echoing the value of the automatic variable <code>$^</code> (all dependencies of the current rule).</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
     <span class="kw">@echo</span> $^
-    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre>
+    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre></div>
 <p>The rules for <code>*.dat</code> are not executed because their corresponding <code>.txt</code> files haven’t been modified.</p>
 <p>If you run:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
     $ <span class="kw">touch</span> books/*.txt
-    $ <span class="kw">make</span> analysis.tar.gz</code></pre>
+    $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>You will find that the <code>.dat</code> files as well as <code>analysis.tar.gz</code> are recreated.</p>
 <hr />
 <section class="challenge panel panel-success">
@@ -103,7 +103,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <p>Rewrite each <code>.dat</code> rule to use the automatic variables <code>$@</code> (‘the target of the current rule’) and <code>$&lt;</code> (‘the first dependency of the current rule’).</p>
 </div>
 </section>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Generate archive file.</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Generate archive file.</span>
 <span class="kw">analysis.tar.gz</span>: *.dat
         <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
 
@@ -123,7 +123,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre>
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
 <h2 id="lesson-06-variables">Lesson 06-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -133,7 +133,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
 </div>
 </section>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="ot">COUNT_SRC=</span>wordcount.py
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ot">COUNT_SRC=</span>wordcount.py
 <span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
 
 <span class="co"># Generate archive file.</span>
@@ -150,7 +150,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <span class="kw">.PHONY</span> : clean
 <span class="kw">clean</span> :
         <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre>
+        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
 <h2 id="lesson-08-variables">Lesson 08-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -161,24 +161,27 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <ul>
 <li>Create <code>.png</code> files from <code>.dat</code> files using <code>plotcount.py</code>.</li>
 <li>Add the script and <code>.png</code> files to the archive.</li>
-<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>analysis.tar.gz</code>).</li>
+<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>analysis.tar.gz</code>). Finally, many Makefiles define a default <a href="reference.html#phony-target">phony target</a> called <code>all</code> that will build what the Makefile has been written to build (e.g. in our case, <code>analysis.tar.gz</code>). As others may assume your Makefile confirms to convention and supports an <code>all</code> target, add an <code>all</code> target to your Makefile (Hint: this rule has a single dependency but no actions).</li>
 </ul>
 </div>
 </section>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># config.mk</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># config.mk</span>
 <span class="co"># Count words script.</span>
 <span class="ot">COUNT_SRC=</span>wordcount.py
 <span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
 
 <span class="co"># Plot word counts script.</span>
 <span class="ot">PLOT_SRC=</span>plotcount.py
-<span class="ot">PLOT_EXE=</span>python <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span></code></pre>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Makefile</span>
+<span class="ot">PLOT_EXE=</span>python <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Makefile</span>
 <span class="kw">include</span> config.mk
 
 <span class="ot">TXT_FILES=$(</span><span class="kw">wildcard</span> books/*.txt<span class="ot">)</span>
 <span class="ot">DAT_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.dat, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
 <span class="ot">PNG_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.png, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
+
+<span class="kw">.PHONY</span> : all
+<span class="kw">all</span> : analysis.tar.gz
 
 <span class="co"># Generate archive file.</span>
 <span class="kw">analysis.tar.gz</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
@@ -208,7 +211,7 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre>
 <span class="kw">variables</span>:
     <span class="kw">@echo</span> TXT_FILES: <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">)</span>
     <span class="kw">@echo</span> DAT_FILES: <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
-    <span class="kw">@echo</span> PNG_FILES: <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span></code></pre>
+    <span class="kw">@echo</span> PNG_FILES: <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span></code></pre></div>
         </div>
       </div>
       </article>
