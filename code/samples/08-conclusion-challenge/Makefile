@@ -4,6 +4,9 @@ TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 
+.PHONY : all
+all : analysis.tar.gz
+
 # Generate archive file.
 analysis.tar.gz : $(DAT_FILES) $(PNG_FILES) $(COUNT_SRC) $(PLOT_SRC)
 	tar -czf $@ $^

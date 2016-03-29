@@ -6,15 +6,29 @@ subtitle: Discussion
 
 ## Parallel execution
 
-Make can build dependencies in parallel sub-processes, via its `-j`
-flag which specifies the number of sub-processes to use e.g.
+Make can build dependencies in _parallel_ sub-processes, via its `--jobs`
+flag (or its `-j` abbreviation) which specifies the number of sub-processes to use e.g.
 
 ~~~ {.bash}
-$ make -j 4 analysis.tar.gz
+$ make --jobs 4 analysis.tar.gz
 ~~~
+
+If we have independent dependencies then these can be built at the same time. For example, `abyss.dat` and `isles.dat` are mutually independent and can both be built at the same time. Likewise for `abyss.png` and `isles.png`. If you've got a bunch of independent branches in your analysis, this can greatly speed up your build process.
 
 For more information see the GNU Make manual chapter on [Parallel
 Execution](https://www.gnu.org/software/make/manual/html_node/Parallel.html).
+
+## Different types of assignment
+
+Some Makefiles may contain `:=` instead of `=`. Your Makefile may behave differently depending upon which you use and how you use it:
+
+* A variable defined using `=` is a _recursively expanded variable_. Its value is calculated only when its value is requested. If the value assigned to the variable itself contains variables (e.g. `A = $(B)`) then these variables' values are only calculated when the variable's value is requested (e.g. the value of `B` is only calculated when the value of `A` is requested via `$(A)`. This can be termed _lazy setting_.
+* A variable defined using `:=` is a _simply expanded variable_. Its value is calculated when it is declared. If the value assigned to the variable contains variables (e.g. `A = $(B)`) then these variables' values are also calculated when the variable is declared (e.g. the value of `B` is calculated when `A` is assigned above). This can be termed _immediate setting_.
+
+For a detailed explanation, see:
+
+* StackOverflow [Makefile variable assignment](http://stackoverflow.com/questions/448910/makefile-variable-assignment).
+* GNU Make [The Two Flavors of Variables](https://www.gnu.org/software/make/manual/html_node/Flavors.html#Flavors).
 
 ## Make and reproducible research
 
