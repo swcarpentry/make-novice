@@ -27,8 +27,8 @@ Some Makefiles may contain `:=` instead of `=`. Your Makefile may behave differe
 
 For a detailed explanation, see:
 
-* StackOverflow [Makefile variable assignment](http://stackoverflow.com/questions/448910/makefile-variable-assignment)
-* GNU Make [The Two Flavors of Variables](https://www.gnu.org/software/make/manual/html_node/Flavors.html#Flavors):
+* StackOverflow [Makefile variable assignment](http://stackoverflow.com/questions/448910/makefile-variable-assignment).
+* GNU Make [The Two Flavors of Variables](https://www.gnu.org/software/make/manual/html_node/Flavors.html#Flavors).
 
 ## Make and reproducible research
 
