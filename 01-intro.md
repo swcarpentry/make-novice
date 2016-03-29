@@ -139,7 +139,7 @@ python plotcount.py abyss.dat abyss.png
 tar -czf analysis.tar.gz isles.dat abyss.dat
 ~~~
 
-This shell script solved several problems in computational reproducibility:
+This shell script solves several problems in computational reproducibility:
 
 1.  It explicitly documents our pipeline,
     making communication with colleagues (and our future selves) more efficient.
@@ -152,6 +152,7 @@ This shell script solved several problems in computational reproducibility:
 Despite these benefits it has a few shortcomings.
 
 Let's adjust the width of the bars in our plot produced by `plotcount.py`.
+
 Edit `plotcount.py` so that the bars are 0.8 units wide instead of 1 unit.
 (Hint: replace `width = 1.0` with `width = 0.8` in the definition of
 `plot_word_counts`.)
