@@ -43,7 +43,7 @@ Our Makefile has a lot of duplication. For example, the names of text
 files and data files are repeated in many places throughout the
 Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
-Makefile but forget the rename it elsewhere.
+Makefile but forget to rename it elsewhere.
 
 > ## D.R.Y. (Don't Repeat Yourself) {.callout}
 >
