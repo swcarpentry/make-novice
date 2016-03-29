@@ -39,7 +39,7 @@ clean :
 
 Our data files are a product not only of our text files but the
 script, `wordcount.py`, that processes the text files and creates the
-data files. A change to `wordcount.py` (e.g. add a new column of summary data or remove an existing one) results in changes to the `.dat` files it outputs. So, let's pretend to edit `wordcount.py`, using `touch`, and re-run Make:
+data files. A change to `wordcount.py` (e.g. to add a new column of summary data or remove an existing one) results in changes to the `.dat` files it outputs. So, let's pretend to edit `wordcount.py`, using `touch`, and re-run Make:
 
 ~~~ {.bash}
 $ make dats
