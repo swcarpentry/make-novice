@@ -52,8 +52,9 @@ used to implement our script from Python to R).
 
 > ## Use variables {.challenge}
 >
-> Update `Makefile` so that the `%.dat` and `analysis.tar.gz` rules
+> Update `Makefile` so that the `%.dat` rule
 > reference the variables `COUNT_SRC` and `COUNT_EXE`.
+> Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 
 We place variables at the top of a Makefile means they are easy to
 find and modify. Alternatively, we can pull them out into a new
@@ -64,6 +65,10 @@ Makefile that just holds variable definitions. Let us create
 # Count words script.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
+
+# Test Zipf's rule
+ZIPF_SRC=zipf_test.py
+ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
 
 We can then import this Makefile into `Makefile` using:
@@ -77,7 +82,7 @@ We can re-run Make to see that everything still works:
 ~~~ {.bash}
 $ make clean
 $ make dats
-$ make analysis.tar.gz
+$ make results.txt
 ~~~
 
 We have separated the configuration of our Makefile from its rules,

@@ -16,9 +16,9 @@ minutes: 0
 After the exercise at the end of the previous part, our Makefile look like this:
 
 ~~~ {.make}
-# Generate archive file.
-analysis.tar.gz : isles.dat abyss.dat last.dat
-        tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+# Generate summary table.
+results.txt : isles.dat abyss.dat last.dat
+        python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 
 # Count words.
 .PHONY : dats
@@ -36,7 +36,7 @@ last.dat : books/last.txt
 .PHONY : clean
 clean :
         rm -f *.dat
-        rm -f analysis.tar.gz
+        rm -f results.txt
 ~~~
 
 Our Makefile has a lot of duplication. For example, the names of text
@@ -53,20 +53,20 @@ Makefile but forget to rename it elsewhere.
 
 Let us set about removing some of the repetition from our Makefile.
 
-In our `analysis.tar.gz` rule we duplicate the data file names and the
+In our `results.txt` rule we duplicate the data file names and the
 archive name:
 
 ~~~ {.make}
-analysis.tar.gz : isles.dat abyss.dat last.dat
-        tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+results.txt : isles.dat abyss.dat last.dat
+        python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 ~~~
 
 Looking at the archive name first, we can replace it in the action
 with `$@`:
 
 ~~~ {.make}
-analysis.tar.gz : isles.dat abyss.dat last.dat
-        tar -czf $@ isles.dat abyss.dat last.dat
+results.txt : isles.dat abyss.dat last.dat
+        python zipf_test.py abyss.dat isles.dat last.dat > $@
 ~~~
 
 `$@` is a Make [automatic variable](reference.html#automatic-variable)
@@ -76,8 +76,8 @@ replace this variable with the target name.
 We can replace the dependencies in the action with `$^`:
 
 ~~~ {.make}
-analysis.tar.gz : isles.dat abyss.dat last.dat
-        tar -czf $@ $^
+results.txt : isles.dat abyss.dat last.dat
+        python zipf_test.py $^ > $@
 ~~~
 
 `$^` is another automatic variable which means 'all the dependencies
@@ -88,7 +88,7 @@ Let's update our text files and re-run our rule:
 
 ~~~ {.bash}
 $ touch books/*.txt
-$ make analysis.tar.gz
+$ make results.txt
 ~~~
 
 We get:
@@ -97,21 +97,21 @@ We get:
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat
-tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+python zipf_test.py isles.dat abyss.dat last.dat > results.txt
 ~~~
 
 We can use the bash wild-card in our dependency list:
 
 ~~~ {.make}
-analysis.tar.gz : *.dat
-        tar -czf $@ $^
+results.txt : *.dat
+        python zipf_test.py $^ > $@
 ~~~
 
 Let's update our text files and re-run our rule:
 
 ~~~ {.bash}
 $ touch books/*.txt
-$ make analysis.tar.gz
+$ make results.txt
 ~~~
 
 We get the same as above.
@@ -120,13 +120,13 @@ Now let's delete the data files and re-run our rule:
 
 ~~~ {.bash}
 $ make clean
-$ make analysis.tar.gz
+$ make results.txt
 ~~~
 
 We get:
 
 ~~~ {.error}
-make: *** No rule to make target `*.dat', needed by `analysis.tar.gz'.  Stop.
+make: *** No rule to make target `*.dat', needed by `results.txt'.  Stop.
 ~~~
 
 As there are no files that match the pattern `*.dat` the name `*.dat`
@@ -136,7 +136,7 @@ files first:
 
 ~~~ {.bash}
 $ make dats
-$ make analysis.tar.gz
+$ make results.txt
 ~~~
 
 > ## Update dependencies {.challenge}
@@ -145,16 +145,16 @@ $ make analysis.tar.gz
 > 
 > ~~~ {.bash}
 > $ touch *.dat
-> $ make analysis.tar.gz
+> $ make results.txt
 > ~~~
 > 
 > 1. nothing
 > 2. all files recreated
-> 3. only .dat files recreated
-> 4. only analysis.tar.gz recreated
+> 3. only `.dat` files recreated
+> 4. only `results.txt` recreated
 
 As we saw, `$^` means 'all the dependencies of the current
-rule'. This works well for `analysis.tar.gz` as its action 
+rule'. This works well for `results.txt` as its action
 treats all the dependencies the same - as the contents of the
 archive.
 

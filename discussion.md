@@ -10,7 +10,7 @@ Make can build dependencies in _parallel_ sub-processes, via its `--jobs`
 flag (or its `-j` abbreviation) which specifies the number of sub-processes to use e.g.
 
 ~~~ {.bash}
-$ make --jobs 4 analysis.tar.gz
+$ make --jobs 4 results.txt
 ~~~
 
 If we have independent dependencies then these can be built at the same time. For example, `abyss.dat` and `isles.dat` are mutually independent and can both be built at the same time. Likewise for `abyss.png` and `isles.png`. If you've got a bunch of independent branches in your analysis, this can greatly speed up your build process.

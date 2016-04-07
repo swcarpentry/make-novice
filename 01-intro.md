@@ -37,6 +37,7 @@ we will be working with:
 |  |- sierra.txt
 |- plotcount.py
 |- wordcount.py
+|- zipf_test.py
 ~~~
 
 The first step is to count the frequency of each word in a book.
@@ -81,7 +82,7 @@ a 1594 2.50471401634
 to 1515 2.38057825267
 ~~~
 
-Finally, let's visualize the results.
+Let's visualize the results.
 The script `plotcount.py` reads in a data
 file and plots the 10 most frequently occurring words.
 
@@ -97,6 +98,20 @@ Close the window to exit the plot.
 $ python plotcount.py isles.dat isles.png
 ~~~
 
+Finally, let's test Zipf's law for these books:
+
+~~~ {.bash}
+$ python zipf_test.py abyss.dat isles.dat
+~~~
+
+~~~ {.output}
+Book	First	Second	Ratio
+abyss	4044	2807	1.44
+isles	3822	2460	1.55
+~~~
+
+So we're not too far off from Zipf's law.
+
 Together these scripts implement a common workflow:
 
 1. Read a data file.
@@ -104,12 +119,7 @@ Together these scripts implement a common workflow:
 3. Write the analysis results to a new file.
 4. Plot a graph of the analysis results.
 5. Save the graph as an image, so we can put it in a paper.
-
-To wrap it all up, let's archive our results to share with a collaborator.
-
-~~~ {.bash}
-tar -czf analysis.tar.gz isles.dat abyss.dat
-~~~
+6. Make a summary table of the analyses
 
 Running `wordcount.py` and `plotcount.py` at the shell prompt, as we
 have been doing, is fine for one or two files. If, however, we had 5
@@ -127,7 +137,8 @@ Using your text editor of choice (e.g. nano), add the following to a new file na
 
 ~~~ {.bash}
 # USAGE: bash run_pipeline.sh
-# to produce plots for isles and abyss.
+# to produce plots for isles and abyss
+# and the summary table for the Zipf's law tests
 
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
@@ -135,8 +146,14 @@ python wordcount.py books/abyss.txt abyss.dat
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
 
-# Archive the results so we can share them with a colleague.
-tar -czf analysis.tar.gz isles.dat abyss.dat
+# Generate summary table
+python zipf_test.py abyss.dat isles.dat > results.txt
+~~~
+
+Runs the script and check that the output is the same as before:
+
+~~~ {.bash}
+$ bash run_pipeline.sh
 ~~~
 
 This shell script solves several problems in computational reproducibility:
@@ -172,9 +189,6 @@ for-loop.)
 for book in abyss isles; do
     python plotcount.py $book.dat $book.png
 done
-
-# Archive the results so we can share them with a colleague.
-tar -czf analysis.tar.gz isles.dat abyss.dat
 ~~~
 
 With this approach, however,
@@ -185,7 +199,8 @@ Another popular option is to comment out a subset of the lines in
 
 ~~~ {.bash}
 # USAGE: bash run_pipeline.sh
-# to produce plots for isles and abyss.
+# to produce plots for isles and abyss
+# and the summary table for the Zipf's law tests
 
 # These lines are commented out because they don't need to be rerun.
 #python wordcount.py books/isles.txt isles.dat
@@ -194,8 +209,8 @@ Another popular option is to comment out a subset of the lines in
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
 
-# Archive the results so we can share them with a colleague.
-tar -czf analysis.tar.gz isles.dat abyss.dat
+# This lines is also commented out because it doesn't need to be rerun.
+python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
 
 Then, we would run our modified shell script using `bash run_pipeline.sh`.
