@@ -56,19 +56,19 @@ python wordcount.py books/last.txt last.dat
 Our Makefile is now much shorter and cleaner:
 
 ~~~ {.make}
-# Generate archive file.
-analysis.tar.gz : *.dat wordcount.py
-	tar -czf $@ $^
+# Generate summary table.
+results.txt : *.dat
+        python zipf_test.py $^ > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt wordcount.py
-	python wordcount.py $< $*.dat
+        python wordcount.py $< $*.dat
 
 .PHONY : clean
 clean :
         rm -f *.dat
-        rm -f analysis.tar.gz
+        rm -f results.txt
 ~~~
