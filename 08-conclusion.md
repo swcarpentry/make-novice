@@ -28,7 +28,7 @@ papers.
 > Add new rules, update existing rules, and add new macros to:
 > 
 > * Create `.png` files from `.dat` files using `plotcount.py`.
-> * Add the script and `.png` files to the archive.
+> * Add the script and `.png` files as dependencies of the `results.txt` file to make sure they are (re)created when needed.
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`). 
 >
