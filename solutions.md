@@ -231,7 +231,7 @@ PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 all : results.txt
 
 # Generate summary table.
-results.txt : $(DAT_FILES) $(ZIPF_SRC)
+results.txt : $(DAT_FILES) $(PNG_FILES) $(ZIPF_SRC)
 	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
