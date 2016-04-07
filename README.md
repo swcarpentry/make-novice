@@ -48,5 +48,3 @@ $ make imgs
 ```
 
 See [Makefile](./Makefile)'s `imgs` target.
-
-`img/07-functions.png` and `img/08-conclusion-challenge.png` should then be manually cropped to remove a `Makefile` node, which denotes the `config.mk` file imported by the Makefiles for these examples.
