@@ -80,7 +80,7 @@ make-lesson.zip : code data/books
 	rm -rf make-lesson
 	mkdir make-lesson
 	cp -r code/*.py make-lesson
-	cp -r data/books/ make-lesson
+	cp -r data/books make-lesson
 	zip -r $@ make-lesson
 
 build:
