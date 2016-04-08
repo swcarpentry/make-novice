@@ -122,9 +122,9 @@ The whole pipeline is triggered, even the creation of the `results.txt` file! To
 > 4. all `.dat` and `results.txt` are recreated
 
 
-> ## `workcloud.py` as dependency of `results.txt` {.challenge}
+> ## `wordcount` as dependency of `results.txt` {.challenge}
 >
-> What would happen if you actually added `workcloud.py` as dependency of `results.txt`, and why?
+> What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
 
 We still have to add the `zipf-test.py` script as dependency to `results.txt`. Given the answer to the challenge above, we cannot use `$^` for the rule. We'll go back to using `*.dat`:
 
