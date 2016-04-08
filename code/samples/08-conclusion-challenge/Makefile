@@ -5,10 +5,10 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 
 .PHONY : all
-all : results.txt
+all : results.txt $(PNG_FILES)
 
 # Generate summary table.
-results.txt : $(DAT_FILES) $(PNG_FILES) $(ZIPF_SRC)
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
 	$(ZIPF_EXE) *.dat > $@
 
 # Count words.

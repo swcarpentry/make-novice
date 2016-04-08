@@ -53,7 +53,7 @@ used to implement our script from Python to R).
 > ## Use variables {.challenge}
 >
 > Update `Makefile` so that the `%.dat` rule
-> reference the variables `COUNT_SRC` and `COUNT_EXE`.
+> references the variables `COUNT_SRC` and `COUNT_EXE`.
 > Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 
 We place variables at the top of a Makefile means they are easy to

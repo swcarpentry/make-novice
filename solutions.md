@@ -138,27 +138,42 @@ clean :
 * * *
 3. only `last.dat` and `results.txt` are recreated
 
-'Follow' the decency tree to understand the answer(s).
+'Follow' the dependency tree to understand the answer(s).
 
-> ## `workcloud.py` as dependency of `results.txt` {.challenge}
+> ## `wordcount.py` as dependency of `results.txt` {.challenge}
 >
-> What would happen if you actually added `workcloud.py` as dependency of `results.txt`, and why?
+> What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
 
-`workcloud.py` becomes a part of `$^`, thus the command becomes
+If you change the rule for the `results.txt` file like this:
 
-~~~ {.bash}
-python zipf_test.py abyss.dat isles.dat last.dat workcloud.py > results.txt
+~~~ {.make}
+results.txt : *.dat wordcount.py
+        python zipf_test.py $^ > $@
 ~~~
 
-This results in an error from `zipf_test.py` as it tries to parse the script:
+`wordcount.py` becomes a part of `$^`, thus the command becomes
+
+~~~ {.bash}
+python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
+~~~
+
+This results in an error from `zipf_test.py` as it tries to parse the script as if it were a `.dat` file. Try this by running:
+
+~~~ {.bash}
+$ make results.txt
+~~~
+
+You'll get
 
 ~~~ {.output}
+python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
 Traceback (most recent call last):
   File "zipf_test.py", line 19, in <module>
     counts = load_word_counts(input_file)
-  File "path/to/wordcount.py", line 35, in load_word_counts
-    with open(filename, "r") as input_fd:
-IOError: [Errno 2] No such file or directory: 'workcloud.py'
+  File "path/to/wordcount.py", line 39, in load_word_counts
+    counts.append((fields[0], int(fields[1]), float(fields[2])))
+IndexError: list index out of range
+make: *** [results.txt] Error 1
 ~~~
 
 
@@ -201,7 +216,7 @@ clean :
 > Add new rules, update existing rules, and add new macros to:
 > 
 > * Create `.png` files from `.dat` files using `plotcount.py`.
-> * Add the script and `.png` files to the archive.
+> * Add the script and `.png` files as dependencies of the `results.txt` file to make sure they are (re)created when needed.
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`). 
 >

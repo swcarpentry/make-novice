@@ -53,15 +53,14 @@ Makefile but forget to rename it elsewhere.
 
 Let us set about removing some of the repetition from our Makefile.
 
-In our `results.txt` rule we duplicate the data file names and the
-archive name:
+In our `results.txt` rule we duplicate the data file names and the name of the results file name:
 
 ~~~ {.make}
 results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 ~~~
 
-Looking at the archive name first, we can replace it in the action
+Looking at the results file name first, we can replace it in the action
 with `$@`:
 
 ~~~ {.make}
@@ -155,8 +154,7 @@ $ make results.txt
 
 As we saw, `$^` means 'all the dependencies of the current
 rule'. This works well for `results.txt` as its action
-treats all the dependencies the same - as the contents of the
-archive.
+treats all the dependencies the same - as the input for the `zipf_test.py` script.
 
 However, for some rules, we may want to treat the first dependency
 differently. For example, our rules for `.dat` use their first (and
