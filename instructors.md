@@ -62,6 +62,7 @@ which contains:
 
 * `wordcount.py`
 * `plotcount.py`
+* `zipf_test.py`
 * `books/`
 
 Or, ask students to download
