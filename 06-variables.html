@@ -55,19 +55,23 @@
 <h2 id="use-variables"><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
 </div>
 <div class="panel-body">
-<p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
+<p>Update <code>Makefile</code> so that the <code>%.dat</code> rule references the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>. Then do the same for the <code>zipf-test.py</code> script and the <code>results.txt</code> rule, using <code>ZIPF_SRC</code> and <code>ZIPF_EXE</code> as variable names</p>
 </div>
 </section>
 <p>We place variables at the top of a Makefile means they are easy to find and modify. Alternatively, we can pull them out into a new Makefile that just holds variable definitions. Let us create <code>config.mk</code>:</p>
 <pre class="make"><code># Count words script.
 COUNT_SRC=wordcount.py
-COUNT_EXE=python $(COUNT_SRC)</code></pre>
+COUNT_EXE=python $(COUNT_SRC)
+
+# Test Zipf&#39;s rule
+ZIPF_SRC=zipf_test.py
+ZIPF_EXE=python $(ZIPF_SRC)</code></pre>
 <p>We can then import this Makefile into <code>Makefile</code> using:</p>
 <pre class="make"><code>include config.mk</code></pre>
 <p>We can re-run Make to see that everything still works:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
 $ <span class="kw">make</span> dats
-$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+$ <span class="kw">make</span> results.txt</code></pre></div>
 <p>We have separated the configuration of our Makefile from its rules, the parts that do all the work. If we want to change our script name or how it is executed we just need to edit our configuration file, not our source code in <code>Makefile</code>. Decoupling code from configuration in this way is good programming practice, as it promotes more modular, flexible and reusable code.</p>
         </div>
       </div>

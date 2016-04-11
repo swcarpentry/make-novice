@@ -177,19 +177,19 @@ clean :
 <div class="panel-body">
 <p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
 <p>Update the <code>dats</code> rule with this target.</p>
-<p>Write a new rule for <code>analysis.tar.gz</code>, which creates an archive of the data files. The rule needs to:</p>
+<p>Write a new rule for <code>results.txt</code>, which creates the summary table. The rule needs to:</p>
 <ul>
 <li>Depend upon each of the three <code>.dat</code> files.</li>
-<li>Invoke the action <code>tar -czf analysis.tar.gz isles.dat abyss.dat   last.dat</code>.</li>
+<li>Invoke the action <code>python zipf_test.py abyss.dat isles.dat last-dat &gt; results.txt</code>.</li>
 </ul>
 <p>Put this rule at the top of the Makefile so that it is the default target.</p>
-<p>Update <code>clean</code> so that it removes <code>analysis.tar.gz</code>.</p>
+<p>Update <code>clean</code> so that it removes <code>results.txt</code>.</p>
 </div>
 </section>
-<p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target:</p>
+<p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>results.txt</code> target:</p>
 <div class="figure">
-<img src="img/02-makefile-challenge.png" title="analysis.tar.gz dependencies represented within the Makefile" alt="analysis.tar.gz dependencies represented within the Makefile" />
-<p class="caption">analysis.tar.gz dependencies represented within the Makefile</p>
+<img src="img/02-makefile-challenge.png" title="results.txt dependencies represented within the Makefile" alt="results.txt dependencies represented within the Makefile" />
+<p class="caption">results.txt dependencies represented within the Makefile</p>
 </div>
         </div>
       </div>

@@ -36,35 +36,36 @@
 <div class="panel-body">
 <p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
 <p>Update the <code>dats</code> rule with this target.</p>
-<p>Write a new rule for <code>analysis.tar.gz</code>, which creates an archive of the data files. The rule needs to:</p>
+<p>Write a new rule for <code>results.txt</code>, which creates the summary table. The rule needs to:</p>
 <ul>
 <li>Depend upon each of the three <code>.dat</code> files.</li>
-<li>Invoke the action <code>tar -czf analysis.tar.gz isles.dat abyss.dat   last.dat</code></li>
+<li>Invoke the action <code>python zipf_test.py abyss.dat isles.dat last-dat &gt; results.txt</code>.</li>
 </ul>
-<p>Update <code>clean</code> to remove <code>analysis.tar.gz</code>.</p>
+<p>Put this rule at the top of the Makefile so that it is the default target.</p>
+<p>Update <code>clean</code> so that it removes <code>results.txt</code>.</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Generate archive file.</span>
-<span class="kw">analysis.tar.gz</span>: isles.dat abyss.dat last.dat
-        <span class="kw">tar</span> -czf analysis.tar.gz isles.dat abyss.dat last.dat
+<pre class="make"><code># Generate summary table.
+results.txt : isles.dat abyss.dat last.dat
+        python zipf_test.py abyss.dat isles.dat last.dat &gt; results.txt
 
-<span class="co"># Count words.</span>
-<span class="kw">.PHONY</span> : dats
-<span class="kw">dats</span> : isles.dat abyss.dat last.dat
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
 
-<span class="kw">isles.dat</span> : books/isles.txt
-        <span class="kw">python</span> wordcount.py books/isles.txt isles.dat
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
 
-<span class="kw">abyss.dat</span> : books/abyss.txt
-        <span class="kw">python</span> wordcount.py books/abyss.txt abyss.dat
+abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
 
-<span class="kw">last.dat</span>: books/last.txt
-        <span class="kw">python</span> wordcount.py books/last.txt last.dat
+last.dat : books/last.txt
+        python wordcount.py books/last.txt last.dat
 
-<span class="kw">.PHONY</span> : clean
-<span class="kw">clean</span> :
-        <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f results.txt</code></pre>
 <h2 id="lesson-03-variables">Lesson 03-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -73,27 +74,26 @@
 <div class="panel-body">
 <p>What will happen if you now execute:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
-$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+$ <span class="kw">make</span> results.txt</code></pre></div>
 <ol style="list-style-type: decimal">
 <li>nothing</li>
 <li>all files recreated</li>
-<li>only .dat files recreated</li>
-<li>only analysis.tar.gz recreated</li>
+<li>only <code>.dat</code> files recreated</li>
+<li>only <code>results.txt</code> recreated</li>
 </ol>
 </div>
 </section>
-<hr />
-<p>4.) only <code>analysis.tar.gz</code> recreated.</p>
-<p>You can check that <code>*.dat</code> is being expanded in the target of the rule for <code>analysis.tar.gz</code> by echoing the value of the automatic variable <code>$^</code> (all dependencies of the current rule).</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">analysis.tar.gz</span>: *.dat
+<p>4.) only <code>results.txt</code> recreated.</p>
+<p>You can check that <code>*.dat</code> is being expanded in the target of the rule for <code>results.txt</code> by echoing the value of the automatic variable <code>$^</code> (all dependencies of the current rule).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">results.txt</span>: *.dat
     <span class="kw">@echo</span> $^
-    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^</code></pre></div>
+    <span class="kw">python</span> zipf_test.py $^ <span class="kw">&gt;</span> <span class="ot">$@</span></code></pre></div>
 <p>The rules for <code>*.dat</code> are not executed because their corresponding <code>.txt</code> files haven’t been modified.</p>
 <p>If you run:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
     $ <span class="kw">touch</span> books/*.txt
-    $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
-<p>You will find that the <code>.dat</code> files as well as <code>analysis.tar.gz</code> are recreated.</p>
+    $ <span class="kw">make</span> results.txt</code></pre></div>
+<p>You will find that the <code>.dat</code> files as well as <code>results.txt</code> are recreated.</p>
 <hr />
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -103,55 +103,104 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>Rewrite each <code>.dat</code> rule to use the automatic variables <code>$@</code> (‘the target of the current rule’) and <code>$&lt;</code> (‘the first dependency of the current rule’).</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Generate archive file.</span>
-<span class="kw">analysis.tar.gz</span>: *.dat
-        <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
+<pre class="make"><code># Generate summary table.
+results.txt : *.dat
+        python zipf_test.py $^ &gt; $@
 
-<span class="co"># Count words.</span>
-<span class="kw">.PHONY</span> : dats
-<span class="kw">dats</span> : isles.dat abyss.dat last.dat
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
 
-<span class="kw">isles.dat</span> : books/isles.txt
-        <span class="kw">python</span> wordcount.py $<span class="kw">&lt;</span> <span class="ot">$@</span>
+isles.dat : books/isles.txt
+        python wordcount.py $&lt; $@
 
-<span class="kw">abyss.dat</span> : books/abyss.txt
-        <span class="kw">python</span> wordcount.py $<span class="kw">&lt;</span> <span class="ot">$@</span>
+abyss.dat : books/abyss.txt
+        python wordcount.py $&lt; $@
 
-<span class="kw">last.dat</span>: books/last.txt
-        <span class="kw">python</span> wordcount.py $<span class="kw">&lt;</span> <span class="ot">$@</span>
+last.dat : books/last.txt
+        python wordcount.py $&lt; $@
 
-<span class="kw">.PHONY</span> : clean
-<span class="kw">clean</span> :
-        <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f results.txt</code></pre>
+<h2 id="lesson-04-dependencies">Lesson 04-dependencies</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="updating-one-input-file"><span class="glyphicon glyphicon-pencil"></span>Updating one input file</h2>
+</div>
+<div class="panel-body">
+<p>What will happen if you now execute:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/last.txt
+$ <span class="kw">make</span> results.txt</code></pre></div>
+<ol style="list-style-type: decimal">
+<li>only <code>last.dat</code> is recreated</li>
+<li>all <code>.dat</code> files are recreated</li>
+<li>only <code>last.dat</code> and <code>results.txt</code> are recreated</li>
+<li>all <code>.dat</code> and <code>results.txt</code> are recreated</li>
+</ol>
+</div>
+</section>
+<hr />
+<ol start="3" style="list-style-type: decimal">
+<li>only <code>last.dat</code> and <code>results.txt</code> are recreated</li>
+</ol>
+<p>‘Follow’ the dependency tree to understand the answer(s).</p>
+<hr />
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="wordcount.py-as-dependency-of-results.txt."><span class="glyphicon glyphicon-pencil"></span><code>wordcount.py</code> as dependency of <code>results.txt</code>.</h2>
+</div>
+<div class="panel-body">
+<p>What would happen if you actually added <code>wordcount.py</code> as dependency of <code>results.txt</code>, and why?</p>
+</div>
+</section>
+<p>If you change the rule for the <code>results.txt</code> file like this:</p>
+<pre class="make"><code>results.txt : *.dat wordcount.py
+        python zipf_test.py $^ &gt; $@</code></pre>
+<p><code>wordcount.py</code> becomes a part of <code>$^</code>, thus the command becomes</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">python</span> zipf_test.py abyss.dat isles.dat last.dat wordcount.py <span class="kw">&gt;</span> results.txt</code></pre></div>
+<p>This results in an error from <code>zipf_test.py</code> as it tries to parse the script as if it were a <code>.dat</code> file. Try this by running:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> results.txt</code></pre></div>
+<p>You’ll get</p>
+<pre class="output"><code>python zipf_test.py abyss.dat isles.dat last.dat wordcount.py &gt; results.txt
+Traceback (most recent call last):
+  File &quot;zipf_test.py&quot;, line 19, in &lt;module&gt;
+    counts = load_word_counts(input_file)
+  File &quot;path/to/wordcount.py&quot;, line 39, in load_word_counts
+    counts.append((fields[0], int(fields[1]), float(fields[2])))
+IndexError: list index out of range
+make: *** [results.txt] Error 1</code></pre>
 <h2 id="lesson-06-variables">Lesson 06-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="use-variables"><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
 </div>
 <div class="panel-body">
-<p>Update <code>Makefile</code> so that the <code>%.dat</code> and <code>analysis.tar.gz</code> rules reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>.</p>
+<p>Update <code>Makefile</code> so that the <code>%.dat</code> rule reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>. Then do the same for the <code>zipf-test.py</code> script and the <code>results.txt</code> rule, using <code>ZIPF_SRC</code> and <code>ZIPF_EXE</code> as variable names</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ot">COUNT_SRC=</span>wordcount.py
-<span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
+<pre class="make"><code>COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)
+ZIPF_SRC=zipf_test.py
+ZIPF_EXE=python $(ZIPF_SRC)
 
-<span class="co"># Generate archive file.</span>
-<span class="kw">analysis.tar.gz</span> : *.dat COUNT_SRC
-    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
+# Generate summary table.
+results.txt : *.dat $(ZIPF_SRC)
+    $(ZIPF_EXE) *.dat &gt; $@
 
-<span class="co"># Count words.</span>
-<span class="kw">.PHONY</span> : dats
-<span class="kw">dats</span> : isles.dat abyss.dat last.dat
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
 
-<span class="kw">%.dat</span> : books/%.txt COUNT_SRC
-    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$*</span><span class="kw">.dat</span>
+%.dat : books/%.txt $(COUNT_SRC)
+        $(COUNT_EXE) $&lt; $*.dat
 
-<span class="kw">.PHONY</span> : clean
-<span class="kw">clean</span> :
-        <span class="kw">rm</span> -f *.dat
-        <span class="kw">rm</span> -f analysis.tar.gz</code></pre></div>
-<h2 id="lesson-08-variables">Lesson 08-variables</h2>
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f results.txt</code></pre>
+<h2 id="lesson-08-conclusion">Lesson 08-conclusion</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="extend-the-makefile-to-create-pngs"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create PNGs</h2>
@@ -160,58 +209,63 @@ $ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
 <p>Add new rules, update existing rules, and add new macros to:</p>
 <ul>
 <li>Create <code>.png</code> files from <code>.dat</code> files using <code>plotcount.py</code>.</li>
-<li>Add the script and <code>.png</code> files to the archive.</li>
-<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>analysis.tar.gz</code>). Finally, many Makefiles define a default <a href="reference.html#phony-target">phony target</a> called <code>all</code> that will build what the Makefile has been written to build (e.g. in our case, <code>analysis.tar.gz</code>). As others may assume your Makefile confirms to convention and supports an <code>all</code> target, add an <code>all</code> target to your Makefile (Hint: this rule has a single dependency but no actions).</li>
+<li>Add the <code>zip_test.py</code> script as dependency of the <code>results.txt</code> file</li>
+<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>results.txt</code>).</li>
 </ul>
+<p>Finally, many Makefiles define a default <a href="reference.html#phony-target">phony target</a> called <code>all</code> as first target, that will build what the Makefile has been written to build (e.g. in our case, the <code>.png</code> files and the <code>results.txt</code> file). As others may assume your Makefile confirms to convention and supports an <code>all</code> target, add an <code>all</code> target to your Makefile (Hint: this rule has the <code>results.txt</code> file and the <code>.png</code> files as dependencies, but no actions). With that in place, instead of running <code>make results.txt</code>, you should now run <code>make all</code>, or just simply <code>make</code>. By default, <code>make</code> runs the first target it finds in the Makefile, in this case your new <code>all</code> target.</p>
 </div>
 </section>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># config.mk</span>
-<span class="co"># Count words script.</span>
-<span class="ot">COUNT_SRC=</span>wordcount.py
-<span class="ot">COUNT_EXE=</span>python <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
+<pre class="make"><code># config.mk
+# Count words script.
+COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)
 
-<span class="co"># Plot word counts script.</span>
-<span class="ot">PLOT_SRC=</span>plotcount.py
-<span class="ot">PLOT_EXE=</span>python <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Makefile</span>
-<span class="kw">include</span> config.mk
+# Plot word counts script.
+PLOT_SRC=plotcount.py
+PLOT_EXE=python $(PLOT_SRC)
 
-<span class="ot">TXT_FILES=$(</span><span class="kw">wildcard</span> books/*.txt<span class="ot">)</span>
-<span class="ot">DAT_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.dat, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
-<span class="ot">PNG_FILES=$(</span><span class="kw">patsubst</span> books/%.txt, %.png, <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">))</span>
+# Test Zipf&#39;s rule
+ZIPF_SRC=zipf_test.py
+ZIPF_EXE=python $(ZIPF_SRC)</code></pre>
+<pre class="make"><code># Makefile
+include config.mk
 
-<span class="kw">.PHONY</span> : all
-<span class="kw">all</span> : analysis.tar.gz
+TXT_FILES=$(wildcard books/*.txt)
+DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
+PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 
-<span class="co"># Generate archive file.</span>
-<span class="kw">analysis.tar.gz</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span> <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
-    <span class="kw">tar</span> -czf <span class="ot">$@</span> $^
+.PHONY : all
+all : results.txt $(PNG_FILES)
 
-<span class="co"># Count words.</span>
-<span class="kw">.PHONY</span> : dats
-<span class="kw">dats</span> : <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
+# Generate summary table.
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
+    $(ZIPF_EXE) *.dat &gt; $@
 
-<span class="kw">%.dat</span> : books/%.txt <span class="ot">$(</span><span class="kw">COUNT_SRC</span><span class="ot">)</span>
-    <span class="ot">$(</span><span class="kw">COUNT_EXE</span><span class="ot">)</span> $<span class="kw">&lt;</span> <span class="ot">$*</span><span class="kw">.dat</span>
+# Count words.
+.PHONY : dats
+dats : $(DAT_FILES)
 
-<span class="co"># Plot word counts.</span>
-<span class="kw">.PHONY</span> : pngs
-<span class="kw">pngs</span> : <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span>
+%.dat : books/%.txt $(COUNT_SRC)
+    $(COUNT_EXE) $&lt; $*.dat
 
-<span class="kw">%.png</span> : %.dat <span class="ot">$(</span><span class="kw">PLOT_SRC</span><span class="ot">)</span>
-    <span class="ot">$(</span><span class="kw">PLOT_EXE</span><span class="ot">)</span> <span class="ot">$*</span><span class="kw">.dat</span> <span class="ot">$*</span>.png
+# Plot word counts.
+.PHONY : pngs
+pngs : $(PNG_FILES)
 
-<span class="kw">.PHONY</span> : clean
-<span class="kw">clean</span> :
-    <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
-    <span class="kw">rm</span> -f <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span>
-    <span class="kw">rm</span> -f analysis.tar.gz
+%.png : %.dat $(PLOT_SRC)
+    $(PLOT_EXE) $*.dat $*.png
 
-<span class="kw">.PHONY</span> : variables
-<span class="kw">variables</span>:
-    <span class="kw">@echo</span> TXT_FILES: <span class="ot">$(</span><span class="kw">TXT_FILES</span><span class="ot">)</span>
-    <span class="kw">@echo</span> DAT_FILES: <span class="ot">$(</span><span class="kw">DAT_FILES</span><span class="ot">)</span>
-    <span class="kw">@echo</span> PNG_FILES: <span class="ot">$(</span><span class="kw">PNG_FILES</span><span class="ot">)</span></code></pre></div>
+.PHONY : clean
+clean :
+    rm -f $(DAT_FILES)
+    rm -f $(PNG_FILES)
+    rm -f results.txt
+
+.PHONY : variables
+variables:
+    @echo TXT_FILES: $(TXT_FILES)
+    @echo DAT_FILES: $(DAT_FILES)
+    @echo PNG_FILES: $(PNG_FILES)</code></pre>
         </div>
       </div>
       </article>

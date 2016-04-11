@@ -42,21 +42,21 @@
 <p>At this point, we have the following Makefile:</p>
 <pre class="make"><code>include config.mk
 
-# Generate archive file.
-analysis.tar.gz : *.dat $(COUNT_SRC)
-    tar -czf $@ $^
+# Generate summary table.
+results.txt : *.dat $(ZIPF_SRC)
+        $(ZIPF_EXE) *.dat &gt; $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt $(COUNT_SRC)
-    $(COUNT_EXE) $&lt; $*.dat
+        $(COUNT_EXE) $&lt; $*.dat
 
 .PHONY : clean
 clean :
         rm -f *.dat
-        rm -f analysis.tar.gz</code></pre>
+        rm -f results.txt</code></pre>
 <p>Make has many <a href="reference.html#function">functions</a> which can be used to write more complex rules. One example is <code>wildcard</code>. <code>wildcard</code> gets a list of files matching some pattern, which we can then save in a variable. So, for example, we can get a list of all our text files (files ending in <code>.txt</code>) and save these in a variable by adding this at the beginning of our makefile:</p>
 <pre class="make"><code>TXT_FILES=$(wildcard books/*.txt)</code></pre>
 <p>We can add <code>.PHONY</code> target and rule to show the variable’s value:</p>
@@ -76,18 +76,18 @@ variables:
 <p>We get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt</code></pre>
 <p>Note how <code>sierra.txt</code> is now included too.</p>
-<p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target, once we have introduced our function:</p>
+<p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>results.txt</code> target, once we have introduced our function:</p>
 <div class="figure">
-<img src="img/07-functions.png" title="analysis.tar.gz dependencies after introducing a function" alt="analysis.tar.gz dependencies after introducing a function" />
-<p class="caption">analysis.tar.gz dependencies after introducing a function</p>
+<img src="img/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" />
+<p class="caption">results.txt dependencies after introducing a function</p>
 </div>
 <p><code>patsubst</code> (‘pattern substitution’) takes a pattern, a replacement string and a list of names in that order; each name in the list that matches the pattern is replaced by the replacement string. Again, we can save the result in a variable. So, for example, we can rewrite our list of text files into a list of data files (files ending in <code>.dat</code>) and save these in a variable:</p>
 <pre class="make"><code>DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))</code></pre>
 <p>We can extend <code>variables</code> to show the value of <code>DAT_FILES</code> too:</p>
 <pre class="make"><code>.PHONY : variables
 variables:
-    @echo TXT_FILES: $(TXT_FILES)
-    @echo DAT_FILES: $(DAT_FILES)</code></pre>
+        @echo TXT_FILES: $(TXT_FILES)
+        @echo DAT_FILES: $(DAT_FILES)</code></pre>
 <p>If we run Make,</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
 <p>then we get:</p>
@@ -101,7 +101,7 @@ dats : $(DAT_FILES)
 .PHONY : clean
 clean :
         rm -f $(DAT_FILES)
-        rm -f analysis.tar.gz</code></pre>
+        rm -f results.txt</code></pre>
 <p>Let’s check:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
 $ <span class="kw">make</span> dats</code></pre></div>
@@ -110,29 +110,37 @@ $ <span class="kw">make</span> dats</code></pre></div>
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat</code></pre>
-<p>We can also rewrite <code>analysis.tar.gz</code> too:</p>
-<pre class="make"><code>analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
-    tar -czf $@ $^</code></pre>
+<p>We can also rewrite <code>results.txt</code>:</p>
+<pre class="make"><code>results.txt : $(DAT_FILES) $(ZIPF_SRC)
+        $(ZIPF_EXE) *.dat &gt; $@</code></pre>
 <p>If we re-run Make:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+$ <span class="kw">make</span> results.txt</code></pre></div>
 <p>We get:</p>
-<pre class="output"><code>$ make analysis.tar.gz
-python wordcount.py books/abyss.txt abyss.dat
+<pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat
-tar -czf analysis.tar.gz abyss.dat isles.dat last.dat sierra.dat wordcount.py</code></pre>
-<p>We see that the problem we had when using the bash wild-card, <code>*.dat</code>, which required us to run <code>make dats</code> before <code>make analysis.tar.gz</code> has now disappeared, since our functions allow us to create <code>.dat</code> file names from those <code>.txt</code> file names in <code>books/</code>.</p>
+python zipf_test.py *.dat &gt; results.txt</code></pre>
+<p>We see that the problem we had when using the bash wild-card, <code>*.dat</code>, which required us to run <code>make dats</code> before <code>make results.txt</code> has now disappeared, since our functions allow us to create <code>.dat</code> file names from those <code>.txt</code> file names in <code>books/</code>.</p>
+<p>Let’s check the <code>results.txt</code> file:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cat</span> results.txt</code></pre></div>
+<pre class="output"><code>Book    First   Second  Ratio
+abyss   4044    2807    1.44
+isles   3822    2460    1.55
+last    12244   5566    2.20
+sierra  4242    2469    1.72</code></pre>
+<p>So the range of the ratios of occurrences of the two most frequent words in our books is indeed around 2, as predicted by Zipf’s law.</p>
+<p>most frequently-occurring word occurs approximately twice as often as the second most frequent word</p>
 <p>Here is our final Makefile:</p>
 <pre class="make"><code>include config.mk
 
 TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
-# Generate archive file.
-analysis.tar.gz : $(DAT_FILES) $(COUNT_SRC)
-    tar -czf $@ $^
+# Generate summary table.
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
+    $(ZIPF_EXE) *.dat &gt; $@
 
 # Count words.
 .PHONY : dats
@@ -144,16 +152,20 @@ dats : $(DAT_FILES)
 .PHONY : clean
 clean :
     rm -f $(DAT_FILES)
-    rm -f analysis.tar.gz
+    rm -f results.txt
 
-.PHONY: variables
+.PHONY : variables
 variables:
     @echo TXT_FILES: $(TXT_FILES)
     @echo DAT_FILES: $(DAT_FILES)</code></pre>
 <p>Remember, the <code>config.mk</code> file contains:</p>
 <pre class="make"><code># Count words script.
 COUNT_SRC=wordcount.py
-COUNT_EXE=python $(COUNT_SRC)</code></pre>
+COUNT_EXE=python $(COUNT_SRC)
+
+# Test Zipf&#39;s rule
+ZIPF_SRC=zipf_test.py
+ZIPF_EXE=python $(ZIPF_SRC)</code></pre>
         </div>
       </div>
       </article>

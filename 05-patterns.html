@@ -65,21 +65,21 @@ python wordcount.py books/last.txt last.dat</code></pre>
 </div>
 </aside>
 <p>Our Makefile is now much shorter and cleaner:</p>
-<pre class="make"><code># Generate archive file.
-analysis.tar.gz : *.dat wordcount.py
-    tar -czf $@ $^
+<pre class="make"><code># Generate summary table.
+results.txt : *.dat zipf_test.py
+        python zipf_test.py *.dat &gt; $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt wordcount.py
-    python wordcount.py $&lt; $*.dat
+      python wordcount.py $&lt; $*.dat
 
 .PHONY : clean
 clean :
-        rm -f *.dat
-        rm -f analysis.tar.gz</code></pre>
+      rm -f *.dat
+      rm -f results.txt</code></pre>
         </div>
       </div>
       </article>

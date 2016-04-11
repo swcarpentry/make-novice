@@ -40,27 +40,27 @@
 </div>
 </section>
 <p>Our Makefile now looks like this:</p>
-<pre class="make"><code># Generate archive file.
-analysis.tar.gz : *.dat
-    tar -czf $@ $^
+<pre class="make"><code># Generate summary table.
+results.txt : *.dat
+        python zipf_test.py $^ &gt; $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 isles.dat : books/isles.txt
-    python wordcount.py $&lt; $@
+        python wordcount.py $&lt; $@
 
 abyss.dat : books/abyss.txt
-    python wordcount.py $&lt; $@
+        python wordcount.py $&lt; $@
 
 last.dat : books/last.txt
-    python wordcount.py $&lt; $@
+        python wordcount.py $&lt; $@
 
 .PHONY : clean
 clean :
         rm -f *.dat
-        rm -f analysis.tar.gz</code></pre>
+        rm -f results.txt</code></pre>
 <p>Our data files are a product not only of our text files but the script, <code>wordcount.py</code>, that processes the text files and creates the data files. A change to <code>wordcount.py</code> (e.g. to add a new column of summary data or remove an existing one) results in changes to the <code>.dat</code> files it outputs. So, let’s pretend to edit <code>wordcount.py</code>, using <code>touch</code>, and re-run Make:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats
 $ <span class="kw">touch</span> wordcount.py
@@ -68,13 +68,13 @@ $ <span class="kw">make</span> dats</code></pre></div>
 <p>Nothing happens! Though we’ve updated <code>wordcount.py</code> our data files are not updated because our rules for creating <code>.dat</code> files don’t record any dependencies on <code>wordcount.py</code>.</p>
 <p>We need to add <code>wordcount.py</code> as a dependency of each of our data files also:</p>
 <pre class="make"><code>isles.dat : books/isles.txt wordcount.py
-    python wordcount.py $&lt; $@
+        python wordcount.py $&lt; $@
 
 abyss.dat : books/abyss.txt wordcount.py
-    python wordcount.py $&lt; $@
+        python wordcount.py $&lt; $@
 
 last.dat : books/last.txt wordcount.py
-    python wordcount.py $&lt; $@</code></pre>
+        python wordcount.py $&lt; $@</code></pre>
 <p>If we pretend to edit <code>wordcount.py</code> and re-run Make,</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> wordcount.py
 $ <span class="kw">make</span> dats</code></pre></div>
@@ -82,10 +82,10 @@ $ <span class="kw">make</span> dats</code></pre></div>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat</code></pre>
-<p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>analysis.tar.gz</code> target, after adding <code>wordcount.py</code> as a dependency to the <code>.dat</code> files:</p>
+<p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>results.txt</code> target, after adding <code>wordcount.py</code> as a dependency to the <code>.dat</code> files:</p>
 <div class="figure">
-<img src="img/04-dependencies.png" title="analysis.tar.gz dependencies after adding wordcount.py as a dependency" alt="analysis.tar.gz dependencies after adding wordcount.py as a dependency" />
-<p class="caption">analysis.tar.gz dependencies after adding wordcount.py as a dependency</p>
+<img src="img/04-dependencies.png" title="results.txt dependencies after adding wordcount.py as a dependency" alt="results.txt dependencies after adding wordcount.py as a dependency" />
+<p class="caption">results.txt dependencies after adding wordcount.py as a dependency</p>
 </div>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
@@ -95,13 +95,42 @@ python wordcount.py books/last.txt last.dat</code></pre>
 <p><code>.txt</code> files are input files and have no dependencies. To make these depend on <code>wordcount.py</code> would introduce a <a href="reference.html#false-dependency">false dependency</a>.</p>
 </div>
 </aside>
-<p>Let’s add our analysis script to the archive too:</p>
-<pre class="make"><code>analysis.tar.gz : *.dat wordcount.py
-        tar -czf $@ $^</code></pre>
-<p>If we re-run Make,</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> analysis.tar.gz</code></pre></div>
+<p>Intuitively, we should also add <code>wordcount.py</code> as dependency for <code>results.txt</code>, as the final table should be rebuilt as we remake the <code>.dat</code> files. However, it turns out we don’t have to! Let’s see what happens to <code>results.txt</code> when we update <code>wordcount.py</code>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> wordcount.py
+$ <span class="kw">make</span> results.txt</code></pre></div>
 <p>then we get:</p>
-<pre class="output"><code>tar -czf analysis.tar.gz abyss.dat isles.dat last.dat wordcount.py</code></pre>
+<pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/last.txt last.dat
+python zipf_test.py abyss.dat isles.dat last.dat &gt; results.txt</code></pre>
+<p>The whole pipeline is triggered, even the creation of the <code>results.txt</code> file! To understand this, note that according to the dependency figure, <code>results.txt</code> depends on the <code>.dat</code> files. The update of <code>wordcount.py</code> triggers an update of the <code>*.dat</code> files. Thus, <code>make</code> sees that the dependencies (the <code>.dat</code> files) are newer than the target file (<code>results.txt</code>) and thus it recreates <code>results.txt</code>. This is an example of the power of <code>make</code>: updating a subset of the files in the pipeline triggers rerunning the appropriate downstream steps.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="updating-one-input-file"><span class="glyphicon glyphicon-pencil"></span>Updating one input file</h2>
+</div>
+<div class="panel-body">
+<p>What will happen if you now execute:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/last.txt
+$ <span class="kw">make</span> results.txt</code></pre></div>
+<ol style="list-style-type: decimal">
+<li>only <code>last.dat</code> is recreated</li>
+<li>all <code>.dat</code> files are recreated</li>
+<li>only <code>last.dat</code> and <code>results.txt</code> are recreated</li>
+<li>all <code>.dat</code> and <code>results.txt</code> are recreated</li>
+</ol>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="wordcount-as-dependency-of-results.txt."><span class="glyphicon glyphicon-pencil"></span><code>wordcount</code> as dependency of <code>results.txt</code>.</h2>
+</div>
+<div class="panel-body">
+<p>What would happen if you actually added <code>wordcount.py</code> as dependency of <code>results.txt</code>, and why?</p>
+</div>
+</section>
+<p>We still have to add the <code>zipf-test.py</code> script as dependency to <code>results.txt</code>. Given the answer to the challenge above, we cannot use <code>$^</code> for the rule. We’ll go back to using <code>*.dat</code>:</p>
+<pre class="make"><code>results.txt : *.dat zip_test.py
+        python zipf_test.py *.dat &gt; $@</code></pre>
         </div>
       </div>
       </article>

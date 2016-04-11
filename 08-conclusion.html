@@ -49,16 +49,16 @@
 <p>Add new rules, update existing rules, and add new macros to:</p>
 <ul>
 <li>Create <code>.png</code> files from <code>.dat</code> files using <code>plotcount.py</code>.</li>
-<li>Add the script and <code>.png</code> files to the archive.</li>
-<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>analysis.tar.gz</code>).</li>
+<li>Add the <code>zip_test.py</code> script as dependency of the <code>results.txt</code> file</li>
+<li>Remove all auto-generated files (<code>.dat</code>, <code>.png</code>, <code>results.txt</code>).</li>
 </ul>
-<p>Finally, many Makefiles define a default <a href="reference.html#phony-target">phony target</a> called <code>all</code> that will build what the Makefile has been written to build (e.g. in our case, <code>analysis.tar.gz</code>). As others may assume your Makefile confirms to convention and supports an <code>all</code> target, add an <code>all</code> target to your Makefile (Hint: this rule has a single dependency but no actions).</p>
+<p>Finally, many Makefiles define a default <a href="reference.html#phony-target">phony target</a> called <code>all</code> as first target, that will build what the Makefile has been written to build (e.g. in our case, the <code>.png</code> files and the <code>results.txt</code> file). As others may assume your Makefile confirms to convention and supports an <code>all</code> target, add an <code>all</code> target to your Makefile (Hint: this rule has the <code>results.txt</code> file and the <code>.png</code> files as dependencies, but no actions). With that in place, instead of running <code>make results.txt</code>, you should now run <code>make all</code>, or just simply <code>make</code>. By default, <code>make</code> runs the first target it finds in the Makefile, in this case your new <code>all</code> target.</p>
 </div>
 </section>
-<p>The following figure shows the dependencies involved in building the <code>analysis.tar.gz</code> target, once we’ve added support for images:</p>
+<p>The following figure shows the dependencies involved in building the <code>all</code> target, once we’ve added support for images:</p>
 <div class="figure">
-<img src="img/08-conclusion-challenge.png" title="analysis.tar.gz dependencies once images have been added" alt="analysis.tar.gz dependencies once images have been added" />
-<p class="caption">analysis.tar.gz dependencies once images have been added</p>
+<img src="img/08-conclusion-challenge.png" title="results.txt dependencies once images have been added" alt="results.txt dependencies once images have been added" />
+<p class="caption">results.txt dependencies once images have been added</p>
 </div>
         </div>
       </div>
