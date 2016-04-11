@@ -1,6 +1,6 @@
-# Generate archive file.
-analysis.tar.gz : *.dat
-	tar -czf $@ $^
+# Generate summary table.
+results.txt : *.dat
+	python zipf_test.py $^ > $@
 
 # Count words.
 .PHONY : dats
@@ -18,4 +18,4 @@ last.dat : books/last.txt
 .PHONY : clean
 clean :
 	rm -f *.dat
-	rm -f analysis.tar.gz
+	rm -f results.txt

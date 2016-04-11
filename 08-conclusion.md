@@ -28,12 +28,13 @@ papers.
 > Add new rules, update existing rules, and add new macros to:
 > 
 > * Create `.png` files from `.dat` files using `plotcount.py`.
-> * Add the script and `.png` files to the archive.
+> * Add the `zip_test.py` script as dependency of the `results.txt` file
 > * Remove all auto-generated files (`.dat`, `.png`,
->   `analysis.tar.gz`). 
+>   `results.txt`). 
 >
-> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` that will build what the Makefile has been written to build (e.g. in our case, `analysis.tar.gz`). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has a single dependency but no actions).
+> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
+> With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
 
-The following figure shows the dependencies involved in building the `analysis.tar.gz` target, once we've added support for images:
+The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
 
-![analysis.tar.gz dependencies once images have been added](img/08-conclusion-challenge.png "analysis.tar.gz dependencies once images have been added")
+![results.txt dependencies once images have been added](img/08-conclusion-challenge.png "results.txt dependencies once images have been added")

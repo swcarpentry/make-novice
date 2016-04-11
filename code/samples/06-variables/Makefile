@@ -1,8 +1,8 @@
 include config.mk
 
-# Generate archive file.
-analysis.tar.gz : *.dat $(COUNT_SRC)
-	tar -czf $@ $^
+# Generate summary table.
+results.txt : *.dat $(ZIPF_SRC)
+	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
 .PHONY : dats
@@ -14,4 +14,4 @@ dats : isles.dat abyss.dat last.dat
 .PHONY : clean
 clean :
 	rm -f *.dat
-	rm -f analysis.tar.gz
+	rm -f results.txt

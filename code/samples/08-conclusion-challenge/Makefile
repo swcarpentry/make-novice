@@ -5,11 +5,11 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 
 .PHONY : all
-all : analysis.tar.gz
+all : results.txt $(PNG_FILES)
 
-# Generate archive file.
-analysis.tar.gz : $(DAT_FILES) $(PNG_FILES) $(COUNT_SRC) $(PLOT_SRC)
-	tar -czf $@ $^
+# Generate summary table.
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
+	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
 .PHONY : dats
@@ -29,7 +29,7 @@ pngs : $(PNG_FILES)
 clean :
 	rm -f $(DAT_FILES)
 	rm -f $(PNG_FILES)
-	rm -f analysis.tar.gz
+	rm -f results.txt
 
 .PHONY : variables
 variables:
