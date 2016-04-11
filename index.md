@@ -63,7 +63,7 @@ the same concepts as Make.
 6.  [Variables](06-variables.html)
 7.  [Functions](07-functions.html)
 8.  [Self-documenting Makefiles](08-self-doc.html)
-9.  [Conclusion](08-conclusion.html)
+9.  [Conclusion](09-conclusion.html)
 
 ## Other Resources
 

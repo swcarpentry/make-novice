@@ -110,9 +110,9 @@ img/07-functions.png: build
 	cp code/samples/07-functions/* $<
 	cd build && make -Bnd results.txt | $(MAKE2PNG) $(CURDIR)/$@
 
-.PHONY: img/08-conclusion-challenge.png
-img/08-conclusion-challenge.png: $<
-	cp code/samples/08-conclusion-challenge/* build
+.PHONY: img/09-conclusion-challenge.png
+img/09-conclusion-challenge.png: $<
+	cp code/samples/09-conclusion-challenge/* build
 	cd build && make -Bnd | $(MAKE2PNG) $(CURDIR)/$@ 
 
-imgs: img/02-makefile.png img/02-makefile-challenge.png img/04-dependencies.png img/07-functions.png img/08-conclusion-challenge.png
+imgs: img/02-makefile.png img/02-makefile-challenge.png img/04-dependencies.png img/07-functions.png img/09-conclusion-challenge.png

@@ -37,4 +37,4 @@ papers.
 
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
 
-![results.txt dependencies once images have been added](img/08-conclusion-challenge.png "results.txt dependencies once images have been added")
+![results.txt dependencies once images have been added](img/09-conclusion-challenge.png "results.txt dependencies once images have been added")

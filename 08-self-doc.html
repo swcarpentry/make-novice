@@ -46,39 +46,39 @@ clean       : Remove auto-generated files.</code></pre>
 <p>So, how would we implement this? We could write a rule like:</p>
 <pre class="make"><code>.PHONY : help
 help : 
-     @echo &quot;results.txt : Generate Zipf summary table.&quot;
-     @echo &quot;dats        : Count words in text files.&quot;
-     @echo &quot;clean       : Remove auto-generated files.&quot;</code></pre>
+        @echo &quot;results.txt : Generate Zipf summary table.&quot;
+        @echo &quot;dats        : Count words in text files.&quot;
+        @echo &quot;clean       : Remove auto-generated files.&quot;</code></pre>
 <p>But every time we add or remove a rule, or change the description of a rule, we would have to update this rule too. It would be better if we could keep the descriptions of the rules by the rules themselves and extract these descriptions automatically.</p>
 <p>The bash shell can help us here. It provides a command called <a href="https://www.gnu.org/software/sed/">sed</a> which stands for ‘stream editor’. <code>sed</code> reads in some text, does some filtering, and writes out the filtered text.</p>
 <p>So, we could write comments for our rules, and mark then up in a way which <code>sed</code> can detect. Since Make uses <code>#</code> for comments, we can use <code>##</code> for comments that describe what a rule does and that we want <code>sed</code> to detect. For example:</p>
 <pre class="make"><code>## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-    $(ZIPF_EXE) *.dat &gt; $@
+        $(ZIPF_EXE) *.dat &gt; $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-    $(COUNT_EXE) $&lt; $*.dat
+        $(COUNT_EXE) $&lt; $*.dat
 
 ## clean       : Remove auto-generated files.
 .PHONY : clean
 clean :
-    rm -f $(DAT_FILES)
-    rm -f results.txt
+        rm -f $(DAT_FILES)
+        rm -f results.txt
 
 ## print       : Print variables.
 .PHONY : variables
 variables:
-    @echo TXT_FILES: $(TXT_FILES)
-    @echo DAT_FILES: $(DAT_FILES)</code></pre>
+        @echo TXT_FILES: $(TXT_FILES)
+        @echo DAT_FILES: $(DAT_FILES)</code></pre>
 <p>We use <code>##</code> so we can distinguish between comments that we want <code>sed</code> to automatically filter, and other comments that may describe what other rules do, or that describe variables.</p>
 <p>We can then write a <code>help</code> target that applies <code>sed</code> to our <code>Makefile</code>:</p>
 <pre class="make"><code>.PHONY : help
 help : Makefile
-    @sed -n &#39;s/^##//p&#39; $&lt;</code></pre>
+        @sed -n &#39;s/^##//p&#39; $&lt;</code></pre>
 <p>This rule depends upon the Makefile itself. It runs <code>sed</code> on the first dependency of the rule, which is our Makefile, and tells <code>sed</code> to get all the lines that begin with <code>##</code>, which <code>sed</code> then prints for us.</p>
 <p>If we now run</p>
 <pre class="make"><code>make help</code></pre>
