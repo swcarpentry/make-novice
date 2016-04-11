@@ -57,18 +57,18 @@ Our Makefile is now much shorter and cleaner:
 
 ~~~ {.make}
 # Generate summary table.
-results.txt : *.dat
-        python zipf_test.py $^ > $@
+results.txt : *.dat zipf_test.py
+	    python zipf_test.py *.dat > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt wordcount.py
-        python wordcount.py $< $*.dat
+      python wordcount.py $< $*.dat
 
 .PHONY : clean
 clean :
-        rm -f *.dat
-        rm -f results.txt
+      rm -f *.dat
+      rm -f results.txt
 ~~~
