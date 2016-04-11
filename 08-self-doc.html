@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Automation and Make</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">Automation and Make</h1></a>
+          <h2 class="subtitle">Self-documenting Makefiles</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Writing self-documenting Makefiles with built-in help.</li>
+</ul>
+</div>
+</section>
+<p>Many bash commands, and programs that people have written that can be run from within bash, support a <code>--help</code> flag to display more information on how to use the commands or programs. In this spirit, it can be useful, both for ourselves and for others, to provide a <code>help</code> target in our Makefiles. This can provide a summary of the names of the key targets and what they do, so we don’t need to look at the Makefile itself unless we want to. For our Makefile, running a <code>help</code> target might print:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> help</code></pre></div>
+<pre class="output"><code>results.txt : Generate Zipf summary table.
+dats        : Count words in text files.
+clean       : Remove auto-generated files.</code></pre>
+<p>So, how would we implement this? We could write a rule like:</p>
+<pre class="make"><code>.PHONY : help
+help : 
+        @echo &quot;results.txt : Generate Zipf summary table.&quot;
+        @echo &quot;dats        : Count words in text files.&quot;
+        @echo &quot;clean       : Remove auto-generated files.&quot;</code></pre>
+<p>But every time we add or remove a rule, or change the description of a rule, we would have to update this rule too. It would be better if we could keep the descriptions of the rules by the rules themselves and extract these descriptions automatically.</p>
+<p>The bash shell can help us here. It provides a command called <a href="https://www.gnu.org/software/sed/">sed</a> which stands for ‘stream editor’. <code>sed</code> reads in some text, does some filtering, and writes out the filtered text.</p>
+<p>So, we could write comments for our rules, and mark then up in a way which <code>sed</code> can detect. Since Make uses <code>#</code> for comments, we can use <code>##</code> for comments that describe what a rule does and that we want <code>sed</code> to detect. For example:</p>
+<pre class="make"><code>## results.txt : Generate Zipf summary table.
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
+        $(ZIPF_EXE) *.dat &gt; $@
+
+## dats        : Count words in text files.
+.PHONY : dats
+dats : $(DAT_FILES)
+
+%.dat : books/%.txt $(COUNT_SRC)
+        $(COUNT_EXE) $&lt; $*.dat
+
+## clean       : Remove auto-generated files.
+.PHONY : clean
+clean :
+        rm -f $(DAT_FILES)
+        rm -f results.txt
+
+## print       : Print variables.
+.PHONY : variables
+variables:
+        @echo TXT_FILES: $(TXT_FILES)
+        @echo DAT_FILES: $(DAT_FILES)</code></pre>
+<p>We use <code>##</code> so we can distinguish between comments that we want <code>sed</code> to automatically filter, and other comments that may describe what other rules do, or that describe variables.</p>
+<p>We can then write a <code>help</code> target that applies <code>sed</code> to our <code>Makefile</code>:</p>
+<pre class="make"><code>.PHONY : help
+help : Makefile
+        @sed -n &#39;s/^##//p&#39; $&lt;</code></pre>
+<p>This rule depends upon the Makefile itself. It runs <code>sed</code> on the first dependency of the rule, which is our Makefile, and tells <code>sed</code> to get all the lines that begin with <code>##</code>, which <code>sed</code> then prints for us.</p>
+<p>If we now run</p>
+<pre class="make"><code>make help</code></pre>
+<p>we get:</p>
+<pre class="make"><code> results.txt : Generate Zipf summary table.
+ dats        : Count words in text files.
+ clean       : Remove auto-generated files.
+ print       : Print variables.</code></pre>
+<p>If we add, change or remove a target or rule, we now only need to remember to add, update or remove a comment next to the rule. So long as we respect our convention of using <code>##</code> for such comments, then our <code>help</code> rule will take care of detecting these comments and printing them for us.</p>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/make-novice">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

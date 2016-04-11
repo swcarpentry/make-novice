@@ -62,7 +62,8 @@ the same concepts as Make.
 5.  [Pattern rules](05-patterns.html)
 6.  [Variables](06-variables.html)
 7.  [Functions](07-functions.html)
-8.  [Conclusion](08-conclusion.html)
+8.  [Self-documenting Makefiles](08-self-doc.html)
+9.  [Conclusion](09-conclusion.html)
 
 ## Other Resources
 
