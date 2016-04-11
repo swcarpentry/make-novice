@@ -125,10 +125,12 @@ example of the Makefiles on completion of the topic.
 `07-functions/Makefile` and `07-functions/config.mk` contains an
 example of the Makefiles on completion of the topic.
 
-## [Conclusion](08-conclusion.html)
+## [Self-documenting Makefiles](08-self-doc.html)
+
+## [Conclusion](09-conclusion.html)
 
 Extend the Makefile to create PNGs - challenge
 
 * Allow 15 minutes.
-* `08-conclusion-challenge/Makefile` and
-  `08-conclusion-challenge/config.mk` contain a solution.
+* `09-conclusion-challenge/Makefile` and
+  `09-conclusion-challenge/config.mk` contain a solution.
