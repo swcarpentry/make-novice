@@ -52,8 +52,7 @@ correctly, before beginning the session.
 
 ## Code and data files
 
-Python scripts to be invoked by Make are in `code/wordcount.py` and
-`code/plotcount.py`.
+Python scripts to be invoked by Make are in `code/`.
 
 Data files are in `data/books`.
 
