@@ -81,7 +81,7 @@ help : Makefile
         @sed -n &#39;s/^##//p&#39; $&lt;</code></pre>
 <p>This rule depends upon the Makefile itself. It runs <code>sed</code> on the first dependency of the rule, which is our Makefile, and tells <code>sed</code> to get all the lines that begin with <code>##</code>, which <code>sed</code> then prints for us.</p>
 <p>If we now run</p>
-<pre class="make"><code>make help</code></pre>
+<pre class="make"><code>$ make help</code></pre>
 <p>we get:</p>
 <pre class="output"><code> results.txt : Generate Zipf summary table.
  dats        : Count words in text files.

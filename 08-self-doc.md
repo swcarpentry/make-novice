@@ -77,7 +77,7 @@ This rule depends upon the Makefile itself. It runs `sed` on the first dependenc
 If we now run
 
 ~~~{.make}
-make help
+$ make help
 ~~~
 we get:
 
