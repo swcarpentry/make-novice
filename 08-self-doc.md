@@ -1,0 +1,89 @@
+---
+layout: page
+title: Automation and Make
+subtitle: Self-documenting Makefiles
+minutes: 0
+---
+
+> ## Learning Objectives {.objectives}
+>
+> * Writing self-documenting Makefiles with built-in help.
+
+Many bash commands, and programs that people have written that can be run from within bash, support a `--help` flag to display more information on how to use the commands or programs. In this spirit, it can be useful, both for ourselves and for others, to provide a `help` target in our Makefiles. This can provide a summary of the names of the key targets and what they do, so we don't need to look at the Makefile itself unless we want to. For our Makefile, running a `help` target might print:
+
+~~~{.bash}
+$ make help
+~~~
+
+~~~{.output}
+results.txt : Generate Zipf summary table.
+dats        : Count words in text files.
+clean       : Remove auto-generated files.
+~~~
+
+So, how would we implement this? We could write a rule like:
+
+~~~ {.make}
+.PHONY : help
+help : 
+     @echo "results.txt : Generate Zipf summary table."
+     @echo "dats        : Count words in text files."
+     @echo "clean       : Remove auto-generated files."
+~~~
+
+But every time we add or remove a rule, or change the description of a rule, we would have to update this rule too. It would be better if we could keep the descriptions of the rules by the rules themselves and extract these descriptions automatically.
+
+The bash shell can help us here. It provides a command called [sed](https://www.gnu.org/software/sed/) which stands for 'stream editor'. `sed` reads in some text, does some filtering, and writes out the filtered text. 
+
+So, we could write comments for our rules, and mark then up in a way which `sed` can detect. Since Make uses `#` for comments, we can use `##` for comments that describe what a rule does and that we want `sed` to detect. For example:
+
+~~~{.make}
+## results.txt : Generate Zipf summary table.
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
+    $(ZIPF_EXE) *.dat > $@
+
+## dats        : Count words in text files.
+.PHONY : dats
+dats : $(DAT_FILES)
+
+%.dat : books/%.txt $(COUNT_SRC)
+    $(COUNT_EXE) $< $*.dat
+
+## clean       : Remove auto-generated files.
+.PHONY : clean
+clean :
+    rm -f $(DAT_FILES)
+    rm -f results.txt
+
+## print       : Print variables.
+.PHONY : variables
+variables:
+    @echo TXT_FILES: $(TXT_FILES)
+    @echo DAT_FILES: $(DAT_FILES)
+~~~
+
+We use `##` so we can distinguish between comments that we want `sed` to automatically filter, and other comments that may describe what other rules do, or that describe variables.
+
+We can then write a `help` target that applies `sed` to our `Makefile`:
+
+~~~{.make}
+.PHONY : help
+help : Makefile
+    @sed -n 's/^##//p' $<
+~~~
+
+This rule depends upon the Makefile itself. It runs `sed` on the first dependency of the rule, which is our Makefile, and tells `sed` to get all the lines that begin with `##`, which `sed` then prints for us.
+
+If we now run
+
+~~~{.make}
+make help
+~~~
+we get:
+
+~~~{.make}
+ results.txt : Generate Zipf summary table.
+ dats        : Count words in text files.
+ clean       : Remove auto-generated files.
+ print       : Print variables.
+~~~
