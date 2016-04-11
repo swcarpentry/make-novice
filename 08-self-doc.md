@@ -26,9 +26,9 @@ So, how would we implement this? We could write a rule like:
 ~~~ {.make}
 .PHONY : help
 help : 
-     @echo "results.txt : Generate Zipf summary table."
-     @echo "dats        : Count words in text files."
-     @echo "clean       : Remove auto-generated files."
+        @echo "results.txt : Generate Zipf summary table."
+        @echo "dats        : Count words in text files."
+        @echo "clean       : Remove auto-generated files."
 ~~~
 
 But every time we add or remove a rule, or change the description of a rule, we would have to update this rule too. It would be better if we could keep the descriptions of the rules by the rules themselves and extract these descriptions automatically.
@@ -40,26 +40,26 @@ So, we could write comments for our rules, and mark then up in a way which `sed`
 ~~~{.make}
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-    $(ZIPF_EXE) *.dat > $@
+        $(ZIPF_EXE) *.dat > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-    $(COUNT_EXE) $< $*.dat
+        $(COUNT_EXE) $< $*.dat
 
 ## clean       : Remove auto-generated files.
 .PHONY : clean
 clean :
-    rm -f $(DAT_FILES)
-    rm -f results.txt
+        rm -f $(DAT_FILES)
+        rm -f results.txt
 
 ## print       : Print variables.
 .PHONY : variables
 variables:
-    @echo TXT_FILES: $(TXT_FILES)
-    @echo DAT_FILES: $(DAT_FILES)
+        @echo TXT_FILES: $(TXT_FILES)
+        @echo DAT_FILES: $(DAT_FILES)
 ~~~
 
 We use `##` so we can distinguish between comments that we want `sed` to automatically filter, and other comments that may describe what other rules do, or that describe variables.
@@ -69,7 +69,7 @@ We can then write a `help` target that applies `sed` to our `Makefile`:
 ~~~{.make}
 .PHONY : help
 help : Makefile
-    @sed -n 's/^##//p' $<
+        @sed -n 's/^##//p' $<
 ~~~
 
 This rule depends upon the Makefile itself. It runs `sed` on the first dependency of the rule, which is our Makefile, and tells `sed` to get all the lines that begin with `##`, which `sed` then prints for us.
