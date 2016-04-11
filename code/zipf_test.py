@@ -16,8 +16,8 @@ if __name__ == '__main__':
     input_files = sys.argv[1:]
     print("Book\tFirst\tSecond\tRatio")
     for input_file in input_files:
-		counts = load_word_counts(input_file)
-		[first, second] = top_two_word(counts)
-		bookname = input_file[:-4]
-		print("%s\t%i\t%i\t%.2f" %(bookname, first, second, float(first)/second))
+        counts = load_word_counts(input_file)
+        [first, second] = top_two_word(counts)
+        bookname = input_file[:-4]
+        print("%s\t%i\t%i\t%.2f" %(bookname, first, second, float(first)/second))
 
