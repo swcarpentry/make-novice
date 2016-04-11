@@ -48,6 +48,7 @@ clean :
 ~~~
 
 ## Lesson 03-variables
+
 > ## Update dependencies {.challenge}
 > 
 > What will happen if you now execute:
@@ -62,7 +63,6 @@ clean :
 > 3. only `.dat` files recreated
 > 4. only `results.txt` recreated
 
-* * *
 4.) only `results.txt` recreated. 
 
 You can check that `*.dat` is being expanded in the target of the rule for `results.txt` by echoing the value of the automatic variable `$^` (all dependencies of the current rule).
@@ -86,8 +86,6 @@ If you run:
 You will find that the `.dat` files as well as `results.txt` are recreated.
 
 * * *
-
-
 
 > ## Rewrite `.dat` rules to use automatic variables {.challenge}
 >
@@ -140,7 +138,9 @@ clean :
 
 'Follow' the dependency tree to understand the answer(s).
 
-> ## `wordcount.py` as dependency of `results.txt` {.challenge}
+* * *
+
+> ## `wordcount.py` as dependency of `results.txt`. {.challenge}
 >
 > What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
 
@@ -209,25 +209,29 @@ clean :
         rm -f results.txt
 ~~~
 
-## Lesson 08-variables
+## Lesson 08-conclusion
 
 > ## Extend the Makefile to create PNGs {.challenge}
 >
 > Add new rules, update existing rules, and add new macros to:
 > 
 > * Create `.png` files from `.dat` files using `plotcount.py`.
-> * Add the script and `.png` files as dependencies of the `results.txt` file to make sure they are (re)created when needed.
+> * Add the `zip_test.py` script as dependency of the `results.txt` file
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`). 
 >
-> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` that will build what the Makefile has been written to build (e.g. in our case, `results.txt`). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has a single dependency but no actions).
-
+> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
+> With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
 
 ~~~{.make}
 # config.mk
 # Count words script.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
+
+# Plot word counts script.
+PLOT_SRC=plotcount.py
+PLOT_EXE=python $(PLOT_SRC)
 
 # Test Zipf's rule
 ZIPF_SRC=zipf_test.py
@@ -243,10 +247,10 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
 
 .PHONY : all
-all : results.txt
+all : results.txt $(PNG_FILES)
 
 # Generate summary table.
-results.txt : $(DAT_FILES) $(PNG_FILES) $(ZIPF_SRC)
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
 	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
