@@ -1,6 +1,6 @@
-# Generate archive file.
-analysis.tar.gz : isles.dat abyss.dat last.dat
-	tar -czf analysis.tar.gz isles.dat abyss.dat last.dat
+# Generate summary table.
+results.txt : isles.dat abyss.dat last.dat
+	python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 
 # Count words.
 .PHONY : dats
@@ -18,4 +18,4 @@ last.dat : books/last.txt
 .PHONY : clean
 clean :
 	rm -f *.dat
-	rm -f analysis.tar.gz
+	rm -f results.txt

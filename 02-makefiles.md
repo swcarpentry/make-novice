@@ -334,17 +334,16 @@ The following figure shows a graph of the dependencies embodied within our Makef
 >
 > Update the `dats` rule with this target.
 >
-> Write a new rule for `analysis.tar.gz`, which creates an archive of
-> the data files. The rule needs to:
+> Write a new rule for `results.txt`, which creates the summary
+> table. The rule needs to:
 >
 > * Depend upon each of the three `.dat` files.
-> * Invoke the action `tar -czf analysis.tar.gz isles.dat abyss.dat
->   last.dat`.
+> * Invoke the action `python zipf_test.py abyss.dat isles.dat last-dat > results.txt`.
 >
 > Put this rule at the top of the Makefile so that it is the default target.
 >
-> Update `clean` so that it removes `analysis.tar.gz`.
+> Update `clean` so that it removes `results.txt`.
 
-The following figure shows the dependencies embodied within our Makefile, involved in building the `analysis.tar.gz` target:
+The following figure shows the dependencies embodied within our Makefile, involved in building the `results.txt` target:
 
-![analysis.tar.gz dependencies represented within the Makefile](img/02-makefile-challenge.png "analysis.tar.gz dependencies represented within the Makefile")
+![results.txt dependencies represented within the Makefile](img/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")
