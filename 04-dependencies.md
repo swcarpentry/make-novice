@@ -122,7 +122,7 @@ The whole pipeline is triggered, even the creation of the `results.txt` file! To
 > 4. all `.dat` and `results.txt` are recreated
 
 
-> ## `wordcount` as dependency of `results.txt` {.challenge}
+> ## `wordcount` as dependency of `results.txt`. {.challenge}
 >
 > What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
 
