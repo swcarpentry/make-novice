@@ -87,3 +87,6 @@ we get:
  clean       : Remove auto-generated files.
  print       : Print variables.
 ~~~
+
+If we add, change or remove a target or rule, we now only need to remember to add, update or remove a comment next to the rule. So long as we respect our convention of using `##` for such comments, then our `help` rule will take care of detecting these comments and printing them for us.
+
