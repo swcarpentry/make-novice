@@ -81,7 +81,7 @@ make help
 ~~~
 we get:
 
-~~~{.make}
+~~~{.output}
  results.txt : Generate Zipf summary table.
  dats        : Count words in text files.
  clean       : Remove auto-generated files.
