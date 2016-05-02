@@ -5,6 +5,10 @@
 > for instructions on formatting, building, and submitting lessons,
 > or run `make` in this directory for a list of helpful commands.
 
+Maintainer:
+
+* [Mike Jackson](http://software-carpentry.org/team/#jackson_m)
+
 ## A note on Makefile dependency images
 
 Some of these pages use images of Makefile dependencies, in the [img](./img) directory.
