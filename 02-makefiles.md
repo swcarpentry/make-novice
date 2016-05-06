@@ -97,7 +97,7 @@ using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
 $ make -f MyOtherMakefile
 ~~~
 
-As we have re-run our Makefile, Make now informs us that:
+When we re-run our Makefile, Make now informs us that:
 
 ~~~ {.output}
 make: `isles.dat' is up to date.
