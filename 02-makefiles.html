@@ -78,6 +78,7 @@ isles.dat : books/isles.txt
 <div class="panel-body">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if we call it something else we need to tell Make where to find it. This we can do using <code>-f</code> flag. For example, if our Makefile is named <code>MyOtherMakefile</code>:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f MyOtherMakefile</code></pre></div>
+<p>Sometimes, the suffix <code>.mk</code> will be used to identify Makefiles that are not called <code>Makefile</code> e.g. <code>install.mk</code>, <code>common.mk</code> etc.</p>
 </div>
 </aside>
 <p>When we re-run our Makefile, Make now informs us that:</p>

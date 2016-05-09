@@ -98,6 +98,9 @@ The first 5 lines of `isles.dat` should look exactly like before.
 > ~~~ {.bash}
 > $ make -f MyOtherMakefile
 > ~~~
+>
+> Sometimes, the suffix `.mk` will be used to identify Makefiles that 
+> are not called `Makefile` e.g. `install.mk`, `common.mk` etc.
 
 When we re-run our Makefile, Make now informs us that:
 
