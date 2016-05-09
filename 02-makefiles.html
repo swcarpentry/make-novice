@@ -71,9 +71,16 @@ isles.dat : books/isles.txt
 <p>Let’s see if we got what we expected.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">head</span> -5 isles.dat</code></pre></div>
 <p>The first 5 lines of <code>isles.dat</code> should look exactly like before.</p>
-<p>We don’t have to call our Makefile <code>Makefile</code>. However, if we call it something else we need to tell Make where to find it. This we can do using <code>-f</code> flag. For example:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f Makefile</code></pre></div>
-<p>As we have re-run our Makefile, Make now informs us that:</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="makefiles-do-not-have-to-be-called-makefile."><span class="glyphicon glyphicon-pushpin"></span>Makefiles do not have to be called <code>Makefile</code>.</h2>
+</div>
+<div class="panel-body">
+<p>We don’t have to call our Makefile <code>Makefile</code>. However, if we call it something else we need to tell Make where to find it. This we can do using <code>-f</code> flag. For example, if our Makefile is named <code>MyOtherMakefile</code>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f MyOtherMakefile</code></pre></div>
+</div>
+</aside>
+<p>When we re-run our Makefile, Make now informs us that:</p>
 <pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
 <p>This is because our target, <code>isles.dat</code>, has now been created, and Make will not create it again. To see how this works, let’s pretend to update one of the text files. Rather than opening the file in an editor, we can use the shell <code>touch</code> command to update its timestamp (which would happen if we did edit the file):</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/isles.txt</code></pre></div>
