@@ -89,13 +89,15 @@ head -5 isles.dat
 
 The first 5 lines of `isles.dat` should look exactly like before.
 
-We don't have to call our Makefile `Makefile`. However, if we call it
-something else we need to tell Make where to find it. This we can do
-using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
-
-~~~ {.bash}
-$ make -f MyOtherMakefile
-~~~
+> ## Makefiles do not have to be called `Makefile`. {.callout}
+> 
+> We don't have to call our Makefile `Makefile`. However, if we call it
+> something else we need to tell Make where to find it. This we can do
+> using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
+> 
+> ~~~ {.bash}
+> $ make -f MyOtherMakefile
+> ~~~
 
 When we re-run our Makefile, Make now informs us that:
 
