@@ -91,13 +91,13 @@ The first 5 lines of `isles.dat` should look exactly like before.
 
 We don't have to call our Makefile `Makefile`. However, if we call it
 something else we need to tell Make where to find it. This we can do
-using `-f` flag. For example:
+using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
 
 ~~~ {.bash}
-$ make -f Makefile
+$ make -f MyOtherMakefile
 ~~~
 
-As we have re-run our Makefile, Make now informs us that:
+When we re-run our Makefile, Make now informs us that:
 
 ~~~ {.output}
 make: `isles.dat' is up to date.
