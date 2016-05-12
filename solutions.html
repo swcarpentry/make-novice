@@ -31,7 +31,7 @@
           <h2 id="lesson-02-makefiles">Lesson 02-makefiles</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="write-two-new-rules"><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
 </div>
 <div class="panel-body">
 <p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
@@ -69,12 +69,12 @@ clean :
 <h2 id="lesson-03-variables">Lesson 03-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="update-dependencies"><span class="glyphicon glyphicon-pencil"></span>Update dependencies</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Update dependencies</h2>
 </div>
 <div class="panel-body">
 <p>What will happen if you now execute:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
-$ <span class="kw">make</span> results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> *.dat
+$ <span class="kw">make</span> results.txt</code></pre>
 <ol style="list-style-type: decimal">
 <li>nothing</li>
 <li>all files recreated</li>
@@ -85,19 +85,19 @@ $ <span class="kw">make</span> results.txt</code></pre></div>
 </section>
 <p>4.) only <code>results.txt</code> recreated.</p>
 <p>You can check that <code>*.dat</code> is being expanded in the target of the rule for <code>results.txt</code> by echoing the value of the automatic variable <code>$^</code> (all dependencies of the current rule).</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">results.txt</span>: *.dat
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">results.txt</span>: *.dat
     <span class="kw">@echo</span> $^
-    <span class="kw">python</span> zipf_test.py $^ <span class="kw">&gt;</span> <span class="ot">$@</span></code></pre></div>
+    <span class="kw">python</span> zipf_test.py $^ <span class="kw">&gt;</span> <span class="ot">$@</span></code></pre>
 <p>The rules for <code>*.dat</code> are not executed because their corresponding <code>.txt</code> files haven’t been modified.</p>
 <p>If you run:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
+<pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">touch</span> *.dat
     $ <span class="kw">touch</span> books/*.txt
-    $ <span class="kw">make</span> results.txt</code></pre></div>
+    $ <span class="kw">make</span> results.txt</code></pre>
 <p>You will find that the <code>.dat</code> files as well as <code>results.txt</code> are recreated.</p>
 <hr />
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="rewrite-.dat-rules-to-use-automatic-variables"><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Rewrite <code>.dat</code> rules to use automatic variables</h2>
 </div>
 <div class="panel-body">
 <p>Rewrite each <code>.dat</code> rule to use the automatic variables <code>$@</code> (‘the target of the current rule’) and <code>$&lt;</code> (‘the first dependency of the current rule’).</p>
@@ -127,12 +127,12 @@ clean :
 <h2 id="lesson-04-dependencies">Lesson 04-dependencies</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="updating-one-input-file"><span class="glyphicon glyphicon-pencil"></span>Updating one input file</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Updating one input file</h2>
 </div>
 <div class="panel-body">
 <p>What will happen if you now execute:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/last.txt
-$ <span class="kw">make</span> results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/last.txt
+$ <span class="kw">make</span> results.txt</code></pre>
 <ol style="list-style-type: decimal">
 <li>only <code>last.dat</code> is recreated</li>
 <li>all <code>.dat</code> files are recreated</li>
@@ -149,7 +149,7 @@ $ <span class="kw">make</span> results.txt</code></pre></div>
 <hr />
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="wordcount.py-as-dependency-of-results.txt."><span class="glyphicon glyphicon-pencil"></span><code>wordcount.py</code> as dependency of <code>results.txt</code>.</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span><code>wordcount.py</code> as dependency of <code>results.txt</code>.</h2>
 </div>
 <div class="panel-body">
 <p>What would happen if you actually added <code>wordcount.py</code> as dependency of <code>results.txt</code>, and why?</p>
@@ -159,9 +159,9 @@ $ <span class="kw">make</span> results.txt</code></pre></div>
 <pre class="make"><code>results.txt : *.dat wordcount.py
         python zipf_test.py $^ &gt; $@</code></pre>
 <p><code>wordcount.py</code> becomes a part of <code>$^</code>, thus the command becomes</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">python</span> zipf_test.py abyss.dat isles.dat last.dat wordcount.py <span class="kw">&gt;</span> results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">python</span> zipf_test.py abyss.dat isles.dat last.dat wordcount.py <span class="kw">&gt;</span> results.txt</code></pre>
 <p>This results in an error from <code>zipf_test.py</code> as it tries to parse the script as if it were a <code>.dat</code> file. Try this by running:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> results.txt</code></pre>
 <p>You’ll get</p>
 <pre class="output"><code>python zipf_test.py abyss.dat isles.dat last.dat wordcount.py &gt; results.txt
 Traceback (most recent call last):
@@ -174,7 +174,7 @@ make: *** [results.txt] Error 1</code></pre>
 <h2 id="lesson-06-variables">Lesson 06-variables</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="use-variables"><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
 </div>
 <div class="panel-body">
 <p>Update <code>Makefile</code> so that the <code>%.dat</code> rule reference the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>. Then do the same for the <code>zipf-test.py</code> script and the <code>results.txt</code> rule, using <code>ZIPF_SRC</code> and <code>ZIPF_EXE</code> as variable names</p>
@@ -203,7 +203,7 @@ clean :
 <h2 id="lesson-09-conclusion">Lesson 09-conclusion</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="extend-the-makefile-to-create-pngs"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create PNGs</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create PNGs</h2>
 </div>
 <div class="panel-body">
 <p>Add new rules, update existing rules, and add new macros to:</p>
@@ -285,5 +285,16 @@ help : Makefile
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

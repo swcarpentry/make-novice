@@ -30,7 +30,7 @@
           <h2 class="subtitle">Functions</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -65,21 +65,20 @@ variables:
     @echo TXT_FILES: $(TXT_FILES)</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="echo"><span class="glyphicon glyphicon-pushpin"></span><span class="citation">@echo</span></h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span><span class="citation">@echo</span></h2>
 </div>
 <div class="panel-body">
 <p>Make prints actions as it executes them. Using <code>@</code> at the start of an action tells Make not to print this action. So, by using <code>@echo</code> instead of <code>echo</code>, we can see the result of <code>echo</code> (the variable’s value being printed) but not the <code>echo</code> command itself.</p>
 </div>
 </aside>
 <p>If we run Make:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre>
 <p>We get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt</code></pre>
 <p>Note how <code>sierra.txt</code> is now included too.</p>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>results.txt</code> target, once we have introduced our function:</p>
 <div class="figure">
-<img src="img/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" />
-<p class="caption">results.txt dependencies after introducing a function</p>
+<img src="img/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" /><p class="caption">results.txt dependencies after introducing a function</p>
 </div>
 <p><code>patsubst</code> (‘pattern substitution’) takes a pattern, a replacement string and a list of names in that order; each name in the list that matches the pattern is replaced by the replacement string. Again, we can save the result in a variable. So, for example, we can rewrite our list of text files into a list of data files (files ending in <code>.dat</code>) and save these in a variable:</p>
 <pre class="make"><code>DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))</code></pre>
@@ -89,7 +88,7 @@ variables:
         @echo TXT_FILES: $(TXT_FILES)
         @echo DAT_FILES: $(DAT_FILES)</code></pre>
 <p>If we run Make,</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> variables</code></pre>
 <p>then we get:</p>
 <pre class="output"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat</code></pre>
@@ -103,8 +102,8 @@ clean :
         rm -f $(DAT_FILES)
         rm -f results.txt</code></pre>
 <p>Let’s check:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> dats</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats</code></pre>
 <p>We get:</p>
 <pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
@@ -114,8 +113,8 @@ python wordcount.py books/sierra.txt sierra.dat</code></pre>
 <pre class="make"><code>results.txt : $(DAT_FILES) $(ZIPF_SRC)
         $(ZIPF_EXE) *.dat &gt; $@</code></pre>
 <p>If we re-run Make:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> results.txt</code></pre>
 <p>We get:</p>
 <pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
@@ -124,7 +123,7 @@ python wordcount.py books/sierra.txt sierra.dat
 python zipf_test.py *.dat &gt; results.txt</code></pre>
 <p>We see that the problem we had when using the bash wild-card, <code>*.dat</code>, which required us to run <code>make dats</code> before <code>make results.txt</code> has now disappeared, since our functions allow us to create <code>.dat</code> file names from those <code>.txt</code> file names in <code>books/</code>.</p>
 <p>Let’s check the <code>results.txt</code> file:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cat</span> results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cat</span> results.txt</code></pre>
 <pre class="output"><code>Book    First   Second  Ratio
 abyss   4044    2807    1.44
 isles   3822    2460    1.55
@@ -179,5 +178,16 @@ ZIPF_EXE=python $(ZIPF_SRC)</code></pre>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

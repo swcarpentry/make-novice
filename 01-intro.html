@@ -30,7 +30,7 @@
           <h2 class="subtitle">Introduction</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -43,7 +43,7 @@
 <p>Let’s imagine that we’re interested in testing Zipf’s Law in some of our favorite books.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="zipfs-law"><span class="glyphicon glyphicon-pushpin"></span>Zipf’s Law</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Zipf’s Law</h2>
 </div>
 <div class="panel-body">
 <p>The most frequently-occurring word occurs approximately twice as often as the second most frequent word. This is <a href="http://en.wikipedia.org/wiki/Zipf%27s_law">Zipf’s Law</a>.</p>
@@ -61,9 +61,9 @@
 |- wordcount.py
 |- zipf_test.py</code></pre>
 <p>The first step is to count the frequency of each word in a book.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/isles.txt isles.dat</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/isles.txt isles.dat</code></pre>
 <p>Let’s take a quick peek at the result.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">head</span> -5 isles.dat</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">head</span> -5 isles.dat</code></pre>
 <p>This shows us the top 5 lines in the output file:</p>
 <pre class="output"><code>the 3822 6.7371760973
 of 2460 4.33632998414
@@ -72,20 +72,20 @@ to 1479 2.60708619778
 a 1308 2.30565838181</code></pre>
 <p>We can see that the file consists of one row per word. Each row shows the word itself, the number of occurrences of that word, and the number of occurrences as a percentage of the total number of words in the text file.</p>
 <p>We can do the same thing for a different book:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/abyss.txt abyss.dat
-$ <span class="kw">head</span> -5 abyss.dat</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> wordcount.py books/abyss.txt abyss.dat
+$ <span class="kw">head</span> -5 abyss.dat</code></pre>
 <pre class="output"><code>the 4044 6.35449402891
 and 2807 4.41074795726
 of 1907 2.99654305468
 a 1594 2.50471401634
 to 1515 2.38057825267</code></pre>
 <p>Let’s visualize the results. The script <code>plotcount.py</code> reads in a data file and plots the 10 most frequently occurring words.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat show</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat show</code></pre>
 <p>Close the window to exit the plot.</p>
 <p><code>plotcount.py</code> can also create the plot as an image file (e.g. a PNG file):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat isles.png</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat isles.png</code></pre>
 <p>Finally, let’s test Zipf’s law for these books:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> zipf_test.py abyss.dat isles.dat</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> zipf_test.py abyss.dat isles.dat</code></pre>
 <pre class="output"><code>Book    First   Second  Ratio
 abyss   4044    2807    1.44
 isles   3822    2460    1.55</code></pre>
@@ -102,7 +102,7 @@ isles   3822    2460    1.55</code></pre>
 <p>Running <code>wordcount.py</code> and <code>plotcount.py</code> at the shell prompt, as we have been doing, is fine for one or two files. If, however, we had 5 or 10 or 20 text files, or if the number of steps in the pipeline were to expand, this could turn into a lot of work. Plus, no one wants to sit and wait for a command to finish, even just for 30 seconds.</p>
 <p>The most common solution to the tedium of data processing is to write a shell script that runs the whole pipeline from start to finish.</p>
 <p>Using your text editor of choice (e.g. nano), add the following to a new file named <code>run_pipeline.sh</code>.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
 <span class="co"># to produce plots for isles and abyss</span>
 <span class="co"># and the summary table for the Zipf&#39;s law tests</span>
 
@@ -113,9 +113,9 @@ isles   3822    2460    1.55</code></pre>
 <span class="kw">python</span> plotcount.py abyss.dat abyss.png
 
 <span class="co"># Generate summary table</span>
-<span class="kw">python</span> zipf_test.py abyss.dat isles.dat <span class="kw">&gt;</span> results.txt</code></pre></div>
+<span class="kw">python</span> zipf_test.py abyss.dat isles.dat <span class="kw">&gt;</span> results.txt</code></pre>
 <p>Runs the script and check that the output is the same as before:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">bash</span> run_pipeline.sh</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">bash</span> run_pipeline.sh</code></pre>
 <p>This shell script solves several problems in computational reproducibility:</p>
 <ol style="list-style-type: decimal">
 <li>It explicitly documents our pipeline, making communication with colleagues (and our future selves) more efficient.</li>
@@ -127,12 +127,12 @@ isles   3822    2460    1.55</code></pre>
 <p>Edit <code>plotcount.py</code> so that the bars are 0.8 units wide instead of 1 unit. (Hint: replace <code>width = 1.0</code> with <code>width = 0.8</code> in the definition of <code>plot_word_counts</code>.)</p>
 <p>Now we want to recreate our figures. We <em>could</em> just <code>bash run_pipeline.sh</code> again. That would work, but it could also be a big pain if counting words takes more than a few seconds. The word counting routine hasn’t changed; we shouldn’t need to recreate those files.</p>
 <p>Alternatively, we could manually rerun the plotting for each word-count file. (Experienced shell scripters can make this easier on themselves using a for-loop.)</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">book</span> in abyss isles<span class="kw">;</span> <span class="kw">do</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">book</span> in abyss isles<span class="kw">;</span> <span class="kw">do</span>
     <span class="kw">python</span> plotcount.py <span class="ot">$book</span>.dat <span class="ot">$book</span>.png
-<span class="kw">done</span></code></pre></div>
+<span class="kw">done</span></code></pre>
 <p>With this approach, however, we don’t get many of the benefits of having a shell script in the first place.</p>
 <p>Another popular option is to comment out a subset of the lines in <code>run_pipeline.sh</code>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># USAGE: bash run_pipeline.sh</span>
 <span class="co"># to produce plots for isles and abyss</span>
 <span class="co"># and the summary table for the Zipf&#39;s law tests</span>
 
@@ -144,7 +144,7 @@ isles   3822    2460    1.55</code></pre>
 <span class="kw">python</span> plotcount.py abyss.dat abyss.png
 
 <span class="co"># This line is also commented out because it doesn&#39;t need to be rerun.</span>
-<span class="kw">python</span> zipf_test.py abyss.dat isles.dat <span class="kw">&gt;</span> results.txt</code></pre></div>
+<span class="kw">python</span> zipf_test.py abyss.dat isles.dat <span class="kw">&gt;</span> results.txt</code></pre>
 <p>Then, we would run our modified shell script using <code>bash run_pipeline.sh</code>.</p>
 <p>But commenting out these lines, and subsequently uncommenting them, can be a hassle and source of errors in complicated pipelines.</p>
 <p>What we really want is an executable <em>description</em> of our pipeline that allows software to do the tricky part for us: figuring out what steps need to be rerun.</p>
@@ -158,7 +158,7 @@ isles   3822    2460    1.55</code></pre>
 <p>There are now many build tools available, for example <a href="http://ant.apache.org/">Apache ANT</a>, <a href="http://pydoit.org/">doit</a>, and <a href="https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx">nmake</a> for Windows. There are also build tools that build scripts for use with these build tools and others e.g. <a href="http://www.gnu.org/software/autoconf/autoconf.html">GNU Autoconf</a> and <a href="http://www.cmake.org/">CMake</a>. Which is best for you depends on your requirements, intended usage, and operating system. However, they all share the same fundamental concepts as Make.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="why-use-make-if-it-is-almost-40-years-old"><span class="glyphicon glyphicon-pushpin"></span>Why use Make if it is almost 40 years old?</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Why use Make if it is almost 40 years old?</h2>
 </div>
 <div class="panel-body">
 <p>Today, researchers working with legacy codes in C or FORTRAN, which are very common in high-performance computing, will, very likely encounter Make.</p>
@@ -180,5 +180,16 @@ isles   3822    2460    1.55</code></pre>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

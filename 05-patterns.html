@@ -30,7 +30,7 @@
           <h2 class="subtitle">Pattern rules</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -50,15 +50,15 @@
 <p>In order to build a file named <code>[something].dat</code> (the target) find a file named <code>books/[that same something].txt</code> (the dependency) and run <code>wordcount.py [the dependency] [the target]</code>.</p>
 </blockquote>
 <p>If we re-run Make,</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
-$ <span class="kw">make</span> dats</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+$ <span class="kw">make</span> dats</code></pre>
 <p>then we get:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="using-make-wild-cards"><span class="glyphicon glyphicon-pushpin"></span>Using Make wild-cards</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Using Make wild-cards</h2>
 </div>
 <div class="panel-body">
 <p>The Make <code>%</code> wild-card can only be used in a target and in its dependencies. It cannot be used in actions. In actions, you may however use <code>$*</code>, which will be replaced by the stem with which the rule matched.</p>
@@ -93,5 +93,16 @@ clean :
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

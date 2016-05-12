@@ -30,7 +30,7 @@
           <h2 class="subtitle">Self-documenting Makefiles</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -39,7 +39,7 @@
 </div>
 </section>
 <p>Many bash commands, and programs that people have written that can be run from within bash, support a <code>--help</code> flag to display more information on how to use the commands or programs. In this spirit, it can be useful, both for ourselves and for others, to provide a <code>help</code> target in our Makefiles. This can provide a summary of the names of the key targets and what they do, so we don’t need to look at the Makefile itself unless we want to. For our Makefile, running a <code>help</code> target might print:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> help</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> help</code></pre>
 <pre class="output"><code>results.txt : Generate Zipf summary table.
 dats        : Count words in text files.
 clean       : Remove auto-generated files.</code></pre>
@@ -81,7 +81,7 @@ help : Makefile
         @sed -n &#39;s/^##//p&#39; $&lt;</code></pre>
 <p>This rule depends upon the Makefile itself. It runs <code>sed</code> on the first dependency of the rule, which is our Makefile, and tells <code>sed</code> to get all the lines that begin with <code>##</code>, which <code>sed</code> then prints for us.</p>
 <p>If we now run</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> help</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> help</code></pre>
 <p>we get:</p>
 <pre class="output"><code> results.txt : Generate Zipf summary table.
  dats        : Count words in text files.
@@ -101,5 +101,16 @@ help : Makefile
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

@@ -30,7 +30,7 @@
           <h2 class="subtitle">Discussion</h2>
           <h2 id="parallel-execution">Parallel execution</h2>
 <p>Make can build dependencies in <em>parallel</em> sub-processes, via its <code>--jobs</code> flag (or its <code>-j</code> abbreviation) which specifies the number of sub-processes to use e.g.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> --jobs 4 results.txt</code></pre></div>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> --jobs 4 results.txt</code></pre>
 <p>If we have independent dependencies then these can be built at the same time. For example, <code>abyss.dat</code> and <code>isles.dat</code> are mutually independent and can both be built at the same time. Likewise for <code>abyss.png</code> and <code>isles.png</code>. If you’ve got a bunch of independent branches in your analysis, this can greatly speed up your build process.</p>
 <p>For more information see the GNU Make manual chapter on <a href="https://www.gnu.org/software/make/manual/html_node/Parallel.html">Parallel Execution</a>.</p>
 <h2 id="different-types-of-assignment">Different types of assignment</h2>
@@ -68,5 +68,16 @@
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>
