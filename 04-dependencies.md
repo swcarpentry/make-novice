@@ -129,6 +129,6 @@ The whole pipeline is triggered, even the creation of the `results.txt` file! To
 We still have to add the `zipf-test.py` script as dependency to `results.txt`. Given the answer to the challenge above, we cannot use `$^` for the rule. We'll go back to using `*.dat`:
 
 ~~~ {.make}
-results.txt : *.dat zip_test.py
+results.txt : *.dat zipf_test.py
         python zipf_test.py *.dat > $@
 ~~~
