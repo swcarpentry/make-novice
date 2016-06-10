@@ -56,10 +56,10 @@ used to implement our script from Python to R).
 > references the variables `COUNT_SRC` and `COUNT_EXE`.
 > Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 
-We place variables at the top of a Makefile means they are easy to
-find and modify. Alternatively, we can pull them out into a new
-Makefile that just holds variable definitions. Let us create
-`config.mk`:
+We place variables at the top of a Makefile so they are easy to
+find and modify. Alternatively, we can pull them out into a new 
+file that just holds variable definitions (i.e. delete them from 
+the original makefile). Let us create `config.mk`:
 
 ~~~ {.make}
 # Count words script.
@@ -71,7 +71,7 @@ ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
 
-We can then import this Makefile into `Makefile` using:
+We can then import `config.mk` into `Makefile` using:
 
 ~~~ {.make}
 include config.mk
