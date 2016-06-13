@@ -37,10 +37,14 @@ To see the actions Make will run when building a target, without
 running the actions, use the `--dry-run` flag e.g.
 
 ~~~ {.bash}
-$ make -dry-run isles.dat
+$ make --dry-run isles.dat
 ~~~
 
 Alternatively, use the abbreviation `-n`.
+
+~~~ {.bash}
+$ make -n isles.dat
+~~~
 
 ## Make trouble-shooting
 
