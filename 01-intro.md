@@ -83,8 +83,27 @@ to 1515 2.38057825267
 ~~~
 
 Let's visualize the results.
-The script `plotcount.py` reads in a data
-file and plots the 10 most frequently occurring words.
+The script `plotcount.py` reads in a data file and plots the 10 most
+frequently occurring words as a text-based bar plot:
+
+~~~ {.bash}
+$ python plotcount.py isles.dat ascii
+~~~
+
+~~~ {.output}
+the   ########################################################################
+of    ##############################################
+and   ################################
+to    ############################
+a     #########################
+in    ###################
+is    #################
+that  ############
+by    ###########
+it    ###########
+~~~
+
+`plotcount.py` can also show the plot graphically:
 
 ~~~ {.bash}
 $ python plotcount.py isles.dat show

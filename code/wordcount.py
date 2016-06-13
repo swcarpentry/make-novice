@@ -81,6 +81,7 @@ def word_count_dict_to_tuples(counts, decrease=True):
     return sorted(list(counts.items()), key=lambda key_value: key_value[1],
                   reverse=decrease)
 
+
 def filter_word_counts(counts, min_length=1):
     """
     Given a list of (word, count) tuples, create a new list with only
