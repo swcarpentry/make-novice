@@ -42,8 +42,11 @@ Let us go through each line in turn:
   actions. These actions form a recipe to build the target
   from its dependencies and can be considered to be
   a shell script.
-* Actions are indented using the TAB character, *not* 8 spaces. This
-  is a legacy of Make's 1970's origins.
+* Actions are indented using a single TAB character, *not* 8 spaces. This
+  is a legacy of Make's 1970's origins. If the difference between
+  spaces and a TAB character isn’t obvious in your editor, try moving
+  your cursor from one side of the TAB to the other. It should jump
+  four or more spaces.
 * Together, the target, dependencies, and actions form a
   a [rule](reference.html#rule).
 
