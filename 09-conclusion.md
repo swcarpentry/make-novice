@@ -38,3 +38,24 @@ papers.
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
 
 ![results.txt dependencies once images have been added](img/09-conclusion-challenge.png "results.txt dependencies once images have been added")
+
+> ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table {.challenge}
+>
+> Add new rules, update existing rules, and add new macros to:
+>
+>  * Define the name of a directory, `zipf_analysis`, to hold all our
+>    code, data, plots and the Zipf summary table.
+> * Copy all our code, data, plots and the Zipf summary table to this
+>   directory.
+> * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
+>   bash command `tar` can be used, as follows:
+>
+> ~~~ {.bash}
+> $ tar -czf zipf_analysis.tar.gz zipf_analysis
+> ~~~
+>
+> * Update `all` to create `zipf_analysis.tar.gz`.
+> * Remove `zipf_analysis` and `zipf_analysis.tar.gz` when `make
+>   clean` is called.
+> * Print the values of any additional variables you have defined when
+>   `make variables` is called.
