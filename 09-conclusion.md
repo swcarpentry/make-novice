@@ -59,3 +59,8 @@ The following figure shows the dependencies involved in building the `all` targe
 >   clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
+
+> ## Adding the Makefile to our archive {.challenge}
+>
+> Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
+
