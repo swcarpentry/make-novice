@@ -30,7 +30,7 @@
           <h2 class="subtitle">Variables</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -52,13 +52,13 @@
 <p>Defining the variable <code>COUNT_EXE</code> in this way allows us to easily change how our script is run (if, for example, we changed the language used to implement our script from Python to R).</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
+<h2 id="use-variables"><span class="glyphicon glyphicon-pencil"></span>Use variables</h2>
 </div>
 <div class="panel-body">
 <p>Update <code>Makefile</code> so that the <code>%.dat</code> rule references the variables <code>COUNT_SRC</code> and <code>COUNT_EXE</code>. Then do the same for the <code>zipf-test.py</code> script and the <code>results.txt</code> rule, using <code>ZIPF_SRC</code> and <code>ZIPF_EXE</code> as variable names</p>
 </div>
 </section>
-<p>We place variables at the top of a Makefile means they are easy to find and modify. Alternatively, we can pull them out into a new Makefile that just holds variable definitions. Let us create <code>config.mk</code>:</p>
+<p>We place variables at the top of a Makefile so they are easy to find and modify. Alternatively, we can pull them out into a new file that just holds variable definitions (i.e. delete them from the original makefile). Let us create <code>config.mk</code>:</p>
 <pre class="make"><code># Count words script.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
@@ -66,12 +66,12 @@ COUNT_EXE=python $(COUNT_SRC)
 # Test Zipf&#39;s rule
 ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)</code></pre>
-<p>We can then import this Makefile into <code>Makefile</code> using:</p>
+<p>We can then import <code>config.mk</code> into <code>Makefile</code> using:</p>
 <pre class="make"><code>include config.mk</code></pre>
 <p>We can re-run Make to see that everything still works:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean
 $ <span class="kw">make</span> dats
-$ <span class="kw">make</span> results.txt</code></pre>
+$ <span class="kw">make</span> results.txt</code></pre></div>
 <p>We have separated the configuration of our Makefile from its rules, the parts that do all the work. If we want to change our script name or how it is executed we just need to edit our configuration file, not our source code in <code>Makefile</code>. Decoupling code from configuration in this way is good programming practice, as it promotes more modular, flexible and reusable code.</p>
         </div>
       </div>

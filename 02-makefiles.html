@@ -30,7 +30,7 @@
           <h2 class="subtitle">Makefiles</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -60,44 +60,44 @@ isles.dat : books/isles.txt
 <p>Our rule above describes how to build the target <code>isles.dat</code> using the action <code>python wordcount.py</code> and the dependency <code>books/isles.txt</code>.</p>
 <p>Information that was implicit in our shell script - that we are generating a file called <code>isles.dat</code> and that creating this file requires <code>books/isles.txt</code> - is now made explicit by Make’s syntax.</p>
 <p>Let’s first sure we start from scratch and delete the <code>.dat</code> and <code>.png</code> files we created earlier:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">rm</span> *.dat *.png</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">rm</span> *.dat *.png</code></pre></div>
 <p>By default, Make looks for a Makefile, called <code>Makefile</code>, and we can run Make as follows:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre></div>
 <p>By default, Make prints out the actions it executes:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat</code></pre>
 <p>If we see,</p>
 <pre class="error"><code>Makefile:3: *** missing separator.  Stop.</code></pre>
 <p>then we have used a space instead of a TAB characters to indent one of our actions.</p>
 <p>Let’s see if we got what we expected.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">head</span> -5 isles.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">head</span> -5 isles.dat</code></pre></div>
 <p>The first 5 lines of <code>isles.dat</code> should look exactly like before.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Makefiles do not have to be called <code>Makefile</code>.</h2>
+<h2 id="makefiles-do-not-have-to-be-called-makefile."><span class="glyphicon glyphicon-pushpin"></span>Makefiles do not have to be called <code>Makefile</code>.</h2>
 </div>
 <div class="panel-body">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if we call it something else we need to tell Make where to find it. This we can do using <code>-f</code> flag. For example, if our Makefile is named <code>MyOtherMakefile</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f MyOtherMakefile</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -f MyOtherMakefile</code></pre></div>
 <p>Sometimes, the suffix <code>.mk</code> will be used to identify Makefiles that are not called <code>Makefile</code> e.g. <code>install.mk</code>, <code>common.mk</code> etc.</p>
 </div>
 </aside>
 <p>When we re-run our Makefile, Make now informs us that:</p>
 <pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
 <p>This is because our target, <code>isles.dat</code>, has now been created, and Make will not create it again. To see how this works, let’s pretend to update one of the text files. Rather than opening the file in an editor, we can use the shell <code>touch</code> command to update its timestamp (which would happen if we did edit the file):</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/isles.txt</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> books/isles.txt</code></pre></div>
 <p>If we compare the timestamps of <code>books/isles.txt</code> and <code>isles.dat</code>,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -l books/isles.txt isles.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -l books/isles.txt isles.dat</code></pre></div>
 <p>then we see that <code>isles.dat</code>, the target, is now older than<code>books/isles.txt</code>, its dependency:</p>
 <pre class="output"><code>-rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
 -rw-r--r--    1 mjj      Administ   182273 Jun 12 09:58 isles.dat</code></pre>
 <p>If we run Make again,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre></div>
 <p>then it recreates <code>isles.dat</code>:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat</code></pre>
 <p>When it is asked to build a target, Make checks the ‘last modification time’ of both the target and its dependencies. If any dependency has been updated since the target, then the actions are re-run to update the target. Using this approach, Make knows to only rebuild the files that, either directly or indirectly, depend on the file that changed. This is called an <a href="reference.html#incremental-build">incremental build</a>.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Makefiles as documentation</h2>
+<h2 id="makefiles-as-documentation"><span class="glyphicon glyphicon-pushpin"></span>Makefiles as documentation</h2>
 </div>
 <div class="panel-body">
 <p>By explicitly recording the inputs to and outputs from steps in our analysis and the dependencies between files, Makefiles act as a type of documentation, reducing the number of things we have to remember.</p>
@@ -107,11 +107,11 @@ isles.dat : books/isles.txt
 <pre class="make"><code>abyss.dat : books/abyss.txt
         python wordcount.py books/abyss.txt abyss.dat</code></pre>
 <p>If we run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span></code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
 <p>Nothing happens because Make attempts to build the first target it finds in the Makefile, the <a href="reference.html#default-target">default target</a>, which is <code>isles.dat</code> which is already up-to-date. We need to explicitly tell Make we want to build <code>abyss.dat</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> abyss.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> abyss.dat</code></pre></div>
 <p>Now, we get:</p>
 <pre class="output"><code>python wordcount.py books/abyss.txt abyss.dat</code></pre>
 <p>We may want to remove all our data files so we can explicitly recreate them all. We can introduce a new target, and associated rule, to do this. We will call it <code>clean</code>, as this is a common name for rules that delete auto-generated files, like our <code>.dat</code> files:</p>
@@ -119,13 +119,13 @@ isles.dat : books/isles.txt
 <pre class="make"><code>clean :
         rm -f *.dat</code></pre>
 <p>This is an example of a rule that has no dependencies. <code>clean</code> has no dependencies on any <code>.dat</code> file as it makes no sense to create these just to remove them. We just want to remove the data files whether or not they exist. If we run Make and specify this target,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean</code></pre></div>
 <p>then we get:</p>
 <pre class="output"><code>rm -f *.dat</code></pre>
 <p>There is no actual thing built called <code>clean</code>. Rather, it is a short-hand that we can use to execute a useful sequence of actions. Such targets, though very useful, can lead to problems. For example, let us recreate our data files, create a directory called <code>clean</code>, then run Make:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.dat abyss.dat
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> isles.dat abyss.dat
 $ <span class="kw">mkdir</span> clean
-$ <span class="kw">make</span> clean</code></pre>
+$ <span class="kw">make</span> clean</code></pre></div>
 <p>We get:</p>
 <pre class="outputs"><code>make: `clean&#39; is up to date.</code></pre>
 <p>Make finds a file (or directory) called <code>clean</code> and, as its <code>clean</code> rule has no dependencies, assumes that <code>clean</code> has been built and is up-to-date and so does not execute the rule’s actions. As we are using <code>clean</code> as a short-hand, we need to tell Make to always execute this rule if we run <code>make clean</code>, by telling Make that this is a <a href="reference.html#phony-target">phony target</a>, that it does not build anything. This we do by marking the target as <code>.PHONY</code>:</p>
@@ -133,7 +133,7 @@ $ <span class="kw">make</span> clean</code></pre>
 clean :
         rm -f *.dat</code></pre>
 <p>If we run Make,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> clean</code></pre></div>
 <p>then we get:</p>
 <pre class="outputs"><code>rm -f *.dat</code></pre>
 <p>We can add a similar command to create all the data files. We can put this at the top of our Makefile so that it is the <a href="reference.html#default-target">default target</a>, which is executed by default if no target is given to the <code>make</code> command:</p>
@@ -142,7 +142,7 @@ dats : isles.dat abyss.dat</code></pre>
 <p>This is an example of a rule that has dependencies that are targets of other rules. When Make runs, it will check to see if the dependencies exist and, if not, will see if rules are available that will create these. If such rules exist it will invoke these first, otherwise Make will raise an error.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Dependencies</h2>
+<h2 id="dependencies"><span class="glyphicon glyphicon-pushpin"></span>Dependencies</h2>
 </div>
 <div class="panel-body">
 <p>The order of rebuilding dependencies is arbitrary. You should not assume that they will be built in the order in which they are listed.</p>
@@ -151,12 +151,12 @@ dats : isles.dat abyss.dat</code></pre>
 </aside>
 <p>This rule is also an example of a rule that has no actions. It is used purely to trigger the build of its dependencies, if needed.</p>
 <p>If we run,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats</code></pre></div>
 <p>then Make creates the data files:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat</code></pre>
 <p>If we run <code>dats</code> again,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> dats</code></pre></div>
 <p>then Make sees that the data files exist:</p>
 <pre class="output"><code>make: Nothing to be done for `dats&#39;.</code></pre>
 <p>Our Makefile now looks like this:</p>
@@ -175,11 +175,12 @@ clean :
         rm -f *.dat</code></pre>
 <p>The following figure shows a graph of the dependencies embodied within our Makefile, involved in building the <code>dats</code> target:</p>
 <div class="figure">
-<img src="img/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" /><p class="caption">Dependencies represented within the Makefile</p>
+<img src="img/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" />
+<p class="caption">Dependencies represented within the Makefile</p>
 </div>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
+<h2 id="write-two-new-rules"><span class="glyphicon glyphicon-pencil"></span>Write two new rules</h2>
 </div>
 <div class="panel-body">
 <p>Write a new rule for <code>last.dat</code>, created from <code>books/last.txt</code>.</p>
@@ -195,7 +196,8 @@ clean :
 </section>
 <p>The following figure shows the dependencies embodied within our Makefile, involved in building the <code>results.txt</code> target:</p>
 <div class="figure">
-<img src="img/02-makefile-challenge.png" title="results.txt dependencies represented within the Makefile" alt="results.txt dependencies represented within the Makefile" /><p class="caption">results.txt dependencies represented within the Makefile</p>
+<img src="img/02-makefile-challenge.png" title="results.txt dependencies represented within the Makefile" alt="results.txt dependencies represented within the Makefile" />
+<p class="caption">results.txt dependencies represented within the Makefile</p>
 </div>
         </div>
       </div>
