@@ -58,3 +58,8 @@ occurring research activities using Make:
   Reiter MA, Sambrook KA, Woelfer KA, Grabowski TJ and Madhyastha 
   TM (2016) [Using Make for Reproducible and Parallel Neuroimaging
   Workflow and Quality-Assurance](http://journal.frontiersin.org/article/10.3389/fninf.2016.00002/full). Front. Neuroinform. 10:2. doi: 10.3389/fninf.2016.00002 
+* Li Haoyi's [What's in a Build
+  Tool?](http://www.lihaoyi.com/post/WhatsinaBuildTool.html) A review
+  of popular build tools (including Make) in terms of their strengths
+  and weaknesses for common build-related use cases in software
+  development.
