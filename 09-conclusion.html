@@ -60,6 +60,33 @@
 <img src="img/09-conclusion-challenge.png" title="results.txt dependencies once images have been added" alt="results.txt dependencies once images have been added" />
 <p class="caption">results.txt dependencies once images have been added</p>
 </div>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="extend-the-makefile-to-create-an-archive-of-code-data-plots-and-zipf-summary-table"><span class="glyphicon glyphicon-pencil"></span>Extend the Makefile to create an archive of code, data, plots and Zipf summary table</h2>
+</div>
+<div class="panel-body">
+<p>Add new rules, update existing rules, and add new macros to:</p>
+<ul>
+<li>Define the name of a directory, <code>zipf_analysis</code>, to hold all our code, data, plots and the Zipf summary table.</li>
+<li>Copy all our code, data, plots and the Zipf summary table to this directory.</li>
+<li>Create an archive, <code>zipf_analysis.tar.gz</code>, of this directory. The bash command <code>tar</code> can be used, as follows:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">tar</span> -czf zipf_analysis.tar.gz zipf_analysis</code></pre></div>
+<ul>
+<li>Update <code>all</code> to create <code>zipf_analysis.tar.gz</code>.</li>
+<li>Remove <code>zipf_analysis</code> and <code>zipf_analysis.tar.gz</code> when <code>make   clean</code> is called.</li>
+<li>Print the values of any additional variables you have defined when <code>make variables</code> is called.</li>
+</ul>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="adding-the-makefile-to-our-archive"><span class="glyphicon glyphicon-pencil"></span>Adding the Makefile to our archive</h2>
+</div>
+<div class="panel-body">
+<p>Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?</p>
+</div>
+</section>
         </div>
       </div>
       </article>

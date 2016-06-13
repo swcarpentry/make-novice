@@ -39,8 +39,9 @@
 <p>If the target is up-to-date, Make will print a message like:</p>
 <pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
 <p>To see the actions Make will run when building a target, without running the actions, use the <code>--dry-run</code> flag e.g.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -dry-run isles.dat</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> --dry-run isles.dat</code></pre></div>
 <p>Alternatively, use the abbreviation <code>-n</code>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> -n isles.dat</code></pre></div>
 <h2 id="make-trouble-shooting">Make trouble-shooting</h2>
 <p>If Make prints a message like,</p>
 <pre class="error"><code>Makefile:3: *** missing separator.  Stop.</code></pre>
@@ -71,6 +72,15 @@ make: *** [isles.dat] Error 1</code></pre>
 </ul>
 <p>Comments:</p>
 <pre class="make"><code># This is a Make comment.</code></pre>
+<p>Line continuation character:</p>
+<pre class="make"><code>ARCHIVE = isles.dat isles.png \
+          abyss.dat abyss.png \
+          sierra.dat sierra.png</code></pre>
+<ul>
+<li>If a list of dependencies or an action is too long, a Makefile can become more difficult to read.</li>
+<li>Backslash,<code>\</code>, the line continuation character, allows you to split up a list of dependencies or an action over multiple lines, to make them easier to read.</li>
+<li>Make will combine the multiple lines into a single list of dependencies or action.</li>
+</ul>
 <p>Phony targets:</p>
 <pre class="make"><code>.PHONY : clean
 clean :

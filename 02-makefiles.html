@@ -54,7 +54,7 @@ isles.dat : books/isles.txt
 <li><code>books/isles.txt</code> is a <a href="reference.html#dependency">dependency</a>, a file that is needed to build or update the target. Targets can have zero or more dependencies.</li>
 <li>A colon, <code>:</code>, separates targets from dependencies.</li>
 <li><code>python wordcount.py books/isles.txt isles.dat</code> is an <a href="reference.html#action">action</a>, a command to run to build or update the target using the dependencies. Targets can have zero or more actions. These actions form a recipe to build the target from its dependencies and can be considered to be a shell script.</li>
-<li>Actions are indented using the TAB character, <em>not</em> 8 spaces. This is a legacy of Make’s 1970’s origins.</li>
+<li>Actions are indented using a single TAB character, <em>not</em> 8 spaces. This is a legacy of Make’s 1970’s origins. If the difference between spaces and a TAB character isn’t obvious in your editor, try moving your cursor from one side of the TAB to the other. It should jump four or more spaces.</li>
 <li>Together, the target, dependencies, and actions form a a <a href="reference.html#rule">rule</a>.</li>
 </ul>
 <p>Our rule above describes how to build the target <code>isles.dat</code> using the action <code>python wordcount.py</code> and the dependency <code>books/isles.txt</code>.</p>
@@ -95,6 +95,19 @@ isles.dat : books/isles.txt
 <p>then it recreates <code>isles.dat</code>:</p>
 <pre class="output"><code>python wordcount.py books/isles.txt isles.dat</code></pre>
 <p>When it is asked to build a target, Make checks the ‘last modification time’ of both the target and its dependencies. If any dependency has been updated since the target, then the actions are re-run to update the target. Using this approach, Make knows to only rebuild the files that, either directly or indirectly, depend on the file that changed. This is called an <a href="reference.html#incremental-build">incremental build</a>.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="up-to-date-versus-nothing-to-be-done."><span class="glyphicon glyphicon-pushpin"></span><code>up to date</code> versus <code>Nothing to be done</code>.</h2>
+</div>
+<div class="panel-body">
+<p>If we ask Make to build a file that already exists and is up to date, then Make informs us that:</p>
+<pre class="output"><code>make: `isles.dat&#39; is up to date.</code></pre>
+<p>If we ask Make to build a file that exists but for which there is no rule in our Makefile, then we get message like:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">make</span> wordcount.py</code></pre></div>
+<pre class="output"><code>make: Nothing to be done for `wordcount.py&#39;.</code></pre>
+<p><code>up to date</code> means that the Makefile has a rule for the file and the file is up to date whereas <code>Nothing to be done</code> means that the file exists but the Makefile has no rule for it.</p>
+</div>
+</aside>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="makefiles-as-documentation"><span class="glyphicon glyphicon-pushpin"></span>Makefiles as documentation</h2>

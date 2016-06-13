@@ -79,7 +79,19 @@ and 2807 4.41074795726
 of 1907 2.99654305468
 a 1594 2.50471401634
 to 1515 2.38057825267</code></pre>
-<p>Let’s visualize the results. The script <code>plotcount.py</code> reads in a data file and plots the 10 most frequently occurring words.</p>
+<p>Let’s visualize the results. The script <code>plotcount.py</code> reads in a data file and plots the 10 most frequently occurring words as a text-based bar plot:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat ascii</code></pre></div>
+<pre class="output"><code>the   ########################################################################
+of    ##############################################
+and   ################################
+to    ############################
+a     #########################
+in    ###################
+is    #################
+that  ############
+by    ###########
+it    ###########</code></pre>
+<p><code>plotcount.py</code> can also show the plot graphically:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">python</span> plotcount.py isles.dat show</code></pre></div>
 <p>Close the window to exit the plot.</p>
 <p><code>plotcount.py</code> can also create the plot as an image file (e.g. a PNG file):</p>
