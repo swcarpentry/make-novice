@@ -274,7 +274,7 @@ clean :
         rm -f $(PNG_FILES)
         rm -f results.txt
 
-## print       : Print variables.
+## variables   : Print variables.
 .PHONY : variables
 variables:
         @echo TXT_FILES: $(TXT_FILES)
