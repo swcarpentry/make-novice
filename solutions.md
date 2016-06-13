@@ -369,3 +369,9 @@ variables:
 help : Makefile
 	@sed -n 's/^##//p' $<
 ~~~
+
+> ## Adding the Makefile to our archive {.challenge}
+>
+> Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
+
+Our code (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement the individual parts of our workflow. They allow us to create `.dat` files from `.txt` files, `.png` files from `.dat` files and `results.txt`. Our Makefile, however, documents dependencies between our code, raw data, derived data, and plots, as well as implementing our workflow as a whole.
