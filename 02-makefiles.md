@@ -152,6 +152,29 @@ time' of both the target and its dependencies. If any dependency has
 been updated since the target, then the actions are re-run to update
 the target. Using this approach, Make knows to only rebuild the files that, either directly or indirectly, depend on the file that changed. This is called an [incremental build](reference.html#incremental-build).
 
+> ## `up to date` versus `Nothing to be done`. {.callout}
+> 
+> If we ask Make to build a file that already exists and is up to
+> date, then Make informs us that: 
+> 
+> ~~~ {.output}
+> make: `isles.dat' is up to date.
+> ~~~
+> 
+> If we ask Make to build a file that exists but for which there is
+> no rule in our Makefile, then we get message like:
+> 
+> ~~~ {.bash}
+> $ make wordcount.py
+> ~~~
+> ~~~ {.output}
+> make: Nothing to be done for `wordcount.py'.
+> ~~~
+>
+> `up to date` means that the Makefile has a rule for the file and
+> the file is up to date whereas `Nothing to be done` means that 
+> the file exists but the Makefile has no rule for it.
+
 > ## Makefiles as documentation {.callout}
 >
 > By explicitly recording the inputs to and outputs from steps in our analysis and the dependencies between files, Makefiles act as a type of documentation, reducing the number of things we have to remember.
