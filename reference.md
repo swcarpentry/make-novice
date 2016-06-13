@@ -103,6 +103,22 @@ Comments:
 # This is a Make comment.
 ~~~
 
+Line continuation character:
+
+~~~ {.make}
+ARCHIVE = isles.dat isles.png \
+          abyss.dat abyss.png \
+          sierra.dat sierra.png
+~~~
+
+* If a list of dependencies or an action is too long, a Makefile can
+  become more difficult to read.
+* Backslash,`\`, the line continuation character, allows you to split
+  up a list of dependencies or an action over multiple lines, to make
+  them easier to read.
+* Make will combine the multiple lines into a single list of dependencies
+  or action.
+
 Phony targets:
 
 ~~~ {.make}
