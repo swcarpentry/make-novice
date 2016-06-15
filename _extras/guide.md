@@ -69,9 +69,10 @@ Or, ask students to download
 
 To recreate `make-lesson.zip`, run:
 
-~~~ {.bash}
+~~~
 $ make make-lesson.zip
 ~~~
+{: .bash}
 
 ## Beware of spaces!
 

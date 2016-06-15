@@ -13,7 +13,7 @@ minutes: 0
 
 At this point, we have the following Makefile:
 
-~~~ {.make}
+~~~
 include config.mk
 
 # Generate summary table.
@@ -32,6 +32,7 @@ clean :
         rm -f *.dat
         rm -f results.txt
 ~~~
+{: .make}
 
 Make has many [functions](reference.html#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
@@ -40,17 +41,19 @@ variable. So, for example, we can get a list of all our text files
 (files ending in `.txt`) and save these in a variable by adding this at
 the beginning of our makefile:
 
-~~~ {.make}
+~~~
 TXT_FILES=$(wildcard books/*.txt)
 ~~~
+{: .make}
 
 We can add `.PHONY` target and rule to show the variable's value:
 
-~~~ {.make}
+~~~
 .PHONY : variables
 variables:
 	@echo TXT_FILES: $(TXT_FILES)
 ~~~
+{: .make}
 
 > ## @echo {.callout}
 >
@@ -61,9 +64,10 @@ variables:
 
 If we run Make:
 
-~~~ {.bash}
+~~~
 $ make variables
 ~~~
+{: .bash}
 
 We get:
 
@@ -84,24 +88,27 @@ variable. So, for example, we can rewrite our list of text files into
 a list of data files (files ending in `.dat`) and save these in a
 variable:
 
-~~~ {.make}
+~~~
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 ~~~
+{: .make}
 
 We can extend `variables` to show the value of `DAT_FILES` too:
 
-~~~ {.make}
+~~~
 .PHONY : variables
 variables:
         @echo TXT_FILES: $(TXT_FILES)
         @echo DAT_FILES: $(DAT_FILES)
 ~~~
+{: .make}
 
 If we run Make,
 
-~~~ {.bash}
+~~~
 $ make variables
 ~~~
+{: .bash}
 
 then we get:
 
@@ -114,7 +121,7 @@ Now, `sierra.txt` is processed too.
 
 With these we can rewrite `clean` and `dats`:
 
-~~~ {.make}
+~~~
 .PHONY : dats
 dats : $(DAT_FILES)
 
@@ -123,13 +130,15 @@ clean :
         rm -f $(DAT_FILES)
         rm -f results.txt
 ~~~
+{: .make}
 
 Let's check:
 
-~~~ {.bash}
+~~~
 $ make clean
 $ make dats
 ~~~
+{: .bash}
 
 We get:
 
@@ -142,17 +151,19 @@ python wordcount.py books/sierra.txt sierra.dat
 
 We can also rewrite `results.txt`:
 
-~~~ {.make}
+~~~
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
         $(ZIPF_EXE) *.dat > $@
 ~~~
+{: .make}
 
 If we re-run Make:
 
-~~~ {.bash}
+~~~
 $ make clean
 $ make results.txt
 ~~~
+{: .bash}
 
 We get:
 
@@ -171,9 +182,10 @@ names from those `.txt` file names in `books/`.
 
 Let's check the `results.txt` file:
 
-~~~ {.bash}
+~~~
 $ cat results.txt
 ~~~
+{: .bash}
 
 ~~~ {.output}
 Book	First	Second	Ratio
@@ -189,7 +201,7 @@ most frequently-occurring word occurs approximately twice as often as the second
 
 Here is our final Makefile:
 
-~~~ {.make}
+~~~
 include config.mk
 
 TXT_FILES=$(wildcard books/*.txt)
@@ -216,10 +228,11 @@ variables:
 	@echo TXT_FILES: $(TXT_FILES)
 	@echo DAT_FILES: $(DAT_FILES)
 ~~~
+{: .make}
 
 Remember, the `config.mk` file contains:
 
-~~~ {.make}
+~~~
 # Count words script.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
@@ -228,3 +241,4 @@ COUNT_EXE=python $(COUNT_SRC)
 ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
+{: .make}
