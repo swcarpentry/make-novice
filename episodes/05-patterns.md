@@ -18,10 +18,11 @@ replace these rules with a single [pattern
 rule](reference.html#pattern-rule) which can be used to build any
 `.dat` file from a `.txt` file in `books/`:
 
-~~~ {.make}
+~~~
 %.dat : books/%.txt wordcount.py
         python wordcount.py $< $*.dat
 ~~~
+{: .make}
 
 `%` is a Make [wild-card](reference.html#wild-card). `$*` is a special variable which gets replaced by the [stem](reference.html#stem) with which the rule matched.
 
@@ -33,10 +34,11 @@ This rule can be interpreted as:
 
 If we re-run Make,
 
-~~~ {.bash}
+~~~
 $ make clean
 $ make dats
 ~~~
+{: .bash}
 
 then we get:
 
@@ -57,7 +59,7 @@ Our new rule will work no matter what stem is being matched.
 
 Our Makefile is now much shorter and cleaner:
 
-~~~ {.make}
+~~~
 # Generate summary table.
 results.txt : *.dat zipf_test.py
 	    python zipf_test.py *.dat > $@
@@ -74,3 +76,4 @@ clean :
       rm -f *.dat
       rm -f results.txt
 ~~~
+{: .make}

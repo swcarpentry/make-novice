@@ -42,15 +42,17 @@ we will be working with:
 
 The first step is to count the frequency of each word in a book.
 
-~~~ {.bash}
+~~~
 $ python wordcount.py books/isles.txt isles.dat
 ~~~
+{: .bash}
 
 Let's take a quick peek at the result.
 
-~~~ {.bash}
+~~~
 $ head -5 isles.dat
 ~~~
+{: .bash}
 
 This shows us the top 5 lines in the output file:
 
@@ -69,10 +71,11 @@ number of words in the text file.
 
 We can do the same thing for a different book:
 
-~~~ {.bash}
+~~~
 $ python wordcount.py books/abyss.txt abyss.dat
 $ head -5 abyss.dat
 ~~~
+{: .bash}
 
 ~~~ {.output}
 the 4044 6.35449402891
@@ -86,9 +89,10 @@ Let's visualize the results.
 The script `plotcount.py` reads in a data file and plots the 10 most
 frequently occurring words as a text-based bar plot:
 
-~~~ {.bash}
+~~~
 $ python plotcount.py isles.dat ascii
 ~~~
+{: .bash}
 
 ~~~ {.output}
 the   ########################################################################
@@ -105,23 +109,26 @@ it    ###########
 
 `plotcount.py` can also show the plot graphically:
 
-~~~ {.bash}
+~~~
 $ python plotcount.py isles.dat show
 ~~~
+{: .bash}
 
 Close the window to exit the plot.
 
 `plotcount.py` can also create the plot as an image file (e.g. a PNG file):
 
-~~~ {.bash}
+~~~
 $ python plotcount.py isles.dat isles.png
 ~~~
+{: .bash}
 
 Finally, let's test Zipf's law for these books:
 
-~~~ {.bash}
+~~~
 $ python zipf_test.py abyss.dat isles.dat
 ~~~
+{: .bash}
 
 ~~~ {.output}
 Book	First	Second	Ratio
@@ -154,7 +161,7 @@ a shell script that runs the whole pipeline from start to finish.
 Using your text editor of choice (e.g. nano), add the following to a new file named
 `run_pipeline.sh`.
 
-~~~ {.bash}
+~~~
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss
 # and the summary table for the Zipf's law tests
@@ -168,12 +175,14 @@ python plotcount.py abyss.dat abyss.png
 # Generate summary table
 python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
+{: .bash}
 
 Runs the script and check that the output is the same as before:
 
-~~~ {.bash}
+~~~
 $ bash run_pipeline.sh
 ~~~
+{: .bash}
 
 This shell script solves several problems in computational reproducibility:
 
@@ -204,11 +213,12 @@ Alternatively, we could manually rerun the plotting for each word-count file.
 (Experienced shell scripters can make this easier on themselves using a
 for-loop.)
 
-~~~ {.bash}
+~~~
 for book in abyss isles; do
     python plotcount.py $book.dat $book.png
 done
 ~~~
+{: .bash}
 
 With this approach, however,
 we don't get many of the benefits of having a shell script in the first place.
@@ -216,7 +226,7 @@ we don't get many of the benefits of having a shell script in the first place.
 Another popular option is to comment out a subset of the lines in
 `run_pipeline.sh`:
 
-~~~ {.bash}
+~~~
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss
 # and the summary table for the Zipf's law tests
@@ -231,6 +241,7 @@ python plotcount.py abyss.dat abyss.png
 # This line is also commented out because it doesn't need to be rerun.
 python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
+{: .bash}
 
 Then, we would run our modified shell script using `bash run_pipeline.sh`.
 
@@ -240,9 +251,6 @@ can be a hassle and source of errors in complicated pipelines.
 What we really want is an executable _description_ of our pipeline that
 allows software to do the tricky part for us:
 figuring out what steps need to be rerun.
-
-
-
 
 Make was developed by 
 Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in

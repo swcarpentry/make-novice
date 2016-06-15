@@ -8,24 +8,27 @@ subtitle: Reference
 
 To run Make:
 
-~~~ {.bash}
+~~~
 $ make
 ~~~
+{: .bash}
 
 Make will look for a Makefile called `Makefile` and will build the
 default target, the first target in the Makefile.
 
 To use a Makefile with a different name, use the `-f` flag e.g.
 
-~~~ {.bash}
+~~~
 $ make -f build-files/analyse.mk
 ~~~
+{: .bash}
 
 To build a specific target, provide it as an argument e.g.
 
-~~~ {.bash}
+~~~
 $ make isles.dat
 ~~~
+{: .bash}
 
 If the target is up-to-date, Make will print a message like:
 
@@ -36,15 +39,17 @@ make: `isles.dat' is up to date.
 To see the actions Make will run when building a target, without
 running the actions, use the `--dry-run` flag e.g.
 
-~~~ {.bash}
+~~~
 $ make --dry-run isles.dat
 ~~~
+{: .bash}
 
 Alternatively, use the abbreviation `-n`.
 
-~~~ {.bash}
+~~~
 $ make -n isles.dat
 ~~~
+{: .bash}
 
 ## Make trouble-shooting
 
@@ -71,12 +76,13 @@ pattern rule. Make wild-cards cannot be used in actions.
 
 Rules:
 
-~~~ {.make}
+~~~
 target : dependency1 dependency2 ...
 	action1
 	action2
         ...
 ~~~
+{: .make}
 
 * Each rule has a target, a file to be created, or built.
 * Each rule has zero or more dependencies, files that are needed to
@@ -99,17 +105,19 @@ Dependencies:
 
 Comments:
 
-~~~ {.make}
+~~~
 # This is a Make comment.
 ~~~
+{: .make}
 
 Line continuation character:
 
-~~~ {.make}
+~~~
 ARCHIVE = isles.dat isles.png \
           abyss.dat abyss.png \
           sierra.dat sierra.png
 ~~~
+{: .make}
 
 * If a list of dependencies or an action is too long, a Makefile can
   become more difficult to read.
@@ -121,11 +129,12 @@ ARCHIVE = isles.dat isles.png \
 
 Phony targets:
 
-~~~ {.make}
+~~~
 .PHONY : clean
 clean :
        rm -f *.dat
 ~~~
+{: .make}
 
 * Phony targets are a short-hand for sequences of actions.
 * No file with the target name is built when a rule with a phony
@@ -140,10 +149,11 @@ Automatic variables:
 
 Pattern rules:
 
-~~~ {.make}
+~~~
 %.dat : books/%.txt $(COUNT_SRC)
         $(COUNT_EXE) $< $@
 ~~~
+{: .make}
 
 * The Make wild-card, `%`, specifies a pattern.
 * If Make finds a dependency matching the pattern, then the pattern is
@@ -154,10 +164,11 @@ Pattern rules:
 
 Defining and using variables:
 
-~~~ {.make}
+~~~
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 ~~~
+{: .make}
 
 * A variable is assigned a value. For example, `COUNT_SRC` 
   is assigned the value `wordcount.py`.
@@ -166,25 +177,28 @@ COUNT_EXE=python $(COUNT_SRC)
 
 Suppress printing of actions:
 
-~~~ {.make}
+~~~
 .PHONY : variables
 variables:
         @echo TXT_FILES: $(TXT_FILES)
 ~~~
+{: .make}
 
 * Prefix an action by `@` to instruct Make not to print that action.
 
 Include the contents of a Makefile in another Makefile:
 
-~~~ {.make}
+~~~
 include config.mk
 ~~~
+{: .make}
 
 wildcard function:
 
-~~~ {.make}
+~~~
 TXT_FILES=$(wildcard books/*.txt)
 ~~~
+{: .make}
 
 * Looks for all files matching a pattern e.g. `books/*.txt`, and
   return these in a list.
@@ -193,9 +207,10 @@ TXT_FILES=$(wildcard books/*.txt)
 
 patsubst ('path substitution') function:
 
-~~~ {.make}
+~~~
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 ~~~
+{: .make}
 
 * Every string that matches `books/%.txt` in `$(TXT_FILES)` is
   replaced by `%.dat` and the strings are returned in a list.
@@ -210,9 +225,10 @@ Default targets:
 * In Make 3.81, the default target can be explicitly set using the
   special variable `.DEFAULT_GOAL` e.g.
 
-~~~ {.make}
+~~~
 .DEFAULT_GOAL := all
 ~~~
+{: .make}
 
 ## Manuals
 

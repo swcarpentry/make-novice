@@ -16,11 +16,12 @@ minutes: 0
 
 Create a file, called `Makefile`, with the following content:
 
-~~~ {.make}
+~~~
 # Count words.
 isles.dat : books/isles.txt
         python wordcount.py books/isles.txt isles.dat
 ~~~
+{: .make}
 
 This is a [build file](reference.html#build-file), which for
 Make is called a [Makefile](reference.html#makefile) - a file executed
@@ -58,16 +59,18 @@ Information that was implicit in our shell script - that we are generating a fil
 Let's first sure we start from scratch and delete the `.dat` and `.png`
 files we created earlier:
 
-~~~ {.bash}
+~~~
 $ rm *.dat *.png
 ~~~
+{: .bash}
 
 By default, Make looks for a Makefile, called `Makefile`, and we can
 run Make as follows:
 
-~~~ {.bash}
+~~~
 $ make
 ~~~
+{: .bash}
 
 By default, Make prints out the actions it executes:
 
@@ -86,9 +89,10 @@ our actions.
 
 Let's see if we got what we expected.
 
-~~~ {.bash}
+~~~
 head -5 isles.dat
 ~~~
+{: .bash}
 
 The first 5 lines of `isles.dat` should look exactly like before.
 
@@ -98,9 +102,10 @@ The first 5 lines of `isles.dat` should look exactly like before.
 > something else we need to tell Make where to find it. This we can do
 > using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
 > 
-> ~~~ {.bash}
+> ~~~
 > $ make -f MyOtherMakefile
 > ~~~
+>
 >
 > Sometimes, the suffix `.mk` will be used to identify Makefiles that 
 > are not called `Makefile` e.g. `install.mk`, `common.mk` etc.
@@ -117,15 +122,17 @@ update one of the text files. Rather than opening the file in an
 editor, we can use the shell `touch` command to update its timestamp
 (which would happen if we did edit the file):
 
-~~~ {.bash}
+~~~
 $ touch books/isles.txt
 ~~~
+{: .bash}
 
 If we compare the timestamps of `books/isles.txt` and `isles.dat`,
 
-~~~ {.bash}
+~~~
 $ ls -l books/isles.txt isles.dat
 ~~~
+{: .bash}
 
 then we see that `isles.dat`, the target, is now older
 than`books/isles.txt`, its dependency:
@@ -137,9 +144,10 @@ than`books/isles.txt`, its dependency:
 
 If we run Make again,
 
-~~~ {.bash}
+~~~
 $ make
 ~~~
+{: .bash}
 
 then it recreates `isles.dat`:
 
@@ -164,9 +172,11 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 > If we ask Make to build a file that exists but for which there is
 > no rule in our Makefile, then we get message like:
 > 
-> ~~~ {.bash}
+> ~~~
 > $ make wordcount.py
 > ~~~
+> {.bash}
+>
 > ~~~ {.output}
 > make: Nothing to be done for `wordcount.py'.
 > ~~~
@@ -181,16 +191,18 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 
 Let's add another rule to the end of `Makefile`:
 
-~~~ {.make}
+~~~
 abyss.dat : books/abyss.txt
         python wordcount.py books/abyss.txt abyss.dat
 ~~~
+{: .make}
 
 If we run Make,
 
-~~~ {.bash}
+~~~
 $ make
 ~~~
+{: .bash}
 
 then we get:
 
@@ -204,9 +216,10 @@ target](reference.html#default-target), which is `isles.dat` which is
 already up-to-date. We need to explicitly tell Make we want to build
 `abyss.dat`:
 
-~~~ {.bash}
+~~~
 $ make abyss.dat
 ~~~
+{: .bash}
 
 Now, we get:
 
@@ -219,19 +232,21 @@ them all. We can introduce a new target, and associated rule, to do this. We wil
 
  `clean`:
 
-~~~ {.make}
+~~~
 clean :
         rm -f *.dat
 ~~~
+{: .make}
 
 This is an example of a rule that has no dependencies. `clean` has no
 dependencies on any `.dat` file as it makes no sense to create these
 just to remove them. We just want to remove the data files whether or
 not they exist. If we run Make and specify this target,
 
-~~~ {.bash}
+~~~
 $ make clean
 ~~~
+{: .bash}
 
 then we get:
 
@@ -245,11 +260,12 @@ actions. Such targets, though very useful, can lead to problems. For
 example, let us recreate our data files, create a directory called
 `clean`, then run Make:
 
-~~~ {.bash}
+~~~
 $ make isles.dat abyss.dat
 $ mkdir clean
 $ make clean
 ~~~
+{: .bash}
 
 We get:
 
@@ -265,17 +281,19 @@ rule if we run `make clean`, by telling Make that this is a
 [phony target](reference.html#phony-target), that it does not build
 anything. This we do by marking the target as `.PHONY`:
 
-~~~ {.make}
+~~~
 .PHONY : clean
 clean :
         rm -f *.dat
 ~~~
+{: .make}
 
 If we run Make,
 
-~~~ {.bash}
+~~~
 $ make clean
 ~~~
+{: .bash}
 
 then we get:
 
@@ -288,10 +306,11 @@ this at the top of our Makefile so that it is the [default
 target](reference.html#default-target), which is executed by default
 if no target is given to the `make` command:
 
-~~~ {.make}
+~~~
 .PHONY : dats
 dats : isles.dat abyss.dat
 ~~~
+{: .make}
 
 This is an example of a rule that has dependencies that are targets of
 other rules. When Make runs, it will check to see if the dependencies
@@ -314,9 +333,10 @@ purely to trigger the build of its dependencies, if needed.
 
 If we run,
 
-~~~ {.bash}
+~~~
 $ make dats
 ~~~
+{: .bash}
 
 then Make creates the data files:
 
@@ -327,9 +347,10 @@ python wordcount.py books/abyss.txt abyss.dat
 
 If we run `dats` again,
 
-~~~ {.bash}
+~~~
 $ make dats
 ~~~
+{: .bash}
 
 then Make sees that the data files exist:
 
@@ -339,7 +360,7 @@ make: Nothing to be done for `dats'.
 
 Our Makefile now looks like this:
 
-~~~ {.make}
+~~~
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat
@@ -354,6 +375,7 @@ abyss.dat : books/abyss.txt
 clean :
         rm -f *.dat
 ~~~
+{: .make}
 
 The following figure shows a graph of the dependencies embodied within our Makefile, involved in building the `dats` target:
 

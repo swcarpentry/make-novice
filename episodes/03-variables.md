@@ -15,7 +15,7 @@ minutes: 0
 
 After the exercise at the end of the previous part, our Makefile look like this:
 
-~~~ {.make}
+~~~
 # Generate summary table.
 results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py abyss.dat isles.dat last.dat > results.txt
@@ -38,6 +38,7 @@ clean :
         rm -f *.dat
         rm -f results.txt
 ~~~
+{: .make}
 
 Our Makefile has a lot of duplication. For example, the names of text
 files and data files are repeated in many places throughout the
@@ -55,18 +56,20 @@ Let us set about removing some of the repetition from our Makefile.
 
 In our `results.txt` rule we duplicate the data file names and the name of the results file name:
 
-~~~ {.make}
+~~~
 results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 ~~~
+{: .make}
 
 Looking at the results file name first, we can replace it in the action
 with `$@`:
 
-~~~ {.make}
+~~~
 results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py abyss.dat isles.dat last.dat > $@
 ~~~
+{: .make}
 
 `$@` is a Make [automatic variable](reference.html#automatic-variable)
 which means 'the target of the current rule'. When Make is run it will
@@ -74,10 +77,11 @@ replace this variable with the target name.
 
 We can replace the dependencies in the action with `$^`:
 
-~~~ {.make}
+~~~
 results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py $^ > $@
 ~~~
+{: .make}
 
 `$^` is another automatic variable which means 'all the dependencies
 of the current rule'. Again, when Make is run it will replace this
@@ -85,10 +89,11 @@ variable with the dependencies.
  
 Let's update our text files and re-run our rule:
 
-~~~ {.bash}
+~~~
 $ touch books/*.txt
 $ make results.txt
 ~~~
+{: .bash}
 
 We get:
 
@@ -101,26 +106,29 @@ python zipf_test.py isles.dat abyss.dat last.dat > results.txt
 
 We can use the bash wild-card in our dependency list:
 
-~~~ {.make}
+~~~
 results.txt : *.dat
         python zipf_test.py $^ > $@
 ~~~
+{: .make}
 
 Let's update our text files and re-run our rule:
 
-~~~ {.bash}
+~~~
 $ touch books/*.txt
 $ make results.txt
 ~~~
+{: .bash}
 
 We get the same as above.
 
 Now let's delete the data files and re-run our rule:
 
-~~~ {.bash}
+~~~
 $ make clean
 $ make results.txt
 ~~~
+{: .bash}
 
 We get:
 
@@ -133,19 +141,21 @@ is used as a file name itself, and there is no file matching that, nor
 any rule so we get an error. We need to explicitly rebuild the `.dat`
 files first:
 
-~~~ {.bash}
+~~~
 $ make dats
 $ make results.txt
 ~~~
+{: .bash}
 
 > ## Update dependencies {.challenge}
 > 
 > What will happen if you now execute:
 > 
-> ~~~ {.bash}
+> ~~~
 > $ touch *.dat
 > $ make results.txt
 > ~~~
+> {: .bash}
 > 
 > 1. nothing
 > 2. all files recreated

@@ -50,9 +50,10 @@ The following figure shows the dependencies involved in building the `all` targe
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
 >   bash command `tar` can be used, as follows:
 >
-> ~~~ {.bash}
+> ~~~
 > $ tar -czf zipf_analysis.tar.gz zipf_analysis
 > ~~~
+> {: .bash}
 >
 > * Update `all` to create `zipf_analysis.tar.gz`.
 > * Remove `zipf_analysis` and `zipf_analysis.tar.gz` when `make

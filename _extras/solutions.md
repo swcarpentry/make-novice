@@ -23,7 +23,7 @@ minutes: 0
 >
 > Update `clean` so that it removes `results.txt`.
 
-~~~ {.make}
+~~~
 # Generate summary table.
 results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py abyss.dat isles.dat last.dat > results.txt
@@ -46,6 +46,7 @@ clean :
         rm -f *.dat
         rm -f results.txt
 ~~~
+{: .make}
 
 ## Lesson 03-variables
 
@@ -53,10 +54,11 @@ clean :
 > 
 > What will happen if you now execute:
 > 
-> ~~~ {.bash}
+> ~~~ 
 > $ touch *.dat
 > $ make results.txt
 > ~~~
+> {: .bash}
 > 
 > 1. nothing
 > 2. all files recreated
@@ -67,21 +69,24 @@ clean :
 
 You can check that `*.dat` is being expanded in the target of the rule for `results.txt` by echoing the value of the automatic variable `$^` (all dependencies of the current rule).
 
-~~~ {.bash}
+~~~ 
 results.txt: *.dat
     @echo $^
     python zipf_test.py $^ > $@
 ~~~
+{: .bash}
+
 The rules for `*.dat` are not executed because their corresponding `.txt` files
 haven't been modified.
 
 If you run:
 
-~~~ {.bash}
+~~~ 
     $ touch *.dat
     $ touch books/*.txt
     $ make results.txt
 ~~~
+{: .bash}
 
 You will find that the `.dat` files as well as `results.txt` are recreated.
 
@@ -93,7 +98,7 @@ You will find that the `.dat` files as well as `results.txt` are recreated.
 > target of the current rule') and `$<` ('the first dependency of the
 > current rule').
 
-~~~ {.make}
+~~~
 # Generate summary table.
 results.txt : *.dat
         python zipf_test.py $^ > $@
@@ -116,6 +121,7 @@ clean :
         rm -f *.dat
         rm -f results.txt
 ~~~
+{: .make}
 
 ## Lesson 04-dependencies
 
@@ -123,10 +129,11 @@ clean :
 >
 > What will happen if you now execute:
 >
-> ~~~ {.bash}
+> ~~~ 
 > $ touch books/last.txt
 > $ make results.txt
 > ~~~
+> {: .bash}
 >
 > 1. only `last.dat` is recreated
 > 2. all `.dat` files are recreated
@@ -146,22 +153,25 @@ clean :
 
 If you change the rule for the `results.txt` file like this:
 
-~~~ {.make}
+~~~
 results.txt : *.dat wordcount.py
         python zipf_test.py $^ > $@
 ~~~
+{: .make}
 
 `wordcount.py` becomes a part of `$^`, thus the command becomes
 
-~~~ {.bash}
+~~~ 
 python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
 ~~~
+{: .bash}
 
 This results in an error from `zipf_test.py` as it tries to parse the script as if it were a `.dat` file. Try this by running:
 
-~~~ {.bash}
+~~~
 $ make results.txt
 ~~~
+{: .bash}
 
 You'll get
 
@@ -186,7 +196,7 @@ make: *** [results.txt] Error 1
 > Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 
 
-~~~ {.make}
+~~~
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 ZIPF_SRC=zipf_test.py
@@ -208,6 +218,7 @@ clean :
         rm -f *.dat
         rm -f results.txt
 ~~~
+{: .make}
 
 ## Lesson 09-conclusion
 
@@ -223,7 +234,7 @@ clean :
 > Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
 > With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
 
-~~~{.make}
+~~
 # config.mk
 # Count words script.
 COUNT_SRC=wordcount.py
@@ -237,8 +248,9 @@ PLOT_EXE=python $(PLOT_SRC)
 ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
+{: .make}
 
-~~~{.make}
+~~
 include config.mk
 
 TXT_FILES=$(wildcard books/*.txt)
@@ -285,6 +297,7 @@ variables:
 help : Makefile
         @sed -n 's/^##//p' $<
 ~~~
+{: .make}
 
 > ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table {.challenge}
 > 
@@ -297,9 +310,10 @@ help : Makefile
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
 >   bash command `tar` can be used, as follows: 
 >
-> ~~~ {.bash}
+> ~~~ 
 > $ tar -czf zipf_analysis.tar.gz zipf_analysis
 > ~~~
+> {: .bash}
 >
 > * Update `all` to create `zipf_analysis.tar.gz`.
 > * Remove `zipf_analysis` and `zipf_analysis.tar.gz` when `make
@@ -307,7 +321,7 @@ help : Makefile
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called. 
 
-~~~ {.make}
+~~~
 include config.mk
 
 TXT_FILES=$(wildcard books/*.txt)
@@ -369,6 +383,7 @@ variables:
 help : Makefile
 	@sed -n 's/^##//p' $<
 ~~~
+{: .make}
 
 > ## Adding the Makefile to our archive {.challenge}
 >

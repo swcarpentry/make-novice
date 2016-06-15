@@ -21,9 +21,10 @@ We can introduce a Make [variable](reference.html#variable) (called a
 [macro](reference.html#macro) in some versions of Make) to hold our
 script name:
 
-~~~ {.make}
+~~~
 COUNT_SRC=wordcount.py
 ~~~
+{: .make}
 
 This is a variable [assignment](reference.html#assignment) -
 `COUNT_SRC` is assigned the value `wordcount.py`.
@@ -32,9 +33,10 @@ This is a variable [assignment](reference.html#assignment) -
 `python`. We can introduce another variable to represent this
 execution:
 
-~~~ {.make}
+~~~
 COUNT_EXE=python $(COUNT_SRC)
 ~~~
+{: .make}
 
 `$(...)` tells Make to replace a variable with its value when Make
 is run. This is a variable [reference](reference.html#reference). At 
@@ -61,7 +63,7 @@ find and modify. Alternatively, we can pull them out into a new
 file that just holds variable definitions (i.e. delete them from 
 the original makefile). Let us create `config.mk`:
 
-~~~ {.make}
+~~~
 # Count words script.
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
@@ -70,20 +72,23 @@ COUNT_EXE=python $(COUNT_SRC)
 ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
+{: .make}
 
 We can then import `config.mk` into `Makefile` using:
 
-~~~ {.make}
+~~~
 include config.mk
 ~~~
+{: .make}
 
 We can re-run Make to see that everything still works:
 
-~~~ {.bash}
+~~~
 $ make clean
 $ make dats
 $ make results.txt
 ~~~
+{: .bash}
 
 We have separated the configuration of our Makefile from its rules,
 the parts that do all the work. If we want to change our script name

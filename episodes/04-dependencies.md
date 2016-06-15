@@ -13,7 +13,7 @@ minutes: 0
 
 Our Makefile now looks like this:
 
-~~~ {.make}
+~~~
 # Generate summary table.
 results.txt : *.dat
         python zipf_test.py $^ > $@
@@ -36,23 +36,25 @@ clean :
         rm -f *.dat
         rm -f results.txt
 ~~~
+{: .make}
 
 Our data files are a product not only of our text files but the
 script, `wordcount.py`, that processes the text files and creates the
 data files. A change to `wordcount.py` (e.g. to add a new column of summary data or remove an existing one) results in changes to the `.dat` files it outputs. So, let's pretend to edit `wordcount.py`, using `touch`, and re-run Make:
 
-~~~ {.bash}
+~~~
 $ make dats
 $ touch wordcount.py
 $ make dats
 ~~~
+{: .bash}
 
 Nothing happens! Though we've updated `wordcount.py` our data files are not updated because our rules for creating `.dat` files don't record any dependencies on `wordcount.py`.
 
 We need to add `wordcount.py` as a dependency of each of our
 data files also:
 
-~~~ {.make}
+~~~
 isles.dat : books/isles.txt wordcount.py
         python wordcount.py $< $@
 
@@ -62,13 +64,15 @@ abyss.dat : books/abyss.txt wordcount.py
 last.dat : books/last.txt wordcount.py
         python wordcount.py $< $@
 ~~~
+{: .make}
 
 If we pretend to edit `wordcount.py` and re-run Make,
 
-~~~ {.bash}
+~~~
 $ touch wordcount.py
 $ make dats
 ~~~
+{: .bash}
 
 then we get:
 
@@ -90,11 +94,11 @@ The following figure shows the dependencies embodied within our Makefile, involv
 
 Intuitively, we should also add `wordcount.py` as dependency for `results.txt`, as the final table should be rebuilt as we remake the `.dat` files. However, it turns out we don't have to! Let's see what happens to `results.txt` when we update `wordcount.py`:
 
-
-~~~ {.bash}
+~~~
 $ touch wordcount.py
 $ make results.txt
 ~~~
+{: .bash}
 
 then we get:
 
@@ -111,10 +115,11 @@ The whole pipeline is triggered, even the creation of the `results.txt` file! To
 >
 > What will happen if you now execute:
 >
-> ~~~ {.bash}
+> ~~~
 > $ touch books/last.txt
 > $ make results.txt
 > ~~~
+> {: .bash}
 >
 > 1. only `last.dat` is recreated
 > 2. all `.dat` files are recreated
@@ -128,7 +133,8 @@ The whole pipeline is triggered, even the creation of the `results.txt` file! To
 
 We still have to add the `zipf-test.py` script as dependency to `results.txt`. Given the answer to the challenge above, we cannot use `$^` for the rule. We'll go back to using `*.dat`:
 
-~~~ {.make}
+~~~
 results.txt : *.dat zipf_test.py
         python zipf_test.py *.dat > $@
 ~~~
+{: .make}
