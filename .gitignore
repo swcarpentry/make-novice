@@ -1,11 +1,5 @@
-README.html
-LAYOUT.html
-FAQ.html
-DESIGN.html
-CONTRIBUTING.html
-CONDUCT.html
 *~
-*.pyc
-_site
 .DS_Store
-build
+.sass-cache
+_site
+__pycache__

@@ -1,120 +1,88 @@
-PANDOC ?= pandoc
-PANDOC_FLAGS = --smart
+## ========================================
+## Commands for both workshop and lesson websites.
 
-# R Markdown files.
-SRC_RMD = $(wildcard ??-*.Rmd)
-DST_RMD = $(patsubst %.Rmd,%.md,$(SRC_RMD))
+# Settings
+MAKEFILES=Makefile $(wildcard *.mk)
+JEKYLL=jekyll
+DST=_site
 
-# All Markdown files (hand-written and generated).
-ALL_MD = $(wildcard *.md) $(DST_RMD)
-EXCLUDE_MD = README.md LAYOUT.md FAQ.md DESIGN.md CONTRIBUTING.md CONDUCT.md
-SRC_MD = $(filter-out $(EXCLUDE_MD),$(ALL_MD))
-DST_HTML = $(patsubst %.md,%.html,$(SRC_MD))
-
-# All outputs.
-DST_ALL = $(DST_HTML)
-
-# Pandoc filters.
-FILTERS = $(wildcard tools/filters/*.py)
-
-# Inclusions.
-INCLUDES = \
-	-Vheader="$$(cat _includes/header.html)" \
-	-Vbanner="$$(cat _includes/banner.html)" \
-	-Vfooter="$$(cat _includes/footer.html)" \
-	-Vjavascript="$$(cat _includes/javascript.html)"
-
-# Chunk options for knitr (used in R conversion).
-R_CHUNK_OPTS = tools/chunk-options.R
-
-# Ensure that intermediate (generated) Markdown files from R are kept.
-.SECONDARY: $(DST_RMD)
-
-# Default action is to show what commands are available.
+# Controls
+.PHONY : commands clean files
 all : commands
 
-## check    : Validate all lesson content against the template.
-check: $(ALL_MD)
-	python tools/check.py .
+## commands       : show all commands.
+commands :
+	@grep -h -E '^##' ${MAKEFILES} | sed -e 's/## //g'
 
-## clean    : Clean up temporary and intermediate files.
+## serve          : run a local server.
+serve :
+	${JEKYLL} serve --config _config.yml,_config_dev.yml
+
+## site           : build files but do not run a server.
+site :
+	${JEKYLL} build --config _config.yml,_config_dev.yml
+
+## clean          : clean up junk files.
 clean :
-	@rm -rf $$(find . -name '*~' -print)
+	@rm -rf ${DST}
+	@rm -rf .sass-cache
+	@rm -rf bin/__pycache__
+	@find . -name .DS_Store -exec rm {} \;
+	@find . -name '*~' -exec rm {} \;
+	@find . -name '*.pyc' -exec rm {} \;
 
-## preview  : Build website locally for checking.
-preview : $(DST_ALL)
+## ----------------------------------------
+## Commands specific to workshop websites.
 
-# Pattern to build a generic page.
-%.html : %.md _layouts/page.html $(FILTERS)
-	${PANDOC} -s -t html \
-	    ${PANDOC_FLAGS} \
-	    --mathjax \
-	    --template=_layouts/page \
-	    --filter=tools/filters/blockquote2div.py \
-	    --filter=tools/filters/id4glossary.py \
-	    $(INCLUDES) \
-	    -o $@ $<
+.PHONY : workshop-check
 
-# Pattern to convert R Markdown to Markdown.
-%.md: %.Rmd $(R_CHUNK_OPTS) tools/check_knitr_version.R
-	Rscript -e "source('tools/check_knitr_version.R')"
-	Rscript -e "knitr::knit('$$(basename $<)', output = '$$(basename $@)')"
+## workshop-check : check workshop homepage.
+workshop-check :
+	bin/workshop_check.py index.html
 
-## commands : Display available commands.
-commands : Makefile
-	@sed -n 's/^##//p' $<
+## ----------------------------------------
+## Commands specific to lesson websites.
 
-## settings : Show variables and settings.
-settings :
-	@echo 'PANDOC:' $(PANDOC)
-	@echo 'SRC_RMD:' $(SRC_RMD)
-	@echo 'DST_RMD:' $(DST_RMD)
-	@echo 'SRC_MD:' $(SRC_MD)
-	@echo 'DST_HTML:' $(DST_HTML)
+.PHONY : lesson-check lesson-files lesson-fixme lesson-single
 
-## unittest : Run internal tests to ensure the validator is working correctly (for Python 2 and 3).
-unittest: tools/check.py tools/validation_helpers.py tools/test_check.py
-	cd tools/ && python2 test_check.py
-	cd tools/ && python3 test_check.py
+# Lesson source files in the order they appear in the navigation menu.
+SRC_FILES = \
+  index.md \
+  CONDUCT.md \
+  setup.md \
+  $(wildcard _episodes/*.md) \
+  reference.md \
+  $(wildcard _extras/*.md) \
+  LICENSE.md
 
-## make-lesson.zip : Make code and data bundle for students.
-make-lesson.zip : code data/books
-	rm -rf make-lesson
-	mkdir make-lesson
-	cp -r code/*.py make-lesson
-	cp -r data/books make-lesson
-	zip -r $@ make-lesson
+# Generated lesson files in the order they appear in the navigation menu.
+HTML_FILES = \
+  ${DST}/index.html \
+  ${DST}/conduct/index.html \
+  ${DST}/setup/index.html \
+  $(patsubst _episodes/%.md,${DST}/%/index.html,$(wildcard _episodes/*.md)) \
+  ${DST}/reference/index.html \
+  $(patsubst _extras/%.md,${DST}/%/index.html,$(wildcard _extras/*.md)) \
+  ${DST}/license/index.html
 
-build:
-	mkdir -p $@
-	cp code/*.py $@
-	cp -r data/books $@
+## lesson-check   : validate lesson Markdown.
+lesson-check :
+	bin/lesson_check.py -s . -p bin/markdown-ast.rb
 
-MAKE2PNG = make2graph | grep -v Makefile | dot -Tpng -o
+unittest :
+	python bin/test_lesson_check.py
 
-.PHONY: img/02-makefile.png
-img/02-makefile.png: build
-	cp code/samples/02-makefile/* $<
-	cd build && make -Bnd dats | $(MAKE2PNG) $(CURDIR)/$@
+## lesson-files   : show expected names of generated files for debugging.
+lesson-files :
+	@echo 'source:' ${SRC_FILES}
+	@echo 'generated:' ${HTML_FILES}
 
-.PHONY: img/02-makefile-challenge.png
-img/02-makefile-challenge.png: build
-	cp code/samples/02-makefile-challenge/* $<
-	cd build && make dats && make -Bnd results.txt | $(MAKE2PNG) $(CURDIR)/$@
+## lesson-fixme   : show FIXME markers embedded in source files.
+lesson-fixme :
+	@fgrep -i -n FIXME ${SRC_FILES} || true
 
-.PHONY: img/04-dependencies.png
-img/04-dependencies.png: build
-	cp code/samples/04-dependencies/* $<
-	cd build && make dats && make -Bnd results.txt | $(MAKE2PNG) $(CURDIR)/$@
+#-------------------------------------------------------------------------------
+# Include extra commands if available.
+#-------------------------------------------------------------------------------
 
-.PHONY: img/07-functions.png
-img/07-functions.png: build
-	cp code/samples/07-functions/* $<
-	cd build && make -Bnd results.txt | $(MAKE2PNG) $(CURDIR)/$@
-
-.PHONY: img/09-conclusion-challenge.png
-img/09-conclusion-challenge.png: $<
-	cp code/samples/09-conclusion-challenge/* build
-	cd build && make -Bnd | $(MAKE2PNG) $(CURDIR)/$@ 
-
-imgs: img/02-makefile.png img/02-makefile-challenge.png img/04-dependencies.png img/07-functions.png img/09-conclusion-challenge.png
+-include commands.mk

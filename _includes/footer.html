@@ -1,6 +1,25 @@
-<div class="footer">
-  <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-  <a class="label swc-blue-bg" href="https://github.com/swcarpentry/make-novice">Source</a>
-  <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
-  <a class="label swc-blue-bg" href="LICENSE.html">License</a>
-</div>
+{% comment %}
+  Generic footer.
+{% endcomment %}
+{% include episode_find_prev_next.html %}
+<hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	{% if site.carpentry == "swc" %} Software Carpentry Foundation {% endif %}
+	{% if site.carpentry == "dc" %} Data Carpentry {% endif %}
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="{{ site.repo }}">Source</a>
+	/
+	<a href="{{ site.repo }}/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:{{site.email}}">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
