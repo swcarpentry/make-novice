@@ -407,7 +407,7 @@ clean :
 The following figure shows a graph of the dependencies embodied within
 our Makefile, involved in building the `dats` target:
 
-![Dependencies represented within the Makefile](img/02-makefile.png "Dependencies represented within the Makefile")
+![Dependencies represented within the Makefile]({{ site.root }}/fig/02-makefile.png "Dependencies represented within the Makefile")
 
 > ## Write two new rules
 >
@@ -429,4 +429,4 @@ our Makefile, involved in building the `dats` target:
 The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target:
 
-![results.txt dependencies represented within the Makefile](img/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")
+![results.txt dependencies represented within the Makefile]({{ site.root }}/fig/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")
