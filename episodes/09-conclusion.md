@@ -47,7 +47,7 @@ papers.
 
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
 
-![results.txt dependencies once images have been added](img/09-conclusion-challenge.png "results.txt dependencies once images have been added")
+![results.txt dependencies once images have been added]({{ site.root }}/fig/09-conclusion-challenge.png "results.txt dependencies once images have been added")
 
 > ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table
 >
