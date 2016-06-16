@@ -24,13 +24,13 @@ rule](reference.html#pattern-rule) which can be used to build any
 ~~~
 {: .make}
 
-`%` is a Make [wildcard](reference.html#wildcard). `$*` is a special variable which gets replaced by the [stem](reference.html#stem) with which the rule matched.
+`%` is a Make [wildcard](reference.html#wildcard).
+`$*` is a special variable which gets replaced by the [stem](reference.html#stem) with which the rule matched.
 
 This rule can be interpreted as:
-
-> In order to build a file named `[something].dat` (the target)
-> find a file named `books/[that same something].txt` (the dependency)
-> and run `wordcount.py [the dependency] [the target]`.
+"In order to build a file named `[something].dat` (the target)
+find a file named `books/[that same something].txt` (the dependency)
+and run `wordcount.py [the dependency] [the target]`."
 
 If we re-run Make,
 
@@ -51,12 +51,13 @@ python wordcount.py books/last.txt last.dat
 
 Our new rule will work no matter what stem is being matched.
 
-> ## Using Make wildcards {.callout}
+> ## Using Make wildcards
 >
 > The Make `%` wildcard can only be used in a target and in its
 > dependencies. It cannot be used in actions. In actions, you may
 > however use `$*`, which will be replaced by the stem with which 
 > the rule matched.
+{: .callout}
 
 Our Makefile is now much shorter and cleaner:
 

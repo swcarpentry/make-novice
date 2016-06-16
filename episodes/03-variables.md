@@ -46,11 +46,12 @@ Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
 Makefile but forget to rename it elsewhere.
 
-> ## D.R.Y. (Don't Repeat Yourself) {.callout}
+> ## D.R.Y. (Don't Repeat Yourself)
 >
 > In many programming languages, the bulk of the language features are there  to allow the programmer to describe long-winded computational routines as short, expressive, beautiful code.
 > Features in Python or R or Java like user-defined variables and functions are useful in part because they mean we don't have to write out (or think about) all of the details over and over again.
 > This good habit of writing things out only once is known as the "Don't Repeat Yourself" principle or D.R.Y.
+{: .callout}
 
 Let us set about removing some of the repetition from our Makefile.
 
@@ -149,7 +150,7 @@ $ make results.txt
 ~~~
 {: .bash}
 
-> ## Update dependencies {.challenge}
+> ## Update dependencies
 > 
 > What will happen if you now execute:
 > 
@@ -163,6 +164,7 @@ $ make results.txt
 > 2. all files recreated
 > 3. only `.dat` files recreated
 > 4. only `results.txt` recreated
+{: .challenge}
 
 As we saw, `$^` means 'all the dependencies of the current
 rule'. This works well for `results.txt` as its action
@@ -178,8 +180,9 @@ one input file to be named when it is invoked.
 Make provides an automatic variable for this, `$<` which means 'the
 first dependency of the current rule'. 
 
-> ## Rewrite `.dat` rules to use automatic variables {.challenge}
+> ## Rewrite `.dat` rules to use automatic variables
 >
 > Rewrite each `.dat` rule to use the automatic variables `$@` ('the
 > target of the current rule') and `$<` ('the first dependency of the
 > current rule').
+{: .challenge}

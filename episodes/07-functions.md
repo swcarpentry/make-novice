@@ -54,12 +54,13 @@ variables:
 ~~~
 {: .make}
 
-> ## @echo {.callout}
+> ## @echo
 >
 > Make prints actions as it executes them. Using `@` at the start of
 > an action tells Make not to print this action. So, by using `@echo`
 > instead of `echo`, we can see the result of `echo` (the variable's
 > value being printed) but not the `echo` command itself.
+{: .callout}
 
 If we run Make:
 

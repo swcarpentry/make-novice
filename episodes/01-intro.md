@@ -14,11 +14,12 @@ keypoints:
 Let's imagine that we're interested in
 testing Zipf's Law in some of our favorite books.
 
-> ## Zipf's Law {.callout}
+> ## Zipf's Law
 >
 > The most frequently-occurring word occurs approximately twice as
 > often as the second most frequent word. This is [Zipf's
 > Law](http://en.wikipedia.org/wiki/Zipf%27s_law).
+{: .callout}
 
 We've compiled our raw data, the books we want to analyze
 (check out e.g. `head books/isles.txt`)
@@ -285,7 +286,7 @@ Autoconf](http://www.gnu.org/software/autoconf/autoconf.html) and
 requirements, intended usage, and operating system. However, they
 all share the same fundamental concepts as Make.
 
-> ## Why use Make if it is almost 40 years old? {.callout}
+> ## Why use Make if it is almost 40 years old?
 >
 > Today, researchers working with legacy codes in C or FORTRAN, which
 > are very common in high-performance computing, will, very likely
@@ -297,6 +298,7 @@ all share the same fundamental concepts as Make.
 > with text to produce reports and papers for publication.
 >
 > Make's fundamental concepts are common across build tools.
+{: .callout}
 
 [GNU Make](http://www.gnu.org/software/make/) is a free, fast, 
 well-documented, and very popular Make implementation. From now on, 

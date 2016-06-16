@@ -1,9 +1,8 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Reference
+layout: reference
+title: Reference
+permalink: /reference/
 ---
-
 ## Running Make
 
 To run Make:

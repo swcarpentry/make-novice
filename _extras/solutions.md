@@ -4,10 +4,9 @@ title: Automation and Make
 subtitle: Solutions
 minutes: 0
 ---
-
 ## Lesson 02-makefiles
 
-> ## Write two new rules {.challenge}
+> ## Write two new rules
 >
 > Write a new rule for `last.dat`, created from `books/last.txt`.
 >
@@ -22,6 +21,7 @@ minutes: 0
 > Put this rule at the top of the Makefile so that it is the default target.
 >
 > Update `clean` so that it removes `results.txt`.
+{: .challenge}
 
 ~~~
 # Generate summary table.
@@ -50,7 +50,7 @@ clean :
 
 ## Lesson 03-variables
 
-> ## Update dependencies {.challenge}
+> ## Update dependencies
 > 
 > What will happen if you now execute:
 > 
@@ -64,6 +64,7 @@ clean :
 > 2. all files recreated
 > 3. only `.dat` files recreated
 > 4. only `results.txt` recreated
+{: .challenge}
 
 4.) only `results.txt` recreated. 
 
@@ -92,11 +93,12 @@ You will find that the `.dat` files as well as `results.txt` are recreated.
 
 * * *
 
-> ## Rewrite `.dat` rules to use automatic variables {.challenge}
+> ## Rewrite `.dat` rules to use automatic variables
 >
 > Rewrite each `.dat` rule to use the automatic variables `$@` ('the
 > target of the current rule') and `$<` ('the first dependency of the
 > current rule').
+{: .challenge}
 
 ~~~
 # Generate summary table.
@@ -125,7 +127,7 @@ clean :
 
 ## Lesson 04-dependencies
 
-> ## Updating one input file {.challenge}
+> ## Updating one input file
 >
 > What will happen if you now execute:
 >
@@ -139,6 +141,7 @@ clean :
 > 2. all `.dat` files are recreated
 > 3. only `last.dat` and `results.txt` are recreated
 > 4. all `.dat` and `results.txt` are recreated
+{: .challenge}
 
 * * *
 3. only `last.dat` and `results.txt` are recreated
@@ -147,9 +150,10 @@ clean :
 
 * * *
 
-> ## `wordcount.py` as dependency of `results.txt`. {.challenge}
+> ## `wordcount.py` as dependency of `results.txt`.
 >
 > What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
+{: .challenge}
 
 If you change the rule for the `results.txt` file like this:
 
@@ -189,12 +193,12 @@ make: *** [results.txt] Error 1
 
 ## Lesson 06-variables
 
-> ## Use variables {.challenge}
+> ## Use variables
 >
 > Update `Makefile` so that the `%.dat` rule
 > reference the variables `COUNT_SRC` and `COUNT_EXE`.
 > Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
-
+{: .challenge}
 
 ~~~
 COUNT_SRC=wordcount.py
@@ -222,7 +226,7 @@ clean :
 
 ## Lesson 09-conclusion
 
-> ## Extend the Makefile to create PNGs {.challenge}
+> ## Extend the Makefile to create PNGs
 >
 > Add new rules, update existing rules, and add new macros to:
 > 
@@ -233,6 +237,7 @@ clean :
 >
 > Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
 > With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
+{: .challenge}
 
 ~~
 # config.mk
@@ -299,7 +304,7 @@ help : Makefile
 ~~~
 {: .make}
 
-> ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table {.challenge}
+> ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table
 > 
 > Add new rules, update existing rules, and add new macros to:
 >
@@ -320,6 +325,7 @@ help : Makefile
 >   clean` is called. 
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called. 
+{: .challenge}
 
 ~~~
 include config.mk
@@ -385,8 +391,9 @@ help : Makefile
 ~~~
 {: .make}
 
-> ## Adding the Makefile to our archive {.challenge}
+> ## Adding the Makefile to our archive
 >
 > Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
+{: .challenge}
 
 Our code (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement the individual parts of our workflow. They allow us to create `.dat` files from `.txt` files, `.png` files from `.dat` files and `results.txt`. Our Makefile, however, documents dependencies between our code, raw data, derived data, and plots, as well as implementing our workflow as a whole.
