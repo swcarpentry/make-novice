@@ -32,9 +32,10 @@ $ make isles.dat
 
 If the target is up-to-date, Make will print a message like:
 
-~~~ {.output}
+~~~
 make: `isles.dat' is up to date.
 ~~~
+{: .output}
 
 To see the actions Make will run when building a target, without
 running the actions, use the `--dry-run` flag e.g.
@@ -55,22 +56,24 @@ $ make -n isles.dat
 
 If Make prints a message like,
 
-~~~ {.error}
+~~~
 Makefile:3: *** missing separator.  Stop.
 ~~~
+{: .error}
 
 then check that all the actions are indented by TAB characters and not
 spaces.
 
 If Make prints a message like,
 
-~~~ {.error}
+~~~
 No such file or directory: 'books/%.txt'
 make: *** [isles.dat] Error 1
 ~~~
+{: .error}
 
-then you may have used the Make wild-card, `%`, in an action in a
-pattern rule. Make wild-cards cannot be used in actions.
+then you may have used the Make wildcard, `%`, in an action in a
+pattern rule. Make wildcards cannot be used in actions.
 
 ## Makefiles
 
@@ -155,10 +158,10 @@ Pattern rules:
 ~~~
 {: .make}
 
-* The Make wild-card, `%`, specifies a pattern.
+* The Make wildcard, `%`, specifies a pattern.
 * If Make finds a dependency matching the pattern, then the pattern is
   substituted into the target.
-* The Make wild-card can only be used in targets and dependencies.
+* The Make wildcard can only be used in targets and dependencies.
 * e.g. if Make found a file called `books/abyss.txt`, it would set the
   target to be `abyss.dat`.
 
@@ -314,7 +317,7 @@ pattern rule
     rather than a single, specific C file, or, to analyse any data
     file rather than a single, specific data file. Pattern rules
     typically make use of [automatic variables](#automatic-variable)
-    and [wild-cards](#wild-card).
+    and [wildcards](#wildcard).
 
 phony target
 :   A [target](#target) that does not correspond to a file or other
@@ -346,9 +349,9 @@ target
 variable
 :   A symbolic name for something in a [Makefile](#makefile).
 
-wild-card
+wildcard
 :   A pattern that can be specified in [dependencies](#dependency) and
     [targets](#target). If [Make](#make) finds a dependency] matching
     the pattern, then the pattern is substituted into the
-    target. Wild-cards are often used in [pattern
-    rules](#pattern-rule). The Make wild-card is `%`.
+    target. wildcards are often used in [pattern
+    rules](#pattern-rule). The Make wildcard is `%`.

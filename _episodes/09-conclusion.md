@@ -1,14 +1,14 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Conclusion
-minutes: 0
+title: Conclusion
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Understand advantages of automated build tools such as Make."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Advantages of automated build tools such as Make.
-
 Automated build tools such as Make can help us in a number of
 ways. They help us to automate repetitive commands and, so, save us
 time and reduce the risk of us making errors we might make if running

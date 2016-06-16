@@ -175,7 +175,7 @@ $ make results.txt
 
 You'll get
 
-~~~ {.output}
+~~~
 python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
 Traceback (most recent call last):
   File "zipf_test.py", line 19, in <module>
@@ -185,7 +185,7 @@ Traceback (most recent call last):
 IndexError: list index out of range
 make: *** [results.txt] Error 1
 ~~~
-
+{: .output}
 
 ## Lesson 06-variables
 

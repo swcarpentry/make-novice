@@ -1,18 +1,18 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Automatic variables
-minutes: 0
+title: Automatic Variables
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Use Make automatic variables to remove duplication in a Makefile."
+- "Use `$@` to refer to the target of the current rule."
+- "Use `$^` to refer to the dependencies of the current rule."
+- "Use `$<` to refer to the first dependency of the current rule."
+- "Explain why bash wildcards in dependencies can cause problems."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Use Make automatic variables to remove duplication in a Makefile.
-> * Use `$@` to refer to the target of the current rule.
-> * Use `$^` to refer to the dependencies of the current rule.
-> * Use `$<` to refer to the first dependency of the current rule.
-> * Explain why bash wild-cards in dependencies can cause problems.
-
 After the exercise at the end of the previous part, our Makefile look like this:
 
 ~~~
@@ -97,14 +97,15 @@ $ make results.txt
 
 We get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat
 python zipf_test.py isles.dat abyss.dat last.dat > results.txt
 ~~~
+{: .output}
 
-We can use the bash wild-card in our dependency list:
+We can use the bash wildcard in our dependency list:
 
 ~~~
 results.txt : *.dat
@@ -132,9 +133,10 @@ $ make results.txt
 
 We get:
 
-~~~ {.error}
+~~~
 make: *** No rule to make target `*.dat', needed by `results.txt'.  Stop.
 ~~~
+{: .error}
 
 As there are no files that match the pattern `*.dat` the name `*.dat`
 is used as a file name itself, and there is no file matching that, nor

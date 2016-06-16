@@ -1,16 +1,15 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Dependencies on data and code
-minutes: 0
+title: Dependencies on Data and Code
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Output files are a product not only of input files but of the scripts or code that created the output files."
+- "Recognise and avoid false dependencies."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Output files are a product not only of input files but of the
->   scripts or code that created the output files. 
-> * Recognise and avoid false dependencies.
-
 Our Makefile now looks like this:
 
 ~~~
@@ -76,11 +75,12 @@ $ make dats
 
 then we get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat
 ~~~
+{: .output}
 
 The following figure shows the dependencies embodied within our Makefile, involved in building the `results.txt` target, after adding `wordcount.py` as a dependency to the `.dat` files:
 
@@ -102,12 +102,13 @@ $ make results.txt
 
 then we get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 ~~~
+{: .output}
 
 The whole pipeline is triggered, even the creation of the `results.txt` file! To understand this, note that according to the dependency figure, `results.txt` depends on the `.dat` files. The update of `wordcount.py` triggers an update of the `*.dat` files. Thus, `make` sees that the dependencies (the `.dat` files) are newer than the target file (`results.txt`) and thus it recreates `results.txt`. This is an example of the power of `make`: updating a subset of the files in the pipeline triggers rerunning the appropriate downstream steps.
 

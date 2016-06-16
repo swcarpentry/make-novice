@@ -1,16 +1,16 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Introduction
-minutes: 30
+title: Introduction
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Explain what Make is for."
+- "Explain why Make differs from shell scripts."
+- "Name other popular build tools."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Explain what Make is for.
-> * Explain why Make differs from shell scripts.
-> * Name other popular build tools.
-
 Let's imagine that we're interested in
 testing Zipf's Law in some of our favorite books.
 
@@ -28,7 +28,7 @@ analysis pipeline.
 Our directory has the Python scripts and data files we
 we will be working with:
 
-~~~ {.output}
+~~~
 |- books
 |  |- abyss.txt
 |  |- isles.txt
@@ -39,6 +39,7 @@ we will be working with:
 |- wordcount.py
 |- zipf_test.py
 ~~~
+{: .output}
 
 The first step is to count the frequency of each word in a book.
 
@@ -56,13 +57,14 @@ $ head -5 isles.dat
 
 This shows us the top 5 lines in the output file:
 
-~~~ {.output}
+~~~
 the 3822 6.7371760973
 of 2460 4.33632998414
 and 1723 3.03719372466
 to 1479 2.60708619778
 a 1308 2.30565838181
 ~~~
+{: .output}
 
 We can see that the file consists of one row per word.
 Each row shows the word itself, the number of occurrences of that
@@ -77,13 +79,14 @@ $ head -5 abyss.dat
 ~~~
 {: .bash}
 
-~~~ {.output}
+~~~
 the 4044 6.35449402891
 and 2807 4.41074795726
 of 1907 2.99654305468
 a 1594 2.50471401634
 to 1515 2.38057825267
 ~~~
+{: .output}
 
 Let's visualize the results.
 The script `plotcount.py` reads in a data file and plots the 10 most
@@ -94,7 +97,7 @@ $ python plotcount.py isles.dat ascii
 ~~~
 {: .bash}
 
-~~~ {.output}
+~~~
 the   ########################################################################
 of    ##############################################
 and   ################################
@@ -106,6 +109,7 @@ that  ############
 by    ###########
 it    ###########
 ~~~
+{: .output}
 
 `plotcount.py` can also show the plot graphically:
 
@@ -130,11 +134,12 @@ $ python zipf_test.py abyss.dat isles.dat
 ~~~
 {: .bash}
 
-~~~ {.output}
+~~~
 Book	First	Second	Ratio
 abyss	4044	2807	1.44
 isles	3822	2460	1.55
 ~~~
+{: .output}
 
 So we're not too far off from Zipf's law.
 

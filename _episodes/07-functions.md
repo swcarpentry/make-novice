@@ -1,16 +1,15 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Functions
-minutes: 0
+title: Functions
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Use Make's `wildcard` function to get lists of files matching a pattern."
+- "Use Make's `patsubst` function to rewrite file names."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Use Make's `wildcard` function to get lists of files matching a
->   pattern. 
-> * Use Make's `patsubst` function to rewrite file names.
-
 At this point, we have the following Makefile:
 
 ~~~
@@ -71,9 +70,10 @@ $ make variables
 
 We get:
 
-~~~ {.output}
+~~~
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 ~~~
+{: .output}
 
 Note how `sierra.txt` is now included too.
 
@@ -112,10 +112,11 @@ $ make variables
 
 then we get:
 
-~~~ {.output}
+~~~
 TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 DAT_FILES: abyss.dat isles.dat last.dat sierra.dat
 ~~~
+{: .output}
 
 Now, `sierra.txt` is processed too.
 
@@ -142,12 +143,13 @@ $ make dats
 
 We get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat
 ~~~
+{: .output}
 
 We can also rewrite `results.txt`:
 
@@ -167,13 +169,14 @@ $ make results.txt
 
 We get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat
 python zipf_test.py *.dat > results.txt
 ~~~
+{: .output}
 
 We see that the problem we had when using the bash wild-card, `*.dat`,
 which required us to run `make dats` before `make results.txt` has
@@ -187,13 +190,14 @@ $ cat results.txt
 ~~~
 {: .bash}
 
-~~~ {.output}
+~~~
 Book	First	Second	Ratio
 abyss	4044	2807	1.44
 isles	3822	2460	1.55
 last	12244	5566	2.20
 sierra	4242	2469	1.72
 ~~~
+{: .output}
 
 So the range of the ratios of occurrences of the two most frequent words in our books is indeed around 2, as predicted by Zipf's law.
 
