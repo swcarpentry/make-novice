@@ -30,7 +30,7 @@ You also agree to abide by our
 ## Other Resources
 
 1.  This lesson is based on the template found at
-    [https://github.com/swcarpentry/lesson-template](https://github.com/swcarpentry/lesson-template).
+    [https://github.com/swcarpentry/lesson-template][template].
     That repository has instructions on formatting and previewing lessons.
 
 2.  For a list of helpful commands run `make` in this directory.
@@ -40,3 +40,4 @@ You also agree to abide by our
 [license]: LICENSE.md
 [pro-git-chapter]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [swc-lessons]: http://software-carpentry.org/lessons.html
+[template]: https://github.com/swcarpentry/lesson-template

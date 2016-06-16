@@ -272,7 +272,8 @@ new files, for example:
 
 * Run analysis scripts on raw data files to get data files that
   summarise the raw data (e.g. creating files with word counts from book text). 
-* Run visualisation scripts on data files to produce plots (e.g. creating images of word counts).
+* Run visualisation scripts on data files to produce plots
+  (e.g. creating images of word counts).
 * Parse and combine text files and plots to create papers.
 * Compile source code into executable programs or libraries.
 

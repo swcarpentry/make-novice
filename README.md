@@ -1,7 +1,7 @@
 # make-novice
 
 Please see 
-[https://github.com/swcarpentry/lesson-example](https://github.com/swcarpentry/lesson-example)
+[https://github.com/swcarpentry/lesson-example][lesson-example]
 for instructions on formatting, building, and submitting lessons,
 or run `make` in this directory for a list of helpful commands.
 
@@ -13,7 +13,9 @@ Maintainer:
 
 Some of these pages use images of Makefile dependencies, in the [fig](./fig) directory.
 
-These are created using [makefile2graph](https://github.com/lindenb/makefile2graph), which is assumed to be in the `PATH`. This tool, in turn, needs the `dot` tool, part of [GraphViz](http://www.graphviz.org/).
+These are created using [makefile2graph][makefile2graph],
+which is assumed to be in the `PATH`.
+This tool, in turn, needs the `dot` tool, part of [GraphViz][graphviz].
 
 To install GraphViz on Scientific Linux 6:
 
@@ -52,3 +54,7 @@ $ make imgs
 ```
 
 See [Makefile](./Makefile)'s `imgs` target.
+
+[graphviz]: http://www.graphviz.org/
+[lesson-example]: https://github.com/swcarpentry/lesson-example/
+[makefile2graph]: https://github.com/lindenb/makefile2graph
