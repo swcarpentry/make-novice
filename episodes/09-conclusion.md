@@ -32,8 +32,17 @@ papers.
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`). 
 >
-> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
-> With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
+> Finally, many Makefiles define a default [phony
+> target]({{ site.root }}/reference/#phony-target) called `all` as first target,
+> that will build what the Makefile has been written to build (e.g. in
+> our case, the `.png` files and the `results.txt` file). As others
+> may assume your Makefile confirms to convention and supports an
+> `all` target, add an `all` target to your Makefile (Hint: this rule
+> has the `results.txt` file and the `.png` files as dependencies, but
+> no actions).  With that in place, instead of running `make
+> results.txt`, you should now run `make all`, or just simply
+> `make`. By default, `make` runs the first target it finds in the
+> Makefile, in this case your new `all` target.
 {: .challenge}
 
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:

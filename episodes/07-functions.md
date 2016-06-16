@@ -33,7 +33,7 @@ clean :
 ~~~
 {: .make}
 
-Make has many [functions](reference.html#function) which can be used to
+Make has many [functions]({{ site.root }}/reference/#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
@@ -78,7 +78,9 @@ TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 
 Note how `sierra.txt` is now included too.
 
-The following figure shows the dependencies embodied within our Makefile, involved in building the `results.txt` target, once we have introduced our function:
+The following figure shows the dependencies embodied within our Makefile,
+involved in building the `results.txt` target,
+once we have introduced our function:
 
 ![results.txt dependencies after introducing a function](img/07-functions.png "results.txt dependencies after introducing a function")
 
@@ -200,11 +202,10 @@ sierra	4242	2469	1.72
 ~~~
 {: .output}
 
-So the range of the ratios of occurrences of the two most frequent words in our books is indeed around 2, as predicted by Zipf's law.
-
-most frequently-occurring word occurs approximately twice as often as the second most frequent word
-
-Here is our final Makefile:
+So the range of the ratios of occurrences of the two most frequent
+words in our books is indeed around 2, as predicted by Zipf's Law,
+i.e., the most frequently-occurring word occurs approximately twice as
+often as the second most frequent word.  Here is our final Makefile:
 
 ~~~
 include config.mk

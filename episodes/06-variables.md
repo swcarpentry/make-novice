@@ -16,8 +16,8 @@ Despite our efforts, our Makefile still has repeated content, namely
 the name of our script, `wordcount.py`. If we renamed our script we'd
 have to update our Makefile in multiple places.
 
-We can introduce a Make [variable](reference.html#variable) (called a
-[macro](reference.html#macro) in some versions of Make) to hold our
+We can introduce a Make [variable]({{ site.root }}/reference/#variable) (called a
+[macro]({{ site.root }}/reference/#macro) in some versions of Make) to hold our
 script name:
 
 ~~~
@@ -25,7 +25,7 @@ COUNT_SRC=wordcount.py
 ~~~
 {: .make}
 
-This is a variable [assignment](reference.html#assignment) -
+This is a variable [assignment]({{ site.root }}/reference/#assignment) -
 `COUNT_SRC` is assigned the value `wordcount.py`.
 
 `wordcount.py` is our script and it is invoked by passing it to
@@ -38,7 +38,7 @@ COUNT_EXE=python $(COUNT_SRC)
 {: .make}
 
 `$(...)` tells Make to replace a variable with its value when Make
-is run. This is a variable [reference](reference.html#reference). At 
+is run. This is a variable [reference]({{ site.root }}/reference/#reference). At 
 any place where we want to use the value of a variable we have to
 write it, or reference it, in this way.
 
@@ -55,7 +55,9 @@ used to implement our script from Python to R).
 >
 > Update `Makefile` so that the `%.dat` rule
 > references the variables `COUNT_SRC` and `COUNT_EXE`.
-> Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
+> Then do the same for the `zipf-test.py` script
+> and the `results.txt` rule,
+> using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 {: .challenge}
 
 We place variables at the top of a Makefile so they are easy to

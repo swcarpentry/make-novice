@@ -48,14 +48,20 @@ Makefile but forget to rename it elsewhere.
 
 > ## D.R.Y. (Don't Repeat Yourself)
 >
-> In many programming languages, the bulk of the language features are there  to allow the programmer to describe long-winded computational routines as short, expressive, beautiful code.
-> Features in Python or R or Java like user-defined variables and functions are useful in part because they mean we don't have to write out (or think about) all of the details over and over again.
-> This good habit of writing things out only once is known as the "Don't Repeat Yourself" principle or D.R.Y.
+> In many programming languages, the bulk of the language features are
+> there to allow the programmer to describe long-winded computational
+> routines as short, expressive, beautiful code.  Features in Python
+> or R or Java like user-defined variables and functions are useful in
+> part because they mean we don't have to write out (or think about)
+> all of the details over and over again.  This good habit of writing
+> things out only once is known as the "Don't Repeat Yourself"
+> principle or D.R.Y.
 {: .callout}
 
 Let us set about removing some of the repetition from our Makefile.
 
-In our `results.txt` rule we duplicate the data file names and the name of the results file name:
+In our `results.txt` rule we duplicate the data file names and the
+name of the results file name:
 
 ~~~
 results.txt : isles.dat abyss.dat last.dat
@@ -72,7 +78,7 @@ results.txt : isles.dat abyss.dat last.dat
 ~~~
 {: .make}
 
-`$@` is a Make [automatic variable](reference.html#automatic-variable)
+`$@` is a Make [automatic variable]({{ site.root }}/reference/#automatic-variable)
 which means 'the target of the current rule'. When Make is run it will
 replace this variable with the target name.
 
@@ -166,9 +172,9 @@ $ make results.txt
 > 4. only `results.txt` recreated
 {: .challenge}
 
-As we saw, `$^` means 'all the dependencies of the current
-rule'. This works well for `results.txt` as its action
-treats all the dependencies the same - as the input for the `zipf_test.py` script.
+As we saw, `$^` means 'all the dependencies of the current rule'. This
+works well for `results.txt` as its action treats all the dependencies
+the same - as the input for the `zipf_test.py` script.
 
 However, for some rules, we may want to treat the first dependency
 differently. For example, our rules for `.dat` use their first (and

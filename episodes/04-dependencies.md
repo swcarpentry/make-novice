@@ -39,7 +39,10 @@ clean :
 
 Our data files are a product not only of our text files but the
 script, `wordcount.py`, that processes the text files and creates the
-data files. A change to `wordcount.py` (e.g. to add a new column of summary data or remove an existing one) results in changes to the `.dat` files it outputs. So, let's pretend to edit `wordcount.py`, using `touch`, and re-run Make:
+data files. A change to `wordcount.py` (e.g. to add a new column of
+summary data or remove an existing one) results in changes to the
+`.dat` files it outputs. So, let's pretend to edit `wordcount.py`,
+using `touch`, and re-run Make:
 
 ~~~
 $ make dats
@@ -48,7 +51,9 @@ $ make dats
 ~~~
 {: .bash}
 
-Nothing happens! Though we've updated `wordcount.py` our data files are not updated because our rules for creating `.dat` files don't record any dependencies on `wordcount.py`.
+Nothing happens! Though we've updated `wordcount.py` our data files
+are not updated because our rules for creating `.dat` files don't
+record any dependencies on `wordcount.py`.
 
 We need to add `wordcount.py` as a dependency of each of our
 data files also:
@@ -82,7 +87,9 @@ python wordcount.py books/last.txt last.dat
 ~~~
 {: .output}
 
-The following figure shows the dependencies embodied within our Makefile, involved in building the `results.txt` target, after adding `wordcount.py` as a dependency to the `.dat` files:
+The following figure shows the dependencies embodied within our
+Makefile, involved in building the `results.txt` target, after adding
+`wordcount.py` as a dependency to the `.dat` files:
 
 ![results.txt dependencies after adding wordcount.py as a dependency](img/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
 
@@ -90,10 +97,13 @@ The following figure shows the dependencies embodied within our Makefile, involv
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `wordcount.py` would introduce a [false
-> dependency](reference.html#false-dependency).
+> dependency]({{ site.root }}/reference/#false-dependency).
 {: .callout}
 
-Intuitively, we should also add `wordcount.py` as dependency for `results.txt`, as the final table should be rebuilt as we remake the `.dat` files. However, it turns out we don't have to! Let's see what happens to `results.txt` when we update `wordcount.py`:
+Intuitively, we should also add `wordcount.py` as dependency for
+`results.txt`, as the final table should be rebuilt as we remake the
+`.dat` files. However, it turns out we don't have to! Let's see what
+happens to `results.txt` when we update `wordcount.py`:
 
 ~~~
 $ touch wordcount.py
@@ -111,7 +121,15 @@ python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 ~~~
 {: .output}
 
-The whole pipeline is triggered, even the creation of the `results.txt` file! To understand this, note that according to the dependency figure, `results.txt` depends on the `.dat` files. The update of `wordcount.py` triggers an update of the `*.dat` files. Thus, `make` sees that the dependencies (the `.dat` files) are newer than the target file (`results.txt`) and thus it recreates `results.txt`. This is an example of the power of `make`: updating a subset of the files in the pipeline triggers rerunning the appropriate downstream steps.
+The whole pipeline is triggered, even the creation of the
+`results.txt` file! To understand this, note that according to the
+dependency figure, `results.txt` depends on the `.dat` files. The
+update of `wordcount.py` triggers an update of the `*.dat`
+files. Thus, `make` sees that the dependencies (the `.dat` files) are
+newer than the target file (`results.txt`) and thus it recreates
+`results.txt`. This is an example of the power of `make`: updating a
+subset of the files in the pipeline triggers rerunning the appropriate
+downstream steps.
 
 > ## Updating one input file
 >
@@ -134,7 +152,9 @@ The whole pipeline is triggered, even the creation of the `results.txt` file! To
 > What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
 {: .challenge}
 
-We still have to add the `zipf-test.py` script as dependency to `results.txt`. Given the answer to the challenge above, we cannot use `$^` for the rule. We'll go back to using `*.dat`:
+We still have to add the `zipf-test.py` script as dependency to
+`results.txt`. Given the answer to the challenge above, we cannot use
+`$^` for the rule. We'll go back to using `*.dat`:
 
 ~~~
 results.txt : *.dat zipf_test.py

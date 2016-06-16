@@ -68,7 +68,9 @@ clean :
 
 4.) only `results.txt` recreated. 
 
-You can check that `*.dat` is being expanded in the target of the rule for `results.txt` by echoing the value of the automatic variable `$^` (all dependencies of the current rule).
+You can check that `*.dat` is being expanded in the target of the rule
+for `results.txt` by echoing the value of the automatic variable `$^`
+(all dependencies of the current rule).
 
 ~~~ 
 results.txt: *.dat
@@ -152,7 +154,8 @@ clean :
 
 > ## `wordcount.py` as dependency of `results.txt`.
 >
-> What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
+> What would happen if you actually added `wordcount.py` as dependency
+> of `results.txt`, and why?
 {: .challenge}
 
 If you change the rule for the `results.txt` file like this:
@@ -170,7 +173,8 @@ python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
 ~~~
 {: .bash}
 
-This results in an error from `zipf_test.py` as it tries to parse the script as if it were a `.dat` file. Try this by running:
+This results in an error from `zipf_test.py` as it tries to parse the
+script as if it were a `.dat` file. Try this by running:
 
 ~~~
 $ make results.txt
@@ -197,7 +201,8 @@ make: *** [results.txt] Error 1
 >
 > Update `Makefile` so that the `%.dat` rule
 > reference the variables `COUNT_SRC` and `COUNT_EXE`.
-> Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
+> Then do the same for the `zipf-test.py` script and the `results.txt` rule,
+> using `ZIPF_SRC` and `ZIPF_EXE` as variable names.
 {: .challenge}
 
 ~~~
@@ -235,8 +240,19 @@ clean :
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`). 
 >
-> Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
-> With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
+> Finally, many Makefiles define a default [phony
+> target]({{ site.root }}/reference/#phony-target) called `all` as first target,
+> that will build what the Makefile has been written to build (e.g. in
+> our case, the `.png` files and the `results.txt` file). As others may
+> assume your Makefile confirms to convention and supports an `all`
+> target, add an `all` target to your Makefile (Hint: this rule has the
+> `results.txt` file and the `.png` files as dependencies, but no
+> actions).
+>
+> With that in place, instead of running `make results.txt`, you
+> should now run `make all`, or just simply `make`. By default, `make`
+> runs the first target it finds in the Makefile, in this case your new
+> `all` target.
 {: .challenge}
 
 ~~
@@ -396,4 +412,9 @@ help : Makefile
 > Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
 {: .challenge}
 
-Our code (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement the individual parts of our workflow. They allow us to create `.dat` files from `.txt` files, `.png` files from `.dat` files and `results.txt`. Our Makefile, however, documents dependencies between our code, raw data, derived data, and plots, as well as implementing our workflow as a whole.
+Our code (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement
+the individual parts of our workflow. They allow us to create `.dat`
+files from `.txt` files, `.png` files from `.dat` files and
+`results.txt`. Our Makefile, however, documents dependencies between
+our code, raw data, derived data, and plots, as well as implementing
+our workflow as a whole.

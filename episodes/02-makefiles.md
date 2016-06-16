@@ -22,22 +22,22 @@ isles.dat : books/isles.txt
 ~~~
 {: .make}
 
-This is a [build file](reference.html#build-file), which for
-Make is called a [Makefile](reference.html#makefile) - a file executed
+This is a [build file]({{ site.root }}/reference/#build-file), which for
+Make is called a [Makefile]({{ site.root }}/reference/#makefile) - a file executed
 by Make. Note how it resembles one of the lines from our shell script.
 
 Let us go through each line in turn:
 
 * `#` denotes a *comment*. Any text from `#` to the end of the line is
   ignored by Make.
-* `isles.dat` is a [target](reference.html#target), a file to be
+* `isles.dat` is a [target]({{ site.root }}/reference/#target), a file to be
   created, or built.
-* `books/isles.txt` is a [dependency](reference.html#dependency), a
+* `books/isles.txt` is a [dependency]({{ site.root }}/reference/#dependency), a
   file that is needed to build or update the target. Targets can have
   zero or more dependencies.
 * A colon, `:`, separates targets from dependencies.
 * `python wordcount.py books/isles.txt isles.dat` is an
-  [action](reference.html#action), a command to run to build or update
+  [action]({{ site.root }}/reference/#action), a command to run to build or update
   the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
   from its dependencies and can be considered to be
@@ -48,12 +48,14 @@ Let us go through each line in turn:
   your cursor from one side of the TAB to the other. It should jump
   four or more spaces.
 * Together, the target, dependencies, and actions form a
-  a [rule](reference.html#rule).
+  a [rule]({{ site.root }}/reference/#rule).
 
 Our rule above describes how to build the target `isles.dat` using the
 action `python wordcount.py` and the dependency `books/isles.txt`.
 
-Information that was implicit in our shell script - that we are generating a file called `isles.dat` and that creating this file requires `books/isles.txt` - is now made explicit by Make's syntax.
+Information that was implicit in our shell script - that we are
+generating a file called `isles.dat` and that creating this file
+requires `books/isles.txt` - is now made explicit by Make's syntax.
 
 Let's first sure we start from scratch and delete the `.dat` and `.png`
 files we created earlier:
@@ -164,7 +166,10 @@ python wordcount.py books/isles.txt isles.dat
 When it is asked to build a target, Make checks the 'last modification
 time' of both the target and its dependencies. If any dependency has
 been updated since the target, then the actions are re-run to update
-the target. Using this approach, Make knows to only rebuild the files that, either directly or indirectly, depend on the file that changed. This is called an [incremental build](reference.html#incremental-build).
+the target. Using this approach, Make knows to only rebuild the files
+that, either directly or indirectly, depend on the file that
+changed. This is called an [incremental
+build]({{ site.root }}/reference/#incremental-build).
 
 > ## `up to date` versus `Nothing to be done`
 > 
@@ -196,7 +201,9 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 
 > ## Makefiles as documentation
 >
-> By explicitly recording the inputs to and outputs from steps in our analysis and the dependencies between files, Makefiles act as a type of documentation, reducing the number of things we have to remember.
+> By explicitly recording the inputs to and outputs from steps in our
+> analysis and the dependencies between files, Makefiles act as a type
+> of documentation, reducing the number of things we have to remember.
 {: .callout}
 
 Let's add another rule to the end of `Makefile`:
@@ -223,7 +230,7 @@ make: `isles.dat' is up to date.
 
 Nothing happens because Make attempts to build the first target it
 finds in the Makefile, the [default
-target](reference.html#default-target), which is `isles.dat` which is
+target]({{ site.root }}/reference/#default-target), which is `isles.dat` which is
 already up-to-date. We need to explicitly tell Make we want to build
 `abyss.dat`:
 
@@ -240,7 +247,9 @@ python wordcount.py books/abyss.txt abyss.dat
 {: .output}
 
 We may want to remove all our data files so we can explicitly recreate
-them all. We can introduce a new target, and associated rule, to do this. We will call it `clean`, as this is a common name for rules that delete auto-generated files, like our `.dat` files:
+them all. We can introduce a new target, and associated rule, to do
+this. We will call it `clean`, as this is a common name for rules that
+delete auto-generated files, like our `.dat` files:
 
  `clean`:
 
@@ -292,7 +301,7 @@ rule has no dependencies, assumes that `clean` has been built and is
 up-to-date and so does not execute the rule's actions. As we are using
 `clean` as a short-hand, we need to tell Make to always execute this
 rule if we run `make clean`, by telling Make that this is a
-[phony target](reference.html#phony-target), that it does not build
+[phony target]({{ site.root }}/reference/#phony-target), that it does not build
 anything. This we do by marking the target as `.PHONY`:
 
 ~~~
@@ -318,7 +327,7 @@ rm -f *.dat
 
 We can add a similar command to create all the data files. We can put
 this at the top of our Makefile so that it is the [default
-target](reference.html#default-target), which is executed by default
+target]({{ site.root }}/reference/#default-target), which is executed by default
 if no target is given to the `make` command:
 
 ~~~
@@ -395,7 +404,8 @@ clean :
 ~~~
 {: .make}
 
-The following figure shows a graph of the dependencies embodied within our Makefile, involved in building the `dats` target:
+The following figure shows a graph of the dependencies embodied within
+our Makefile, involved in building the `dats` target:
 
 ![Dependencies represented within the Makefile](img/02-makefile.png "Dependencies represented within the Makefile")
 
@@ -416,6 +426,7 @@ The following figure shows a graph of the dependencies embodied within our Makef
 > Update `clean` so that it removes `results.txt`.
 {: .challenge}
 
-The following figure shows the dependencies embodied within our Makefile, involved in building the `results.txt` target:
+The following figure shows the dependencies embodied within our
+Makefile, involved in building the `results.txt` target:
 
 ![results.txt dependencies represented within the Makefile](img/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")
