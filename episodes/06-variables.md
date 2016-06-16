@@ -1,18 +1,17 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Variables
-minutes: 0
+title: Variables
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Use variables in a Makefile."
+- "Assign values to variables."
+- "Reference variables."
+- "Explain the benefits of decoupling configuration from computation."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Use variables in a Makefile.
-> * Assign values to variables.
-> * Reference variables.
-> * Explain the benefits of decoupling configuration from 
->   computation.
-
 Despite our efforts, our Makefile still has repeated content, namely
 the name of our script, `wordcount.py`. If we renamed our script we'd
 have to update our Makefile in multiple places.

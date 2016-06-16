@@ -1,19 +1,18 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Makefiles
-minutes: 0
+title: Makefiles
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Recognise the key parts of a Makefile, rules, targets, dependencies and actions."
+- "Write a simple Makefile."
+- "Run Make from the shell."
+- "Explain when and why to mark targets as `.PHONY`."
+- "Explain constraints on dependencies."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Recognise the key parts of a Makefile, rules, targets,
->   dependencies and actions.
-> * Write a simple Makefile.
-> * Run Make from the shell.
-> * Explain when and why to mark targets as `.PHONY`.
-> * Explain constraints on dependencies.
-
 Create a file, called `Makefile`, with the following content:
 
 ~~~
@@ -74,15 +73,17 @@ $ make
 
 By default, Make prints out the actions it executes:
 
-~~~ {.output}
+~~~
 python wordcount.py books/isles.txt isles.dat
 ~~~
+{: .output}
 
 If we see,
 
-~~~ {.error}
+~~~
 Makefile:3: *** missing separator.  Stop.
 ~~~
+{: .error}
 
 then we have used a space instead of a TAB characters to indent one of
 our actions.
@@ -112,9 +113,10 @@ The first 5 lines of `isles.dat` should look exactly like before.
 
 When we re-run our Makefile, Make now informs us that:
 
-~~~ {.output}
+~~~
 make: `isles.dat' is up to date.
 ~~~
+{: .output}
 
 This is because our target, `isles.dat`, has now been created, and
 Make will not create it again. To see how this works, let's pretend to
@@ -137,10 +139,11 @@ $ ls -l books/isles.txt isles.dat
 then we see that `isles.dat`, the target, is now older
 than`books/isles.txt`, its dependency:
 
-~~~ {.output}
+~~~
 -rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
 -rw-r--r--    1 mjj      Administ   182273 Jun 12 09:58 isles.dat
 ~~~
+{: .output}
 
 If we run Make again,
 
@@ -151,9 +154,10 @@ $ make
 
 then it recreates `isles.dat`:
 
-~~~ {.output}
+~~~
 python wordcount.py books/isles.txt isles.dat
 ~~~
+{: .output}
 
 When it is asked to build a target, Make checks the 'last modification
 time' of both the target and its dependencies. If any dependency has
@@ -165,9 +169,10 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 > If we ask Make to build a file that already exists and is up to
 > date, then Make informs us that: 
 > 
-> ~~~ {.output}
+> ~~~
 > make: `isles.dat' is up to date.
 > ~~~
+> {: .output}
 > 
 > If we ask Make to build a file that exists but for which there is
 > no rule in our Makefile, then we get message like:
@@ -177,9 +182,10 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 > ~~~
 > {.bash}
 >
-> ~~~ {.output}
+> ~~~
 > make: Nothing to be done for `wordcount.py'.
 > ~~~
+> {: .output}
 >
 > `up to date` means that the Makefile has a rule for the file and
 > the file is up to date whereas `Nothing to be done` means that 
@@ -206,9 +212,10 @@ $ make
 
 then we get:
 
-~~~ {.output}
+~~~
 make: `isles.dat' is up to date.
 ~~~
+{: .output}
 
 Nothing happens because Make attempts to build the first target it
 finds in the Makefile, the [default
@@ -223,9 +230,10 @@ $ make abyss.dat
 
 Now, we get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/abyss.txt abyss.dat
 ~~~
+{: .output}
 
 We may want to remove all our data files so we can explicitly recreate
 them all. We can introduce a new target, and associated rule, to do this. We will call it `clean`, as this is a common name for rules that delete auto-generated files, like our `.dat` files:
@@ -250,9 +258,10 @@ $ make clean
 
 then we get:
 
-~~~ {.output}
+~~~
 rm -f *.dat
 ~~~
+{: .output}
 
 There is no actual thing built called `clean`. Rather, it is a
 short-hand that we can use to execute a useful sequence of
@@ -269,9 +278,10 @@ $ make clean
 
 We get:
 
-~~~ {.outputs}
+~~~
 make: `clean' is up to date.
 ~~~
+{: .output}
 
 Make finds a file (or directory) called `clean` and, as its `clean`
 rule has no dependencies, assumes that `clean` has been built and is
@@ -297,9 +307,10 @@ $ make clean
 
 then we get:
 
-~~~ {.outputs}
+~~~
 rm -f *.dat
 ~~~
+{: .output}
 
 We can add a similar command to create all the data files. We can put
 this at the top of our Makefile so that it is the [default
@@ -340,10 +351,11 @@ $ make dats
 
 then Make creates the data files:
 
-~~~ {.output}
+~~~
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 ~~~
+{: .output}
 
 If we run `dats` again,
 
@@ -354,9 +366,10 @@ $ make dats
 
 then Make sees that the data files exist:
 
-~~~ {.output}
+~~~
 make: Nothing to be done for `dats'.
 ~~~
+{: .output}
 
 Our Makefile now looks like this:
 

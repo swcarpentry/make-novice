@@ -1,17 +1,17 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Pattern rules
-minutes: 0
+title: Pattern Rules
+teaching: 15
+exercises: 15
+questions:
+- "FIXME?"
+objectives:
+- "Write Make pattern rules."
+- "Use the Make wildcard `%` in targets and dependencies."
+- "Use the Make special variable `$*` in actions."
+- "Avoid using the Make wildcard in rules."
+keypoints:
+- "FIXME."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Write Make pattern rules.
-> * Use the Make wild-card `%` in targets and dependencies.
-> * Use the Make special variable `$*` in actions.
-> * Avoid using the Make wild-card in rules.
-
 Our Makefile still has repeated content. The rules for each `.dat`
 file are identical apart from the text and data file names. We can
 replace these rules with a single [pattern
@@ -24,7 +24,7 @@ rule](reference.html#pattern-rule) which can be used to build any
 ~~~
 {: .make}
 
-`%` is a Make [wild-card](reference.html#wild-card). `$*` is a special variable which gets replaced by the [stem](reference.html#stem) with which the rule matched.
+`%` is a Make [wildcard](reference.html#wildcard). `$*` is a special variable which gets replaced by the [stem](reference.html#stem) with which the rule matched.
 
 This rule can be interpreted as:
 
@@ -42,17 +42,18 @@ $ make dats
 
 then we get:
 
-~~~ {.output}
+~~~
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/last.txt last.dat
 ~~~
+{: .output}
 
 Our new rule will work no matter what stem is being matched.
 
-> ## Using Make wild-cards {.callout}
+> ## Using Make wildcards {.callout}
 >
-> The Make `%` wild-card can only be used in a target and in its
+> The Make `%` wildcard can only be used in a target and in its
 > dependencies. It cannot be used in actions. In actions, you may
 > however use `$*`, which will be replaced by the stem with which 
 > the rule matched.
