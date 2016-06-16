@@ -97,7 +97,7 @@ head -5 isles.dat
 
 The first 5 lines of `isles.dat` should look exactly like before.
 
-> ## Makefiles do not have to be called `Makefile`. {.callout}
+> ## Makefiles do not have to be called `Makefile`
 > 
 > We don't have to call our Makefile `Makefile`. However, if we call it
 > something else we need to tell Make where to find it. This we can do
@@ -106,10 +106,12 @@ The first 5 lines of `isles.dat` should look exactly like before.
 > ~~~
 > $ make -f MyOtherMakefile
 > ~~~
+> {: .bash}
 >
 >
 > Sometimes, the suffix `.mk` will be used to identify Makefiles that 
 > are not called `Makefile` e.g. `install.mk`, `common.mk` etc.
+{: .callout}
 
 When we re-run our Makefile, Make now informs us that:
 
@@ -164,7 +166,7 @@ time' of both the target and its dependencies. If any dependency has
 been updated since the target, then the actions are re-run to update
 the target. Using this approach, Make knows to only rebuild the files that, either directly or indirectly, depend on the file that changed. This is called an [incremental build](reference.html#incremental-build).
 
-> ## `up to date` versus `Nothing to be done`. {.callout}
+> ## `up to date` versus `Nothing to be done`
 > 
 > If we ask Make to build a file that already exists and is up to
 > date, then Make informs us that: 
@@ -176,11 +178,11 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 > 
 > If we ask Make to build a file that exists but for which there is
 > no rule in our Makefile, then we get message like:
-> 
+>
 > ~~~
 > $ make wordcount.py
 > ~~~
-> {.bash}
+> {: .bash}
 >
 > ~~~
 > make: Nothing to be done for `wordcount.py'.
@@ -190,10 +192,12 @@ the target. Using this approach, Make knows to only rebuild the files that, eith
 > `up to date` means that the Makefile has a rule for the file and
 > the file is up to date whereas `Nothing to be done` means that 
 > the file exists but the Makefile has no rule for it.
+{: .callout}
 
-> ## Makefiles as documentation {.callout}
+> ## Makefiles as documentation
 >
 > By explicitly recording the inputs to and outputs from steps in our analysis and the dependencies between files, Makefiles act as a type of documentation, reducing the number of things we have to remember.
+{: .callout}
 
 Let's add another rule to the end of `Makefile`:
 
@@ -329,7 +333,7 @@ exist and, if not, will see if rules are available that will create
 these. If such rules exist it will invoke these first, otherwise
 Make will raise an error.
 
-> ## Dependencies {.callout}
+> ## Dependencies
 >
 > The order of rebuilding dependencies is arbitrary. You should not
 > assume that they will be built in the order in which they are
@@ -338,6 +342,7 @@ Make will raise an error.
 > Dependencies must form a directed acyclic graph. A target cannot
 > depend on a dependency which itself, or one of its dependencies,
 > depends on that target.
+{: .callout}
 
 This rule is also an example of a rule that has no actions. It is used
 purely to trigger the build of its dependencies, if needed.
@@ -394,7 +399,7 @@ The following figure shows a graph of the dependencies embodied within our Makef
 
 ![Dependencies represented within the Makefile](img/02-makefile.png "Dependencies represented within the Makefile")
 
-> ## Write two new rules {.challenge}
+> ## Write two new rules
 >
 > Write a new rule for `last.dat`, created from `books/last.txt`.
 >
@@ -409,6 +414,7 @@ The following figure shows a graph of the dependencies embodied within our Makef
 > Put this rule at the top of the Makefile so that it is the default target.
 >
 > Update `clean` so that it removes `results.txt`.
+{: .challenge}
 
 The following figure shows the dependencies embodied within our Makefile, involved in building the `results.txt` target:
 

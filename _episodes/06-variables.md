@@ -51,11 +51,12 @@ Defining the variable `COUNT_EXE` in this way allows us to easily
 change how our script is run (if, for example, we changed the language
 used to implement our script from Python to R).
 
-> ## Use variables {.challenge}
+> ## Use variables
 >
 > Update `Makefile` so that the `%.dat` rule
 > references the variables `COUNT_SRC` and `COUNT_EXE`.
 > Then do the same for the `zipf-test.py` script and the `results.txt` rule, using `ZIPF_SRC` and `ZIPF_EXE` as variable names
+{: .challenge}
 
 We place variables at the top of a Makefile so they are easy to
 find and modify. Alternatively, we can pull them out into a new 

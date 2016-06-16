@@ -23,7 +23,7 @@ as a form of documentation, recording dependencies between code,
 scripts, tools, configurations, raw data, derived data, plots and
 papers.
 
-> ## Extend the Makefile to create PNGs {.challenge}
+> ## Extend the Makefile to create PNGs
 >
 > Add new rules, update existing rules, and add new macros to:
 > 
@@ -34,12 +34,13 @@ papers.
 >
 > Finally, many Makefiles define a default [phony target](reference.html#phony-target) called `all` as first target, that will build what the Makefile has been written to build (e.g. in our case, the `.png` files and the `results.txt` file). As others may assume your Makefile confirms to convention and supports an `all` target, add an `all` target to your Makefile (Hint: this rule has the `results.txt` file and the `.png` files as dependencies, but no actions).
 > With that in place, instead of running `make results.txt`, you should now run `make all`, or just simply `make`. By default, `make` runs the first target it finds in the Makefile, in this case your new `all` target.
+{: .challenge}
 
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
 
 ![results.txt dependencies once images have been added](img/09-conclusion-challenge.png "results.txt dependencies once images have been added")
 
-> ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table {.challenge}
+> ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table
 >
 > Add new rules, update existing rules, and add new macros to:
 >
@@ -60,8 +61,9 @@ The following figure shows the dependencies involved in building the `all` targe
 >   clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
+{: .challenge}
 
-> ## Adding the Makefile to our archive {.challenge}
+> ## Adding the Makefile to our archive
 >
 > Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
-
+{: .challenge}
