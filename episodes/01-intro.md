@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: "Introduction"
 teaching: 15
 exercises: 15
 questions:
@@ -11,14 +11,14 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Let's imagine that we're interested in
 testing Zipf's Law in some of our favorite books.
 
 > ## Zipf's Law
 >
 > The most frequently-occurring word occurs approximately twice as
-> often as the second most frequent word. This is [Zipf's
-> Law](http://en.wikipedia.org/wiki/Zipf%27s_law).
+> often as the second most frequent word. This is [Zipf's Law][zipfs-law].
 {: .callout}
 
 We've compiled our raw data, the books we want to analyze
@@ -278,16 +278,14 @@ new files, for example:
 * Compile source code into executable programs or libraries.
 
 There are now many build tools available, for example [Apache
-ANT](http://ant.apache.org/), [doit](http://pydoit.org/), and
-[nmake](https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx) for
-Windows. There are also build tools that build scripts for use with
-these build tools and others e.g. [GNU
-Autoconf](http://www.gnu.org/software/autoconf/autoconf.html) and
-[CMake](http://www.cmake.org/). Which is best for you depends on your
-requirements, intended usage, and operating system. However, they
-all share the same fundamental concepts as Make.
+ANT][apache-ant], [doit][doit], and [nmake][nmake] for Windows. There
+are also build tools that build scripts for use with these build tools
+and others e.g. [GNU Autoconf][autoconf] and [CMake][cmake]. Which is
+best for you depends on your requirements, intended usage, and
+operating system. However, they all share the same fundamental
+concepts as Make.
 
-> ## Why use Make if it is almost 40 years old?
+> ## Why use Make If It Is Almost 40 Years Old?
 >
 > Today, researchers working with legacy codes in C or FORTRAN, which
 > are very common in high-performance computing, will, very likely
@@ -301,6 +299,14 @@ all share the same fundamental concepts as Make.
 > Make's fundamental concepts are common across build tools.
 {: .callout}
 
-[GNU Make](http://www.gnu.org/software/make/) is a free, fast, 
-well-documented, and very popular Make implementation. From now on, 
-we will focus on it, and when we say Make, we mean GNU Make.
+[GNU Make][gnu-make is a free, fast, well-documented, and very popular
+Make implementation. From now on, we will focus on it, and when we say
+Make, we mean GNU Make.
+
+[autoconf]: http://www.gnu.org/software/autoconf/autoconf.html
+[apache-ant]: http://ant.apache.org/
+[cmake]: http://www.cmake.org/
+[doit]: http://pydoit.org/
+[gnu-make]: http://www.gnu.org/software/make/
+[nmake]: https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx
+[zipfs-law]: http://en.wikipedia.org/wiki/Zipf%27s_law

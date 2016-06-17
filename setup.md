@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Setup
+title: "Setup"
 permalink: /setup/
 ---
 
 You need to download some files to follow this lesson:
 
-1. Download [make-lesson.zip](./files/make-lesson.zip).
+1. Download [make-lesson.zip][zip-file].
 
 2. Move `make-lesson.zip` into a directory which you can access via your bash shell.
 
@@ -27,3 +27,5 @@ $ unzip make-lesson.zip
 $ cd make-lesson
 ~~~
 {: .source}
+
+[zip-file]: {{ site.root }}/files/make-lesson.zip

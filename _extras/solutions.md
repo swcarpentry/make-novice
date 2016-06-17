@@ -1,8 +1,6 @@
 ---
 layout: page
-title: Automation and Make
-subtitle: Solutions
-minutes: 0
+title: "Solutions"
 ---
 ## Lesson 02-makefiles
 
@@ -240,8 +238,9 @@ clean :
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`). 
 >
-> Finally, many Makefiles define a default [phony
-> target]({{ site.root }}/reference/#phony-target) called `all` as first target,
+> Finally, many Makefiles define a default
+> [phony target]({{ site.root }}/reference/#phony-target)
+> called `all` as first target,
 > that will build what the Makefile has been written to build (e.g. in
 > our case, the `.png` files and the `results.txt` file). As others may
 > assume your Makefile confirms to convention and supports an `all`

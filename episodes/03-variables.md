@@ -1,5 +1,5 @@
 ---
-title: Automatic Variables
+title: "Automatic Variables"
 teaching: 15
 exercises: 15
 questions:
@@ -13,6 +13,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 After the exercise at the end of the previous part, our Makefile look like this:
 
 ~~~

@@ -1,5 +1,5 @@
 ---
-title: Makefiles
+title: "Makefiles"
 teaching: 15
 exercises: 15
 questions:
@@ -13,6 +13,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Create a file, called `Makefile`, with the following content:
 
 ~~~

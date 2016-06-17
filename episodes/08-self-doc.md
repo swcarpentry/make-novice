@@ -1,5 +1,5 @@
 ---
-title: Self-Documenting Makefiles
+title: "Self-Documenting Makefiles"
 teaching: 15
 exercises: 15
 questions:
@@ -9,6 +9,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Many bash commands, and programs that people have written that can be
 run from within bash, support a `--help` flag to display more
 information on how to use the commands or programs. In this spirit, it
@@ -47,9 +48,8 @@ could keep the descriptions of the rules by the rules themselves and
 extract these descriptions automatically.
 
 The bash shell can help us here. It provides a command called
-[sed](https://www.gnu.org/software/sed/) which stands for 'stream
-editor'. `sed` reads in some text, does some filtering, and writes out
-the filtered text.
+[sed][sed-docs] which stands for 'stream editor'. `sed` reads in some
+text, does some filtering, and writes out the filtered text.
 
 So, we could write comments for our rules, and mark then up in a way
 which `sed` can detect. Since Make uses `#` for comments, we can use
@@ -121,3 +121,5 @@ remember to add, update or remove a comment next to the rule. So long
 as we respect our convention of using `##` for such comments, then our
 `help` rule will take care of detecting these comments and printing
 them for us.
+
+[sec-docs]: https://www.gnu.org/software/sed/

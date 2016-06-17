@@ -1,5 +1,5 @@
 ---
-title: Variables
+title: "Variables"
 teaching: 15
 exercises: 15
 questions:
@@ -12,6 +12,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Despite our efforts, our Makefile still has repeated content, namely
 the name of our script, `wordcount.py`. If we renamed our script we'd
 have to update our Makefile in multiple places.

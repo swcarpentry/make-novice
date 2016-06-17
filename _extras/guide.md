@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Automation and Make
-subtitle: Instructor's Guide
+title: "Instructor's Guide"
 ---
 
 ## Legend
@@ -50,7 +49,7 @@ nano, and one for running Make.
 Check that all attendees have Make installed and that it runs
 correctly, before beginning the session.
 
-## Code and data files
+## Code and Data Files
 
 Python scripts to be invoked by Make are in `code/`.
 
@@ -65,7 +64,7 @@ which contains:
 * `books/`
 
 Or, ask students to download
-[make-lesson.zip](./make-lesson.zip) from this repository.
+[make-lesson.zip][zipfile] from this repository.
 
 To recreate `make-lesson.zip`, run:
 
@@ -74,14 +73,14 @@ $ make make-lesson.zip
 ~~~
 {: .bash}
 
-## Beware of spaces!
+## Beware of Spaces!
 
 The single most commonly occurring problem will be students using
 spaces instead of TABs when intending actions.
 
-## [Introduction](01-intro.html)
+## [Introduction]({{ site.root }}/01-intro/)
 
-## [Makefiles](02-makefiles.html)
+## [Makefiles]({{ site.root }}/02-makefiles/)
 
 `02-makefile/Makefile` contains an example of the Makefile,
 immediately before the challenge is attempted.
@@ -91,7 +90,7 @@ Write two new rules - challenge
 * Allow 10 minutes.
 * `02-makefile-challenge/Makefile` contains a solution.
 
-## [Automatic variables](03-variables.html)
+## [Automatic variables]({{ site.root }}/03-variables/)
 
 `03-variables/Makefile` contains an example of the Makefile,
 immediately before the challenge is attempted.
@@ -101,17 +100,17 @@ Rewrite `.dat` rules to use automatic variables - challenge
 * Allow 5 minutes.
 * `03-variables-challenge/Makefile` contains a solution.
 
-## [Dependencies on data and code](04-dependencies.html)
+## [Dependencies on data and code]({{ site.root }}/04-dependencies/)
 
 `04-dependencies/Makefile` contains an example of the Makefile on
 completion of the topic.
 
-## [Pattern rules](05-patterns.html)
+## [Pattern rules]({{ site.root }}/05-patterns/)
 
 `04-patterns/Makefile` contains an example of the Makefile on
 completion of the topic.
 
-## [Variables](06-variables.html)
+## [Variables]({{ site.root }}/06-variables/)
 
 Use variables - challenge
 
@@ -121,14 +120,14 @@ Use variables - challenge
 `06-variables/Makefile` and `06-variables/config.mk` contains an
 example of the Makefiles on completion of the topic.
 
-## [Functions](07-functions.html)
+## [Functions]({{ site.root }}/07-functions/)
 
 `07-functions/Makefile` and `07-functions/config.mk` contains an
 example of the Makefiles on completion of the topic.
 
-## [Self-documenting Makefiles](08-self-doc.html)
+## [Self-documenting Makefiles]({{ site.root }}/08-self/.html)
 
-## [Conclusion](09-conclusion.html)
+## [Conclusion]({{ site.root }}/09-conclusion/)
 
 Extend the Makefile to create PNGs - challenge
 
@@ -141,3 +140,53 @@ Extend the Makefile to create an archive of code, data, plots and Zipf summary t
 * Allow 15 minutes.
 * `09-conclusion-challenge-2/Makefile` and
   `09-conclusion-challenge-2/config.mk` contain a solution.
+
+## Makefile Dependency Images
+
+Some of these pages use images of Makefile dependencies, in the [fig]({{ site.root }}/fig/) directory.
+
+These are created using [makefile2graph][makefile2graph],
+which is assumed to be in the `PATH`.
+This tool, in turn, needs the `dot` tool, part of [GraphViz][graphviz].
+
+To install GraphViz on Scientific Linux 6:
+
+```
+$ sudo yum install graphviz
+$ dot -V
+dot - graphviz version 2.26.0 (20091210.2329)
+```
+
+To install GraphViz on Ubuntu 14.04.3 and 15.10:
+
+```
+$ sudo apt-get install graphviz
+$ dot -V
+dot - graphviz version 2.38.0 (20140413.2041)
+```
+
+To download and build makefile2graph on Linux:
+
+```
+$ cd
+$ git clone https://github.com/lindenb/makefile2graph
+$ cd makefile2graph/
+$ make
+$ export PATH=~/makefile2graph/:$PATH
+$ cd
+$ which makefile2graph
+/home/ubuntu/makefile2graph//makefile2graph
+```
+
+To create the image files for the lesson:
+
+```
+$ make figures
+```
+
+See `commands.mk`'s `figures` target.
+
+[graphviz]: http://www.graphviz.org/
+[lesson-example]: https://github.com/swcarpentry/lesson-example/
+[makefile2graph]: https://github.com/lindenb/makefile2graph
+[zipfile]: {{ site.root }}/files/make-lesson.zip
