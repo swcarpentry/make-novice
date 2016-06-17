@@ -1,5 +1,5 @@
 ---
-title: Dependencies on Data and Code
+title: "Dependencies on Data and Code"
 teaching: 15
 exercises: 15
 questions:
@@ -10,6 +10,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Our Makefile now looks like this:
 
 ~~~

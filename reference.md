@@ -1,6 +1,7 @@
 ---
 layout: reference
 ---
+
 ## Running Make
 
 To run Make:
@@ -232,12 +233,12 @@ Default targets:
 
 ## Manuals
 
-[GNU Make Manual](https://www.gnu.org/software/make/manual/). Reference sections include:
+[GNU Make Manual][gnu-make-manual]. Reference sections include:
 
-* [Summary of Options](https://www.gnu.org/software/make/manual/html_node/Options-Summary.html) for the `make` command.
-* [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html) of Make directives, text manipulation functions, and special variables.
-* [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
-* [Special Built-in Target Names](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html)
+* [Summary of Options][options-summary] for the `make` command.
+* [Quick Reference][quick-reference] of Make directives, text manipulation functions, and special variables.
+* [Automatic Variables][automatic-variables].
+* [Special Built-in Target Names][special-targets]
 
 ## Glossary
 
@@ -352,3 +353,9 @@ wildcard
     the pattern, then the pattern is substituted into the
     target. wildcards are often used in [pattern
     rules](#pattern-rule). The Make wildcard is `%`.
+
+[automatic-variables]: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
+[gnu-make-manual]: https://www.gnu.org/software/make/manual/
+[options-summary]: https://www.gnu.org/software/make/manual/html_node/Options-Summary.html
+[quick-reference]: https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html
+[special-targets]: https://www.gnu.org/software/make/manual/html_node/Special-Targets.html

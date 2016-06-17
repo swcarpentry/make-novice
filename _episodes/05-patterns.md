@@ -1,5 +1,5 @@
 ---
-title: Pattern Rules
+title: "Pattern Rules"
 teaching: 15
 exercises: 15
 questions:
@@ -12,6 +12,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Our Makefile still has repeated content. The rules for each `.dat`
 file are identical apart from the text and data file names. We can
 replace these rules with a single [pattern

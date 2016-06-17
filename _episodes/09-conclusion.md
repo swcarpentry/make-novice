@@ -1,5 +1,5 @@
 ---
-title: Conclusion
+title: "Conclusion"
 teaching: 15
 exercises: 15
 questions:
@@ -9,6 +9,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 Automated build tools such as Make can help us in a number of
 ways. They help us to automate repetitive commands and, so, save us
 time and reduce the risk of us making errors we might make if running

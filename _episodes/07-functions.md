@@ -1,5 +1,5 @@
 ---
-title: Functions
+title: "Functions"
 teaching: 15
 exercises: 15
 questions:
@@ -10,6 +10,7 @@ objectives:
 keypoints:
 - "FIXME."
 ---
+
 At this point, we have the following Makefile:
 
 ~~~

@@ -1,7 +1,7 @@
 ---
 layout: lesson
-title: Automation and Make
 ---
+
 Make is a tool which can run commands to read files, process these
 files in some way, and write out the processed files. For example,
 in software development, Make is used to compile source code
