@@ -18,7 +18,7 @@ email: lessons@software-carpentry.org
 kind: "lesson"
 
 # Overall title for pages.
-title: "Programming in Python"
+title: "Automation and Make"
 
 # Domain for searches.
 domain: "https://swcarpentry.github.io/make-novice"
