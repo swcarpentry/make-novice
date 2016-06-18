@@ -239,7 +239,7 @@ clean :
 >   `results.txt`). 
 >
 > Finally, many Makefiles define a default
-> [phony target]({{ site.root }}/reference/#phony-target)
+> [phony target]({{ site.github.url }}/reference/#phony-target)
 > called `all` as first target,
 > that will build what the Makefile has been written to build (e.g. in
 > our case, the `.png` files and the `results.txt` file). As others may
