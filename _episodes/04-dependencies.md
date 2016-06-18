@@ -92,13 +92,13 @@ The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
 `wordcount.py` as a dependency to the `.dat` files:
 
-![results.txt dependencies after adding wordcount.py as a dependency]({{ site.root }}/fig/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
+![results.txt dependencies after adding wordcount.py as a dependency]({{ site.github.url }}/fig/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
 
 > ## Why don't the `.txt` files depend on `wordcount.py`?
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `wordcount.py` would introduce a [false
-> dependency]({{ site.root }}/reference/#false-dependency).
+> dependency]({{ site.github.url }}/reference/#false-dependency).
 {: .callout}
 
 Intuitively, we should also add `wordcount.py` as dependency for
