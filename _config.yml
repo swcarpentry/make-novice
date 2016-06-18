@@ -2,26 +2,23 @@
 # Values for this lesson.
 #------------------------------------------------------------
 
-# Which carpentry is this ("swc", "dc")?
+# Which carpentry is this ("swc" or "dc")?
 carpentry: "swc"
 
-# URL for repository.
-repo: "https://github.com/swcarpentry/make-novice"
+# What kind of thing is this ("workshop" or "lesson")?
+kind: "lesson"
 
-# Root URL for lesson below domain.
+# Account (without slashes).
+account: "swcarpentry"
+
+# Root URL below account (with leading slash).
 root: "/make-novice"
 
 # Contact email address.
 email: lessons@software-carpentry.org
 
-# What kind of thing is this ("workshop", "lesson")?
-kind: "lesson"
-
 # Overall title for pages.
 title: "Automation and Make"
-
-# Domain for searches.
-domain: "https://swcarpentry.github.io/make-novice"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
