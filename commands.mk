@@ -5,8 +5,8 @@ PNGS = $(patsubst %,fig/%.png,$(FIGS))
 
 .PHONY: $(PNGS)
 
-## figures        : rebuild diagrams of Makefiles.
-figures: $(PNGS)
+## diagrams       : rebuild diagrams of Makefiles.
+diagrams: $(PNGS)
 
 fig/02-makefile.png: build
 	cp code/samples/02-makefile/* $<
