@@ -78,9 +78,9 @@ $ make make-lesson.zip
 The single most commonly occurring problem will be students using
 spaces instead of TABs when intending actions.
 
-## [Introduction]({{ site.github.url }}/01-intro/)
+## [Introduction]({{ site.root }}/01-intro/)
 
-## [Makefiles]({{ site.github.url }}/02-makefiles/)
+## [Makefiles]({{ site.root }}/02-makefiles/)
 
 `02-makefile/Makefile` contains an example of the Makefile,
 immediately before the challenge is attempted.
@@ -90,7 +90,7 @@ Write two new rules - challenge
 * Allow 10 minutes.
 * `02-makefile-challenge/Makefile` contains a solution.
 
-## [Automatic variables]({{ site.github.url }}/03-variables/)
+## [Automatic variables]({{ site.root }}/03-variables/)
 
 `03-variables/Makefile` contains an example of the Makefile,
 immediately before the challenge is attempted.
@@ -100,17 +100,17 @@ Rewrite `.dat` rules to use automatic variables - challenge
 * Allow 5 minutes.
 * `03-variables-challenge/Makefile` contains a solution.
 
-## [Dependencies on data and code]({{ site.github.url }}/04-dependencies/)
+## [Dependencies on data and code]({{ site.root }}/04-dependencies/)
 
 `04-dependencies/Makefile` contains an example of the Makefile on
 completion of the topic.
 
-## [Pattern rules]({{ site.github.url }}/05-patterns/)
+## [Pattern rules]({{ site.root }}/05-patterns/)
 
 `04-patterns/Makefile` contains an example of the Makefile on
 completion of the topic.
 
-## [Variables]({{ site.github.url }}/06-variables/)
+## [Variables]({{ site.root }}/06-variables/)
 
 Use variables - challenge
 
@@ -120,14 +120,14 @@ Use variables - challenge
 `06-variables/Makefile` and `06-variables/config.mk` contains an
 example of the Makefiles on completion of the topic.
 
-## [Functions]({{ site.github.url }}/07-functions/)
+## [Functions]({{ site.root }}/07-functions/)
 
 `07-functions/Makefile` and `07-functions/config.mk` contains an
 example of the Makefiles on completion of the topic.
 
-## [Self-documenting Makefiles]({{ site.github.url }}/08-self/.html)
+## [Self-documenting Makefiles]({{ site.root }}/08-self/.html)
 
-## [Conclusion]({{ site.github.url }}/09-conclusion/)
+## [Conclusion]({{ site.root }}/09-conclusion/)
 
 Extend the Makefile to create PNGs - challenge
 
@@ -143,7 +143,7 @@ Extend the Makefile to create an archive of code, data, plots and Zipf summary t
 
 ## Makefile Dependency Images
 
-Some of these pages use images of Makefile dependencies, in the [fig]({{ site.github.url }}/fig/) directory.
+Some of these pages use images of Makefile dependencies, in the [fig]({{ site.root }}/fig/) directory.
 
 These are created using [makefile2graph][makefile2graph],
 which is assumed to be in the `PATH`.
@@ -189,4 +189,4 @@ See `commands.mk`'s `figures` target.
 [graphviz]: http://www.graphviz.org/
 [lesson-example]: https://github.com/swcarpentry/lesson-example/
 [makefile2graph]: https://github.com/lindenb/makefile2graph
-[zipfile]: {{ site.github.url }}/files/make-lesson.zip
+[zipfile]: {{ site.root }}/files/make-lesson.zip
