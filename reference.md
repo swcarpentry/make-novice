@@ -50,7 +50,7 @@ $ make -n isles.dat
 ~~~
 {: .bash}
 
-## Make trouble-shooting
+## Trouble Shooting
 
 If Make prints a message like,
 

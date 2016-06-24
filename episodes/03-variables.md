@@ -157,7 +157,7 @@ $ make results.txt
 ~~~
 {: .bash}
 
-> ## Update dependencies
+> ## Update Dependencies
 > 
 > What will happen if you now execute:
 > 
@@ -187,7 +187,7 @@ one input file to be named when it is invoked.
 Make provides an automatic variable for this, `$<` which means 'the
 first dependency of the current rule'. 
 
-> ## Rewrite `.dat` rules to use automatic variables
+> ## Rewrite `.dat` Rules to Use Automatic Variables
 >
 > Rewrite each `.dat` rule to use the automatic variables `$@` ('the
 > target of the current rule') and `$<` ('the first dependency of the

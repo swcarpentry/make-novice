@@ -285,7 +285,7 @@ best for you depends on your requirements, intended usage, and
 operating system. However, they all share the same fundamental
 concepts as Make.
 
-> ## Why use Make If It Is Almost 40 Years Old?
+> ## Why Use Make if it is Almost 40 Years Old?
 >
 > Today, researchers working with legacy codes in C or FORTRAN, which
 > are very common in high-performance computing, will, very likely

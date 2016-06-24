@@ -1,9 +1,11 @@
-A note on the texts - licensing
-===================
+A Note on the Texts' Licensing
+==============================
 
 Each text is from [Project Gutenberg](http://www.gutenberg.org/).
 
-Headers and footers have been removed for the purposes of this exercise. All the texts are governed by The Full Project Gutenberg License reproduced below.
+Headers and footers have been removed for the purposes of this
+exercise. All the texts are governed by The Full Project Gutenberg
+License reproduced below.
 
 The texts and originating URLs are:
 
@@ -23,7 +25,6 @@ distribution of electronic works, by using or distributing this work
 Gutenberg"), you agree to comply with all the terms of the Full Project
 Gutenberg-tm License (available with this file or online at
 http://gutenberg.net/license).
-
 
 Section 1.  General Terms of Use and Redistributing Project Gutenberg-tm
 electronic works
@@ -137,34 +138,34 @@ unless you comply with paragraph 1.E.8 or 1.E.9.
 access to or distributing Project Gutenberg-tm electronic works provided
 that
 
-- You pay a royalty fee of 20% of the gross profits you derive from
-     the use of Project Gutenberg-tm works calculated using the method
-     you already use to calculate your applicable taxes.  The fee is
-     owed to the owner of the Project Gutenberg-tm trademark, but he
-     has agreed to donate royalties under this paragraph to the
-     Project Gutenberg Literary Archive Foundation.  Royalty payments
-     must be paid within 60 days following each date on which you
-     prepare (or are legally required to prepare) your periodic tax
-     returns.  Royalty payments should be clearly marked as such and
-     sent to the Project Gutenberg Literary Archive Foundation at the
-     address specified in Section 4, "Information about donations to
-     the Project Gutenberg Literary Archive Foundation."
+-   You pay a royalty fee of 20% of the gross profits you derive from
+    the use of Project Gutenberg-tm works calculated using the method
+    you already use to calculate your applicable taxes.  The fee is
+    owed to the owner of the Project Gutenberg-tm trademark, but he
+    has agreed to donate royalties under this paragraph to the
+    Project Gutenberg Literary Archive Foundation.  Royalty payments
+    must be paid within 60 days following each date on which you
+    prepare (or are legally required to prepare) your periodic tax
+    returns.  Royalty payments should be clearly marked as such and
+    sent to the Project Gutenberg Literary Archive Foundation at the
+    address specified in Section 4, "Information about donations to
+    the Project Gutenberg Literary Archive Foundation."
 
-- You provide a full refund of any money paid by a user who notifies
-     you in writing (or by e-mail) within 30 days of receipt that s/he
-     does not agree to the terms of the full Project Gutenberg-tm
-     License.  You must require such a user to return or
-     destroy all copies of the works possessed in a physical medium
-     and discontinue all use of and all access to other copies of
-     Project Gutenberg-tm works.
+-   You provide a full refund of any money paid by a user who notifies
+    you in writing (or by e-mail) within 30 days of receipt that s/he
+    does not agree to the terms of the full Project Gutenberg-tm
+    License.  You must require such a user to return or
+    destroy all copies of the works possessed in a physical medium
+    and discontinue all use of and all access to other copies of
+    Project Gutenberg-tm works.
 
-- You provide, in accordance with paragraph 1.F.3, a full refund of any
-     money paid for a work or a replacement copy, if a defect in the
-     electronic work is discovered and reported to you within 90 days
-     of receipt of the work.
+-   You provide, in accordance with paragraph 1.F.3, a full refund of any
+    money paid for a work or a replacement copy, if a defect in the
+    electronic work is discovered and reported to you within 90 days
+    of receipt of the work.
 
-- You comply with all other terms of this agreement for free
-     distribution of Project Gutenberg-tm works.
+-   You comply with all other terms of this agreement for free
+    distribution of Project Gutenberg-tm works.
 
 1.E.9.  If you wish to charge a fee or distribute a Project Gutenberg-tm
 electronic work or group of works on different terms than are set
@@ -237,7 +238,6 @@ or cause to occur: (a) distribution of this or any Project Gutenberg-tm
 work, (b) alteration, modification, or additions or deletions to any
 Project Gutenberg-tm work, and (c) any Defect you cause.
 
-
 Section  2.  Information about the Mission of Project Gutenberg-tm
 
 Project Gutenberg-tm is synonymous with the free distribution of
@@ -255,7 +255,6 @@ and permanent future for Project Gutenberg-tm and future generations.
 To learn more about the Project Gutenberg Literary Archive Foundation
 and how your efforts and donations can help, see Sections 3 and 4
 and the Foundation web page at http://www.pglaf.org.
-
 
 Section 3.  Information about the Project Gutenberg Literary Archive
 Foundation
@@ -281,7 +280,6 @@ For additional contact information:
      Dr. Gregory B. Newby
      Chief Executive and Director
      gbnewby@pglaf.org
-
 
 Section 4.  Information about Donations to the Project Gutenberg
 Literary Archive Foundation
@@ -317,7 +315,6 @@ methods and addresses.  Donations are accepted in a number of other
 ways including including checks, online payments and credit card
 donations.  To donate, please visit: http://pglaf.org/donate
 
-
 Section 5.  General Information About Project Gutenberg-tm electronic
 works.
 
@@ -326,12 +323,10 @@ concept of a library of electronic works that could be freely shared
 with anyone.  For thirty years, he produced and distributed Project
 Gutenberg-tm eBooks with only a loose network of volunteer support.
 
-
 Project Gutenberg-tm eBooks are often created from several printed
 editions, all of which are confirmed as Public Domain in the U.S.
 unless a copyright notice is included.  Thus, we do not necessarily
 keep eBooks in compliance with any particular paper edition.
-
 
 Most people start at our Web site which has the main PG search facility:
 

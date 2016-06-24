@@ -94,7 +94,7 @@ Makefile, involved in building the `results.txt` target, after adding
 
 ![results.txt dependencies after adding wordcount.py as a dependency]({{ site.root }}/fig/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
 
-> ## Why don't the `.txt` files depend on `wordcount.py`?
+> ## Why Don't the `.txt` Files Depend on `wordcount.py`?
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `wordcount.py` would introduce a [false
@@ -132,7 +132,7 @@ newer than the target file (`results.txt`) and thus it recreates
 subset of the files in the pipeline triggers rerunning the appropriate
 downstream steps.
 
-> ## Updating one input file
+> ## Updating One Input File
 >
 > What will happen if you now execute:
 >
@@ -148,7 +148,7 @@ downstream steps.
 > 4. all `.dat` and `results.txt` are recreated
 {: .challenge}
 
-> ## `wordcount` as dependency of `results.txt`.
+> ## `wordcount` as a Dependency of `results.txt`.
 >
 > What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
 {: .challenge}

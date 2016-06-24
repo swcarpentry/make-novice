@@ -52,7 +52,7 @@ Defining the variable `COUNT_EXE` in this way allows us to easily
 change how our script is run (if, for example, we changed the language
 used to implement our script from Python to R).
 
-> ## Use variables
+> ## Use Variables
 >
 > Update `Makefile` so that the `%.dat` rule
 > references the variables `COUNT_SRC` and `COUNT_EXE`.
