@@ -53,7 +53,7 @@ python wordcount.py books/last.txt last.dat
 
 Our new rule will work no matter what stem is being matched.
 
-> ## Using Make wildcards
+> ## Using Make Wildcards
 >
 > The Make `%` wildcard can only be used in a target and in its
 > dependencies. It cannot be used in actions. In actions, you may

@@ -3,7 +3,7 @@ layout: page
 title: Discussion
 ---
 
-## Parallel execution
+## Parallel Execution
 
 Make can build dependencies in _parallel_ sub-processes, via its `--jobs`
 flag (or its `-j` abbreviation) which specifies the number of sub-processes to use e.g.
@@ -23,7 +23,7 @@ process.
 For more information see the GNU Make manual chapter on [Parallel
 Execution][gnu-make-parallel].
 
-## Different types of assignment
+## Different Types of Assignment
 
 Some Makefiles may contain `:=` instead of `=`. Your Makefile may
 behave differently depending upon which you use and how you use it:
@@ -48,7 +48,7 @@ For a detailed explanation, see:
 * StackOverflow [Makefile variable assignment][makefile-variable]
 * GNU Make [The Two Flavors of Variables][gnu-make-variables]
 
-## Make and reproducible research
+## Make and Reproducible Research
 
 Blog articles, papers, and tutorials on automating commonly
 occurring research activities using Make:

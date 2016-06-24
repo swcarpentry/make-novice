@@ -24,7 +24,7 @@ as a form of documentation, recording dependencies between code,
 scripts, tools, configurations, raw data, derived data, plots and
 papers.
 
-> ## Extend the Makefile to create PNGs
+> ## Creating PNGs
 >
 > Add new rules, update existing rules, and add new macros to:
 > 
@@ -50,7 +50,7 @@ The following figure shows the dependencies involved in building the `all` targe
 
 ![results.txt dependencies once images have been added]({{ site.root }}/fig/09-conclusion-challenge.png "results.txt dependencies once images have been added")
 
-> ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table
+> ## Creating an Archive
 >
 > Add new rules, update existing rules, and add new macros to:
 >
@@ -73,7 +73,7 @@ The following figure shows the dependencies involved in building the `all` targe
 >   `make variables` is called.
 {: .challenge}
 
-> ## Adding the Makefile to our archive
+> ## Archiving the Makefile
 >
 > Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
 {: .challenge}

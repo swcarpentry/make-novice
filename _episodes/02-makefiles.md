@@ -100,7 +100,7 @@ head -5 isles.dat
 
 The first 5 lines of `isles.dat` should look exactly like before.
 
-> ## Makefiles do not have to be called `Makefile`
+> ## Makefiles Do Not Have to be Called `Makefile`
 > 
 > We don't have to call our Makefile `Makefile`. However, if we call it
 > something else we need to tell Make where to find it. This we can do
@@ -172,7 +172,7 @@ that, either directly or indirectly, depend on the file that
 changed. This is called an [incremental
 build]({{ site.root }}/reference/#incremental-build).
 
-> ## `up to date` versus `Nothing to be done`
+> ## "Up to Date" Versus "Nothing to be Done"
 > 
 > If we ask Make to build a file that already exists and is up to
 > date, then Make informs us that: 
@@ -200,7 +200,7 @@ build]({{ site.root }}/reference/#incremental-build).
 > the file exists but the Makefile has no rule for it.
 {: .callout}
 
-> ## Makefiles as documentation
+> ## Makefiles as Documentation
 >
 > By explicitly recording the inputs to and outputs from steps in our
 > analysis and the dependencies between files, Makefiles act as a type
@@ -410,7 +410,7 @@ our Makefile, involved in building the `dats` target:
 
 ![Dependencies represented within the Makefile]({{ site.root }}/fig/02-makefile.png "Dependencies represented within the Makefile")
 
-> ## Write two new rules
+> ## Write Two New Rules
 >
 > Write a new rule for `last.dat`, created from `books/last.txt`.
 >
