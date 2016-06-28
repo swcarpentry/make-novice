@@ -3,8 +3,6 @@ layout: page
 title: "Instructor's Guide"
 ---
 
-## Legend
-
 Make is a popular tool for automating the building of software -
 compiling source code into executable programs.
 
@@ -82,32 +80,32 @@ spaces instead of TABs when intending actions.
 
 ## [Makefiles]({{ site.root }}/02-makefiles/)
 
-`02-makefile/Makefile` contains an example of the Makefile,
+`code/samples/02-makefile/Makefile` contains an example of the Makefile,
 immediately before the challenge is attempted.
 
 Write two new rules - challenge
 
 * Allow 10 minutes.
-* `02-makefile-challenge/Makefile` contains a solution.
+* `code/samples/02-makefile-challenge/Makefile` contains a solution.
 
-## [Automatic variables]({{ site.root }}/03-variables/)
+## [Automatic Variables]({{ site.root }}/03-variables/)
 
-`03-variables/Makefile` contains an example of the Makefile,
+`code/samples/03-variables/Makefile` contains an example of the Makefile,
 immediately before the challenge is attempted.
 
 Rewrite `.dat` rules to use automatic variables - challenge
 
 * Allow 5 minutes.
-* `03-variables-challenge/Makefile` contains a solution.
+* `code/samples/03-variables-challenge/Makefile` contains a solution.
 
-## [Dependencies on data and code]({{ site.root }}/04-dependencies/)
+## [Dependencies on Data and Code]({{ site.root }}/04-dependencies/)
 
-`04-dependencies/Makefile` contains an example of the Makefile on
+`code/samples/04-dependencies/Makefile` contains an example of the Makefile on
 completion of the topic.
 
-## [Pattern rules]({{ site.root }}/05-patterns/)
+## [Pattern Rules]({{ site.root }}/05-patterns/)
 
-`04-patterns/Makefile` contains an example of the Makefile on
+`code/samples/04-patterns/Makefile` contains an example of the Makefile on
 completion of the topic.
 
 ## [Variables]({{ site.root }}/06-variables/)
