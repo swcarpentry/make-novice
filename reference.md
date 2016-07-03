@@ -1,5 +1,6 @@
 ---
 layout: reference
+permalink: /reference/
 ---
 
 ## Running Make
