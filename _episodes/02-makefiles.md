@@ -412,19 +412,20 @@ our Makefile, involved in building the `dats` target:
 
 > ## Write Two New Rules
 >
-> Write a new rule for `last.dat`, created from `books/last.txt`.
+> 1. Write a new rule for `last.dat`, created from `books/last.txt`.
+> 2. Update the `dats` rule with this target.
+> 3. Write a new rule for `results.txt`, which creates the summary
+>    table. The rule needs to:
+>    * Depend upon each of the three `.dat` files.
+>    * Invoke the action `python zipf_test.py abyss.dat isles.dat last-dat > results.txt`.
+>    Put this rule at the top of the Makefile so that it is the default target.
+> 4. Update `clean` so that it removes `results.txt`.
 >
-> Update the `dats` rule with this target.
+> The starting Makefile is [here]({{ site.root }}/code/02-makefile/Makefile).
 >
-> Write a new rule for `results.txt`, which creates the summary
-> table. The rule needs to:
->
-> * Depend upon each of the three `.dat` files.
-> * Invoke the action `python zipf_test.py abyss.dat isles.dat last-dat > results.txt`.
->
-> Put this rule at the top of the Makefile so that it is the default target.
->
-> Update `clean` so that it removes `results.txt`.
+> > ## Solution
+> > See [this file]({{ site.root }}/code/02-makefile-challenge/Makefile) for a solution.
+> {: .solution}
 {: .challenge}
 
 The following figure shows the dependencies embodied within our

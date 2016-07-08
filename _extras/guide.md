@@ -76,18 +76,6 @@ $ make make-lesson.zip
 The single most commonly occurring problem will be students using
 spaces instead of TABs when intending actions.
 
-## [Introduction]({{ site.root }}/01-intro/)
-
-## [Makefiles]({{ site.root }}/02-makefiles/)
-
-`code/samples/02-makefile/Makefile` contains an example of the Makefile,
-immediately before the challenge is attempted.
-
-Write two new rules - challenge
-
-* Allow 10 minutes.
-* `code/samples/02-makefile-challenge/Makefile` contains a solution.
-
 ## [Automatic Variables]({{ site.root }}/03-variables/)
 
 `code/samples/03-variables/Makefile` contains an example of the Makefile,
