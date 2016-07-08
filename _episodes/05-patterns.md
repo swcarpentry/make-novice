@@ -81,3 +81,12 @@ clean :
       rm -f results.txt
 ~~~
 {: .make}
+
+## [Pattern Rules]({{ site.root }}/05-patterns/)
+
+> ## Where We Are
+>
+> [This Makefile]({{ site.root }}/code/05-patterns/Makefile)
+> contains all of our work so far.
+{: .callout}
+

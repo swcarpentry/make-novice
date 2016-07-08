@@ -162,3 +162,9 @@ results.txt : *.dat zipf_test.py
         python zipf_test.py *.dat > $@
 ~~~
 {: .make}
+
+> ## Where We Are
+>
+> [This Makefile]({{ site.root }}/code/04-dependencies/Makefile)
+> contains everything done so far in this topic.
+{: .callout}
