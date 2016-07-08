@@ -192,4 +192,11 @@ first dependency of the current rule'.
 > Rewrite each `.dat` rule to use the automatic variables `$@` ('the
 > target of the current rule') and `$<` ('the first dependency of the
 > current rule').
+> [This file]({{ site.root }}/code/03-variables/Makefile) contains
+> the Makefile immediately before the challenge.
+>
+> > ## Solution
+> > See [this file]({{ site.root }}/code/03-variables-challenge/Makefile)
+> > for a solution to this challenge.
+> {: .solution}
 {: .challenge}
