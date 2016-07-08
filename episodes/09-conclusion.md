@@ -3,11 +3,11 @@ title: "Conclusion"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "What are the advantages and disadvantages of using tools like Make?"
 objectives:
 - "Understand advantages of automated build tools such as Make."
 keypoints:
-- "FIXME."
+- "Makefiles save time by automating repetitve work, and save thinking by documenting how to reproduce results."
 ---
 
 Automated build tools such as Make can help us in a number of

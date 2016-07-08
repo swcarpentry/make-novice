@@ -3,14 +3,12 @@ title: "Pattern Rules"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How can I define rules to operate on similar files?"
 objectives:
 - "Write Make pattern rules."
-- "Use the Make wildcard `%` in targets and dependencies."
-- "Use the Make special variable `$*` in actions."
-- "Avoid using the Make wildcard in rules."
 keypoints:
-- "FIXME."
+- "Use the wildcard `%` as a placeholder in targets and dependencies."
+- "Use the special variable `$*` to refer to matching sets of files in actions."
 ---
 
 Our Makefile still has repeated content. The rules for each `.dat`

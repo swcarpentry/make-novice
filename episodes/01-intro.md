@@ -3,13 +3,13 @@ title: "Introduction"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How can I make my results easier to reproduce?"
 objectives:
 - "Explain what Make is for."
 - "Explain why Make differs from shell scripts."
 - "Name other popular build tools."
 keypoints:
-- "FIXME."
+- "Make allows us to specify what depends on what and how to update things that are out of date."
 ---
 
 Let's imagine that we're interested in

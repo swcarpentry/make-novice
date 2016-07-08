@@ -3,15 +3,14 @@ title: "Automatic Variables"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How can I abbreviate the rules in my Makefiles?"
 objectives:
 - "Use Make automatic variables to remove duplication in a Makefile."
+- "Explain why shell wildcards in dependencies can cause problems."
+keypoints:
 - "Use `$@` to refer to the target of the current rule."
 - "Use `$^` to refer to the dependencies of the current rule."
 - "Use `$<` to refer to the first dependency of the current rule."
-- "Explain why bash wildcards in dependencies can cause problems."
-keypoints:
-- "FIXME."
 ---
 
 After the exercise at the end of the previous part, our Makefile look like this:

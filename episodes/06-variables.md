@@ -3,14 +3,13 @@ title: "Variables"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How can I eliminate redundancy in my Makefiles?"
 objectives:
 - "Use variables in a Makefile."
-- "Assign values to variables."
-- "Reference variables."
 - "Explain the benefits of decoupling configuration from computation."
 keypoints:
-- "FIXME."
+- "Define variables by assigning values to names."
+- "Reference variables using `$(...)`."
 ---
 
 Despite our efforts, our Makefile still has repeated content, namely
