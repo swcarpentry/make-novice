@@ -249,3 +249,10 @@ ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
 {: .make}
+
+> ## Where We Are
+>
+> [This Makefile]({{ site.root }}/code/07-functions/Makefile)
+> and [its accompanying `config.mk`]({{ site.root }}/code/07-functions/config.mk)
+> contain all of our work so far.
+{: .callout}

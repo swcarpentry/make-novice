@@ -122,4 +122,11 @@ as we respect our convention of using `##` for such comments, then our
 `help` rule will take care of detecting these comments and printing
 them for us.
 
-[sec-docs]: https://www.gnu.org/software/sed/
+> ## Where We Are
+>
+> [This Makefile]({{ site.root }}/code/08-self-doc/Makefile)
+> and [its accompanying `config.mk`]({{ site.root }}/code/08-self-doc/config.mk)
+> contain all of our work so far.
+{: .callout}
+
+[sed-docs]: https://www.gnu.org/software/sed/

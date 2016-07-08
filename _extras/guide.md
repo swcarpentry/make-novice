@@ -76,13 +76,6 @@ $ make make-lesson.zip
 The single most commonly occurring problem will be students using
 spaces instead of TABs when intending actions.
 
-## [Functions]({{ site.root }}/07-functions/)
-
-`07-functions/Makefile` and `07-functions/config.mk` contains an
-example of the Makefiles on completion of the topic.
-
-## [Self-documenting Makefiles]({{ site.root }}/08-self/.html)
-
 ## [Conclusion]({{ site.root }}/09-conclusion/)
 
 Extend the Makefile to create PNGs - challenge
