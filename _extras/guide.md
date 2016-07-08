@@ -76,16 +76,6 @@ $ make make-lesson.zip
 The single most commonly occurring problem will be students using
 spaces instead of TABs when intending actions.
 
-## [Automatic Variables]({{ site.root }}/03-variables/)
-
-`code/samples/03-variables/Makefile` contains an example of the Makefile,
-immediately before the challenge is attempted.
-
-Rewrite `.dat` rules to use automatic variables - challenge
-
-* Allow 5 minutes.
-* `code/samples/03-variables-challenge/Makefile` contains a solution.
-
 ## [Dependencies on Data and Code]({{ site.root }}/04-dependencies/)
 
 `code/samples/04-dependencies/Makefile` contains an example of the Makefile on
