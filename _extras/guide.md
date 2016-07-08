@@ -76,20 +76,6 @@ $ make make-lesson.zip
 The single most commonly occurring problem will be students using
 spaces instead of TABs when intending actions.
 
-## [Conclusion]({{ site.root }}/09-conclusion/)
-
-Extend the Makefile to create PNGs - challenge
-
-* Allow 15 minutes.
-* `09-conclusion-challenge/Makefile` and
-  `09-conclusion-challenge/config.mk` contain a solution.
-
-Extend the Makefile to create an archive of code, data, plots and Zipf summary table - challenge
-
-* Allow 15 minutes.
-* `09-conclusion-challenge-2/Makefile` and
-  `09-conclusion-challenge-2/config.mk` contain a solution.
-
 ## Makefile Dependency Images
 
 Some of these pages use images of Makefile dependencies, in the [fig]({{ site.root }}/fig/) directory.

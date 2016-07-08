@@ -44,6 +44,12 @@ papers.
 > results.txt`, you should now run `make all`, or just simply
 > `make`. By default, `make` runs the first target it finds in the
 > Makefile, in this case your new `all` target.
+>
+> > ## Solution
+> > [This Makefile]({{ site.root }}/code/09-conclusion-challenge-1/Makefile)
+> > and [this `config.mk`]({{ site.root }}/code/09-conclusion-challenge-1/config.mk)
+> > contain a solution to this challenge.
+> {: .solution}
 {: .challenge}
 
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
@@ -71,6 +77,11 @@ The following figure shows the dependencies involved in building the `all` targe
 >   clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
+> > ## Solution
+> > [This Makefile]({{ site.root }}/code/09-conclusion-challenge-2/Makefile)
+> > and [this `config.mk`]({{ site.root }}/code/09-conclusion-challenge-2/config.mk)
+> > contain a solution to this challenge.
+> {: .solution}
 {: .challenge}
 
 > ## Archiving the Makefile
