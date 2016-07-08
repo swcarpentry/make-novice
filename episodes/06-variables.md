@@ -59,6 +59,11 @@ used to implement our script from Python to R).
 > Then do the same for the `zipf-test.py` script
 > and the `results.txt` rule,
 > using `ZIPF_SRC` and `ZIPF_EXE` as variable names
+>
+> > ## Solution
+> > [This Makefile]({{ site.root }}/code/06-variables-challenge/Makefile)
+> > contains a solution to this challenge.
+> {: .solution}
 {: .challenge}
 
 We place variables at the top of a Makefile so they are easy to
@@ -99,3 +104,10 @@ or how it is executed we just need to edit our configuration file, not
 our source code in `Makefile`. Decoupling code from configuration in
 this way is good programming practice, as it promotes more modular,
 flexible and reusable code.
+
+> ## Where We Are
+>
+> [This Makefile]({{ site.root }}/code/06-variables/Makefile)
+> and [its accompanying `config.mk`]({{ site.root }}/code/06-variables/config.mk)
+> contain all of our work so far.
+{: .callout}
