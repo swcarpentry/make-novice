@@ -3,11 +3,11 @@ title: "Self-Documenting Makefiles"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How should Id document a Makfile?"
 objectives:
 - "Write self-documenting Makefiles with built-in help."
 keypoints:
-- "FIXME."
+- "Document Makefiles by adding specially-formatted comments and a target to extract and format them."
 ---
 
 Many bash commands, and programs that people have written that can be

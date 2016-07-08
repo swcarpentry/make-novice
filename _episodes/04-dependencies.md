@@ -3,12 +3,13 @@ title: "Dependencies on Data and Code"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How can I write a Makefile to update things when my scripts have changed rather than my input files??"
 objectives:
 - "Output files are a product not only of input files but of the scripts or code that created the output files."
 - "Recognise and avoid false dependencies."
 keypoints:
-- "FIXME."
+- "Make results depend on processing scripts as well as data files."
+- "Dependencies are transitive: if A depends on B and B depends on C, a change to C will indirectly trigger an update to A."
 ---
 
 Our Makefile now looks like this:

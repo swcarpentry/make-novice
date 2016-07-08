@@ -3,12 +3,13 @@ title: "Functions"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How *else* can I eliminate redundancy in my Makefiles?"
 objectives:
-- "Use Make's `wildcard` function to get lists of files matching a pattern."
-- "Use Make's `patsubst` function to rewrite file names."
+- "Write Makefiles that use functions to match and transform sets of files."
 keypoints:
-- "FIXME."
+- "Make is actually a small programming language with many built-in functions."
+- "Use `wildcard` function to get lists of files matching a pattern."
+- "Use `patsubst` function to rewrite file names."
 ---
 
 At this point, we have the following Makefile:

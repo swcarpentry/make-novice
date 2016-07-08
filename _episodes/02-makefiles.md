@@ -3,7 +3,7 @@ title: "Makefiles"
 teaching: 15
 exercises: 15
 questions:
-- "FIXME?"
+- "How do I write a simple Makefile?"
 objectives:
 - "Recognise the key parts of a Makefile, rules, targets, dependencies and actions."
 - "Write a simple Makefile."
@@ -11,7 +11,10 @@ objectives:
 - "Explain when and why to mark targets as `.PHONY`."
 - "Explain constraints on dependencies."
 keypoints:
-- "FIXME."
+- "Use `#` for comments in Makefiles."
+- "Write rules as `target: dependencies`."
+- "Specify update actions in a tab-indented block under the rule."
+- "Use `.PHONY` to mark targets that don't correspond to files."
 ---
 
 Create a file, called `Makefile`, with the following content:
