@@ -93,7 +93,7 @@ results.txt : isles.dat abyss.dat last.dat
 `$^` is another automatic variable which means 'all the dependencies
 of the current rule'. Again, when Make is run it will replace this
 variable with the dependencies.
- 
+
 Let's update our text files and re-run our rule:
 
 ~~~
@@ -157,15 +157,15 @@ $ make results.txt
 {: .bash}
 
 > ## Update Dependencies
-> 
+>
 > What will happen if you now execute:
-> 
+>
 > ~~~
 > $ touch *.dat
 > $ make results.txt
 > ~~~
 > {: .bash}
-> 
+>
 > 1. nothing
 > 2. all files recreated
 > 3. only `.dat` files recreated
@@ -184,7 +184,7 @@ these being passed as input files to `wordcount.py` as it expects only
 one input file to be named when it is invoked.
 
 Make provides an automatic variable for this, `$<` which means 'the
-first dependency of the current rule'. 
+first dependency of the current rule'.
 
 > ## Rewrite `.dat` Rules to Use Automatic Variables
 >

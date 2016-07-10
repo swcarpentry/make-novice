@@ -49,28 +49,28 @@ clean :
 ## Lesson 03-variables
 
 > ## Update dependencies
-> 
+>
 > What will happen if you now execute:
-> 
-> ~~~ 
+>
+> ~~~
 > $ touch *.dat
 > $ make results.txt
 > ~~~
 > {: .bash}
-> 
+>
 > 1. nothing
 > 2. all files recreated
 > 3. only `.dat` files recreated
 > 4. only `results.txt` recreated
 {: .challenge}
 
-4.) only `results.txt` recreated. 
+4.) only `results.txt` recreated.
 
 You can check that `*.dat` is being expanded in the target of the rule
 for `results.txt` by echoing the value of the automatic variable `$^`
 (all dependencies of the current rule).
 
-~~~ 
+~~~
 results.txt: *.dat
     @echo $^
     python zipf_test.py $^ > $@
@@ -82,7 +82,7 @@ haven't been modified.
 
 If you run:
 
-~~~ 
+~~~
     $ touch *.dat
     $ touch books/*.txt
     $ make results.txt
@@ -131,7 +131,7 @@ clean :
 >
 > What will happen if you now execute:
 >
-> ~~~ 
+> ~~~
 > $ touch books/last.txt
 > $ make results.txt
 > ~~~
@@ -166,7 +166,7 @@ results.txt : *.dat wordcount.py
 
 `wordcount.py` becomes a part of `$^`, thus the command becomes
 
-~~~ 
+~~~
 python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
 ~~~
 {: .bash}
@@ -232,11 +232,11 @@ clean :
 > ## Extend the Makefile to create PNGs
 >
 > Add new rules, update existing rules, and add new macros to:
-> 
+>
 > * Create `.png` files from `.dat` files using `plotcount.py`.
 > * Add the `zip_test.py` script as dependency of the `results.txt` file
 > * Remove all auto-generated files (`.dat`, `.png`,
->   `results.txt`). 
+>   `results.txt`).
 >
 > Finally, many Makefiles define a default
 > [phony target]({{ site.root }}/reference/#phony-target)
@@ -320,26 +320,26 @@ help : Makefile
 {: .make}
 
 > ## Extend the Makefile to create an archive of code, data, plots and Zipf summary table
-> 
+>
 > Add new rules, update existing rules, and add new macros to:
 >
 >  * Define the name of a directory, `zipf_analysis`, to hold all our
 >    code, data, plots and the Zipf summary table.
 > * Copy all our code, data, plots and the Zipf summary table to this
->   directory. 
+>   directory.
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
->   bash command `tar` can be used, as follows: 
+>   bash command `tar` can be used, as follows:
 >
-> ~~~ 
+> ~~~
 > $ tar -czf zipf_analysis.tar.gz zipf_analysis
 > ~~~
 > {: .bash}
 >
 > * Update `all` to create `zipf_analysis.tar.gz`.
 > * Remove `zipf_analysis` and `zipf_analysis.tar.gz` when `make
->   clean` is called. 
+>   clean` is called.
 > * Print the values of any additional variables you have defined when
->   `make variables` is called. 
+>   `make variables` is called.
 {: .challenge}
 
 ~~~

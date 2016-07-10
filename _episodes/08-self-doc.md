@@ -3,7 +3,7 @@ title: "Self-Documenting Makefiles"
 teaching: 15
 exercises: 15
 questions:
-- "How should Id document a Makfile?"
+- "How should Id document a Makefile?"
 objectives:
 - "Write self-documenting Makefiles with built-in help."
 keypoints:
@@ -35,7 +35,7 @@ So, how would we implement this? We could write a rule like:
 
 ~~~
 .PHONY : help
-help : 
+help :
         @echo "results.txt : Generate Zipf summary table."
         @echo "dats        : Count words in text files."
         @echo "clean       : Remove auto-generated files."

@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Understand advantages of automated build tools such as Make."
 keypoints:
-- "Makefiles save time by automating repetitve work, and save thinking by documenting how to reproduce results."
+- "Makefiles save time by automating repetitive work, and save thinking by documenting how to reproduce results."
 ---
 
 Automated build tools such as Make can help us in a number of
@@ -16,7 +16,7 @@ time and reduce the risk of us making errors we might make if running
 these commands manually.
 
 They can also save time by ensuring that automatically-generated
-artefacts (such as data files or plots) are only recreated when the
+artifacts (such as data files or plots) are only recreated when the
 files that were used to create these have changed in some way.
 
 Through their notion of targets, dependencies and actions they serve
@@ -27,11 +27,11 @@ papers.
 > ## Creating PNGs
 >
 > Add new rules, update existing rules, and add new macros to:
-> 
+>
 > * Create `.png` files from `.dat` files using `plotcount.py`.
 > * Add the `zip_test.py` script as dependency of the `results.txt` file
 > * Remove all auto-generated files (`.dat`, `.png`,
->   `results.txt`). 
+>   `results.txt`).
 >
 > Finally, many Makefiles define a default [phony
 > target]({{ site.root }}/reference/#phony-target) called `all` as first target,

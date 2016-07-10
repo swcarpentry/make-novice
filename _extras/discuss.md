@@ -54,7 +54,7 @@ Blog articles, papers, and tutorials on automating commonly
 occurring research activities using Make:
 
 * [minimal make][minimal-make] by Karl Broman. A minimal tutorial on
-  using Make with R and LaTeX to automate data analysis, visualisation
+  using Make with R and LaTeX to automate data analysis, visualization
   and paper preparation. This page has links to Makefiles for many of
   his papers.
 
@@ -65,7 +65,7 @@ occurring research activities using Make:
   Hyndman. Another example of using Make with R and LaTeX.
 
 * [GNU Make for Reproducible Data Analysis][make-reproducible-research]
-  by Zachary Jones. Using Make with Python and LaTeX. 
+  by Zachary Jones. Using Make with Python and LaTeX.
 
 * Shaun Jackman's [Using Make to Increase Automation &
   Reproducibility][increase-automation] video lesson, and accompanying

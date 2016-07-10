@@ -10,7 +10,7 @@ to:
 
 * run analysis scripts on raw data files to get data files that
   summarize the raw data;
-* run visualisation scripts on data files to produce plots; and to
+* run visualization scripts on data files to produce plots; and to
 * parse and combine text files and plots to create papers.
 
 Make is called a build tool - it builds data files, plots, papers,
