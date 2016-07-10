@@ -18,7 +18,7 @@ default target, the first target in the Makefile.
 To use a Makefile with a different name, use the `-f` flag e.g.
 
 ~~~
-$ make -f build-files/analyse.mk
+$ make -f build-files/analyze.mk
 ~~~
 {: .bash}
 
@@ -172,9 +172,9 @@ COUNT_EXE=python $(COUNT_SRC)
 ~~~
 {: .make}
 
-* A variable is assigned a value. For example, `COUNT_SRC` 
+* A variable is assigned a value. For example, `COUNT_SRC`
   is assigned the value `wordcount.py`.
-* `$(...)` is a reference to a variable. It requests that 
+* `$(...)` is a reference to a variable. It requests that
   Make substitutes the name of a variable for its value.
 
 Suppress printing of actions:
@@ -248,7 +248,7 @@ action
     update a file or other object.
 
 assignment
-:   A request that [Make](#make) stores something in a 
+:   A request that [Make](#make) stores something in a
     [variable](#variable).
 
 automatic variable
@@ -270,7 +270,7 @@ build manager
     other things.
 
 default rule
-:   The [rule](#rule) that is executed if no [target](#target) is 
+:   The [rule](#rule) that is executed if no [target](#target) is
     specified when a [build manager](#build-manager) is run.
 
 default target
@@ -286,7 +286,7 @@ dependency
 false dependency
 :   This can refer to a [dependency](#dependency) that is artificial.
     e.g. a false dependency is introduced if a data analysis script
-    is added as a dependency to the data files that the script 
+    is added as a dependency to the data files that the script
     analyses.
 
 function
@@ -313,7 +313,7 @@ pattern rule
 :   A [rule](#rule) that specifies a general way to build or update an
     entire class of files that can be managed the same way. For
     example, a pattern rule can specify how to compile any C file
-    rather than a single, specific C file, or, to analyse any data
+    rather than a single, specific C file, or, to analyze any data
     file rather than a single, specific data file. Pattern rules
     typically make use of [automatic variables](#automatic-variable)
     and [wildcards](#wildcard).
@@ -327,18 +327,18 @@ prerequisite
 :   A synonym for [dependency](#dependency).
 
 reference
-:   A request that [Make](#make) substitutes the name of a 
+:   A request that [Make](#make) substitutes the name of a
     [variable](#variable) for its value.
 
 rule
 :   A specification of a [target](#target)'s
     [dependencies](#dependency) and what [actions](#action) need to be
-    executed to build or update the target. 
+    executed to build or update the target.
 
 stem
 :   The part of the target that was matched by the pattern rule. If
     the target is `file.dat` and the target pattern was `%.dat`, then
-    the stem `$*` is `file`. 
+    the stem `$*` is `file`.
 
 target
 :   A thing to be created or updated, for example a file. Targets can

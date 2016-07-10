@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "How do I write a simple Makefile?"
 objectives:
-- "Recognise the key parts of a Makefile, rules, targets, dependencies and actions."
+- "Recognize the key parts of a Makefile, rules, targets, dependencies and actions."
 - "Write a simple Makefile."
 - "Run Make from the shell."
 - "Explain when and why to mark targets as `.PHONY`."
@@ -104,18 +104,18 @@ head -5 isles.dat
 The first 5 lines of `isles.dat` should look exactly like before.
 
 > ## Makefiles Do Not Have to be Called `Makefile`
-> 
+>
 > We don't have to call our Makefile `Makefile`. However, if we call it
 > something else we need to tell Make where to find it. This we can do
 > using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
-> 
+>
 > ~~~
 > $ make -f MyOtherMakefile
 > ~~~
 > {: .bash}
 >
 >
-> Sometimes, the suffix `.mk` will be used to identify Makefiles that 
+> Sometimes, the suffix `.mk` will be used to identify Makefiles that
 > are not called `Makefile` e.g. `install.mk`, `common.mk` etc.
 {: .callout}
 
@@ -176,15 +176,15 @@ changed. This is called an [incremental
 build]({{ site.root }}/reference/#incremental-build).
 
 > ## "Up to Date" Versus "Nothing to be Done"
-> 
+>
 > If we ask Make to build a file that already exists and is up to
-> date, then Make informs us that: 
-> 
+> date, then Make informs us that:
+>
 > ~~~
 > make: `isles.dat' is up to date.
 > ~~~
 > {: .output}
-> 
+>
 > If we ask Make to build a file that exists but for which there is
 > no rule in our Makefile, then we get message like:
 >
@@ -199,7 +199,7 @@ build]({{ site.root }}/reference/#incremental-build).
 > {: .output}
 >
 > `up to date` means that the Makefile has a rule for the file and
-> the file is up to date whereas `Nothing to be done` means that 
+> the file is up to date whereas `Nothing to be done` means that
 > the file exists but the Makefile has no rule for it.
 {: .callout}
 

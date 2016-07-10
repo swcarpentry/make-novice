@@ -87,7 +87,7 @@ once we have introduced our function:
 ![results.txt dependencies after introducing a function]({{ site.root }}/fig/07-functions.png "results.txt dependencies after introducing a function")
 
 `patsubst` ('pattern substitution') takes a pattern, a replacement string and a
-list of names in that order; each name in the list that matches the pattern is 
+list of names in that order; each name in the list that matches the pattern is
 replaced by the replacement string. Again, we can save the result in a
 variable. So, for example, we can rewrite our list of text files into
 a list of data files (files ending in `.dat`) and save these in a

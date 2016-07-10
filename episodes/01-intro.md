@@ -258,7 +258,7 @@ What we really want is an executable _description_ of our pipeline that
 allows software to do the tricky part for us:
 figuring out what steps need to be rerun.
 
-Make was developed by 
+Make was developed by
 Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
 widespread use today. Make can execute the commands needed to run our
 analysis and plot our results. Like shell scripts it allows us to
@@ -268,11 +268,11 @@ between files - what files are needed to create what other files -
 and so can determine when to recreate our data files or
 image files, if our text files change. Make can be used for any
 commands that follow the general pattern of processing files to create
-new files, for example: 
+new files, for example:
 
 * Run analysis scripts on raw data files to get data files that
-  summarise the raw data (e.g. creating files with word counts from book text). 
-* Run visualisation scripts on data files to produce plots
+  summarize the raw data (e.g. creating files with word counts from book text).
+* Run visualization scripts on data files to produce plots
   (e.g. creating images of word counts).
 * Parse and combine text files and plots to create papers.
 * Compile source code into executable programs or libraries.
@@ -289,7 +289,7 @@ concepts as Make.
 >
 > Today, researchers working with legacy codes in C or FORTRAN, which
 > are very common in high-performance computing, will, very likely
-> encounter Make. 
+> encounter Make.
 >
 > Researchers are also finding Make of use in implementing
 > reproducible research workflows, automating data analysis and

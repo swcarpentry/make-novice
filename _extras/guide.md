@@ -15,7 +15,7 @@ are very common in high-performance computing, will, very likely
 encounter Make.
 
 Researchers are also finding Make of use in implementing reproducible
-research workflows, automating data analysis and visualisation (using
+research workflows, automating data analysis and visualization (using
 Python or R) and combining tables and plots with text to produce
 reports and papers for publication.
 
@@ -31,7 +31,7 @@ challenges, are in `code/samples` and are identified below.
 ## Setting up Make
 
 Recommend instructors and students use `nano` as the text editor for
-this lesson because 
+this lesson because
 
 * it runs in all three major operating systems,
 * it runs inside the shell (switching windows can be confusing to

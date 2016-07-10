@@ -38,11 +38,11 @@ COUNT_EXE=python $(COUNT_SRC)
 {: .make}
 
 `$(...)` tells Make to replace a variable with its value when Make
-is run. This is a variable [reference]({{ site.root }}/reference/#reference). At 
+is run. This is a variable [reference]({{ site.root }}/reference/#reference). At
 any place where we want to use the value of a variable we have to
 write it, or reference it, in this way.
 
-Here we reference the variable `COUNT_SRC`. This tells Make to 
+Here we reference the variable `COUNT_SRC`. This tells Make to
 replace the variable `COUNT_SRC` with its value `wordcount.py`. When
 Make is run it will assign to `COUNT_EXE` the value `python
 wordcount.py`.
@@ -66,8 +66,8 @@ used to implement our script from Python to R).
 {: .challenge}
 
 We place variables at the top of a Makefile so they are easy to
-find and modify. Alternatively, we can pull them out into a new 
-file that just holds variable definitions (i.e. delete them from 
+find and modify. Alternatively, we can pull them out into a new
+file that just holds variable definitions (i.e. delete them from
 the original makefile). Let us create `config.mk`:
 
 ~~~

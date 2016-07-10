@@ -55,7 +55,7 @@ Our new rule will work no matter what stem is being matched.
 >
 > The Make `%` wildcard can only be used in a target and in its
 > dependencies. It cannot be used in actions. In actions, you may
-> however use `$*`, which will be replaced by the stem with which 
+> however use `$*`, which will be replaced by the stem with which
 > the rule matched.
 {: .callout}
 
