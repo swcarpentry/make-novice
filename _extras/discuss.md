@@ -80,7 +80,7 @@ occurring research activities using Make:
   Reiter MA, Sambrook KA, Woelfer KA, Grabowski TJ and Madhyastha TM
   (2016) [Using Make for Reproducible and Parallel Neuroimaging
   Workflow and
-  Quality-Assurance][ake-neuroscience]. Front. Neuroinform. 10:2. doi:
+  Quality-Assurance][make-neuroscience]. Front. Neuroinform. 10:2. doi:
   10.3389/fninf.2016.00002
 
 * Li Haoyi's [What's in a Build Tool?][whats-a-build-tool] A review of

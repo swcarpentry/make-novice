@@ -3,7 +3,7 @@ title: "Dependencies on Data and Code"
 teaching: 15
 exercises: 15
 questions:
-- "How can I write a Makefile to update things when my scripts have changed rather than my input files??"
+- "How can I write a Makefile to update things when my scripts have changed rather than my input files?"
 objectives:
 - "Output files are a product not only of input files but of the scripts or code that created the output files."
 - "Recognize and avoid false dependencies."

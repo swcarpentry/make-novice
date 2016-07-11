@@ -191,7 +191,7 @@ Traceback (most recent call last):
 IndexError: list index out of range
 make: *** [results.txt] Error 1
 ~~~
-{: .output}
+{: .error}
 
 ## Lesson 06-variables
 
@@ -254,7 +254,7 @@ clean :
 > `all` target.
 {: .challenge}
 
-~~
+~~~
 # config.mk
 # Count words script.
 COUNT_SRC=wordcount.py
@@ -270,7 +270,7 @@ ZIPF_EXE=python $(ZIPF_SRC)
 ~~~
 {: .make}
 
-~~
+~~~
 include config.mk
 
 TXT_FILES=$(wildcard books/*.txt)

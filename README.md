@@ -9,7 +9,7 @@ or run `make` in this directory for a list of helpful commands.
 
 Maintainer(s):
 
-* [Mike Jackson][jackson-mike]
+* [Gerard Capes][capes-gerard]
 
-[jackson-mike]: http://software-carpentry.org/team/#jackson_m
+[capes-gerard]: http://software-carpentry.org/team/#capes_gerard
 [lesson-example]: https://swcarpentry.github.com/lesson-example/
