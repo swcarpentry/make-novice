@@ -183,7 +183,7 @@ python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
 {: .bash}
 
-Runs the script and check that the output is the same as before:
+Run the script and check that the output is the same as before:
 
 ~~~
 $ bash run_pipeline.sh
