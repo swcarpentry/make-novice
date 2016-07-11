@@ -170,6 +170,35 @@ $ make results.txt
 > 2. all files recreated
 > 3. only `.dat` files recreated
 > 4. only `results.txt` recreated
+>
+> > ## Solution
+> > `4.` Only `results.txt` recreated.
+> >
+> > You can check that `*.dat` is being expanded in the target of the rule
+> > for `results.txt` by echoing the value of the automatic variable `$^`
+> > (all dependencies of the current rule).
+> >
+> > ~~~
+> > results.txt: *.dat
+> >     @echo $^
+> >     python zipf_test.py $^ > $@
+> > ~~~
+> > {: .make}
+> >
+> > The rules for `*.dat` are not executed because their corresponding `.txt` files
+> > haven't been modified.
+> >
+> > If you run:
+> >
+> > ~~~
+> > $ touch *.dat
+> > $ touch books/*.txt
+> > $ make results.txt
+> > ~~~
+> > {: .bash}
+> >
+> > you will find that the `.dat` files as well as `results.txt` are recreated.
+> {: .solution}
 {: .challenge}
 
 As we saw, `$^` means 'all the dependencies of the current rule'. This
