@@ -3,7 +3,7 @@ title: "Self-Documenting Makefiles"
 teaching: 15
 exercises: 15
 questions:
-- "How should Id document a Makefile?"
+- "How should I document a Makefile?"
 objectives:
 - "Write self-documenting Makefiles with built-in help."
 keypoints:
@@ -56,7 +56,7 @@ which `sed` can detect. Since Make uses `#` for comments, we can use
 `##` for comments that describe what a rule does and that we want
 `sed` to detect. For example:
 
-~~
+~~~
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
         $(ZIPF_EXE) *.dat > $@
@@ -88,7 +88,7 @@ other rules do, or that describe variables.
 
 We can then write a `help` target that applies `sed` to our `Makefile`:
 
-~~
+~~~
 .PHONY : help
 help : Makefile
         @sed -n 's/^##//p' $<
