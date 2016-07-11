@@ -147,11 +147,57 @@ downstream steps.
 > 2. all `.dat` files are recreated
 > 3. only `last.dat` and `results.txt` are recreated
 > 4. all `.dat` and `results.txt` are recreated
+>
+> > ## Solution
+> > `3.` only `last.dat` and `results.txt` are recreated.
+> >
+> > Follow the dependency tree to understand the answer(s).
+> {: .solution}
 {: .challenge}
 
 > ## `wordcount` as a Dependency of `results.txt`.
 >
 > What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
+>
+> > ## Solution
+> >
+> > If you change the rule for the `results.txt` file like this:
+> >
+> > ~~~
+> > results.txt : *.dat wordcount.py
+> >         python zipf_test.py $^ > $@
+> > ~~~
+> > {: .make}
+> >
+> > `wordcount.py` becomes a part of `$^`, thus the command becomes
+> >
+> > ~~~
+> > python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
+> > ~~~
+> > {: .bash}
+> >
+> > This results in an error from `zipf_test.py` as it tries to parse the
+> > script as if it were a `.dat` file. Try this by running:
+> >
+> > ~~~
+> > $ make results.txt
+> > ~~~
+> > {: .bash}
+> >
+> > You'll get
+> >
+> > ~~~
+> > python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
+> > Traceback (most recent call last):
+> >   File "zipf_test.py", line 19, in <module>
+> >     counts = load_word_counts(input_file)
+> >   File "path/to/wordcount.py", line 39, in load_word_counts
+> >     counts.append((fields[0], int(fields[1]), float(fields[2])))
+> > IndexError: list index out of range
+> > make: *** [results.txt] Error 1
+> > ~~~
+> > {: .error}
+> {: .solution}
 {: .challenge}
 
 We still have to add the `zipf-test.py` script as dependency to
