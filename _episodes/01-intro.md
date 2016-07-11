@@ -299,7 +299,7 @@ concepts as Make.
 > Make's fundamental concepts are common across build tools.
 {: .callout}
 
-[GNU Make][gnu-make is a free, fast, well-documented, and very popular
+[GNU Make][gnu-make] is a free, fast, well-documented, and very popular
 Make implementation. From now on, we will focus on it, and when we say
 Make, we mean GNU Make.
 
