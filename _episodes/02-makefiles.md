@@ -419,8 +419,8 @@ our Makefile, involved in building the `dats` target:
 >    table. The rule needs to:
 >    * Depend upon each of the three `.dat` files.
 >    * Invoke the action `python zipf_test.py abyss.dat isles.dat last-dat > results.txt`.
->    * Put this rule at the top of the Makefile so that it is the default target.
-> 4. Update `clean` so that it removes `results.txt`.
+> 4. Put this rule at the top of the Makefile so that it is the default target.
+> 5. Update `clean` so that it removes `results.txt`.
 >
 > The starting Makefile is [here]({{ site.root }}/code/02-makefile/Makefile).
 >
