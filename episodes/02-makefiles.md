@@ -255,8 +255,6 @@ them all. We can introduce a new target, and associated rule, to do
 this. We will call it `clean`, as this is a common name for rules that
 delete auto-generated files, like our `.dat` files:
 
- `clean`:
-
 ~~~
 clean :
         rm -f *.dat
@@ -421,7 +419,7 @@ our Makefile, involved in building the `dats` target:
 >    table. The rule needs to:
 >    * Depend upon each of the three `.dat` files.
 >    * Invoke the action `python zipf_test.py abyss.dat isles.dat last-dat > results.txt`.
->    Put this rule at the top of the Makefile so that it is the default target.
+>    * Put this rule at the top of the Makefile so that it is the default target.
 > 4. Update `clean` so that it removes `results.txt`.
 >
 > The starting Makefile is [here]({{ site.root }}/code/02-makefile/Makefile).
