@@ -16,16 +16,16 @@ You need to download some files to follow this lesson:
 
 5. Unpack `make-lesson.zip`:
 
-~~~
-$ unzip make-lesson.zip
-~~~
-{: .source}
+   ~~~
+   $ unzip make-lesson.zip
+   ~~~
+   {: .source}
 
 6. Change into the `make-lesson` directory:
 
-~~~
-$ cd make-lesson
-~~~
-{: .source}
+   ~~~
+   $ cd make-lesson
+   ~~~
+   {: .source}
 
 [zip-file]: {{ site.root }}/files/make-lesson.zip
