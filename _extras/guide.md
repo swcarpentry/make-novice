@@ -89,16 +89,24 @@ To install GraphViz on Scientific Linux 6:
 ~~~
 $ sudo yum install graphviz
 $ dot -V
+~~~
+{: .bash}
+~~~
 dot - graphviz version 2.26.0 (20091210.2329)
 ~~~
+{: .output}
 
 To install GraphViz on Ubuntu 14.04.3 and 15.10:
 
 ~~~
 $ sudo apt-get install graphviz
 $ dot -V
+~~~
+{: .bash}
+~~~
 dot - graphviz version 2.38.0 (20140413.2041)
 ~~~
+{: .output}
 
 To download and build makefile2graph on Linux:
 
@@ -110,14 +118,19 @@ $ make
 $ export PATH=~/makefile2graph/:$PATH
 $ cd
 $ which makefile2graph
+~~~
+{: .bash}
+~~~
 /home/ubuntu/makefile2graph/makefile2graph
 ~~~
+{: .output}
 
 To create the image files for the lesson:
 
 ~~~
 $ make figures
 ~~~
+{: .bash}
 
 See `commands.mk`'s `diagrams` target.
 
