@@ -78,7 +78,7 @@ spaces instead of TABs when intending actions.
 
 ## Makefile Dependency Images
 
-Some of these pages use images of Makefile dependencies, in the [fig]({{ site.root }}/fig/) directory.
+Some of these pages use images of Makefile dependencies, in the [fig]({{ site.github.url }}/fig/) directory.
 
 These are created using [makefile2graph][makefile2graph],
 which is assumed to be in the `PATH`.
@@ -137,4 +137,4 @@ See `commands.mk`'s `diagrams` target.
 [graphviz]: http://www.graphviz.org/
 [lesson-example]: https://github.com/swcarpentry/lesson-example/
 [makefile2graph]: https://github.com/lindenb/makefile2graph
-[zipfile]: {{ site.root }}/files/make-lesson.zip
+[zipfile]: {{ site.github.url }}/files/make-lesson.zip

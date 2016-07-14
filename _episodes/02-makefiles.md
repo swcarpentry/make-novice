@@ -26,22 +26,22 @@ isles.dat : books/isles.txt
 ~~~
 {: .make}
 
-This is a [build file]({{ site.root }}/reference/#build-file), which for
-Make is called a [Makefile]({{ site.root }}/reference/#makefile) - a file executed
+This is a [build file]({{ site.github.url }}/reference/#build-file), which for
+Make is called a [Makefile]({{ site.github.url }}/reference/#makefile) - a file executed
 by Make. Note how it resembles one of the lines from our shell script.
 
 Let us go through each line in turn:
 
 * `#` denotes a *comment*. Any text from `#` to the end of the line is
   ignored by Make.
-* `isles.dat` is a [target]({{ site.root }}/reference/#target), a file to be
+* `isles.dat` is a [target]({{ site.github.url }}/reference/#target), a file to be
   created, or built.
-* `books/isles.txt` is a [dependency]({{ site.root }}/reference/#dependency), a
+* `books/isles.txt` is a [dependency]({{ site.github.url }}/reference/#dependency), a
   file that is needed to build or update the target. Targets can have
   zero or more dependencies.
 * A colon, `:`, separates targets from dependencies.
 * `python wordcount.py books/isles.txt isles.dat` is an
-  [action]({{ site.root }}/reference/#action), a command to run to build or update
+  [action]({{ site.github.url }}/reference/#action), a command to run to build or update
   the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
   from its dependencies and can be considered to be
@@ -52,7 +52,7 @@ Let us go through each line in turn:
   your cursor from one side of the TAB to the other. It should jump
   four or more spaces.
 * Together, the target, dependencies, and actions form a
-  a [rule]({{ site.root }}/reference/#rule).
+  a [rule]({{ site.github.url }}/reference/#rule).
 
 Our rule above describes how to build the target `isles.dat` using the
 action `python wordcount.py` and the dependency `books/isles.txt`.
@@ -173,7 +173,7 @@ been updated since the target, then the actions are re-run to update
 the target. Using this approach, Make knows to only rebuild the files
 that, either directly or indirectly, depend on the file that
 changed. This is called an [incremental
-build]({{ site.root }}/reference/#incremental-build).
+build]({{ site.github.url }}/reference/#incremental-build).
 
 > ## "Up to Date" Versus "Nothing to be Done"
 >
@@ -234,7 +234,7 @@ make: `isles.dat' is up to date.
 
 Nothing happens because Make attempts to build the first target it
 finds in the Makefile, the [default
-target]({{ site.root }}/reference/#default-target), which is `isles.dat` which is
+target]({{ site.github.url }}/reference/#default-target), which is `isles.dat` which is
 already up-to-date. We need to explicitly tell Make we want to build
 `abyss.dat`:
 
@@ -303,7 +303,7 @@ rule has no dependencies, assumes that `clean` has been built and is
 up-to-date and so does not execute the rule's actions. As we are using
 `clean` as a short-hand, we need to tell Make to always execute this
 rule if we run `make clean`, by telling Make that this is a
-[phony target]({{ site.root }}/reference/#phony-target), that it does not build
+[phony target]({{ site.github.url }}/reference/#phony-target), that it does not build
 anything. This we do by marking the target as `.PHONY`:
 
 ~~~
@@ -329,7 +329,7 @@ rm -f *.dat
 
 We can add a similar command to create all the data files. We can put
 this at the top of our Makefile so that it is the [default
-target]({{ site.root }}/reference/#default-target), which is executed by default
+target]({{ site.github.url }}/reference/#default-target), which is executed by default
 if no target is given to the `make` command:
 
 ~~~
@@ -409,7 +409,7 @@ clean :
 The following figure shows a graph of the dependencies embodied within
 our Makefile, involved in building the `dats` target:
 
-![Dependencies represented within the Makefile]({{ site.root }}/fig/02-makefile.png "Dependencies represented within the Makefile")
+![Dependencies represented within the Makefile]({{ site.github.url }}/fig/02-makefile.png "Dependencies represented within the Makefile")
 
 > ## Write Two New Rules
 >
@@ -422,14 +422,14 @@ our Makefile, involved in building the `dats` target:
 > 4. Put this rule at the top of the Makefile so that it is the default target.
 > 5. Update `clean` so that it removes `results.txt`.
 >
-> The starting Makefile is [here]({{ site.root }}/code/02-makefile/Makefile).
+> The starting Makefile is [here]({{ site.github.url }}/code/02-makefile/Makefile).
 >
 > > ## Solution
-> > See [this file]({{ site.root }}/code/02-makefile-challenge/Makefile) for a solution.
+> > See [this file]({{ site.github.url }}/code/02-makefile-challenge/Makefile) for a solution.
 > {: .solution}
 {: .challenge}
 
 The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target:
 
-![results.txt dependencies represented within the Makefile]({{ site.root }}/fig/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")
+![results.txt dependencies represented within the Makefile]({{ site.github.url }}/fig/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")

@@ -35,7 +35,7 @@ clean :
 ~~~
 {: .make}
 
-Make has many [functions]({{ site.root }}/reference/#function) which can be used to
+Make has many [functions]({{ site.github.url }}/reference/#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
@@ -84,7 +84,7 @@ The following figure shows the dependencies embodied within our Makefile,
 involved in building the `results.txt` target,
 once we have introduced our function:
 
-![results.txt dependencies after introducing a function]({{ site.root }}/fig/07-functions.png "results.txt dependencies after introducing a function")
+![results.txt dependencies after introducing a function]({{ site.github.url }}/fig/07-functions.png "results.txt dependencies after introducing a function")
 
 `patsubst` ('pattern substitution') takes a pattern, a replacement string and a
 list of names in that order; each name in the list that matches the pattern is
@@ -253,7 +253,7 @@ ZIPF_EXE=python $(ZIPF_SRC)
 
 > ## Where We Are
 >
-> [This Makefile]({{ site.root }}/code/07-functions/Makefile)
-> and [its accompanying `config.mk`]({{ site.root }}/code/07-functions/config.mk)
+> [This Makefile]({{ site.github.url }}/code/07-functions/Makefile)
+> and [its accompanying `config.mk`]({{ site.github.url }}/code/07-functions/config.mk)
 > contain all of our work so far.
 {: .callout}

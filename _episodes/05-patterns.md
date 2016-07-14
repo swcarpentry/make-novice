@@ -14,7 +14,7 @@ keypoints:
 Our Makefile still has repeated content. The rules for each `.dat`
 file are identical apart from the text and data file names. We can
 replace these rules with a single [pattern
-rule]({{ site.root }}/reference/#pattern-rule) which can be used to build any
+rule]({{ site.github.url }}/reference/#pattern-rule) which can be used to build any
 `.dat` file from a `.txt` file in `books/`:
 
 ~~~
@@ -23,8 +23,8 @@ rule]({{ site.root }}/reference/#pattern-rule) which can be used to build any
 ~~~
 {: .make}
 
-`%` is a Make [wildcard]({{ site.root }}/reference/#wildcard).  `$*` is a special
-variable which gets replaced by the [stem]({{ site.root }}/reference/#stem) with
+`%` is a Make [wildcard]({{ site.github.url }}/reference/#wildcard).  `$*` is a special
+variable which gets replaced by the [stem]({{ site.github.url }}/reference/#stem) with
 which the rule matched.
 
 This rule can be interpreted as:
@@ -82,6 +82,6 @@ clean :
 
 > ## Where We Are
 >
-> [This Makefile]({{ site.root }}/code/05-patterns/Makefile)
+> [This Makefile]({{ site.github.url }}/code/05-patterns/Makefile)
 > contains all of our work so far.
 {: .callout}
