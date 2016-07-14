@@ -93,13 +93,13 @@ The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
 `wordcount.py` as a dependency to the `.dat` files:
 
-![results.txt dependencies after adding wordcount.py as a dependency]({{ site.root }}/fig/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
+![results.txt dependencies after adding wordcount.py as a dependency]({{ site.github.url }}/fig/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
 
 > ## Why Don't the `.txt` Files Depend on `wordcount.py`?
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `wordcount.py` would introduce a [false
-> dependency]({{ site.root }}/reference/#false-dependency).
+> dependency]({{ site.github.url }}/reference/#false-dependency).
 {: .callout}
 
 Intuitively, we should also add `wordcount.py` as dependency for
@@ -212,6 +212,6 @@ results.txt : *.dat zipf_test.py
 
 > ## Where We Are
 >
-> [This Makefile]({{ site.root }}/code/04-dependencies/Makefile)
+> [This Makefile]({{ site.github.url }}/code/04-dependencies/Makefile)
 > contains everything done so far in this topic.
 {: .callout}
