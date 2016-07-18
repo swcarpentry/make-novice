@@ -1,24 +1,25 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Introduction
-minutes: 30
+title: "Introduction"
+teaching: 15
+exercises: 15
+questions:
+- "How can I make my results easier to reproduce?"
+objectives:
+- "Explain what Make is for."
+- "Explain why Make differs from shell scripts."
+- "Name other popular build tools."
+keypoints:
+- "Make allows us to specify what depends on what and how to update things that are out of date."
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * Explain what Make is for.
-> * Explain why Make differs from shell scripts.
-> * Name other popular build tools.
 
 Let's imagine that we're interested in
 testing Zipf's Law in some of our favorite books.
 
-> ## Zipf's Law {.callout}
+> ## Zipf's Law
 >
 > The most frequently-occurring word occurs approximately twice as
-> often as the second most frequent word. This is [Zipf's
-> Law](http://en.wikipedia.org/wiki/Zipf%27s_law).
+> often as the second most frequent word. This is [Zipf's Law][zipfs-law].
+{: .callout}
 
 We've compiled our raw data, the books we want to analyze
 (check out e.g. `head books/isles.txt`)
@@ -28,7 +29,7 @@ analysis pipeline.
 Our directory has the Python scripts and data files we
 we will be working with:
 
-~~~ {.output}
+~~~
 |- books
 |  |- abyss.txt
 |  |- isles.txt
@@ -39,28 +40,32 @@ we will be working with:
 |- wordcount.py
 |- zipf_test.py
 ~~~
+{: .output}
 
 The first step is to count the frequency of each word in a book.
 
-~~~ {.bash}
+~~~
 $ python wordcount.py books/isles.txt isles.dat
 ~~~
+{: .bash}
 
 Let's take a quick peek at the result.
 
-~~~ {.bash}
+~~~
 $ head -5 isles.dat
 ~~~
+{: .bash}
 
 This shows us the top 5 lines in the output file:
 
-~~~ {.output}
+~~~
 the 3822 6.7371760973
 of 2460 4.33632998414
 and 1723 3.03719372466
 to 1479 2.60708619778
 a 1308 2.30565838181
 ~~~
+{: .output}
 
 We can see that the file consists of one row per word.
 Each row shows the word itself, the number of occurrences of that
@@ -69,28 +74,31 @@ number of words in the text file.
 
 We can do the same thing for a different book:
 
-~~~ {.bash}
+~~~
 $ python wordcount.py books/abyss.txt abyss.dat
 $ head -5 abyss.dat
 ~~~
+{: .bash}
 
-~~~ {.output}
+~~~
 the 4044 6.35449402891
 and 2807 4.41074795726
 of 1907 2.99654305468
 a 1594 2.50471401634
 to 1515 2.38057825267
 ~~~
+{: .output}
 
 Let's visualize the results.
 The script `plotcount.py` reads in a data file and plots the 10 most
 frequently occurring words as a text-based bar plot:
 
-~~~ {.bash}
+~~~
 $ python plotcount.py isles.dat ascii
 ~~~
+{: .bash}
 
-~~~ {.output}
+~~~
 the   ########################################################################
 of    ##############################################
 and   ################################
@@ -102,32 +110,37 @@ that  ############
 by    ###########
 it    ###########
 ~~~
+{: .output}
 
 `plotcount.py` can also show the plot graphically:
 
-~~~ {.bash}
+~~~
 $ python plotcount.py isles.dat show
 ~~~
+{: .bash}
 
 Close the window to exit the plot.
 
 `plotcount.py` can also create the plot as an image file (e.g. a PNG file):
 
-~~~ {.bash}
+~~~
 $ python plotcount.py isles.dat isles.png
 ~~~
+{: .bash}
 
 Finally, let's test Zipf's law for these books:
 
-~~~ {.bash}
+~~~
 $ python zipf_test.py abyss.dat isles.dat
 ~~~
+{: .bash}
 
-~~~ {.output}
+~~~
 Book	First	Second	Ratio
 abyss	4044	2807	1.44
 isles	3822	2460	1.55
 ~~~
+{: .output}
 
 So we're not too far off from Zipf's law.
 
@@ -154,7 +167,7 @@ a shell script that runs the whole pipeline from start to finish.
 Using your text editor of choice (e.g. nano), add the following to a new file named
 `run_pipeline.sh`.
 
-~~~ {.bash}
+~~~
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss
 # and the summary table for the Zipf's law tests
@@ -168,12 +181,14 @@ python plotcount.py abyss.dat abyss.png
 # Generate summary table
 python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
+{: .bash}
 
-Runs the script and check that the output is the same as before:
+Run the script and check that the output is the same as before:
 
-~~~ {.bash}
+~~~
 $ bash run_pipeline.sh
 ~~~
+{: .bash}
 
 This shell script solves several problems in computational reproducibility:
 
@@ -204,11 +219,12 @@ Alternatively, we could manually rerun the plotting for each word-count file.
 (Experienced shell scripters can make this easier on themselves using a
 for-loop.)
 
-~~~ {.bash}
+~~~
 for book in abyss isles; do
     python plotcount.py $book.dat $book.png
 done
 ~~~
+{: .bash}
 
 With this approach, however,
 we don't get many of the benefits of having a shell script in the first place.
@@ -216,7 +232,7 @@ we don't get many of the benefits of having a shell script in the first place.
 Another popular option is to comment out a subset of the lines in
 `run_pipeline.sh`:
 
-~~~ {.bash}
+~~~
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss
 # and the summary table for the Zipf's law tests
@@ -231,6 +247,7 @@ python plotcount.py abyss.dat abyss.png
 # This line is also commented out because it doesn't need to be rerun.
 python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
+{: .bash}
 
 Then, we would run our modified shell script using `bash run_pipeline.sh`.
 
@@ -241,10 +258,7 @@ What we really want is an executable _description_ of our pipeline that
 allows software to do the tricky part for us:
 figuring out what steps need to be rerun.
 
-
-
-
-Make was developed by 
+Make was developed by
 Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
 widespread use today. Make can execute the commands needed to run our
 analysis and plot our results. Like shell scripts it allows us to
@@ -254,29 +268,28 @@ between files - what files are needed to create what other files -
 and so can determine when to recreate our data files or
 image files, if our text files change. Make can be used for any
 commands that follow the general pattern of processing files to create
-new files, for example: 
+new files, for example:
 
 * Run analysis scripts on raw data files to get data files that
-  summarise the raw data (e.g. creating files with word counts from book text). 
-* Run visualisation scripts on data files to produce plots (e.g. creating images of word counts).
+  summarize the raw data (e.g. creating files with word counts from book text).
+* Run visualization scripts on data files to produce plots
+  (e.g. creating images of word counts).
 * Parse and combine text files and plots to create papers.
 * Compile source code into executable programs or libraries.
 
 There are now many build tools available, for example [Apache
-ANT](http://ant.apache.org/), [doit](http://pydoit.org/), and
-[nmake](https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx) for
-Windows. There are also build tools that build scripts for use with
-these build tools and others e.g. [GNU
-Autoconf](http://www.gnu.org/software/autoconf/autoconf.html) and
-[CMake](http://www.cmake.org/). Which is best for you depends on your
-requirements, intended usage, and operating system. However, they
-all share the same fundamental concepts as Make.
+ANT][apache-ant], [doit][doit], and [nmake][nmake] for Windows. There
+are also build tools that build scripts for use with these build tools
+and others e.g. [GNU Autoconf][autoconf] and [CMake][cmake]. Which is
+best for you depends on your requirements, intended usage, and
+operating system. However, they all share the same fundamental
+concepts as Make.
 
-> ## Why use Make if it is almost 40 years old? {.callout}
+> ## Why Use Make if it is Almost 40 Years Old?
 >
 > Today, researchers working with legacy codes in C or FORTRAN, which
 > are very common in high-performance computing, will, very likely
-> encounter Make. 
+> encounter Make.
 >
 > Researchers are also finding Make of use in implementing
 > reproducible research workflows, automating data analysis and
@@ -284,7 +297,16 @@ all share the same fundamental concepts as Make.
 > with text to produce reports and papers for publication.
 >
 > Make's fundamental concepts are common across build tools.
+{: .callout}
 
-[GNU Make](http://www.gnu.org/software/make/) is a free, fast, 
-well-documented, and very popular Make implementation. From now on, 
-we will focus on it, and when we say Make, we mean GNU Make.
+[GNU Make][gnu-make] is a free, fast, well-documented, and very popular
+Make implementation. From now on, we will focus on it, and when we say
+Make, we mean GNU Make.
+
+[autoconf]: http://www.gnu.org/software/autoconf/autoconf.html
+[apache-ant]: http://ant.apache.org/
+[cmake]: http://www.cmake.org/
+[doit]: http://pydoit.org/
+[gnu-make]: http://www.gnu.org/software/make/
+[nmake]: https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx
+[zipfs-law]: http://en.wikipedia.org/wiki/Zipf%27s_law

@@ -1,82 +1,90 @@
 ---
-layout: page
-title: Automation and Make
-subtitle: Reference
+layout: reference
+permalink: /reference/
 ---
 
 ## Running Make
 
 To run Make:
 
-~~~ {.bash}
+~~~
 $ make
 ~~~
+{: .bash}
 
 Make will look for a Makefile called `Makefile` and will build the
 default target, the first target in the Makefile.
 
 To use a Makefile with a different name, use the `-f` flag e.g.
 
-~~~ {.bash}
-$ make -f build-files/analyse.mk
 ~~~
+$ make -f build-files/analyze.mk
+~~~
+{: .bash}
 
 To build a specific target, provide it as an argument e.g.
 
-~~~ {.bash}
+~~~
 $ make isles.dat
 ~~~
+{: .bash}
 
 If the target is up-to-date, Make will print a message like:
 
-~~~ {.output}
+~~~
 make: `isles.dat' is up to date.
 ~~~
+{: .output}
 
 To see the actions Make will run when building a target, without
 running the actions, use the `--dry-run` flag e.g.
 
-~~~ {.bash}
+~~~
 $ make --dry-run isles.dat
 ~~~
+{: .bash}
 
 Alternatively, use the abbreviation `-n`.
 
-~~~ {.bash}
+~~~
 $ make -n isles.dat
 ~~~
+{: .bash}
 
-## Make trouble-shooting
+## Trouble Shooting
 
 If Make prints a message like,
 
-~~~ {.error}
+~~~
 Makefile:3: *** missing separator.  Stop.
 ~~~
+{: .error}
 
 then check that all the actions are indented by TAB characters and not
 spaces.
 
 If Make prints a message like,
 
-~~~ {.error}
+~~~
 No such file or directory: 'books/%.txt'
 make: *** [isles.dat] Error 1
 ~~~
+{: .error}
 
-then you may have used the Make wild-card, `%`, in an action in a
-pattern rule. Make wild-cards cannot be used in actions.
+then you may have used the Make wildcard, `%`, in an action in a
+pattern rule. Make wildcards cannot be used in actions.
 
 ## Makefiles
 
 Rules:
 
-~~~ {.make}
+~~~
 target : dependency1 dependency2 ...
 	action1
 	action2
         ...
 ~~~
+{: .make}
 
 * Each rule has a target, a file to be created, or built.
 * Each rule has zero or more dependencies, files that are needed to
@@ -99,17 +107,19 @@ Dependencies:
 
 Comments:
 
-~~~ {.make}
+~~~
 # This is a Make comment.
 ~~~
+{: .make}
 
 Line continuation character:
 
-~~~ {.make}
+~~~
 ARCHIVE = isles.dat isles.png \
           abyss.dat abyss.png \
           sierra.dat sierra.png
 ~~~
+{: .make}
 
 * If a list of dependencies or an action is too long, a Makefile can
   become more difficult to read.
@@ -121,11 +131,12 @@ ARCHIVE = isles.dat isles.png \
 
 Phony targets:
 
-~~~ {.make}
+~~~
 .PHONY : clean
 clean :
        rm -f *.dat
 ~~~
+{: .make}
 
 * Phony targets are a short-hand for sequences of actions.
 * No file with the target name is built when a rule with a phony
@@ -140,51 +151,56 @@ Automatic variables:
 
 Pattern rules:
 
-~~~ {.make}
+~~~
 %.dat : books/%.txt $(COUNT_SRC)
         $(COUNT_EXE) $< $@
 ~~~
+{: .make}
 
-* The Make wild-card, `%`, specifies a pattern.
+* The Make wildcard, `%`, specifies a pattern.
 * If Make finds a dependency matching the pattern, then the pattern is
   substituted into the target.
-* The Make wild-card can only be used in targets and dependencies.
+* The Make wildcard can only be used in targets and dependencies.
 * e.g. if Make found a file called `books/abyss.txt`, it would set the
   target to be `abyss.dat`.
 
 Defining and using variables:
 
-~~~ {.make}
+~~~
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 ~~~
+{: .make}
 
-* A variable is assigned a value. For example, `COUNT_SRC` 
+* A variable is assigned a value. For example, `COUNT_SRC`
   is assigned the value `wordcount.py`.
-* `$(...)` is a reference to a variable. It requests that 
+* `$(...)` is a reference to a variable. It requests that
   Make substitutes the name of a variable for its value.
 
 Suppress printing of actions:
 
-~~~ {.make}
+~~~
 .PHONY : variables
 variables:
         @echo TXT_FILES: $(TXT_FILES)
 ~~~
+{: .make}
 
 * Prefix an action by `@` to instruct Make not to print that action.
 
 Include the contents of a Makefile in another Makefile:
 
-~~~ {.make}
+~~~
 include config.mk
 ~~~
+{: .make}
 
 wildcard function:
 
-~~~ {.make}
+~~~
 TXT_FILES=$(wildcard books/*.txt)
 ~~~
+{: .make}
 
 * Looks for all files matching a pattern e.g. `books/*.txt`, and
   return these in a list.
@@ -193,9 +209,10 @@ TXT_FILES=$(wildcard books/*.txt)
 
 patsubst ('path substitution') function:
 
-~~~ {.make}
+~~~
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 ~~~
+{: .make}
 
 * Every string that matches `books/%.txt` in `$(TXT_FILES)` is
   replaced by `%.dat` and the strings are returned in a list.
@@ -210,18 +227,19 @@ Default targets:
 * In Make 3.81, the default target can be explicitly set using the
   special variable `.DEFAULT_GOAL` e.g.
 
-~~~ {.make}
+~~~
 .DEFAULT_GOAL := all
 ~~~
+{: .make}
 
 ## Manuals
 
-[GNU Make Manual](https://www.gnu.org/software/make/manual/). Reference sections include:
+[GNU Make Manual][gnu-make-manual]. Reference sections include:
 
-* [Summary of Options](https://www.gnu.org/software/make/manual/html_node/Options-Summary.html) for the `make` command.
-* [Quick Reference](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html) of Make directives, text manipulation functions, and special variables.
-* [Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
-* [Special Built-in Target Names](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html)
+* [Summary of Options][options-summary] for the `make` command.
+* [Quick Reference][quick-reference] of Make directives, text manipulation functions, and special variables.
+* [Automatic Variables][automatic-variables].
+* [Special Built-in Target Names][special-targets]
 
 ## Glossary
 
@@ -230,7 +248,7 @@ action
     update a file or other object.
 
 assignment
-:   A request that [Make](#make) stores something in a 
+:   A request that [Make](#make) stores something in a
     [variable](#variable).
 
 automatic variable
@@ -252,7 +270,7 @@ build manager
     other things.
 
 default rule
-:   The [rule](#rule) that is executed if no [target](#target) is 
+:   The [rule](#rule) that is executed if no [target](#target) is
     specified when a [build manager](#build-manager) is run.
 
 default target
@@ -268,7 +286,7 @@ dependency
 false dependency
 :   This can refer to a [dependency](#dependency) that is artificial.
     e.g. a false dependency is introduced if a data analysis script
-    is added as a dependency to the data files that the script 
+    is added as a dependency to the data files that the script
     analyses.
 
 function
@@ -295,10 +313,10 @@ pattern rule
 :   A [rule](#rule) that specifies a general way to build or update an
     entire class of files that can be managed the same way. For
     example, a pattern rule can specify how to compile any C file
-    rather than a single, specific C file, or, to analyse any data
+    rather than a single, specific C file, or, to analyze any data
     file rather than a single, specific data file. Pattern rules
     typically make use of [automatic variables](#automatic-variable)
-    and [wild-cards](#wild-card).
+    and [wildcards](#wildcard).
 
 phony target
 :   A [target](#target) that does not correspond to a file or other
@@ -309,18 +327,18 @@ prerequisite
 :   A synonym for [dependency](#dependency).
 
 reference
-:   A request that [Make](#make) substitutes the name of a 
+:   A request that [Make](#make) substitutes the name of a
     [variable](#variable) for its value.
 
 rule
 :   A specification of a [target](#target)'s
     [dependencies](#dependency) and what [actions](#action) need to be
-    executed to build or update the target. 
+    executed to build or update the target.
 
 stem
 :   The part of the target that was matched by the pattern rule. If
     the target is `file.dat` and the target pattern was `%.dat`, then
-    the stem `$*` is `file`. 
+    the stem `$*` is `file`.
 
 target
 :   A thing to be created or updated, for example a file. Targets can
@@ -330,9 +348,15 @@ target
 variable
 :   A symbolic name for something in a [Makefile](#makefile).
 
-wild-card
+wildcard
 :   A pattern that can be specified in [dependencies](#dependency) and
     [targets](#target). If [Make](#make) finds a dependency] matching
     the pattern, then the pattern is substituted into the
-    target. Wild-cards are often used in [pattern
-    rules](#pattern-rule). The Make wild-card is `%`.
+    target. wildcards are often used in [pattern
+    rules](#pattern-rule). The Make wildcard is `%`.
+
+[automatic-variables]: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
+[gnu-make-manual]: https://www.gnu.org/software/make/manual/
+[options-summary]: https://www.gnu.org/software/make/manual/html_node/Options-Summary.html
+[quick-reference]: https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html
+[special-targets]: https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
