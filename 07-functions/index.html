@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:34:48 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/make-novice">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make: Functions</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/make-novice/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/make-novice/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/make-novice/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/make-novice/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/01-intro/">Introduction</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/06-variables/">Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/07-functions/">Functions</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/guide.html">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/make-novice/06-variables/"><span class="glyphicon glyphicon-menu-left"></span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    <h3 class="maintitle"><a href="/swc-releases/2016.06/make-novice/">Automation and Make</a></h3>
+    <h1 class="maintitle">Functions</h1>
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/make-novice/08-self-doc/"><span class="glyphicon glyphicon-menu-right"></span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 15 min
+      </br>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How <em>else</em> can I eliminate redundancy in my Makefiles?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Write Makefiles that use functions to match and transform sets of files.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+</blockquote>
+
+<p>At this point, we have the following Makefile:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>include config.mk
+
+# Generate summary table.
+results.txt : *.dat $(ZIPF_SRC)
+        $(ZIPF_EXE) *.dat &gt; $@
+
+# Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat last.dat
+
+%.dat : books/%.txt $(COUNT_SRC)
+        $(COUNT_EXE) $&lt; $*.dat
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+        rm -f results.txt
+</code></pre>
+</div>
+
+<p>Make has many <a href="/swc-releases/2016.06/make-novice/reference/#function">functions</a> which can be used to
+write more complex rules. One example is <code class="highlighter-rouge">wildcard</code>. <code class="highlighter-rouge">wildcard</code> gets a
+list of files matching some pattern, which we can then save in a
+variable. So, for example, we can get a list of all our text files
+(files ending in <code class="highlighter-rouge">.txt</code>) and save these in a variable by adding this at
+the beginning of our makefile:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>TXT_FILES=$(wildcard books/*.txt)
+</code></pre>
+</div>
+
+<p>We can add <code class="highlighter-rouge">.PHONY</code> target and rule to show the variable’s value:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : variables
+variables:
+	@echo TXT_FILES: $(TXT_FILES)
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="echo">@echo</h2>
+
+  <p>Make prints actions as it executes them. Using <code class="highlighter-rouge">@</code> at the start of
+an action tells Make not to print this action. So, by using <code class="highlighter-rouge">@echo</code>
+instead of <code class="highlighter-rouge">echo</code>, we can see the result of <code class="highlighter-rouge">echo</code> (the variable’s
+value being printed) but not the <code class="highlighter-rouge">echo</code> command itself.</p>
+</blockquote>
+
+<p>If we run Make:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make variables
+</code></pre>
+</div>
+
+<p>We get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
+</code></pre>
+</div>
+
+<p>Note how <code class="highlighter-rouge">sierra.txt</code> is now included too.</p>
+
+<p>The following figure shows the dependencies embodied within our Makefile,
+involved in building the <code class="highlighter-rouge">results.txt</code> target,
+once we have introduced our function:</p>
+
+<p><img src="/swc-releases/2016.06/make-novice/fig/07-functions.png" alt="results.txt dependencies after introducing a function" title="results.txt dependencies after introducing a function" /></p>
+
+<p><code class="highlighter-rouge">patsubst</code> (‘pattern substitution’) takes a pattern, a replacement string and a
+list of names in that order; each name in the list that matches the pattern is
+replaced by the replacement string. Again, we can save the result in a
+variable. So, for example, we can rewrite our list of text files into
+a list of data files (files ending in <code class="highlighter-rouge">.dat</code>) and save these in a
+variable:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
+</code></pre>
+</div>
+
+<p>We can extend <code class="highlighter-rouge">variables</code> to show the value of <code class="highlighter-rouge">DAT_FILES</code> too:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : variables
+variables:
+        @echo TXT_FILES: $(TXT_FILES)
+        @echo DAT_FILES: $(DAT_FILES)
+</code></pre>
+</div>
+
+<p>If we run Make,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make variables
+</code></pre>
+</div>
+
+<p>then we get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
+DAT_FILES: abyss.dat isles.dat last.dat sierra.dat
+</code></pre>
+</div>
+
+<p>Now, <code class="highlighter-rouge">sierra.txt</code> is processed too.</p>
+
+<p>With these we can rewrite <code class="highlighter-rouge">clean</code> and <code class="highlighter-rouge">dats</code>:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : dats
+dats : $(DAT_FILES)
+
+.PHONY : clean
+clean :
+        rm -f $(DAT_FILES)
+        rm -f results.txt
+</code></pre>
+</div>
+
+<p>Let’s check:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make clean
+$ make dats
+</code></pre>
+</div>
+
+<p>We get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/last.txt last.dat
+python wordcount.py books/sierra.txt sierra.dat
+</code></pre>
+</div>
+
+<p>We can also rewrite <code class="highlighter-rouge">results.txt</code>:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>results.txt : $(DAT_FILES) $(ZIPF_SRC)
+        $(ZIPF_EXE) *.dat &gt; $@
+</code></pre>
+</div>
+
+<p>If we re-run Make:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make clean
+$ make results.txt
+</code></pre>
+</div>
+
+<p>We get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>python wordcount.py books/abyss.txt abyss.dat
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/last.txt last.dat
+python wordcount.py books/sierra.txt sierra.dat
+python zipf_test.py *.dat &gt; results.txt
+</code></pre>
+</div>
+
+<p>We see that the problem we had when using the bash wild-card, <code class="highlighter-rouge">*.dat</code>,
+which required us to run <code class="highlighter-rouge">make dats</code> before <code class="highlighter-rouge">make results.txt</code> has
+now disappeared, since our functions allow us to create <code class="highlighter-rouge">.dat</code> file
+names from those <code class="highlighter-rouge">.txt</code> file names in <code class="highlighter-rouge">books/</code>.</p>
+
+<p>Let’s check the <code class="highlighter-rouge">results.txt</code> file:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ cat results.txt
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>Book	First	Second	Ratio
+abyss	4044	2807	1.44
+isles	3822	2460	1.55
+last	12244	5566	2.20
+sierra	4242	2469	1.72
+</code></pre>
+</div>
+
+<p>So the range of the ratios of occurrences of the two most frequent
+words in our books is indeed around 2, as predicted by Zipf’s Law,
+i.e., the most frequently-occurring word occurs approximately twice as
+often as the second most frequent word.  Here is our final Makefile:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>include config.mk
+
+TXT_FILES=$(wildcard books/*.txt)
+DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
+
+# Generate summary table.
+results.txt : $(DAT_FILES) $(ZIPF_SRC)
+	$(ZIPF_EXE) *.dat &gt; $@
+
+# Count words.
+.PHONY : dats
+dats : $(DAT_FILES)
+
+%.dat : books/%.txt $(COUNT_SRC)
+	$(COUNT_EXE) $&lt; $*.dat
+
+.PHONY : clean
+clean :
+	rm -f $(DAT_FILES)
+	rm -f results.txt
+
+.PHONY : variables
+variables:
+	@echo TXT_FILES: $(TXT_FILES)
+	@echo DAT_FILES: $(DAT_FILES)
+</code></pre>
+</div>
+
+<p>Remember, the <code class="highlighter-rouge">config.mk</code> file contains:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code># Count words script.
+COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)
+
+# Test Zipf's rule
+ZIPF_SRC=zipf_test.py
+ZIPF_EXE=python $(ZIPF_SRC)
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="where-we-are">Where We Are</h2>
+
+  <p><a href="/swc-releases/2016.06/make-novice/code/07-functions/Makefile">This Makefile</a>
+and <a href="/swc-releases/2016.06/make-novice/code/07-functions/config.mk">its accompanying <code class="highlighter-rouge">config.mk</code></a>
+contain all of our work so far.</p>
+</blockquote>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Make is actually a small programming language with many built-in functions.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">wildcard</code> function to get lists of files matching a pattern.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">patsubst</code> function to rewrite file names.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/make-novice/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/lesson.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:34:48 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/make-novice">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/make-novice/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/make-novice/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/make-novice/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/make-novice/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/01-intro/">Introduction</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/06-variables/">Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/07-functions/">Functions</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/guide.html">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1 class="maintitle"><a href="/swc-releases/2016.06/make-novice/">Automation and Make</a></h1>
+
+
+<h2>Key Points</h2>
+<table class="table table-striped">
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/01-intro/">Introduction</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Make allows us to specify what depends on what and how to update things that are out of date.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/02-makefiles/">Makefiles</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">#</code> for comments in Makefiles.</p>
+</li>
+        
+        <li><p>Write rules as <code class="highlighter-rouge">target: dependencies</code>.</p>
+</li>
+        
+        <li><p>Specify update actions in a tab-indented block under the rule.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">.PHONY</code> to mark targets that don’t correspond to files.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/03-variables/">Automatic Variables</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">$@</code> to refer to the target of the current rule.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">$^</code> to refer to the dependencies of the current rule.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">$&lt;</code> to refer to the first dependency of the current rule.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/04-dependencies/">Dependencies on Data and Code</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Make results depend on processing scripts as well as data files.</p>
+</li>
+        
+        <li><p>Dependencies are transitive: if A depends on B and B depends on C, a change to C will indirectly trigger an update to A.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/05-patterns/">Pattern Rules</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use the wildcard <code class="highlighter-rouge">%</code> as a placeholder in targets and dependencies.</p>
+</li>
+        
+        <li><p>Use the special variable <code class="highlighter-rouge">$*</code> to refer to matching sets of files in actions.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/06-variables/">Variables</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Define variables by assigning values to names.</p>
+</li>
+        
+        <li><p>Reference variables using <code class="highlighter-rouge">$(...)</code>.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/07-functions/">Functions</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Make is actually a small programming language with many built-in functions.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">wildcard</code> function to get lists of files matching a pattern.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">patsubst</code> function to rewrite file names.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/08-self-doc/">Self-Documenting Makefiles</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Document Makefiles by adding specially-formatted comments and a target to extract and format them.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/make-novice/09-conclusion/">Conclusion</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Makefiles save time by automating repetitive work, and save thinking by documenting how to reproduce results.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+</table>
+
+<h2 id="running-make">Running Make</h2>
+
+<p>To run Make:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make
+</code></pre>
+</div>
+
+<p>Make will look for a Makefile called <code class="highlighter-rouge">Makefile</code> and will build the
+default target, the first target in the Makefile.</p>
+
+<p>To use a Makefile with a different name, use the <code class="highlighter-rouge">-f</code> flag e.g.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make -f build-files/analyze.mk
+</code></pre>
+</div>
+
+<p>To build a specific target, provide it as an argument e.g.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make isles.dat
+</code></pre>
+</div>
+
+<p>If the target is up-to-date, Make will print a message like:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>make: `isles.dat' is up to date.
+</code></pre>
+</div>
+
+<p>To see the actions Make will run when building a target, without
+running the actions, use the <code class="highlighter-rouge">--dry-run</code> flag e.g.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make --dry-run isles.dat
+</code></pre>
+</div>
+
+<p>Alternatively, use the abbreviation <code class="highlighter-rouge">-n</code>.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make -n isles.dat
+</code></pre>
+</div>
+
+<h2 id="trouble-shooting">Trouble Shooting</h2>
+
+<p>If Make prints a message like,</p>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Makefile:3: *** missing separator.  Stop.
+</code></pre>
+</div>
+
+<p>then check that all the actions are indented by TAB characters and not
+spaces.</p>
+
+<p>If Make prints a message like,</p>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>No such file or directory: 'books/%.txt'
+make: *** [isles.dat] Error 1
+</code></pre>
+</div>
+
+<p>then you may have used the Make wildcard, <code class="highlighter-rouge">%</code>, in an action in a
+pattern rule. Make wildcards cannot be used in actions.</p>
+
+<h2 id="makefiles">Makefiles</h2>
+
+<p>Rules:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>target : dependency1 dependency2 ...
+	action1
+	action2
+        ...
+</code></pre>
+</div>
+
+<ul>
+  <li>Each rule has a target, a file to be created, or built.</li>
+  <li>Each rule has zero or more dependencies, files that are needed to
+build the target.</li>
+  <li><code class="highlighter-rouge">:</code> separates the target and the dependencies.</li>
+  <li>Dependencies are separated by spaces.</li>
+  <li>Each rule has zero or more actions, commands to run to build the
+target using the dependencies.</li>
+  <li>Actions are indented using the TAB character, not 8 spaces.</li>
+</ul>
+
+<p>Dependencies:</p>
+
+<ul>
+  <li>If any dependency does not exist then Make will look for a rule to
+build it.</li>
+  <li>The order of rebuilding dependencies is arbitrary. You should not
+assume that they will be built in the order in which they are listed.</li>
+  <li>Dependencies must form a directed acyclic graph. A target cannot
+depend on a dependency which, in turn depends upon, or has a
+dependency which depends upon, that target.</li>
+</ul>
+
+<p>Comments:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code># This is a Make comment.
+</code></pre>
+</div>
+
+<p>Line continuation character:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>ARCHIVE = isles.dat isles.png \
+          abyss.dat abyss.png \
+          sierra.dat sierra.png
+</code></pre>
+</div>
+
+<ul>
+  <li>If a list of dependencies or an action is too long, a Makefile can
+become more difficult to read.</li>
+  <li>Backslash,<code class="highlighter-rouge">\</code>, the line continuation character, allows you to split
+up a list of dependencies or an action over multiple lines, to make
+them easier to read.</li>
+  <li>Make will combine the multiple lines into a single list of dependencies
+or action.</li>
+</ul>
+
+<p>Phony targets:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : clean
+clean :
+       rm -f *.dat
+</code></pre>
+</div>
+
+<ul>
+  <li>Phony targets are a short-hand for sequences of actions.</li>
+  <li>No file with the target name is built when a rule with a phony
+target is run.</li>
+</ul>
+
+<p>Automatic variables:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">$&lt;</code> denotes ‘the first dependency of the current rule’.</li>
+  <li><code class="highlighter-rouge">$@</code> denotes ‘the target of the current rule’.</li>
+  <li><code class="highlighter-rouge">$^</code> denotes ‘the dependencies of the current rule’.</li>
+  <li><code class="highlighter-rouge">$*</code> denotes ‘the stem with which the pattern of the current rule matched’.</li>
+</ul>
+
+<p>Pattern rules:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>%.dat : books/%.txt $(COUNT_SRC)
+        $(COUNT_EXE) $&lt; $@
+</code></pre>
+</div>
+
+<ul>
+  <li>The Make wildcard, <code class="highlighter-rouge">%</code>, specifies a pattern.</li>
+  <li>If Make finds a dependency matching the pattern, then the pattern is
+substituted into the target.</li>
+  <li>The Make wildcard can only be used in targets and dependencies.</li>
+  <li>e.g. if Make found a file called <code class="highlighter-rouge">books/abyss.txt</code>, it would set the
+target to be <code class="highlighter-rouge">abyss.dat</code>.</li>
+</ul>
+
+<p>Defining and using variables:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>COUNT_SRC=wordcount.py
+COUNT_EXE=python $(COUNT_SRC)
+</code></pre>
+</div>
+
+<ul>
+  <li>A variable is assigned a value. For example, <code class="highlighter-rouge">COUNT_SRC</code>
+is assigned the value <code class="highlighter-rouge">wordcount.py</code>.</li>
+  <li><code class="highlighter-rouge">$(...)</code> is a reference to a variable. It requests that
+Make substitutes the name of a variable for its value.</li>
+</ul>
+
+<p>Suppress printing of actions:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : variables
+variables:
+        @echo TXT_FILES: $(TXT_FILES)
+</code></pre>
+</div>
+
+<ul>
+  <li>Prefix an action by <code class="highlighter-rouge">@</code> to instruct Make not to print that action.</li>
+</ul>
+
+<p>Include the contents of a Makefile in another Makefile:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>include config.mk
+</code></pre>
+</div>
+
+<p>wildcard function:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>TXT_FILES=$(wildcard books/*.txt)
+</code></pre>
+</div>
+
+<ul>
+  <li>Looks for all files matching a pattern e.g. <code class="highlighter-rouge">books/*.txt</code>, and
+return these in a list.</li>
+  <li>e.g. <code class="highlighter-rouge">TXT_FILES</code> is set to <code class="highlighter-rouge">books/abyss.txt books/isles.txt
+books/last.txt books/sierra.txt</code>.</li>
+</ul>
+
+<p>patsubst (‘path substitution’) function:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
+</code></pre>
+</div>
+
+<ul>
+  <li>Every string that matches <code class="highlighter-rouge">books/%.txt</code> in <code class="highlighter-rouge">$(TXT_FILES)</code> is
+replaced by <code class="highlighter-rouge">%.dat</code> and the strings are returned in a list.</li>
+  <li>e.g. if <code class="highlighter-rouge">TXT_FILES</code> is <code class="highlighter-rouge">books/abyss.txt books/isles.txt
+books/last.txt books/sierra.txt</code> this sets <code class="highlighter-rouge">DAT_FILES</code> to <code class="highlighter-rouge">abyss.dat
+isles.dat last.dat sierra.dat</code>.</li>
+</ul>
+
+<p>Default targets:</p>
+
+<ul>
+  <li>In Make version 3.79 the default target is the first target in the
+Makefile.</li>
+  <li>In Make 3.81, the default target can be explicitly set using the
+special variable <code class="highlighter-rouge">.DEFAULT_GOAL</code> e.g.</li>
+</ul>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.DEFAULT_GOAL := all
+</code></pre>
+</div>
+
+<h2 id="manuals">Manuals</h2>
+
+<p><a href="https://www.gnu.org/software/make/manual/">GNU Make Manual</a>. Reference sections include:</p>
+
+<ul>
+  <li><a href="https://www.gnu.org/software/make/manual/html_node/Options-Summary.html">Summary of Options</a> for the <code class="highlighter-rouge">make</code> command.</li>
+  <li><a href="https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html">Quick Reference</a> of Make directives, text manipulation functions, and special variables.</li>
+  <li><a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html">Automatic Variables</a>.</li>
+  <li><a href="https://www.gnu.org/software/make/manual/html_node/Special-Targets.html">Special Built-in Target Names</a></li>
+</ul>
+
+<h2 id="glossary">Glossary</h2>
+
+<dl>
+  <dt>action</dt>
+  <dd>The steps a <a href="#build-manager">build manager</a> must take to create or
+update a file or other object.</dd>
+  <dt>assignment</dt>
+  <dd>A request that <a href="#make">Make</a> stores something in a
+<a href="#variable">variable</a>.</dd>
+  <dt>automatic variable</dt>
+  <dd>A variable whose value is automatically redefined for each
+<a href="#rule">rule</a>. <a href="#make">Make</a>’s automatic variables include <code class="highlighter-rouge">$@</code>,
+which holds the rule’s <a href="#target">target</a>, <code class="highlighter-rouge">$^</code>, which holds its
+<a href="#dependency">dependencies</a>, and, <code class="highlighter-rouge">$&lt;</code>, which holds the first of
+its dependencies, and <code class="highlighter-rouge">$*</code>, which holds the <a href="#stem">stem</a> with which
+the pattern was matched. Automatic variables are typically used in
+<a href="#pattern-rule">pattern rules</a>.</dd>
+  <dt>build file</dt>
+  <dd>A description of <a href="#dependency">dependencies</a> and <a href="#rule">rules</a>
+for a <a href="#build-manager">build manager</a>.</dd>
+  <dt>build manager</dt>
+  <dd>A program, such as <a href="#make">Make</a>, whose main purpose is to build or
+update software, documentation, web sites, data files, images, and
+other things.</dd>
+  <dt>default rule</dt>
+  <dd>The <a href="#rule">rule</a> that is executed if no <a href="#target">target</a> is
+specified when a <a href="#build-manager">build manager</a> is run.</dd>
+  <dt>default target</dt>
+  <dd>The <a href="#target">target</a> of the <a href="#default-rule">default rule</a>.</dd>
+  <dt>dependency</dt>
+  <dd>A file that a <a href="#target">target</a> depends on. If any of a target’s
+<a href="#dependency">dependencies</a> are newer than the target itself, the
+target needs to be updated. A target’s dependencies are also
+called its prerequisites. If a target’s dependencies do not exist,
+then they need to be built first.</dd>
+  <dt>false dependency</dt>
+  <dd>This can refer to a <a href="#dependency">dependency</a> that is artificial.
+e.g. a false dependency is introduced if a data analysis script
+is added as a dependency to the data files that the script
+analyses.</dd>
+  <dt>function</dt>
+  <dd>A built-in <a href="#make">Make</a> utility that performs some operation, for
+example gets a list of files matching a pattern.</dd>
+  <dt>incremental build</dt>
+  <dd>The feature of a <a href="#build-manager">build manager</a> by
+which it only rebuilds files that, either directory
+or indirectly, depend on a file that was changed.</dd>
+  <dt>macro</dt>
+  <dd>Used as a synonym for <a href="#variable">variable</a> in certain versions of
+<a href="#make">Make</a>.</dd>
+  <dt>Make</dt>
+  <dd>A popular <a href="#build-manager">build manager</a>, from GNU, created in 1977.</dd>
+  <dt>Makefile</dt>
+  <dd>A <a href="#build-file">build file</a> used by <a href="#make">Make</a>, which, by
+default, are named <code class="highlighter-rouge">Makefile</code>.</dd>
+  <dt>pattern rule</dt>
+  <dd>A <a href="#rule">rule</a> that specifies a general way to build or update an
+entire class of files that can be managed the same way. For
+example, a pattern rule can specify how to compile any C file
+rather than a single, specific C file, or, to analyze any data
+file rather than a single, specific data file. Pattern rules
+typically make use of <a href="#automatic-variable">automatic variables</a>
+and <a href="#wildcard">wildcards</a>.</dd>
+  <dt>phony target</dt>
+  <dd>A <a href="#target">target</a> that does not correspond to a file or other
+object. Phony targets are usually symbolic names for sequences of
+<a href="#action">actions</a>.</dd>
+  <dt>prerequisite</dt>
+  <dd>A synonym for <a href="#dependency">dependency</a>.</dd>
+  <dt>reference</dt>
+  <dd>A request that <a href="#make">Make</a> substitutes the name of a
+<a href="#variable">variable</a> for its value.</dd>
+  <dt>rule</dt>
+  <dd>A specification of a <a href="#target">target</a>’s
+<a href="#dependency">dependencies</a> and what <a href="#action">actions</a> need to be
+executed to build or update the target.</dd>
+  <dt>stem</dt>
+  <dd>The part of the target that was matched by the pattern rule. If
+the target is <code class="highlighter-rouge">file.dat</code> and the target pattern was <code class="highlighter-rouge">%.dat</code>, then
+the stem <code class="highlighter-rouge">$*</code> is <code class="highlighter-rouge">file</code>.</dd>
+  <dt>target</dt>
+  <dd>A thing to be created or updated, for example a file. Targets can
+have <a href="#dependency">dependencies</a> that must exist, and be
+up-to-date, before the target itself can be built or updated.</dd>
+  <dt>variable</dt>
+  <dd>A symbolic name for something in a <a href="#makefile">Makefile</a>.</dd>
+  <dt>wildcard</dt>
+  <dd>A pattern that can be specified in <a href="#dependency">dependencies</a> and
+<a href="#target">targets</a>. If <a href="#make">Make</a> finds a dependency] matching
+the pattern, then the pattern is substituted into the
+target. wildcards are often used in <a href="#pattern-rule">pattern
+rules</a>. The Make wildcard is <code class="highlighter-rouge">%</code>.</dd>
+</dl>
+
+
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/make-novice/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/lesson.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:34:48 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/make-novice">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make: Conclusion</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/make-novice/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/make-novice/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/make-novice/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/make-novice/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/01-intro/">Introduction</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/06-variables/">Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/07-functions/">Functions</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/guide.html">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/make-novice/08-self-doc/"><span class="glyphicon glyphicon-menu-left"></span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    <h3 class="maintitle"><a href="/swc-releases/2016.06/make-novice/">Automation and Make</a></h3>
+    <h1 class="maintitle">Conclusion</h1>
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/make-novice"><span class="glyphicon glyphicon-menu-up"></span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 15 min
+      </br>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>What are the advantages and disadvantages of using tools like Make?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Understand advantages of automated build tools such as Make.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+</blockquote>
+
+<p>Automated build tools such as Make can help us in a number of
+ways. They help us to automate repetitive commands and, so, save us
+time and reduce the risk of us making errors we might make if running
+these commands manually.</p>
+
+<p>They can also save time by ensuring that automatically-generated
+artifacts (such as data files or plots) are only recreated when the
+files that were used to create these have changed in some way.</p>
+
+<p>Through their notion of targets, dependencies and actions they serve
+as a form of documentation, recording dependencies between code,
+scripts, tools, configurations, raw data, derived data, plots and
+papers.</p>
+
+<blockquote class="challenge">
+  <h2 id="creating-pngs">Creating PNGs</h2>
+
+  <p>Add new rules, update existing rules, and add new macros to:</p>
+
+  <ul>
+    <li>Create <code class="highlighter-rouge">.png</code> files from <code class="highlighter-rouge">.dat</code> files using <code class="highlighter-rouge">plotcount.py</code>.</li>
+    <li>Add the <code class="highlighter-rouge">zip_test.py</code> script as dependency of the <code class="highlighter-rouge">results.txt</code> file</li>
+    <li>Remove all auto-generated files (<code class="highlighter-rouge">.dat</code>, <code class="highlighter-rouge">.png</code>,
+<code class="highlighter-rouge">results.txt</code>).</li>
+  </ul>
+
+  <p>Finally, many Makefiles define a default <a href="/swc-releases/2016.06/make-novice/reference/#phony-target">phony
+target</a> called <code class="highlighter-rouge">all</code> as first target,
+that will build what the Makefile has been written to build (e.g. in
+our case, the <code class="highlighter-rouge">.png</code> files and the <code class="highlighter-rouge">results.txt</code> file). As others
+may assume your Makefile confirms to convention and supports an
+<code class="highlighter-rouge">all</code> target, add an <code class="highlighter-rouge">all</code> target to your Makefile (Hint: this rule
+has the <code class="highlighter-rouge">results.txt</code> file and the <code class="highlighter-rouge">.png</code> files as dependencies, but
+no actions).  With that in place, instead of running <code class="highlighter-rouge">make
+results.txt</code>, you should now run <code class="highlighter-rouge">make all</code>, or just simply
+<code class="highlighter-rouge">make</code>. By default, <code class="highlighter-rouge">make</code> runs the first target it finds in the
+Makefile, in this case your new <code class="highlighter-rouge">all</code> target.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+    <p><a href="/swc-releases/2016.06/make-novice/code/09-conclusion-challenge-1/Makefile">This Makefile</a>
+and <a href="/swc-releases/2016.06/make-novice/code/09-conclusion-challenge-1/config.mk">this <code class="highlighter-rouge">config.mk</code></a>
+contain a solution to this challenge.</p>
+  </blockquote>
+</blockquote>
+
+<p>The following figure shows the dependencies involved in building the <code class="highlighter-rouge">all</code> target, once we’ve added support for images:</p>
+
+<p><img src="/swc-releases/2016.06/make-novice/fig/09-conclusion-challenge-1.png" alt="results.txt dependencies once images have been added" title="results.txt dependencies once images have been added" /></p>
+
+<blockquote class="challenge">
+  <h2 id="creating-an-archive">Creating an Archive</h2>
+
+  <p>Add new rules, update existing rules, and add new macros to:</p>
+
+  <ul>
+    <li>Define the name of a directory, <code class="highlighter-rouge">zipf_analysis</code>, to hold all our
+code, data, plots and the Zipf summary table.</li>
+    <li>Copy all our code, data, plots and the Zipf summary table to this
+directory.</li>
+    <li>Create an archive, <code class="highlighter-rouge">zipf_analysis.tar.gz</code>, of this directory. The
+bash command <code class="highlighter-rouge">tar</code> can be used, as follows:</li>
+  </ul>
+
+  <div class="bash highlighter-rouge"><pre class="highlight"><code>$ tar -czf zipf_analysis.tar.gz zipf_analysis
+</code></pre>
+  </div>
+
+  <ul class="solution">
+    <li>Update <code class="highlighter-rouge">all</code> to create <code class="highlighter-rouge">zipf_analysis.tar.gz</code>.</li>
+    <li>Remove <code class="highlighter-rouge">zipf_analysis</code> and <code class="highlighter-rouge">zipf_analysis.tar.gz</code> when <code class="highlighter-rouge">make
+clean</code> is called.</li>
+    <li>Print the values of any additional variables you have defined when
+<code class="highlighter-rouge">make variables</code> is called.
+&gt; ## Solution
+&gt; <a href="/swc-releases/2016.06/make-novice/code/09-conclusion-challenge-2/Makefile">This Makefile</a>
+&gt; and <a href="/swc-releases/2016.06/make-novice/code/09-conclusion-challenge-2/config.mk">this <code class="highlighter-rouge">config.mk</code></a>
+&gt; contain a solution to this challenge.</li>
+  </ul>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="archiving-the-makefile">Archiving the Makefile</h2>
+
+  <p>Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-1">Solution</h2>
+    <p>Our code (<code class="highlighter-rouge">wordcount.py</code>, <code class="highlighter-rouge">plotcount.py</code>, <code class="highlighter-rouge">zipf_test.py</code>) implement
+the individual parts of our workflow. They allow us to create <code class="highlighter-rouge">.dat</code>
+files from <code class="highlighter-rouge">.txt</code> files, <code class="highlighter-rouge">.png</code> files from <code class="highlighter-rouge">.dat</code> files and
+<code class="highlighter-rouge">results.txt</code>. Our Makefile, however, documents dependencies between
+our code, raw data, derived data, and plots, as well as implementing
+our workflow as a whole.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Makefiles save time by automating repetitive work, and save thinking by documenting how to reproduce results.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/make-novice/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/lesson.js"></script>
+
+  </body>
+</html>

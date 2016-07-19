@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:34:48 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/make-novice">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make: Introduction</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/make-novice/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/make-novice/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/make-novice/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/make-novice/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/01-intro/">Introduction</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/06-variables/">Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/07-functions/">Functions</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/guide.html">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/make-novice"><span class="glyphicon glyphicon-menu-up"></span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    <h3 class="maintitle"><a href="/swc-releases/2016.06/make-novice/">Automation and Make</a></h3>
+    <h1 class="maintitle">Introduction</h1>
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/make-novice/02-makefiles/"><span class="glyphicon glyphicon-menu-right"></span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 15 min
+      </br>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I make my results easier to reproduce?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Explain what Make is for.</p>
+</li>
+	
+	<li><p>Explain why Make differs from shell scripts.</p>
+</li>
+	
+	<li><p>Name other popular build tools.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+</blockquote>
+
+<p>Let’s imagine that we’re interested in
+testing Zipf’s Law in some of our favorite books.</p>
+
+<blockquote class="callout">
+  <h2 id="zipfs-law">Zipf’s Law</h2>
+
+  <p>The most frequently-occurring word occurs approximately twice as
+often as the second most frequent word. This is <a href="http://en.wikipedia.org/wiki/Zipf%27s_law">Zipf’s Law</a>.</p>
+</blockquote>
+
+<p>We’ve compiled our raw data, the books we want to analyze
+(check out e.g. <code class="highlighter-rouge">head books/isles.txt</code>)
+and have prepared several Python scripts that together make up our
+analysis pipeline.</p>
+
+<p>Our directory has the Python scripts and data files we
+we will be working with:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>|- books
+|  |- abyss.txt
+|  |- isles.txt
+|  |- last.txt
+|  |- LICENSE_TEXTS.md
+|  |- sierra.txt
+|- plotcount.py
+|- wordcount.py
+|- zipf_test.py
+</code></pre>
+</div>
+
+<p>The first step is to count the frequency of each word in a book.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ python wordcount.py books/isles.txt isles.dat
+</code></pre>
+</div>
+
+<p>Let’s take a quick peek at the result.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ head -5 isles.dat
+</code></pre>
+</div>
+
+<p>This shows us the top 5 lines in the output file:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>the 3822 6.7371760973
+of 2460 4.33632998414
+and 1723 3.03719372466
+to 1479 2.60708619778
+a 1308 2.30565838181
+</code></pre>
+</div>
+
+<p>We can see that the file consists of one row per word.
+Each row shows the word itself, the number of occurrences of that
+word, and the number of occurrences as a percentage of the total
+number of words in the text file.</p>
+
+<p>We can do the same thing for a different book:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ python wordcount.py books/abyss.txt abyss.dat
+$ head -5 abyss.dat
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>the 4044 6.35449402891
+and 2807 4.41074795726
+of 1907 2.99654305468
+a 1594 2.50471401634
+to 1515 2.38057825267
+</code></pre>
+</div>
+
+<p>Let’s visualize the results.
+The script <code class="highlighter-rouge">plotcount.py</code> reads in a data file and plots the 10 most
+frequently occurring words as a text-based bar plot:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ python plotcount.py isles.dat ascii
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>the   ########################################################################
+of    ##############################################
+and   ################################
+to    ############################
+a     #########################
+in    ###################
+is    #################
+that  ############
+by    ###########
+it    ###########
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">plotcount.py</code> can also show the plot graphically:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ python plotcount.py isles.dat show
+</code></pre>
+</div>
+
+<p>Close the window to exit the plot.</p>
+
+<p><code class="highlighter-rouge">plotcount.py</code> can also create the plot as an image file (e.g. a PNG file):</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ python plotcount.py isles.dat isles.png
+</code></pre>
+</div>
+
+<p>Finally, let’s test Zipf’s law for these books:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ python zipf_test.py abyss.dat isles.dat
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>Book	First	Second	Ratio
+abyss	4044	2807	1.44
+isles	3822	2460	1.55
+</code></pre>
+</div>
+
+<p>So we’re not too far off from Zipf’s law.</p>
+
+<p>Together these scripts implement a common workflow:</p>
+
+<ol>
+  <li>Read a data file.</li>
+  <li>Perform an analysis on this data file.</li>
+  <li>Write the analysis results to a new file.</li>
+  <li>Plot a graph of the analysis results.</li>
+  <li>Save the graph as an image, so we can put it in a paper.</li>
+  <li>Make a summary table of the analyses</li>
+</ol>
+
+<p>Running <code class="highlighter-rouge">wordcount.py</code> and <code class="highlighter-rouge">plotcount.py</code> at the shell prompt, as we
+have been doing, is fine for one or two files. If, however, we had 5
+or 10 or 20 text files,
+or if the number of steps in the pipeline were to expand, this could turn into
+a lot of work.
+Plus, no one wants to sit and wait for a command to finish, even just for 30
+seconds.</p>
+
+<p>The most common solution to the tedium of data processing is to write
+a shell script that runs the whole pipeline from start to finish.</p>
+
+<p>Using your text editor of choice (e.g. nano), add the following to a new file named
+<code class="highlighter-rouge">run_pipeline.sh</code>.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code># USAGE: bash run_pipeline.sh
+# to produce plots for isles and abyss
+# and the summary table for the Zipf's law tests
+
+python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+
+python plotcount.py isles.dat isles.png
+python plotcount.py abyss.dat abyss.png
+
+# Generate summary table
+python zipf_test.py abyss.dat isles.dat &gt; results.txt
+</code></pre>
+</div>
+
+<p>Run the script and check that the output is the same as before:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ bash run_pipeline.sh
+</code></pre>
+</div>
+
+<p>This shell script solves several problems in computational reproducibility:</p>
+
+<ol>
+  <li>It explicitly documents our pipeline,
+making communication with colleagues (and our future selves) more efficient.</li>
+  <li>It allows us to type a single command, <code class="highlighter-rouge">bash run_pipeline.sh</code>, to
+reproduce the full analysis.</li>
+  <li>It prevents us from <em>repeating</em> typos or mistakes.
+You might not get it right the first time, but once you fix something
+it’ll stay fixed.</li>
+</ol>
+
+<p>Despite these benefits it has a few shortcomings.</p>
+
+<p>Let’s adjust the width of the bars in our plot produced by <code class="highlighter-rouge">plotcount.py</code>.</p>
+
+<p>Edit <code class="highlighter-rouge">plotcount.py</code> so that the bars are 0.8 units wide instead of 1 unit.
+(Hint: replace <code class="highlighter-rouge">width = 1.0</code> with <code class="highlighter-rouge">width = 0.8</code> in the definition of
+<code class="highlighter-rouge">plot_word_counts</code>.)</p>
+
+<p>Now we want to recreate our figures.
+We <em>could</em> just <code class="highlighter-rouge">bash run_pipeline.sh</code> again.
+That would work, but it could also be a big pain if counting words takes
+more than a few seconds.
+The word counting routine hasn’t changed; we shouldn’t need to recreate
+those files.</p>
+
+<p>Alternatively, we could manually rerun the plotting for each word-count file.
+(Experienced shell scripters can make this easier on themselves using a
+for-loop.)</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>for book in abyss isles; do
+    python plotcount.py $book.dat $book.png
+done
+</code></pre>
+</div>
+
+<p>With this approach, however,
+we don’t get many of the benefits of having a shell script in the first place.</p>
+
+<p>Another popular option is to comment out a subset of the lines in
+<code class="highlighter-rouge">run_pipeline.sh</code>:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code># USAGE: bash run_pipeline.sh
+# to produce plots for isles and abyss
+# and the summary table for the Zipf's law tests
+
+# These lines are commented out because they don't need to be rerun.
+#python wordcount.py books/isles.txt isles.dat
+#python wordcount.py books/abyss.txt abyss.dat
+
+python plotcount.py isles.dat isles.png
+python plotcount.py abyss.dat abyss.png
+
+# This line is also commented out because it doesn't need to be rerun.
+python zipf_test.py abyss.dat isles.dat &gt; results.txt
+</code></pre>
+</div>
+
+<p>Then, we would run our modified shell script using <code class="highlighter-rouge">bash run_pipeline.sh</code>.</p>
+
+<p>But commenting out these lines, and subsequently uncommenting them,
+can be a hassle and source of errors in complicated pipelines.</p>
+
+<p>What we really want is an executable <em>description</em> of our pipeline that
+allows software to do the tricky part for us:
+figuring out what steps need to be rerun.</p>
+
+<p>Make was developed by
+Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
+widespread use today. Make can execute the commands needed to run our
+analysis and plot our results. Like shell scripts it allows us to
+execute complex sequences of commands via a single shell
+command. Unlike shell scripts it explicitly records the dependencies
+between files - what files are needed to create what other files -
+and so can determine when to recreate our data files or
+image files, if our text files change. Make can be used for any
+commands that follow the general pattern of processing files to create
+new files, for example:</p>
+
+<ul>
+  <li>Run analysis scripts on raw data files to get data files that
+summarize the raw data (e.g. creating files with word counts from book text).</li>
+  <li>Run visualization scripts on data files to produce plots
+(e.g. creating images of word counts).</li>
+  <li>Parse and combine text files and plots to create papers.</li>
+  <li>Compile source code into executable programs or libraries.</li>
+</ul>
+
+<p>There are now many build tools available, for example <a href="http://ant.apache.org/">Apache
+ANT</a>, <a href="http://pydoit.org/">doit</a>, and <a href="https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx">nmake</a> for Windows. There
+are also build tools that build scripts for use with these build tools
+and others e.g. <a href="http://www.gnu.org/software/autoconf/autoconf.html">GNU Autoconf</a> and <a href="http://www.cmake.org/">CMake</a>. Which is
+best for you depends on your requirements, intended usage, and
+operating system. However, they all share the same fundamental
+concepts as Make.</p>
+
+<blockquote class="callout">
+  <h2 id="why-use-make-if-it-is-almost-40-years-old">Why Use Make if it is Almost 40 Years Old?</h2>
+
+  <p>Today, researchers working with legacy codes in C or FORTRAN, which
+are very common in high-performance computing, will, very likely
+encounter Make.</p>
+
+  <p>Researchers are also finding Make of use in implementing
+reproducible research workflows, automating data analysis and
+visualisation (using Python or R) and combining tables and plots
+with text to produce reports and papers for publication.</p>
+
+  <p>Make’s fundamental concepts are common across build tools.</p>
+</blockquote>
+
+<p><a href="http://www.gnu.org/software/make/">GNU Make</a> is a free, fast, well-documented, and very popular
+Make implementation. From now on, we will focus on it, and when we say
+Make, we mean GNU Make.</p>
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Make allows us to specify what depends on what and how to update things that are out of date.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/make-novice/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/lesson.js"></script>
+
+  </body>
+</html>

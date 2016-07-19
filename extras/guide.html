@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:34:48 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/make-novice">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/make-novice/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make: Instructor's Guide</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/make-novice/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/make-novice/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/make-novice/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/make-novice/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/01-intro/">Introduction</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/06-variables/">Variables</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/07-functions/">Functions</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/make-novice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/make-novice/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/make-novice/extras/guide.html">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/make-novice/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1 class="maintitle"><a href="/swc-releases/2016.06/make-novice/">Automation and Make</a>: Instructor's Guide</h1>
+
+<p>Make is a popular tool for automating the building of software -
+compiling source code into executable programs.</p>
+
+<p>Though Make is nearly 40 years old, and there are many other build
+tools available, its fundamental concepts are common across build
+tools.</p>
+
+<p>Today, researchers working with legacy codes in C or FORTRAN, which
+are very common in high-performance computing, will, very likely
+encounter Make.</p>
+
+<p>Researchers are also finding Make of use in implementing reproducible
+research workflows, automating data analysis and visualization (using
+Python or R) and combining tables and plots with text to produce
+reports and papers for publication.</p>
+
+<h2 id="overall">Overall</h2>
+
+<p>The overall lesson can be done in a 2 hour slot.</p>
+
+<p>Solutions for challenges are used in subsequent topics.</p>
+
+<p>A number of example Makefiles, including sample solutions to
+challenges, are in <code class="highlighter-rouge">code/samples</code> and are identified below.</p>
+
+<h2 id="setting-up-make">Setting up Make</h2>
+
+<p>Recommend instructors and students use <code class="highlighter-rouge">nano</code> as the text editor for
+this lesson because</p>
+
+<ul>
+  <li>it runs in all three major operating systems,</li>
+  <li>it runs inside the shell (switching windows can be confusing to
+students), and</li>
+  <li>it has shortcut help at the bottom of the window.</li>
+</ul>
+
+<p>Please point out to students during setup that they can and should use
+another text editor if they’re already familiar with it.</p>
+
+<p>Instructors and students should use two shell windows: one for running
+nano, and one for running Make.</p>
+
+<p>Check that all attendees have Make installed and that it runs
+correctly, before beginning the session.</p>
+
+<h2 id="code-and-data-files">Code and Data Files</h2>
+
+<p>Python scripts to be invoked by Make are in <code class="highlighter-rouge">code/</code>.</p>
+
+<p>Data files are in <code class="highlighter-rouge">data/books</code>.</p>
+
+<p>You can either create a simple Git repository for students to clone
+which contains:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">wordcount.py</code></li>
+  <li><code class="highlighter-rouge">plotcount.py</code></li>
+  <li><code class="highlighter-rouge">zipf_test.py</code></li>
+  <li><code class="highlighter-rouge">books/</code></li>
+</ul>
+
+<p>Or, ask students to download
+<a href="/swc-releases/2016.06/make-novice/files/make-lesson.zip">make-lesson.zip</a> from this repository.</p>
+
+<p>To recreate <code class="highlighter-rouge">make-lesson.zip</code>, run:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make make-lesson.zip
+</code></pre>
+</div>
+
+<h2 id="beware-of-spaces">Beware of Spaces!</h2>
+
+<p>The single most commonly occurring problem will be students using
+spaces instead of TABs when intending actions.</p>
+
+<h2 id="makefile-dependency-images">Makefile Dependency Images</h2>
+
+<p>Some of these pages use images of Makefile dependencies, in the <a href="/swc-releases/2016.06/make-novice/fig/">fig</a> directory.</p>
+
+<p>These are created using <a href="https://github.com/lindenb/makefile2graph">makefile2graph</a>,
+which is assumed to be in the <code class="highlighter-rouge">PATH</code>.
+This tool, in turn, needs the <code class="highlighter-rouge">dot</code> tool, part of <a href="http://www.graphviz.org/">GraphViz</a>.</p>
+
+<p>To install GraphViz on Scientific Linux 6:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ sudo yum install graphviz
+$ dot -V
+</code></pre>
+</div>
+<div class="output highlighter-rouge"><pre class="highlight"><code>dot - graphviz version 2.26.0 (20091210.2329)
+</code></pre>
+</div>
+
+<p>To install GraphViz on Ubuntu 14.04.3 and 15.10:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install graphviz
+$ dot -V
+</code></pre>
+</div>
+<div class="output highlighter-rouge"><pre class="highlight"><code>dot - graphviz version 2.38.0 (20140413.2041)
+</code></pre>
+</div>
+
+<p>To download and build makefile2graph on Linux:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ cd
+$ git clone https://github.com/lindenb/makefile2graph
+$ cd makefile2graph/
+$ make
+$ export PATH=~/makefile2graph/:$PATH
+$ cd
+$ which makefile2graph
+</code></pre>
+</div>
+<div class="output highlighter-rouge"><pre class="highlight"><code>/home/ubuntu/makefile2graph/makefile2graph
+</code></pre>
+</div>
+
+<p>To create the image files for the lesson:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make figures
+</code></pre>
+</div>
+
+<p>See <code class="highlighter-rouge">commands.mk</code>’s <code class="highlighter-rouge">diagrams</code> target.</p>
+
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/make-novice/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/make-novice/assets/js/lesson.js"></script>
+
+  </body>
+</html>
