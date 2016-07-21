@@ -54,7 +54,7 @@ papers.
 
 The following figure shows the dependencies involved in building the `all` target, once we've added support for images:
 
-![results.txt dependencies once images have been added]({{ site.github.url }}/fig/09-conclusion-challenge-1.png "results.txt dependencies once images have been added")
+![results.txt dependencies once images have been added](../fig/09-conclusion-challenge-1.png "results.txt dependencies once images have been added")
 
 > ## Creating an Archive
 >

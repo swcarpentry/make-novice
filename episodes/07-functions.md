@@ -84,7 +84,7 @@ The following figure shows the dependencies embodied within our Makefile,
 involved in building the `results.txt` target,
 once we have introduced our function:
 
-![results.txt dependencies after introducing a function]({{ site.github.url }}/fig/07-functions.png "results.txt dependencies after introducing a function")
+![results.txt dependencies after introducing a function](../fig/07-functions.png "results.txt dependencies after introducing a function")
 
 `patsubst` ('pattern substitution') takes a pattern, a replacement string and a
 list of names in that order; each name in the list that matches the pattern is
