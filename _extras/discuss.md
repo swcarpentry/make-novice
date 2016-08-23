@@ -48,6 +48,31 @@ For a detailed explanation, see:
 * StackOverflow [Makefile variable assignment][makefile-variable]
 * GNU Make [The Two Flavors of Variables][gnu-make-variables]
 
+## Make and Version Control
+
+Like any other scripts, 
+Makefiles can be managed using a version control system like Git or Mercurial.
+For this management,
+it is desirable to track all changes except those that alter the configuration only.
+For instance, 
+let's say we'd like to run the workflow developed in this lesson for three different word counting scripts,
+in order to compare their speed (e.g. `wordcount.py`, `wordcount2.py`, `wordcount3.py`).
+To do this, 
+we could edit `config.mk` directly by replacing `COUNT_SRC=wordcount.py` with `COUNT_SRC=wordcount2.py`,
+but this would be detected as a change by the version control system.
+An alternative approach is to leave `config.mk` untouched by overwriting the value of `COUNT_SRC` 
+at the command line instead:
+
+~~~
+$ make variable COUNT_SRC=wordcount2.py
+~~~
+{: .bash}
+
+The configuration file then simply contains the default values for the workflow, 
+and by overwriting the defaults at the command line you can avoid cluttering your 
+version control history with configuration changes.
+
+
 ## Make and Reproducible Research
 
 Blog articles, papers, and tutorials on automating commonly
