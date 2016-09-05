@@ -1,5 +1,6 @@
 ---
 layout: lesson
+root: .
 ---
 
 Make is a tool which can run commands to read files, process these

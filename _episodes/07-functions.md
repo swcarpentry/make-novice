@@ -35,7 +35,7 @@ clean :
 ~~~
 {: .make}
 
-Make has many [functions]({{ site.github.url }}/reference/#function) which can be used to
+Make has many [functions]({{ page.root }}/reference/#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
@@ -253,7 +253,7 @@ ZIPF_EXE=python $(ZIPF_SRC)
 
 > ## Where We Are
 >
-> [This Makefile]({{ site.github.url }}/code/07-functions/Makefile)
-> and [its accompanying `config.mk`]({{ site.github.url }}/code/07-functions/config.mk)
+> [This Makefile]({{ page.root }}/code/07-functions/Makefile)
+> and [its accompanying `config.mk`]({{ page.root }}/code/07-functions/config.mk)
 > contain all of our work so far.
 {: .callout}

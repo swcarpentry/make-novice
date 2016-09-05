@@ -34,7 +34,7 @@ papers.
 >   `results.txt`).
 >
 > Finally, many Makefiles define a default [phony
-> target]({{ site.github.url }}/reference/#phony-target) called `all` as first target,
+> target]({{ page.root }}/reference/#phony-target) called `all` as first target,
 > that will build what the Makefile has been written to build (e.g. in
 > our case, the `.png` files and the `results.txt` file). As others
 > may assume your Makefile confirms to convention and supports an
@@ -46,8 +46,8 @@ papers.
 > Makefile, in this case your new `all` target.
 >
 > > ## Solution
-> > [This Makefile]({{ site.github.url }}/code/09-conclusion-challenge-1/Makefile)
-> > and [this `config.mk`]({{ site.github.url }}/code/09-conclusion-challenge-1/config.mk)
+> > [This Makefile]({{ page.root }}/code/09-conclusion-challenge-1/Makefile)
+> > and [this `config.mk`]({{ page.root }}/code/09-conclusion-challenge-1/config.mk)
 > > contain a solution to this challenge.
 > {: .solution}
 {: .challenge}
@@ -78,8 +78,8 @@ The following figure shows the dependencies involved in building the `all` targe
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
 > > ## Solution
-> > [This Makefile]({{ site.github.url }}/code/09-conclusion-challenge-2/Makefile)
-> > and [this `config.mk`]({{ site.github.url }}/code/09-conclusion-challenge-2/config.mk)
+> > [This Makefile]({{ page.root }}/code/09-conclusion-challenge-2/Makefile)
+> > and [this `config.mk`]({{ page.root }}/code/09-conclusion-challenge-2/config.mk)
 > > contain a solution to this challenge.
 > {: .solution}
 {: .challenge}

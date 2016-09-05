@@ -78,7 +78,7 @@ results.txt : isles.dat abyss.dat last.dat
 ~~~
 {: .make}
 
-`$@` is a Make [automatic variable]({{ site.github.url }}/reference/#automatic-variable)
+`$@` is a Make [automatic variable]({{ page.root }}/reference/#automatic-variable)
 which means 'the target of the current rule'. When Make is run it will
 replace this variable with the target name.
 
@@ -220,11 +220,11 @@ first dependency of the current rule'.
 > Rewrite each `.dat` rule to use the automatic variables `$@` ('the
 > target of the current rule') and `$<` ('the first dependency of the
 > current rule').
-> [This file]({{ site.github.url }}/code/03-variables/Makefile) contains
+> [This file]({{ page.root }}/code/03-variables/Makefile) contains
 > the Makefile immediately before the challenge.
 >
 > > ## Solution
-> > See [this file]({{ site.github.url }}/code/03-variables-challenge/Makefile)
+> > See [this file]({{ page.root }}/code/03-variables-challenge/Makefile)
 > > for a solution to this challenge.
 > {: .solution}
 {: .challenge}

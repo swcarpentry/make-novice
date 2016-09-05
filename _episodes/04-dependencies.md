@@ -99,7 +99,7 @@ Makefile, involved in building the `results.txt` target, after adding
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `wordcount.py` would introduce a [false
-> dependency]({{ site.github.url }}/reference/#false-dependency).
+> dependency]({{ page.root }}/reference/#false-dependency).
 {: .callout}
 
 Intuitively, we should also add `wordcount.py` as dependency for
@@ -212,6 +212,6 @@ results.txt : *.dat zipf_test.py
 
 > ## Where We Are
 >
-> [This Makefile]({{ site.github.url }}/code/04-dependencies/Makefile)
+> [This Makefile]({{ page.root }}/code/04-dependencies/Makefile)
 > contains everything done so far in this topic.
 {: .callout}

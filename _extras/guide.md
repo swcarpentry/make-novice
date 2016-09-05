@@ -138,4 +138,4 @@ See `commands.mk`'s `diagrams` target.
 [graphviz]: http://www.graphviz.org/
 [lesson-example]: https://github.com/swcarpentry/lesson-example/
 [makefile2graph]: https://github.com/lindenb/makefile2graph
-[zipfile]: {{ site.github.url }}/files/make-lesson.zip
+[zipfile]: {{ page.root }}/files/make-lesson.zip
