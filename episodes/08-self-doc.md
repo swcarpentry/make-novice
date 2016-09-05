@@ -124,8 +124,8 @@ them for us.
 
 > ## Where We Are
 >
-> [This Makefile]({{ site.github.url }}/code/08-self-doc/Makefile)
-> and [its accompanying `config.mk`]({{ site.github.url }}/code/08-self-doc/config.mk)
+> [This Makefile]({{ page.root }}/code/08-self-doc/Makefile)
+> and [its accompanying `config.mk`]({{ page.root }}/code/08-self-doc/config.mk)
 > contain all of our work so far.
 {: .callout}
 
