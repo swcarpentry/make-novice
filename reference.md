@@ -243,6 +243,7 @@ Default targets:
 
 ## Glossary
 
+{:auto_ids}
 action
 :   The steps a [build manager](#build-manager) must take to create or
     update a file or other object.
