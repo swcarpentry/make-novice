@@ -28,4 +28,20 @@ You need to download some files to follow this lesson:
    ~~~
    {: .source}
 
+You also need to have the following software installed on your computer to
+follow this lesson:
+
+1. Python.  Searching on *installing python*
+   yields <https://wiki.python.org/moin/BeginnersGuide/Download> which
+   provides suggestions for windows, OS X, and several Linux
+   distributions.
+
+2. Numpy.  See <http://scipy.org/install.html>
+
+3. Matplotlib.  See <http://matplotlib.org/users/installing.html>
+
+Alternatively, you can use
+anaconda <https://docs.continuum.io/anaconda/> to install all of the
+necessary software without administrator privileges.
+
 [zip-file]: {{ page.root }}/files/make-lesson.zip
