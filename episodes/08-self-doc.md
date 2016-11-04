@@ -51,7 +51,7 @@ The bash shell can help us here. It provides a command called
 [sed][sed-docs] which stands for 'stream editor'. `sed` reads in some
 text, does some filtering, and writes out the filtered text.
 
-So, we could write comments for our rules, and mark then up in a way
+So, we could write comments for our rules, and mark them up in a way
 which `sed` can detect. Since Make uses `#` for comments, we can use
 `##` for comments that describe what a rule does and that we want
 `sed` to detect. For example:
