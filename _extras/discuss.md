@@ -48,6 +48,34 @@ For a detailed explanation, see:
 * StackOverflow [Makefile variable assignment][makefile-variable]
 * GNU Make [The Two Flavors of Variables][gnu-make-variables]
 
+## Make and Version Control
+
+Imagine that we manage our Makefiles using a version control 
+system such as Git.
+
+Let's say we'd like to run the workflow developed in this lesson
+for three different word counting scripts, in order to compare their
+speed (e.g. `wordcount.py`, `wordcount2.py`, `wordcount3.py`).
+
+To do this we could edit `config.mk` each time by replacing
+`COUNT_SRC=wordcount.py` with `COUNT_SRC=wordcount2.py` or
+`COUNT_SRC=wordcount3.py`,
+but this would be detected as a change by the version control system.
+This is a minor configuration change, rather than a change to the 
+workflow, and so we probably would rather avoid committing this change
+to our repository each time we decide to test a different counting script.
+
+An alternative is to leave `config.mk` untouched, by overwriting the value 
+of `COUNT_SRC` at the command line instead:
+
+```
+$ make variables COUNT_SRC=wordcount2.py
+```
+
+The configuration file then simply contains the default values for the 
+workflow, and by overwriting the defaults at the command line you can
+maintain a neater and more meaningful version control history.
+
 ## Make and Reproducible Research
 
 Blog articles, papers, and tutorials on automating commonly
