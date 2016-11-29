@@ -89,11 +89,20 @@ python wordcount.py books/last.txt last.dat
 ~~~
 {: .output}
 
+Similarly, we should add the `zipf_test.py` script as dependency to the rule for `results.txt`:
+
+~~~
+# Generate summary table.
+results.txt : *.dat zipf_test.py
+        python zipf_test.py $^ > $@
+~~~
+{: .make}
+
 The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
-`wordcount.py` as a dependency to the `.dat` files:
+`wordcount.py` and `zipf_test.py` as dependencies to their respective target files:
 
-![results.txt dependencies after adding wordcount.py as a dependency](../fig/04-dependencies.png "results.txt dependencies after adding wordcount.py as a dependency")
+![results.txt dependencies after adding wordcount.py and zipf_test.py as dependencies](../fig/04-dependencies.png "results.txt dependencies after adding wordcount.py and zipf_test.py as dependencies")
 
 > ## Why Don't the `.txt` Files Depend on `wordcount.py`?
 >
