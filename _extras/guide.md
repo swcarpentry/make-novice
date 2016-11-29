@@ -29,6 +29,8 @@ Solutions for challenges are used in subsequent topics.
 A number of example Makefiles, including sample solutions to
 challenges, are in `code/samples` and are identified below.
 
+It can be useful to use two windows during the lesson, one with the terminal where you run the `make` commands, the other with the Makefile opened in a text editor all the time. This makes it possible to refer to the Makefile while explaining the output from the commandline, for example. Make sure, though, that the text in both windows is readable from the back of the room.
+
 ## Setting up Make
 
 Recommend instructors and students use `nano` as the text editor for
