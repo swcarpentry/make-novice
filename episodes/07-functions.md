@@ -257,3 +257,22 @@ ZIPF_EXE=python $(ZIPF_SRC)
 > and [its accompanying `config.mk`]({{ page.root }}/code/07-functions/config.mk)
 > contain all of our work so far.
 {: .callout}
+
+> ## Adding more books
+>
+> We can now do a better job at testing Zipf's rule by adding more books. 
+> The books we have used come from the [Project Gutenberg](http://www.gutenberg.org/) website.
+> Project Gutenberg offers thousands of free ebooks to download.
+>
+>  **Exercise instructions:**
+>
+> * go to [Project Gutenberg](http://www.gutenberg.org/) and use the search box to find another book, 
+> for example ['The Picture of Dorian Gray'](https://www.gutenberg.org/ebooks/174) from Oscar Wilde.
+> * download the 'Plain Text UTF-8' version and save it to the `books` folder; 
+> choose a short name for the file (**that doesn't include spaces**) e.g. "dorian_gray.txt" 
+> because the filename is going to be used in the `results.txt` file
+> * optionally, open the file in a text editor and remove extraneous text at the beginning and end 
+> (look for the phrase `End of Project Gutenberg's [title], by [author]`
+> * now run `make` and check that the correct commands are run, given the dependency tree
+>
+{: .challenge}
