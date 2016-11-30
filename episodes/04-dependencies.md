@@ -98,6 +98,20 @@ results.txt : *.dat zipf_test.py
 ~~~
 {: .make}
 
+> ## Dry run
+>
+> `make` can show the commands it will execute without actually running them if we pass the `-n` flag:
+>
+> ~~~
+> $ touch wordcount.py
+> $ make -n dats
+> ~~~
+> {: .bash}
+>
+> This gives the same output to the screen as without the `-n` flag, but the commands are not actually run. Using this 'dry-run' mode is a good way to check that you have set up your Makefile properly before actually running the commands in it.
+>
+{: .callout}
+
 The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
 `wordcount.py` and `zipf_test.py` as dependencies to their respective target files:
