@@ -131,7 +131,7 @@ $ which makefile2graph
 To create the image files for the lesson:
 
 ~~~
-$ make figures
+$ make diagrams
 ~~~
 {: .bash}
 
