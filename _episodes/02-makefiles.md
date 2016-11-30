@@ -175,34 +175,6 @@ that, either directly or indirectly, depend on the file that
 changed. This is called an [incremental
 build]({{ page.root }}/reference/#incremental-build).
 
-> ## "Up to Date" Versus "Nothing to be Done"
->
-> If we ask Make to build a file that already exists and is up to
-> date, then Make informs us that:
->
-> ~~~
-> make: `isles.dat' is up to date.
-> ~~~
-> {: .output}
->
-> If we ask Make to build a file that exists but for which there is
-> no rule in our Makefile, then we get message like:
->
-> ~~~
-> $ make wordcount.py
-> ~~~
-> {: .bash}
->
-> ~~~
-> make: Nothing to be done for `wordcount.py'.
-> ~~~
-> {: .output}
->
-> `up to date` means that the Makefile has a rule for the file and
-> the file is up to date whereas `Nothing to be done` means that
-> the file exists but the Makefile has no rule for it.
-{: .callout}
-
 > ## Makefiles as Documentation
 >
 > By explicitly recording the inputs to and outputs from steps in our
@@ -249,6 +221,35 @@ Now, we get:
 python wordcount.py books/abyss.txt abyss.dat
 ~~~
 {: .output}
+
+> ## "Up to Date" Versus "Nothing to be Done"
+>
+> If we ask Make to build a file that already exists and is up to
+> date, then Make informs us that:
+>
+> ~~~
+> make: `isles.dat' is up to date.
+> ~~~
+> {: .output}
+>
+> If we ask Make to build a file that exists but for which there is
+> no rule in our Makefile, then we get message like:
+>
+> ~~~
+> $ make wordcount.py
+> ~~~
+> {: .bash}
+>
+> ~~~
+> make: Nothing to be done for `wordcount.py'.
+> ~~~
+> {: .output}
+>
+> `up to date` means that the Makefile has a rule for the file and
+> the file is up to date whereas `Nothing to be done` means that
+> the file exists but the Makefile has no rule for it.
+{: .callout}
+
 
 We may want to remove all our data files so we can explicitly recreate
 them all. We can introduce a new target, and associated rule, to do
