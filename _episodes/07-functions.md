@@ -272,7 +272,7 @@ ZIPF_EXE=python $(ZIPF_SRC)
 > choose a short name for the file (**that doesn't include spaces**) e.g. "dorian_gray.txt" 
 > because the filename is going to be used in the `results.txt` file
 > * optionally, open the file in a text editor and remove extraneous text at the beginning and end 
-> (look for the phrase `End of Project Gutenberg's [title], by [author]`
-> * now run `make` and check that the correct commands are run, given the dependency tree
->
+> (look for the phrase `End of Project Gutenberg's [title], by [author]`)
+> * run `make` and check that the correct commands are run, given the dependency tree
+> * check the results.txt file to see how this book compares to the others
 {: .challenge}
