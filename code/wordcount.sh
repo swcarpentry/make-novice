@@ -5,7 +5,11 @@ outputfile=$2
 min_count=$3
 
 # Clean and normalize the input
-cat $inputfile | sed 's/[\.,;:?$@^<>#%`!*-=()[{}\/\"]/\ /g' | sed 's/]/\ /g' | sed s/\'/\ /g | tr "[:upper:]" "[:lower:]" > clean.txt
+cat $inputfile \
+    | tr "[:punct:]" " " \
+    | tr "[:upper:]" "[:lower:]" \
+    > clean.txt
+
 # Create a working temporary directory
 mkdir tmp
 
