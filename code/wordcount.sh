@@ -13,11 +13,12 @@ cat $inputfile \
 # Create a working temporary directory
 mkdir tmp
 
+# Total number of words
+total=`wc -w clean.txt | awk '{print $1}'`
+
 # Counts the occurence of each word
-total=0
 for word in `cat clean.txt`
     do echo '.' >> tmp/$word
-    total=$(($total + 1))
 done
 
 # Collects the counting into one table and calculate the percentage
