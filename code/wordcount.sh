@@ -2,7 +2,13 @@
 
 inputfile=$1
 outputfile=$2
-min_count=$3
+
+if [ ! -z $3 ]
+then
+    min_count=$3
+else
+    min_count=1
+fi
 
 # Clean and normalize the input, one word per line, sorted.
 cat $inputfile \
