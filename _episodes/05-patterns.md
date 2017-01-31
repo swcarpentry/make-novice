@@ -64,7 +64,7 @@ Our Makefile is now much shorter and cleaner:
 ~~~
 # Generate summary table.
 results.txt : *.dat zipf_test.py
-	    python zipf_test.py *.dat > $@
+	    python zipf_test.py $< > $@
 
 # Count words.
 .PHONY : dats

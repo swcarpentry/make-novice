@@ -89,15 +89,6 @@ python wordcount.py books/last.txt last.dat
 ~~~
 {: .output}
 
-Similarly, we should add the `zipf_test.py` script as dependency to the rule for `results.txt`:
-
-~~~
-# Generate summary table.
-results.txt : *.dat zipf_test.py
-        python zipf_test.py $^ > $@
-~~~
-{: .make}
-
 > ## Dry run
 >
 > `make` can show the commands it will execute without actually running them if we pass the `-n` flag:
@@ -225,11 +216,12 @@ downstream steps.
 
 We still have to add the `zipf-test.py` script as dependency to
 `results.txt`. Given the answer to the challenge above, we cannot use
-`$^` for the rule. We'll go back to using `*.dat`:
+`$^` for the rule. Instead we can use  `$<` to refer to the first dependency
+i.e. *.dat :
 
 ~~~
 results.txt : *.dat zipf_test.py
-        python zipf_test.py *.dat > $@
+        python zipf_test.py $< > $@
 ~~~
 {: .make}
 

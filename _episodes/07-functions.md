@@ -19,7 +19,7 @@ include config.mk
 
 # Generate summary table.
 results.txt : *.dat $(ZIPF_SRC)
-        $(ZIPF_EXE) *.dat > $@
+        $(ZIPF_EXE) $< > $@
 
 # Count words.
 .PHONY : dats
@@ -156,13 +156,20 @@ python wordcount.py books/sierra.txt sierra.dat
 ~~~
 {: .output}
 
-We can also rewrite `results.txt`:
+We can also rewrite `results.txt`: 
 
 ~~~
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-        $(ZIPF_EXE) *.dat > $@
+        $(ZIPF_EXE) $(DAT_FILES) > $@
 ~~~
 {: .make}
+
+**Note that `$(DAT_FILES)` will get expanded by Make, and recall that `$<`
+refers to the first dependency.**
+Previously our first dependency was `*.dat` which was expanded by bash.
+Now that we are using the variable `DAT_FILES` as a dependency,
+we need to update our action command accordingly, because `$<` would refer
+only to the first of the `DAT_FILES`.
 
 If we re-run Make:
 
@@ -179,7 +186,7 @@ python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat
-python zipf_test.py *.dat > results.txt
+python zipf_test.py  last.dat  isles.dat  abyss.dat  sierra.dat > results.txt
 ~~~
 {: .output}
 
@@ -217,7 +224,7 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) *.dat > $@
+	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 # Count words.
 .PHONY : dats
