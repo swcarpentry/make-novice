@@ -13,7 +13,7 @@ keypoints:
 - "Use `$<` to refer to the first dependency of the current rule."
 ---
 
-After the exercise at the end of the previous part, our Makefile look like this:
+After the exercise at the end of the previous episode, our Makefile looked like this:
 
 ~~~
 # Generate summary table.
@@ -51,7 +51,7 @@ Makefile but forget to rename it elsewhere.
 > In many programming languages, the bulk of the language features are
 > there to allow the programmer to describe long-winded computational
 > routines as short, expressive, beautiful code.  Features in Python
-> or R or Java like user-defined variables and functions are useful in
+> or R or Java, such as user-defined variables and functions are useful in
 > part because they mean we don't have to write out (or think about)
 > all of the details over and over again.  This good habit of writing
 > things out only once is known as the "Don't Repeat Yourself"
