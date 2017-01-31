@@ -2,7 +2,7 @@ include config.mk
 
 # Generate summary table.
 results.txt : *.dat $(ZIPF_SRC)
-	$(ZIPF_EXE) *.dat > $@
+	$(ZIPF_EXE) $< > $@
 
 # Count words.
 .PHONY : dats
