@@ -77,6 +77,7 @@ The following figure shows the dependencies involved in building the `all` targe
 >   clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
+> 
 > > ## Solution
 > > [This Makefile]({{ page.root }}/code/09-conclusion-challenge-2/Makefile)
 > > and [this `config.mk`]({{ page.root }}/code/09-conclusion-challenge-2/config.mk)
