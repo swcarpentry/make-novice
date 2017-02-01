@@ -10,7 +10,7 @@ all : results.txt $(PNG_FILES)
 
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) *.dat > $@
+	$(ZIPF_EXE) $< > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
