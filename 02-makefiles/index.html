@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-02-08 23:51:23 +0100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.02/make-novice">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make: Makefiles</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li><a href="../reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-intro/">Introduction</a></li>
+            
+            <li><a href="../02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="../03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="../04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="../05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="../06-variables/">Variables</a></li>
+            
+            <li><a href="../07-functions/">Functions</a></li>
+            
+            <li><a href="../08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="../09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../01-intro/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+    <h3 class="maintitle"><a href="../">Automation and Make</a></h3>
+    <h1 class="maintitle">Makefiles</h1>
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../03-variables/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 15 min
+      <br/>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How do I write a simple Makefile?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Recognize the key parts of a Makefile, rules, targets, dependencies and actions.</p>
+</li>
+	
+	<li><p>Write a simple Makefile.</p>
+</li>
+	
+	<li><p>Run Make from the shell.</p>
+</li>
+	
+	<li><p>Explain when and why to mark targets as <code class="highlighter-rouge">.PHONY</code>.</p>
+</li>
+	
+	<li><p>Explain constraints on dependencies.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>Create a file, called <code class="highlighter-rouge">Makefile</code>, with the following content:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code># Count words.
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
+</code></pre>
+</div>
+
+<p>This is a <a href="../reference/#build-file">build file</a>, which for
+Make is called a <a href="../reference/#makefile">Makefile</a> - a file executed
+by Make. Note how it resembles one of the lines from our shell script.</p>
+
+<p>Let us go through each line in turn:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">#</code> denotes a <em>comment</em>. Any text from <code class="highlighter-rouge">#</code> to the end of the line is
+ignored by Make.</li>
+  <li><code class="highlighter-rouge">isles.dat</code> is a <a href="../reference/#target">target</a>, a file to be
+created, or built.</li>
+  <li><code class="highlighter-rouge">books/isles.txt</code> is a <a href="../reference/#dependency">dependency</a>, a
+file that is needed to build or update the target. Targets can have
+zero or more dependencies.</li>
+  <li>A colon, <code class="highlighter-rouge">:</code>, separates targets from dependencies.</li>
+  <li><code class="highlighter-rouge">python wordcount.py books/isles.txt isles.dat</code> is an
+<a href="../reference/#action">action</a>, a command to run to build or update
+the target using the dependencies. Targets can have zero or more
+actions. These actions form a recipe to build the target
+from its dependencies and can be considered to be
+a shell script.</li>
+  <li>Actions are indented using a single TAB character, <em>not</em> 8 spaces. This
+is a legacy of Make’s 1970’s origins. If the difference between
+spaces and a TAB character isn’t obvious in your editor, try moving
+your cursor from one side of the TAB to the other. It should jump
+four or more spaces.</li>
+  <li>Together, the target, dependencies, and actions form a
+a <a href="../reference/#rule">rule</a>.</li>
+</ul>
+
+<p>Our rule above describes how to build the target <code class="highlighter-rouge">isles.dat</code> using the
+action <code class="highlighter-rouge">python wordcount.py</code> and the dependency <code class="highlighter-rouge">books/isles.txt</code>.</p>
+
+<p>Information that was implicit in our shell script - that we are
+generating a file called <code class="highlighter-rouge">isles.dat</code> and that creating this file
+requires <code class="highlighter-rouge">books/isles.txt</code> - is now made explicit by Make’s syntax.</p>
+
+<p>Let’s first sure we start from scratch and delete the <code class="highlighter-rouge">.dat</code> and <code class="highlighter-rouge">.png</code>
+files we created earlier:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ rm *.dat *.png
+</code></pre>
+</div>
+
+<p>By default, Make looks for a Makefile, called <code class="highlighter-rouge">Makefile</code>, and we can
+run Make as follows:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make
+</code></pre>
+</div>
+
+<p>By default, Make prints out the actions it executes:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>python wordcount.py books/isles.txt isles.dat
+</code></pre>
+</div>
+
+<p>If we see,</p>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Makefile:3: *** missing separator.  Stop.
+</code></pre>
+</div>
+
+<p>then we have used a space instead of a TAB characters to indent one of
+our actions.</p>
+
+<p>Let’s see if we got what we expected.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>head -5 isles.dat
+</code></pre>
+</div>
+
+<p>The first 5 lines of <code class="highlighter-rouge">isles.dat</code> should look exactly like before.</p>
+
+<blockquote class="callout">
+  <h2 id="makefiles-do-not-have-to-be-called-makefile">Makefiles Do Not Have to be Called <code class="highlighter-rouge">Makefile</code></h2>
+
+  <p>We don’t have to call our Makefile <code class="highlighter-rouge">Makefile</code>. However, if we call it
+something else we need to tell Make where to find it. This we can do
+using <code class="highlighter-rouge">-f</code> flag. For example, if our Makefile is named <code class="highlighter-rouge">MyOtherMakefile</code>:</p>
+
+  <div class="bash highlighter-rouge"><pre class="highlight"><code>$ make -f MyOtherMakefile
+</code></pre>
+  </div>
+
+  <p>Sometimes, the suffix <code class="highlighter-rouge">.mk</code> will be used to identify Makefiles that
+are not called <code class="highlighter-rouge">Makefile</code> e.g. <code class="highlighter-rouge">install.mk</code>, <code class="highlighter-rouge">common.mk</code> etc.</p>
+</blockquote>
+
+<p>When we re-run our Makefile, Make now informs us that:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>make: `isles.dat' is up to date.
+</code></pre>
+</div>
+
+<p>This is because our target, <code class="highlighter-rouge">isles.dat</code>, has now been created, and
+Make will not create it again. To see how this works, let’s pretend to
+update one of the text files. Rather than opening the file in an
+editor, we can use the shell <code class="highlighter-rouge">touch</code> command to update its timestamp
+(which would happen if we did edit the file):</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ touch books/isles.txt
+</code></pre>
+</div>
+
+<p>If we compare the timestamps of <code class="highlighter-rouge">books/isles.txt</code> and <code class="highlighter-rouge">isles.dat</code>,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ ls -l books/isles.txt isles.dat
+</code></pre>
+</div>
+
+<p>then we see that <code class="highlighter-rouge">isles.dat</code>, the target, is now older
+than<code class="highlighter-rouge">books/isles.txt</code>, its dependency:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>-rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
+-rw-r--r--    1 mjj      Administ   182273 Jun 12 09:58 isles.dat
+</code></pre>
+</div>
+
+<p>If we run Make again,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make
+</code></pre>
+</div>
+
+<p>then it recreates <code class="highlighter-rouge">isles.dat</code>:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>python wordcount.py books/isles.txt isles.dat
+</code></pre>
+</div>
+
+<p>When it is asked to build a target, Make checks the ‘last modification
+time’ of both the target and its dependencies. If any dependency has
+been updated since the target, then the actions are re-run to update
+the target. Using this approach, Make knows to only rebuild the files
+that, either directly or indirectly, depend on the file that
+changed. This is called an <a href="../reference/#incremental-build">incremental
+build</a>.</p>
+
+<blockquote class="callout">
+  <h2 id="makefiles-as-documentation">Makefiles as Documentation</h2>
+
+  <p>By explicitly recording the inputs to and outputs from steps in our
+analysis and the dependencies between files, Makefiles act as a type
+of documentation, reducing the number of things we have to remember.</p>
+</blockquote>
+
+<p>Let’s add another rule to the end of <code class="highlighter-rouge">Makefile</code>:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
+</code></pre>
+</div>
+
+<p>If we run Make,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make
+</code></pre>
+</div>
+
+<p>then we get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>make: `isles.dat' is up to date.
+</code></pre>
+</div>
+
+<p>Nothing happens because Make attempts to build the first target it
+finds in the Makefile, the <a href="../reference/#default-target">default
+target</a>, which is <code class="highlighter-rouge">isles.dat</code> which is
+already up-to-date. We need to explicitly tell Make we want to build
+<code class="highlighter-rouge">abyss.dat</code>:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make abyss.dat
+</code></pre>
+</div>
+
+<p>Now, we get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>python wordcount.py books/abyss.txt abyss.dat
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="up-to-date-versus-nothing-to-be-done">“Up to Date” Versus “Nothing to be Done”</h2>
+
+  <p>If we ask Make to build a file that already exists and is up to
+date, then Make informs us that:</p>
+
+  <div class="output highlighter-rouge"><pre class="highlight"><code>make: `isles.dat' is up to date.
+</code></pre>
+  </div>
+
+  <p>If we ask Make to build a file that exists but for which there is
+no rule in our Makefile, then we get message like:</p>
+
+  <div class="bash highlighter-rouge"><pre class="highlight"><code>$ make wordcount.py
+</code></pre>
+  </div>
+
+  <div class="output highlighter-rouge"><pre class="highlight"><code>make: Nothing to be done for `wordcount.py'.
+</code></pre>
+  </div>
+
+  <p><code class="highlighter-rouge">up to date</code> means that the Makefile has a rule for the file and
+the file is up to date whereas <code class="highlighter-rouge">Nothing to be done</code> means that
+the file exists but the Makefile has no rule for it.</p>
+</blockquote>
+
+<p>We may want to remove all our data files so we can explicitly recreate
+them all. We can introduce a new target, and associated rule, to do
+this. We will call it <code class="highlighter-rouge">clean</code>, as this is a common name for rules that
+delete auto-generated files, like our <code class="highlighter-rouge">.dat</code> files:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>clean :
+        rm -f *.dat
+</code></pre>
+</div>
+
+<p>This is an example of a rule that has no dependencies. <code class="highlighter-rouge">clean</code> has no
+dependencies on any <code class="highlighter-rouge">.dat</code> file as it makes no sense to create these
+just to remove them. We just want to remove the data files whether or
+not they exist. If we run Make and specify this target,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make clean
+</code></pre>
+</div>
+
+<p>then we get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>rm -f *.dat
+</code></pre>
+</div>
+
+<p>There is no actual thing built called <code class="highlighter-rouge">clean</code>. Rather, it is a
+short-hand that we can use to execute a useful sequence of
+actions. Such targets, though very useful, can lead to problems. For
+example, let us recreate our data files, create a directory called
+<code class="highlighter-rouge">clean</code>, then run Make:</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make isles.dat abyss.dat
+$ mkdir clean
+$ make clean
+</code></pre>
+</div>
+
+<p>We get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>make: `clean' is up to date.
+</code></pre>
+</div>
+
+<p>Make finds a file (or directory) called <code class="highlighter-rouge">clean</code> and, as its <code class="highlighter-rouge">clean</code>
+rule has no dependencies, assumes that <code class="highlighter-rouge">clean</code> has been built and is
+up-to-date and so does not execute the rule’s actions. As we are using
+<code class="highlighter-rouge">clean</code> as a short-hand, we need to tell Make to always execute this
+rule if we run <code class="highlighter-rouge">make clean</code>, by telling Make that this is a
+<a href="../reference/#phony-target">phony target</a>, that it does not build
+anything. This we do by marking the target as <code class="highlighter-rouge">.PHONY</code>:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : clean
+clean :
+        rm -f *.dat
+</code></pre>
+</div>
+
+<p>If we run Make,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make clean
+</code></pre>
+</div>
+
+<p>then we get:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>rm -f *.dat
+</code></pre>
+</div>
+
+<p>We can add a similar command to create all the data files. We can put
+this at the top of our Makefile so that it is the <a href="../reference/#default-target">default
+target</a>, which is executed by default
+if no target is given to the <code class="highlighter-rouge">make</code> command:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code>.PHONY : dats
+dats : isles.dat abyss.dat
+</code></pre>
+</div>
+
+<p>This is an example of a rule that has dependencies that are targets of
+other rules. When Make runs, it will check to see if the dependencies
+exist and, if not, will see if rules are available that will create
+these. If such rules exist it will invoke these first, otherwise
+Make will raise an error.</p>
+
+<blockquote class="callout">
+  <h2 id="dependencies">Dependencies</h2>
+
+  <p>The order of rebuilding dependencies is arbitrary. You should not
+assume that they will be built in the order in which they are
+listed.</p>
+
+  <p>Dependencies must form a directed acyclic graph. A target cannot
+depend on a dependency which itself, or one of its dependencies,
+depends on that target.</p>
+</blockquote>
+
+<p>This rule is also an example of a rule that has no actions. It is used
+purely to trigger the build of its dependencies, if needed.</p>
+
+<p>If we run,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make dats
+</code></pre>
+</div>
+
+<p>then Make creates the data files:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>python wordcount.py books/isles.txt isles.dat
+python wordcount.py books/abyss.txt abyss.dat
+</code></pre>
+</div>
+
+<p>If we run <code class="highlighter-rouge">dats</code> again,</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make dats
+</code></pre>
+</div>
+
+<p>then Make sees that the data files exist:</p>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>make: Nothing to be done for `dats'.
+</code></pre>
+</div>
+
+<p>Our Makefile now looks like this:</p>
+
+<div class="make highlighter-rouge"><pre class="highlight"><code># Count words.
+.PHONY : dats
+dats : isles.dat abyss.dat
+
+isles.dat : books/isles.txt
+        python wordcount.py books/isles.txt isles.dat
+
+abyss.dat : books/abyss.txt
+        python wordcount.py books/abyss.txt abyss.dat
+
+.PHONY : clean
+clean :
+        rm -f *.dat
+</code></pre>
+</div>
+
+<p>The following figure shows a graph of the dependencies embodied within
+our Makefile, involved in building the <code class="highlighter-rouge">dats</code> target:</p>
+
+<p><img src="../fig/02-makefile.png" alt="Dependencies represented within the Makefile" title="Dependencies represented within the Makefile" /></p>
+
+<blockquote class="challenge">
+  <h2 id="write-two-new-rules">Write Two New Rules</h2>
+
+  <ol>
+    <li>Write a new rule for <code class="highlighter-rouge">last.dat</code>, created from <code class="highlighter-rouge">books/last.txt</code>.</li>
+    <li>Update the <code class="highlighter-rouge">dats</code> rule with this target.</li>
+    <li>Write a new rule for <code class="highlighter-rouge">results.txt</code>, which creates the summary
+table. The rule needs to:
+      <ul>
+        <li>Depend upon each of the three <code class="highlighter-rouge">.dat</code> files.</li>
+        <li>Invoke the action <code class="highlighter-rouge">python zipf_test.py abyss.dat isles.dat last.dat &gt; results.txt</code>.</li>
+      </ul>
+    </li>
+    <li>Put this rule at the top of the Makefile so that it is the default target.</li>
+    <li>Update <code class="highlighter-rouge">clean</code> so that it removes <code class="highlighter-rouge">results.txt</code>.</li>
+  </ol>
+
+  <p>The starting Makefile is <a href="../code/02-makefile/Makefile">here</a>.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+    <p>See <a href="../code/02-makefile-challenge/Makefile">this file</a> for a solution.</p>
+  </blockquote>
+</blockquote>
+
+<p>The following figure shows the dependencies embodied within our
+Makefile, involved in building the <code class="highlighter-rouge">results.txt</code> target:</p>
+
+<p><img src="../fig/02-makefile-challenge.png" alt="results.txt dependencies represented within the Makefile" title="results.txt dependencies represented within the Makefile" /></p>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use <code class="highlighter-rouge">#</code> for comments in Makefiles.</p>
+</li>
+    
+    <li><p>Write rules as <code class="highlighter-rouge">target: dependencies</code>.</p>
+</li>
+    
+    <li><p>Specify update actions in a tab-indented block under the rule.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">.PHONY</code> to mark targets that don’t correspond to files.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../01-intro/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../03-variables/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      <footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

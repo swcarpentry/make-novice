@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-02-08 23:51:23 +0100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.02/make-novice">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>Automation and Make: Discussion</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li><a href="../reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-intro/">Introduction</a></li>
+            
+            <li><a href="../02-makefiles/">Makefiles</a></li>
+            
+            <li><a href="../03-variables/">Automatic Variables</a></li>
+            
+            <li><a href="../04-dependencies/">Dependencies on Data and Code</a></li>
+            
+            <li><a href="../05-patterns/">Pattern Rules</a></li>
+            
+            <li><a href="../06-variables/">Variables</a></li>
+            
+            <li><a href="../07-functions/">Functions</a></li>
+            
+            <li><a href="../08-self-doc/">Self-Documenting Makefiles</a></li>
+            
+            <li><a href="../09-conclusion/">Conclusion</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../extras/discuss.html">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1 class="maintitle"><a href="../">Automation and Make</a>: Discussion</h1>
+
+<h2 id="parallel-execution">Parallel Execution</h2>
+
+<p>Make can build dependencies in <em>parallel</em> sub-processes, via its <code class="highlighter-rouge">--jobs</code>
+flag (or its <code class="highlighter-rouge">-j</code> abbreviation) which specifies the number of sub-processes to use e.g.</p>
+
+<div class="bash highlighter-rouge"><pre class="highlight"><code>$ make --jobs 4 results.txt
+</code></pre>
+</div>
+
+<p>If we have independent dependencies then these can be built at the
+same time. For example, <code class="highlighter-rouge">abyss.dat</code> and <code class="highlighter-rouge">isles.dat</code> are mutually
+independent and can both be built at the same time. Likewise for
+<code class="highlighter-rouge">abyss.png</code> and <code class="highlighter-rouge">isles.png</code>. If you’ve got a bunch of independent
+branches in your analysis, this can greatly speed up your build
+process.</p>
+
+<p>For more information see the GNU Make manual chapter on <a href="https://www.gnu.org/software/make/manual/html_node/Parallel.html">Parallel
+Execution</a>.</p>
+
+<h2 id="different-types-of-assignment">Different Types of Assignment</h2>
+
+<p>Some Makefiles may contain <code class="highlighter-rouge">:=</code> instead of <code class="highlighter-rouge">=</code>. Your Makefile may
+behave differently depending upon which you use and how you use it:</p>
+
+<ul>
+  <li>
+    <p>A variable defined using <code class="highlighter-rouge">=</code> is a <em>recursively expanded
+variable</em>. Its value is calculated only when its value is
+requested. If the value assigned to the variable itself contains
+variables (e.g. <code class="highlighter-rouge">A = $(B)</code>) then these variables’ values are only
+calculated when the variable’s value is requested (e.g. the value of
+<code class="highlighter-rouge">B</code> is only calculated when the value of <code class="highlighter-rouge">A</code> is requested via
+<code class="highlighter-rouge">$(A)</code>. This can be termed <em>lazy setting</em>.</p>
+  </li>
+  <li>
+    <p>A variable defined using <code class="highlighter-rouge">:=</code> is a <em>simply expanded variable</em>. Its
+value is calculated when it is declared. If the value assigned to
+the variable contains variables (e.g. <code class="highlighter-rouge">A = $(B)</code>) then these
+variables’ values are also calculated when the variable is declared
+(e.g. the value of <code class="highlighter-rouge">B</code> is calculated when <code class="highlighter-rouge">A</code> is assigned
+above). This can be termed <em>immediate setting</em>.</p>
+  </li>
+</ul>
+
+<p>For a detailed explanation, see:</p>
+
+<ul>
+  <li>StackOverflow <a href="http://stackoverflow.com/questions/448910/makefile-variable-assignment">Makefile variable assignment</a></li>
+  <li>GNU Make <a href="https://www.gnu.org/software/make/manual/html_node/Flavors.html#Flavors">The Two Flavors of Variables</a></li>
+</ul>
+
+<h2 id="make-and-version-control">Make and Version Control</h2>
+
+<p>Imagine that we manage our Makefiles using a version control 
+system such as Git.</p>
+
+<p>Let’s say we’d like to run the workflow developed in this lesson
+for three different word counting scripts, in order to compare their
+speed (e.g. <code class="highlighter-rouge">wordcount.py</code>, <code class="highlighter-rouge">wordcount2.py</code>, <code class="highlighter-rouge">wordcount3.py</code>).</p>
+
+<p>To do this we could edit <code class="highlighter-rouge">config.mk</code> each time by replacing
+<code class="highlighter-rouge">COUNT_SRC=wordcount.py</code> with <code class="highlighter-rouge">COUNT_SRC=wordcount2.py</code> or
+<code class="highlighter-rouge">COUNT_SRC=wordcount3.py</code>,
+but this would be detected as a change by the version control system.
+This is a minor configuration change, rather than a change to the 
+workflow, and so we probably would rather avoid committing this change
+to our repository each time we decide to test a different counting script.</p>
+
+<p>An alternative is to leave <code class="highlighter-rouge">config.mk</code> untouched, by overwriting the value 
+of <code class="highlighter-rouge">COUNT_SRC</code> at the command line instead:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ make variables COUNT_SRC=wordcount2.py
+</code></pre>
+</div>
+
+<p>The configuration file then simply contains the default values for the 
+workflow, and by overwriting the defaults at the command line you can
+maintain a neater and more meaningful version control history.</p>
+
+<h2 id="make-and-reproducible-research">Make and Reproducible Research</h2>
+
+<p>Blog articles, papers, and tutorials on automating commonly
+occurring research activities using Make:</p>
+
+<ul>
+  <li>
+    <p><a href="http://kbroman.org/minimal_make/">minimal make</a> by Karl Broman. A minimal tutorial on
+using Make with R and LaTeX to automate data analysis, visualization
+and paper preparation. This page has links to Makefiles for many of
+his papers.</p>
+  </li>
+  <li>
+    <p><a href="http://bost.ocks.org/mike/make/">Why Use Make</a> by Mike Bostock. An example of using
+Make to download and convert data.</p>
+  </li>
+  <li>
+    <p><a href="http://robjhyndman.com/hyndsight/makefiles/">Makefiles for R/LaTeX projects</a> by Rob
+Hyndman. Another example of using Make with R and LaTeX.</p>
+  </li>
+  <li>
+    <p><a href="http://zmjones.com/make/">GNU Make for Reproducible Data Analysis</a>
+by Zachary Jones. Using Make with Python and LaTeX.</p>
+  </li>
+  <li>
+    <p>Shaun Jackman’s <a href="https://www.youtube.com/watch?v=_F5f0qi-aEc">Using Make to Increase Automation &amp;
+Reproducibility</a> video lesson, and accompanying
+<a href="https://github.com/sjackman/makefile-example">example</a>.</p>
+  </li>
+  <li>
+    <p>Lars Yencken’s <a href="http://lifesum.github.io/posts/2016/01/14/make-experiments/">Driving experiments with
+make</a>. Using Make to sandbox Python
+dependencies and pull down data sets from Amazon S3.</p>
+  </li>
+  <li>
+    <p>Askren MK, McAllister-Day TK, Koh N, Mestre Z, Dines JN, Korman BA,
+Melhorn SJ, Peterson DJ, Peverill M, Qin X, Rane SD, Reilly MA,
+Reiter MA, Sambrook KA, Woelfer KA, Grabowski TJ and Madhyastha TM
+(2016) <a href="http://journal.frontiersin.org/article/10.3389/fninf.2016.00002/full">Using Make for Reproducible and Parallel Neuroimaging
+Workflow and
+Quality-Assurance</a>. Front. Neuroinform. 10:2. doi:
+10.3389/fninf.2016.00002</p>
+  </li>
+  <li>
+    <p>Li Haoyi’s <a href="http://www.lihaoyi.com/post/WhatsinaBuildTool.html">What’s in a Build Tool?</a> A review of
+popular build tools (including Make) in terms of their strengths and
+weaknesses for common build-related use cases in software
+development.</p>
+  </li>
+</ul>
+
+
+
+      
+      <footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
