@@ -40,13 +40,13 @@ follow this lesson:
 #### Linux
 
 Make is a standard tool on Linux systems and should already be available.
-Check if you already have **Make** installed by typing `make -v` into a terminal.
+Check if you already have Make installed by typing `make -v` into a terminal.
 
 #### OSX
 
 You will need to have Xcode installed (download from the
 [Apple website](https://developer.apple.com/xcode/)).
-Check if you already have **Make** installed by typing `make -v` into a terminal. 
+Check if you already have Make installed by typing `make -v` into a terminal. 
 
 #### Windows
 Use the Software Carpentry [Windows installer](https://github.com/swcarpentry/windows-installer).
