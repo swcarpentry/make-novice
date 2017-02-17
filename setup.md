@@ -4,6 +4,8 @@ title: "Setup"
 permalink: /setup/
 ---
 
+## Files
+
 You need to download some files to follow this lesson:
 
 1. Download [make-lesson.zip][zip-file].
@@ -28,20 +30,32 @@ You need to download some files to follow this lesson:
    ~~~
    {: .source}
 
+## Software
+
 You also need to have the following software installed on your computer to
 follow this lesson:
 
-1. Python.  Searching on *installing python*
-   yields <https://wiki.python.org/moin/BeginnersGuide/Download> which
-   provides suggestions for windows, OS X, and several Linux
-   distributions.
+### GNU Make
 
-2. Numpy.  See <http://scipy.org/install.html>
+#### Linux
 
-3. Matplotlib.  See <http://matplotlib.org/users/installing.html>
+Make is a standard tool on Linux systems and should already be available.
+Check if you already have **Make** installed by typing `make -v` into a terminal.
 
-Alternatively, you can use
-anaconda <https://docs.continuum.io/anaconda/> to install all of the
-necessary software without administrator privileges.
+#### OSX
+
+You will need to have Xcode installed (download from the
+[Apple website](https://developer.apple.com/xcode/)).
+Check if you already have **Make** installed by typing `make -v` into a terminal. 
+
+#### Windows
+Use the Software Carpentry [Windows installer](https://github.com/swcarpentry/windows-installer).
+
+### Python
+
+Python, Numpy and Matplotlib are required.
+They can be installed separately, but the easiest approach is to install 
+Anaconda python <https://www.continuum.io/downloads> which includes all of the
+necessary python software.
 
 [zip-file]: {{ page.root }}/files/make-lesson.zip
