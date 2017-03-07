@@ -34,5 +34,10 @@ head -n $limit $inputfile | \
 	    for i in `seq 1 $rank`
                 do bar+='#'
             done
-	    echo $bar | tr "." " "
+	    if [ $outputfile = 'show' ]
+            then
+	        echo $bar | tr "." " "
+            else
+	        echo $bar | tr "." " " >> $outputfile
+            fi
         done
