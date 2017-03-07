@@ -1,10 +1,11 @@
 # ./plotcount.sh isles.dat
 
 inputfile=$1
+outputfile=$2
 
-if [ ! -z $2 ]
+if [ ! -z $3 ]
 then
-    limit=$2
+    limit=$3
 else
     limit=10
 fi
