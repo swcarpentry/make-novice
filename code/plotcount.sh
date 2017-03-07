@@ -19,6 +19,10 @@ max=`head -n 1 $inputfile | awk '{print $2}'`
 
 scale=$((screenwidth - gap - longestword))
 
+if [ $outputfile != "show" ] && [ -f "$outputfile" ]
+then
+    rm $outputfile
+fi
 
 head -n $limit $inputfile | \
     while read line
