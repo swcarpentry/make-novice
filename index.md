@@ -33,3 +33,8 @@ the same concepts as Make.
 > remove and list files and directories, and run simple scripts is
 > necessary.
 {: .prereq}
+
+> ## Setup
+> In order to follow this lesson, you will need to download some files.
+> Please follow instructions on the [setup]({{ page.root }}/setup) page.
+{: .prereq}
