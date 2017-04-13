@@ -14,7 +14,7 @@ $(ZIPF_ARCHIVE) : $(ZIPF_DIR)
 	tar -czf $@ $<
 
 $(ZIPF_DIR): Makefile results.txt \
-             $(DAT_FILES) $(PNG_FILES) $(RESULTS_TXT) \
+             $(DAT_FILES) $(PNG_FILES) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
 	cp $^ $@
