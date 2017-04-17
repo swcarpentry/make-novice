@@ -102,7 +102,9 @@ shell variables can be confused and can be in conflict.
   variable to make will get replaced with the appropriate value.  (In
   make, an uninitialized variable has a null value.)  To protect
   variable you intend to be interpreted by the shell rather than make,
-  you need to "quote" the dollar sign by doubling it (`$$`).  In
+  you need to "quote" the dollar sign by doubling it (`$$`). (This the
+  same principle as escaping special characters in the unix shell
+  using the backslash (`\`) character.)  In
   short: make variables have a single dollar sign, shell variables
   have a double dollar sign.  This applies to anything that looks like
   a variable and needs to be interpreted by the shell rather than
