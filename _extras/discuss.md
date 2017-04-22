@@ -100,7 +100,7 @@ shell variables can be confused and can be in conflict.
 * Make does variable substitution on actions before they are passed to
   the shell for execution.  That means that anything that looks like a
   variable to make will get replaced with the appropriate value.  (In
-  make, an uninitialized variable has a null value.)  To protect
+  make, an uninitialized variable has a null value.)  To protect a
   variable you intend to be interpreted by the shell rather than make,
   you need to "quote" the dollar sign by doubling it (`$$`). (This the
   same principle as escaping special characters in the unix shell
@@ -135,7 +135,7 @@ shell variables can be confused and can be in conflict.
 > 
 > Notice that make substituted `$(BOOKS)`, as expected, but it also
 > substituted `$book`, even though we intended it to be a shell variable.
-> Moreover, because it didn't use `$(NAME)` (or `${NAME}`) syntax, make
+> Moreover, because we didn't use `$(NAME)` (or `${NAME}`) syntax, make
 > interpreted it as the single character variable `$b` (which we haven't
 > defined, so it has a null value) followed by the text "ook".
 > 
