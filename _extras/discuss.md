@@ -76,6 +76,89 @@ The configuration file then simply contains the default values for the
 workflow, and by overwriting the defaults at the command line you can
 maintain a neater and more meaningful version control history.
 
+## Make Variables and Shell Variables
+
+Makefiles embed shell scripts within them, as the actions that are
+executed to update an object. More complex actions could well include
+shell variables.  There are several ways in which make variables and
+shell variables can be confused and can be in conflict.
+
+* Make actually accepts three different syntaxes for variables: `$N`,
+  `$(NAME)`, or `${NAME}`.
+
+  The single character variable names are most commonly used for
+  automatic variables, and there are many of them.  But if you happen
+  upon a character that isn't pre-defined as an automatic variable,
+  make will treat it as a user variable.
+
+  The `${NAME}` syntax is also used by the unix shell in cases where
+  there might be ambiguity in interpreting variable names, or for
+  certain pattern substitution operations.  Since there are only
+  certain situations in which the unix shell requires this syntax,
+  instead of the more common `$NAME`, it is not familiar to many users.
+
+* Make does variable substitution on actions before they are passed to
+  the shell for execution.  That means that anything that looks like a
+  variable to make will get replaced with the appropriate value.  (In
+  make, an uninitialized variable has a null value.)  To protect a
+  variable you intend to be interpreted by the shell rather than make,
+  you need to "quote" the dollar sign by doubling it (`$$`). (This the
+  same principle as escaping special characters in the unix shell
+  using the backslash (`\`) character.)  In
+  short: make variables have a single dollar sign, shell variables
+  have a double dollar sign.  This applies to anything that looks like
+  a variable and needs to be interpreted by the shell rather than
+  make, including awk positional parameters (e.g., `awk '{print $$1}'`
+  instead of `awk '{print $1}'`) or accessing environment variables
+  (e.g., `$$HOME`).
+
+> ## Detailed Example of Shell Variable Quoting
+> 
+> Say we had the following `Makefile` (and the .dat files had already
+> been created):
+> 
+> ~~~
+> BOOKS = abyss isles
+> 
+> .PHONY: plots
+> plots:
+> 	for book in $(BOOKS); do python plotcount.py $book.dat $book.png; done
+> ~~~	
+> {: .make}
+> 
+> the action that would be passed to the shell to execute would be:
+> 
+> ~~~
+> for book in abyss isles; do python plotcount.py ook.dat ook.png; done
+> ~~~
+> {: .bash}
+> 
+> Notice that make substituted `$(BOOKS)`, as expected, but it also
+> substituted `$book`, even though we intended it to be a shell variable.
+> Moreover, because we didn't use `$(NAME)` (or `${NAME}`) syntax, make
+> interpreted it as the single character variable `$b` (which we haven't
+> defined, so it has a null value) followed by the text "ook".
+> 
+> In order to get the desired behavior, we have to write `$$book` instead
+> of `$book`: 
+> 
+> ~~~
+> BOOKS = abyss isles
+> 
+> .PHONY: plots
+> plots:
+> 	for book in $(BOOKS); do python plotcount.py $$book.dat $$book.png; done
+> ~~~	
+> {: .make}
+> 
+> which produces the correct shell command:
+> 
+> ~~~
+> for book in abyss isles; do python plotcount.py $book.dat $book.png; done
+> ~~~
+> {: .bash}
+{: .discussion}
+
 ## Make and Reproducible Research
 
 Blog articles, papers, and tutorials on automating commonly
