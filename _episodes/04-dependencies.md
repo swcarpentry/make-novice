@@ -216,12 +216,12 @@ downstream steps.
 
 We still have to add the `zipf-test.py` script as dependency to
 `results.txt`. Given the answer to the challenge above, we cannot use
-`$^` for the rule. Instead we can use  `$<` to refer to the first dependency
-i.e. *.dat :
+`$^` for the rule. Instead we can move `zipf-test.py` to be the
+first dependency and then use `$<` to refer to this:
 
 ~~~
-results.txt : *.dat zipf_test.py
-        python zipf_test.py $< > $@
+results.txt : zipf_test.py *.dat
+        python $< *.dat > $@
 ~~~
 {: .make}
 

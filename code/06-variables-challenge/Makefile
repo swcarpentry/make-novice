@@ -4,8 +4,8 @@ ZIPF_SRC=zipf_test.py
 ZIPF_EXE=python $(ZIPF_SRC)
 
 # Generate summary table.
-results.txt : *.dat $(ZIPF_SRC)
-	$(ZIPF_EXE) $< > $@
+results.txt : $(ZIPF_SRC) *.dat
+	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
 .PHONY : dats
