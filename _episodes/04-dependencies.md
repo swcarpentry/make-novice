@@ -169,24 +169,24 @@ downstream steps.
 > {: .solution}
 {: .challenge}
 
-> ## `wordcount` as a Dependency of `results.txt`.
+> ## `zipf_test.py` as a Dependency of `results.txt`.
 >
-> What would happen if you actually added `wordcount.py` as dependency of `results.txt`, and why?
+> What would happen if you added `zipf_test.py` as dependency of `results.txt`, and why?
 >
 > > ## Solution
 > >
 > > If you change the rule for the `results.txt` file like this:
 > >
 > > ~~~
-> > results.txt : *.dat wordcount.py
+> > results.txt : *.dat zipf_test.py
 > >         python zipf_test.py $^ > $@
 > > ~~~
 > > {: .make}
 > >
-> > `wordcount.py` becomes a part of `$^`, thus the command becomes
+> > `zipf_test.py` becomes a part of `$^`, thus the command becomes
 > >
 > > ~~~
-> > python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
+> > python zipf_test.py abyss.dat isles.dat last.dat zipf_test.py > results.txt
 > > ~~~
 > > {: .bash}
 > >
@@ -201,11 +201,11 @@ downstream steps.
 > > You'll get
 > >
 > > ~~~
-> > python zipf_test.py abyss.dat isles.dat last.dat wordcount.py > results.txt
+> > python zipf_test.py abyss.dat isles.dat last.dat zipf_test.py > results.txt
 > > Traceback (most recent call last):
 > >   File "zipf_test.py", line 19, in <module>
 > >     counts = load_word_counts(input_file)
-> >   File "path/to/wordcount.py", line 39, in load_word_counts
+> >   File "path/to/zipf_test.py", line 39, in load_word_counts
 > >     counts.append((fields[0], int(fields[1]), float(fields[2])))
 > > IndexError: list index out of range
 > > make: *** [results.txt] Error 1
@@ -216,12 +216,12 @@ downstream steps.
 
 We still have to add the `zipf-test.py` script as dependency to
 `results.txt`. Given the answer to the challenge above, we cannot use
-`$^` for the rule. Instead we can use  `$<` to refer to the first dependency
-i.e. *.dat :
+`$^` for the rule. Instead we can move `zipf-test.py` to be the
+first dependency and then use `$<` to refer to this:
 
 ~~~
-results.txt : *.dat zipf_test.py
-        python zipf_test.py $< > $@
+results.txt : zipf_test.py *.dat
+        python $< *.dat > $@
 ~~~
 {: .make}
 
