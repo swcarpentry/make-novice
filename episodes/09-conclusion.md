@@ -11,17 +11,17 @@ keypoints:
 ---
 
 Automated build tools such as Make can help us in a number of
-ways. They help us to automate repetitive commands and, so, save us
-time and reduce the risk of us making errors we might make if running
+ways. They help us to automate repetitive commands, hence saving us
+time and reducing the likelihood of errors compared with running
 these commands manually.
 
 They can also save time by ensuring that automatically-generated
 artifacts (such as data files or plots) are only recreated when the
 files that were used to create these have changed in some way.
 
-Through their notion of targets, dependencies and actions they serve
+Through their notion of targets, dependencies, and actions, they serve
 as a form of documentation, recording dependencies between code,
-scripts, tools, configurations, raw data, derived data, plots and
+scripts, tools, configurations, raw data, derived data, plots, and
 papers.
 
 > ## Creating PNGs
