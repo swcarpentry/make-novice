@@ -164,13 +164,6 @@ results.txt : $(DAT_FILES) $(ZIPF_SRC)
 ~~~
 {: .make}
 
-**Note that `$(DAT_FILES)` will get expanded by Make, and recall that `$<`
-refers to the first dependency.**
-Previously our first dependency was `*.dat` which was expanded by bash.
-Now that we are using the variable `DAT_FILES` as a dependency,
-we need to update our action command accordingly, because `$<` would refer
-only to the first of the `DAT_FILES`.
-
 If we re-run Make:
 
 ~~~
