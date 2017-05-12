@@ -47,7 +47,7 @@ TXT_FILES=$(wildcard books/*.txt)
 ~~~
 {: .make}
 
-We can add `.PHONY` target and rule to show the variable's value:
+We can add a `.PHONY` target and rule to show the variable's value:
 
 ~~~
 .PHONY : variables
