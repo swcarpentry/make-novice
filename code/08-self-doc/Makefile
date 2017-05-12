@@ -5,7 +5,7 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(ZIPF_EXE) $< > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats

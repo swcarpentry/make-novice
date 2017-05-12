@@ -160,7 +160,7 @@ We can also rewrite `results.txt`:
 
 ~~~
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-        $(ZIPF_EXE) $(DAT_FILES) > $@
+        $(ZIPF_EXE) $< > $@
 ~~~
 {: .make}
 
@@ -217,7 +217,7 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(ZIPF_EXE) $< > $@
 
 # Count words.
 .PHONY : dats
