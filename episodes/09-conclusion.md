@@ -29,7 +29,6 @@ papers.
 > Add new rules, update existing rules, and add new macros to:
 >
 > * Create `.png` files from `.dat` files using `plotcount.py`.
-> * Add the `zip_test.py` script as dependency of the `results.txt` file
 > * Remove all auto-generated files (`.dat`, `.png`,
 >   `results.txt`).
 >
