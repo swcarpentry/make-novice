@@ -21,7 +21,7 @@ $(ZIPF_DIR): Makefile results.txt \
 
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) $< > $@
+	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
