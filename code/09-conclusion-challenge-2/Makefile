@@ -21,21 +21,21 @@ $(ZIPF_DIR): Makefile results.txt \
 
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) $< > $@
+	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $*.dat
+	$(COUNT_EXE) $< $@
 
 ## pngs        : Plot word counts.
 .PHONY : pngs
 pngs : $(PNG_FILES)
 
 %.png : %.dat $(PLOT_SRC)
-	$(PLOT_EXE) $*.dat $*.png
+	$(PLOT_EXE) $*.dat $@
 
 ## clean       : Remove auto-generated files.
 .PHONY : clean
