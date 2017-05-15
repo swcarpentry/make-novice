@@ -17,14 +17,14 @@ results.txt : $(DAT_FILES) $(ZIPF_SRC)
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $*.dat
+	$(COUNT_EXE) $< $@
 
 ## pngs        : Plot word counts.
 .PHONY : pngs
 pngs : $(PNG_FILES)
 
 %.png : %.dat $(PLOT_SRC)
-	$(PLOT_EXE) $*.dat $*.png
+	$(PLOT_EXE) $< $@
 
 ## clean       : Remove auto-generated files.
 .PHONY : clean

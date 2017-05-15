@@ -138,6 +138,14 @@ clean :
 ~~~
 {: .make}
 
+Let's also tidy up the `%.dat` rule by using the automatic variable `$@` instead of `$*.dat`:
+
+```
+%.dat : books/%.txt $(COUNT_SRC)
+	$(COUNT_EXE) $< $@
+```
+{: .make}
+
 Let's check:
 
 ~~~
@@ -224,7 +232,7 @@ results.txt : $(DAT_FILES) $(ZIPF_SRC)
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $*.dat
+	$(COUNT_EXE) $< $@
 
 .PHONY : clean
 clean :
