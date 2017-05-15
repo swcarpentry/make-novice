@@ -12,7 +12,7 @@ results.txt : $(DAT_FILES) $(ZIPF_SRC)
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $*.dat
+	$(COUNT_EXE) $< $@
 
 .PHONY : clean
 clean :
