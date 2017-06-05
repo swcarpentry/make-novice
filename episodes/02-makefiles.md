@@ -61,7 +61,7 @@ Information that was implicit in our shell script - that we are
 generating a file called `isles.dat` and that creating this file
 requires `books/isles.txt` - is now made explicit by Make's syntax.
 
-Let's first sure we start from scratch and delete the `.dat` and `.png`
+Let's first ensure we start from scratch and delete the `.dat` and `.png`
 files we created earlier:
 
 ~~~
