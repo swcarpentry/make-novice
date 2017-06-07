@@ -105,7 +105,9 @@ python wordcount.py books/last.txt last.dat
 
 The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
-`wordcount.py` and `zipf_test.py` as dependencies to their respective target files:
+`wordcount.py` and `zipf_test.py` as dependencies to their respective target files
+(i.e. how the Makefile should look after completing the rest of the exercises
+in this episode):
 
 ![results.txt dependencies after adding wordcount.py and zipf_test.py as dependencies](../fig/04-dependencies.png "results.txt dependencies after adding wordcount.py and zipf_test.py as dependencies")
 
