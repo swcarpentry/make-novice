@@ -49,7 +49,20 @@ python wordcount.py books/last.txt last.dat
 ~~~
 {: .output}
 
-Our new rule will work no matter what stem is being matched.
+Note that we can still use Make to build individual `.dat` targets as before,
+and that our new rule will work no matter what stem is being matched.
+
+```
+$ make sierra.dat
+```
+{: .bash}
+
+which gives the output below:
+
+```
+python wordcount.py books/sierra.txt sierra.dat
+```
+{: .output}
 
 > ## Using Make Wildcards
 >
