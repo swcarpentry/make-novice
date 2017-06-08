@@ -18,20 +18,20 @@ At this point, we have the following Makefile:
 include config.mk
 
 # Generate summary table.
-results.txt : $(ZIPF_SRC) *.dat
-        $(ZIPF_EXE) *.dat > $@
+results.txt : $(ZIPF_SRC) isles.dat abyss.dat last.dat
+	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt $(COUNT_SRC)
-        $(COUNT_EXE) $< $*.dat
+	$(COUNT_EXE) $< $*.dat
 
 .PHONY : clean
 clean :
-        rm -f *.dat
-        rm -f results.txt
+	rm -f *.dat
+	rm -f results.txt
 ~~~
 {: .make}
 
@@ -190,11 +190,6 @@ python wordcount.py books/sierra.txt sierra.dat
 python zipf_test.py  last.dat  isles.dat  abyss.dat  sierra.dat > results.txt
 ~~~
 {: .output}
-
-We see that the problem we had when using the bash wild-card, `*.dat`,
-which required us to run `make dats` before `make results.txt` has
-now disappeared, since our functions allow us to create `.dat` file
-names from those `.txt` file names in `books/`.
 
 Let's check the `results.txt` file:
 

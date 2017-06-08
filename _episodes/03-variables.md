@@ -112,49 +112,6 @@ python zipf_test.py isles.dat abyss.dat last.dat > results.txt
 ~~~
 {: .output}
 
-We can use the bash wildcard in our dependency list:
-
-~~~
-results.txt : *.dat
-        python zipf_test.py $^ > $@
-~~~
-{: .make}
-
-Let's update our text files and re-run our rule:
-
-~~~
-$ touch books/*.txt
-$ make results.txt
-~~~
-{: .bash}
-
-We get the same as above.
-
-Now let's delete the data files and re-run our rule:
-
-~~~
-$ make clean
-$ make results.txt
-~~~
-{: .bash}
-
-We get:
-
-~~~
-make: *** No rule to make target `*.dat', needed by `results.txt'.  Stop.
-~~~
-{: .error}
-
-As there are no files that match the pattern `*.dat` the name `*.dat`
-is used as a file name itself, and there is no file matching that, nor
-any rule so we get an error. We need to explicitly rebuild the `.dat`
-files first:
-
-~~~
-$ make dats
-$ make results.txt
-~~~
-{: .bash}
 
 > ## Update Dependencies
 >
@@ -174,24 +131,12 @@ $ make results.txt
 > > ## Solution
 > > `4.` Only `results.txt` recreated.
 > >
-> > You can check that `*.dat` is being expanded in the target of the rule
-> > for `results.txt` by echoing the value of the automatic variable `$^`
-> > (all dependencies of the current rule).
-> >
-> > ~~~
-> > results.txt: *.dat
-> >     @echo $^
-> >     python zipf_test.py $^ > $@
-> > ~~~
-> > {: .make}
-> >
 > > The rules for `*.dat` are not executed because their corresponding `.txt` files
 > > haven't been modified.
 > >
 > > If you run:
 > >
 > > ~~~
-> > $ touch *.dat
 > > $ touch books/*.txt
 > > $ make results.txt
 > > ~~~
