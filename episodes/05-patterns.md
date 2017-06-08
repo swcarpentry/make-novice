@@ -76,7 +76,7 @@ Our Makefile is now much shorter and cleaner:
 
 ~~~
 # Generate summary table.
-results.txt : zipf_test.py *.dat
+results.txt : zipf_test.py isles.dat abyss.dat last.dat
         python $< *.dat > $@
 
 # Count words.

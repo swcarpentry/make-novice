@@ -16,7 +16,7 @@ Our Makefile now looks like this:
 
 ~~~
 # Generate summary table.
-results.txt : *.dat
+results.txt : isles.dat abyss.dat last.dat
         python zipf_test.py $^ > $@
 
 # Count words.
@@ -107,7 +107,7 @@ The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
 `wordcount.py` and `zipf_test.py` as dependencies to their respective target files
 (i.e. how the Makefile should look after completing the rest of the exercises
-in this episode):
+in this episode).
 
 ![results.txt dependencies after adding wordcount.py and zipf_test.py as dependencies](../fig/04-dependencies.png "results.txt dependencies after adding wordcount.py and zipf_test.py as dependencies")
 
@@ -180,7 +180,7 @@ downstream steps.
 > > If you change the rule for the `results.txt` file like this:
 > >
 > > ~~~
-> > results.txt : *.dat zipf_test.py
+> > results.txt : isles.dat abyss.dat last.dat zipf_test.py
 > >         python zipf_test.py $^ > $@
 > > ~~~
 > > {: .make}
@@ -218,13 +218,14 @@ downstream steps.
 
 We still have to add the `zipf-test.py` script as dependency to
 `results.txt`. Given the answer to the challenge above, we cannot use
-`$^` in the rule; instead the action should use `*.dat` to refer to the
-data files.
+`$^` in the rule.  
 We can however move `zipf-test.py` to be the
-first dependency and then use `$<` to refer to it:
+first dependency and then use `$<` to refer to it. 
+In order to refer to the `.dat` files, we can just use `*.dat` for now (we will
+cover a better solution later on).
 
 ~~~
-results.txt : zipf_test.py *.dat
+results.txt : zipf_test.py isles.dat abyss.dat last.dat
         python $< *.dat > $@
 ~~~
 {: .make}
