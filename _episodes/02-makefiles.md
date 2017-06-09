@@ -245,9 +245,13 @@ python wordcount.py books/abyss.txt abyss.dat
 > ~~~
 > {: .output}
 >
-> `up to date` means that the Makefile has a rule for the file and
-> the file is up to date whereas `Nothing to be done` means that
-> the file exists but the Makefile has no rule for it.
+> `up to date` means that the Makefile has a rule with one or more actions
+> whose target is the name of a file (or directory) and the file is up to date.
+>
+> `Nothing to be done` means that
+> the file exists but either :
+> - the Makefile has no rule for it, or
+> - the Makefile has a rule for it, but that rule has no actions
 {: .callout}
 
 
@@ -374,19 +378,19 @@ python wordcount.py books/abyss.txt abyss.dat
 ~~~
 {: .output}
 
-If we run `dats` again,
-
+If we run `dats` again, then Make will see that the dependencies (isles.dat
+and abyss.dat) are already up to date. 
+Given the target `dats` has no actions, there is `nothing to be done`:
 ~~~
 $ make dats
 ~~~
 {: .bash}
 
-then Make sees that the data files exist:
-
 ~~~
 make: Nothing to be done for `dats'.
 ~~~
 {: .output}
+
 
 Our Makefile now looks like this:
 

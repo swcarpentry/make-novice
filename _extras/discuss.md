@@ -211,3 +211,8 @@ occurring research activities using Make:
 [minimal-make]: http://kbroman.org/minimal_make/
 [whats-a-build-tool]: http://www.lihaoyi.com/post/WhatsinaBuildTool.html
 [why-use-make]: http://bost.ocks.org/mike/make/
+
+## Return messages and `.PHONY` target behaviour
+`Up to date` vs `Nothing to be done` is discussed in [episode 2]({{page.root}}/02-Makefiles/).
+
+A more detailed discussion can be read on [issue 98](https://github.com/swcarpentry/make-novice/issues/98#issuecomment-307361751).
