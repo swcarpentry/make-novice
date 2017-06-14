@@ -137,6 +137,39 @@ $ make diagrams
 
 See `commands.mk`'s `diagrams` target.
 
+## UnicodeDecodeError troubleshooting
+
+When processing `books/last.txt` with Python 3 and vanilla shell environment on Arch Linux
+the following error has appeared:
+
+~~~
+$ python wordcount.py books/last.txt last.dat
+~~~
+{: .bash}
+~~~
+Traceback (most recent call last):
+  File "wordcount.py", line 131, in <module>
+    word_count(input_file, output_file, min_length)
+  File "wordcount.py", line 118, in word_count
+    lines = load_text(input_file)
+  File "wordcount.py", line 14, in load_text
+    lines = input_fd.read().splitlines()
+  File "/usr/lib/python3.6/encodings/ascii.py", line 26, in decode
+    return codecs.ascii_decode(input, self.errors)[0]
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 6862: ordinal not in range(128)
+~~~
+{: .output}
+
+The workaround was to define encoding for the terminal session (this can be either done at the command line
+or placed in the `.bashrc` or equivalent):
+
+~~~
+$ export LC_ALL=en_US.UTF-8
+$ export LANG=en_US.UTF-8
+$ export LANGUAGE=en_US.UTF-8
+~~~
+{: .bash}
+
 [graphviz]: http://www.graphviz.org/
 [lesson-example]: https://github.com/swcarpentry/lesson-example/
 [makefile2graph]: https://github.com/lindenb/makefile2graph
