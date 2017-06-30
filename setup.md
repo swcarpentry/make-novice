@@ -53,7 +53,7 @@ Use the Software Carpentry [Windows installer](https://github.com/swcarpentry/wi
 
 ### Python
 
-Python, Numpy and Matplotlib are required.
+Python2 or Python3, Numpy and Matplotlib are required.
 They can be installed separately, but the easiest approach is to install 
 Anaconda python <https://www.continuum.io/downloads> which includes all of the
 necessary python software.
