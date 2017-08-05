@@ -3,6 +3,7 @@ include config.mk
 TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
+RESULTS_FILE=results.txt
 ZIPF_DIR=zipf_analysis
 ZIPF_ARCHIVE=$(ZIPF_DIR).tar.gz
 
@@ -10,17 +11,17 @@ ZIPF_ARCHIVE=$(ZIPF_DIR).tar.gz
 .PHONY : all
 all : $(ZIPF_ARCHIVE)
 
-$(ZIPF_ARCHIVE) : $(ZIPF_DIR) $(PNG_FILES) results.txt
+$(ZIPF_ARCHIVE) : $(ZIPF_DIR) $(PNG_FILES) $(RESULTS_FILE)
 	tar -czf $@ $<
 
-$(ZIPF_DIR): Makefile config.mk results.txt \
+$(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
              $(DAT_FILES) $(PNG_FILES) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
 	cp $^ $@
 
 ## results.txt : Generate Zipf summary table.
-results.txt : $(DAT_FILES) $(ZIPF_SRC)
+$(RESULTS_FILE) : $(DAT_FILES) $(ZIPF_SRC)
 	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 ## dats        : Count words in text files.
@@ -42,7 +43,7 @@ pngs : $(PNG_FILES)
 clean :
 	rm -f $(DAT_FILES)
 	rm -f $(PNG_FILES)
-	rm -f results.txt
+	rm -f $(RESULTS_FILE)
 	rm -rf $(ZIPF_DIR)
 	rm -f $(ZIPF_ARCHIVE)
 
