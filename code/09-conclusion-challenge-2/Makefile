@@ -13,7 +13,7 @@ all : $(ZIPF_ARCHIVE)
 $(ZIPF_ARCHIVE) : $(ZIPF_DIR)
 	tar -czf $@ $<
 
-$(ZIPF_DIR): Makefile results.txt \
+$(ZIPF_DIR): Makefile config.mk results.txt \
              $(DAT_FILES) $(PNG_FILES) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
