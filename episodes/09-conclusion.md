@@ -94,6 +94,7 @@ The following figure shows the dependencies involved in building the `all` targe
 > > files from `.txt` files, `.png` files from `.dat` files and
 > > `results.txt`. Our Makefile, however, documents dependencies between
 > > our code, raw data, derived data, and plots, as well as implementing
-> > our workflow as a whole.
+> > our workflow as a whole. `config.mk` contains configuration information
+> > for our Makefile, so it must be archived too.
 > {: .solution}
 {: .challenge}
