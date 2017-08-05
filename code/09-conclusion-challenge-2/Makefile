@@ -10,7 +10,7 @@ ZIPF_ARCHIVE=$(ZIPF_DIR).tar.gz
 .PHONY : all
 all : $(ZIPF_ARCHIVE)
 
-$(ZIPF_ARCHIVE) : $(ZIPF_DIR)
+$(ZIPF_ARCHIVE) : $(ZIPF_DIR) $(PNG_FILES) results.txt
 	tar -czf $@ $<
 
 $(ZIPF_DIR): Makefile config.mk results.txt \
