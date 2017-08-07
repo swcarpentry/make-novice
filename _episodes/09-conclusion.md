@@ -107,6 +107,9 @@ The following figure shows the dependencies involved in building the `all` targe
 > > A directory's timestamp is not automatically updated when files are copied into it.
 > > If the code, data, plots, and summary table are updated and copied into the
 > > archive directory, the archive directory's timestamp must be updated with `touch`
-> > so that the target that makes `zipf_analysis.tar.gz` knows to run again.
+> > so that the target that makes `zipf_analysis.tar.gz` knows to run again;
+> > without this `touch`, `zipf_analysis.tar.gz` will only be created the first time
+> > the rule is run and will not be updated on subsequent runs even if the contents 
+> > of the archive directory have changed.
 > {: .solution}
 {: .challenge}
