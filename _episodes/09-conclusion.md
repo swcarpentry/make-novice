@@ -86,7 +86,7 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Archiving the Makefile
 >
-> Why do we add the Makefile to our archive of code, data, plots and Zipf summary table?
+> Why does the Makefile rule for the archive directory add the Makefile to our archive of code, data, plots and Zipf summary table?
 >
 > > ## Solution
 > > Our code (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement
@@ -96,5 +96,17 @@ The following figure shows the dependencies involved in building the `all` targe
 > > our code, raw data, derived data, and plots, as well as implementing
 > > our workflow as a whole. `config.mk` contains configuration information
 > > for our Makefile, so it must be archived too.
+> {: .solution}
+{: .challenge}
+
+> ## Archiving the Makefile
+>
+> Why does the Makefile rule for the archive directory `touch` the archive directory after moving our code, data, plots and summary table into it?
+>
+> > ## Solution
+> > A directory's timestamp is not automatically updated when files are copied into it.
+> > If the code, data, plots, and summary table are updated and copied into the
+> > archive directory, the archive directory's timestamp must be updated with `touch`
+> > so that the target that makes `zipf_analysis.tar.gz` knows to run again.
 > {: .solution}
 {: .challenge}
