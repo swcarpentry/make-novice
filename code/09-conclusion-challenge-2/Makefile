@@ -11,7 +11,7 @@ ZIPF_ARCHIVE=$(ZIPF_DIR).tar.gz
 .PHONY : all
 all : $(ZIPF_ARCHIVE)
 
-$(ZIPF_ARCHIVE) : $(ZIPF_DIR) $(PNG_FILES) $(RESULTS_FILE)
+$(ZIPF_ARCHIVE) : $(ZIPF_DIR)
 	tar -czf $@ $<
 
 $(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
@@ -19,6 +19,7 @@ $(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
 	cp $^ $@
+	touch $@
 
 ## results.txt : Generate Zipf summary table.
 $(RESULTS_FILE) : $(DAT_FILES) $(ZIPF_SRC)
