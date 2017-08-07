@@ -99,7 +99,7 @@ The following figure shows the dependencies involved in building the `all` targe
 > {: .solution}
 {: .challenge}
 
-> ## Archiving the Makefile
+> ## `touch` the Archive Directory
 >
 > Why does the Makefile rule for the archive directory `touch` the archive directory after moving our code, data, plots and summary table into it?
 >
