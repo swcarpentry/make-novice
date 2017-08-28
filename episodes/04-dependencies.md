@@ -216,10 +216,10 @@ downstream steps.
 > {: .solution}
 {: .challenge}
 
-We still have to add the `zipf-test.py` script as dependency to
+We still have to add the `zipf_test.py` script as dependency to
 `results.txt`. Given the answer to the challenge above, we cannot use
 `$^` in the rule.  
-We can however move `zipf-test.py` to be the
+We can however move `zipf_test.py` to be the
 first dependency and then use `$<` to refer to it. 
 In order to refer to the `.dat` files, we can just use `*.dat` for now (we will
 cover a better solution later on).
