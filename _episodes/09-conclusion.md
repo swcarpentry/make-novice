@@ -36,7 +36,7 @@ papers.
 > target]({{ page.root }}/reference/#phony-target) called `all` as first target,
 > that will build what the Makefile has been written to build (e.g. in
 > our case, the `.png` files and the `results.txt` file). As others
-> may assume your Makefile confirms to convention and supports an
+> may assume your Makefile conforms to convention and supports an
 > `all` target, add an `all` target to your Makefile (Hint: this rule
 > has the `results.txt` file and the `.png` files as dependencies, but
 > no actions).  With that in place, instead of running `make
