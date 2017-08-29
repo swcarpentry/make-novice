@@ -57,12 +57,25 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Creating an Archive
 >
-> Add new rules, update existing rules, and add new macros to:
+> Often it is useful to create an archive file of your project that includes all data, code, 
+> and results. An archive file can packages many files into a single file that can easily be shared
+> with collaborators or downloaded as a single file. We can add steps to create the archive 
+> file inside the Makefile itself so it's easy to update our archive file as the project changes. 
 >
->  * Define the name of a directory, `zipf_analysis`, to hold all our
->    code, data, plots and the Zipf summary table.
+> 
+> Edit the Makefile to create an archive file of your project.  Add new rules, update existing
+> rules, and add new macros to:
+>
+> * Create a new directory called `zipf_analysis` in the project directory. 
 > * Copy all our code, data, plots and the Zipf summary table to this
->   directory.
+>   directory. The rsync command can be used to copy files and their 
+>   parent directories into the new `zipf_analysis` directory:
+>
+> ~~~
+> $ rsync -Rr [files to copy] zipf_analysis/ 
+> ~~~
+> {: .bash}
+>
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
 >   bash command `tar` can be used, as follows:
 >
@@ -70,10 +83,10 @@ The following figure shows the dependencies involved in building the `all` targe
 > $ tar -czf zipf_analysis.tar.gz zipf_analysis
 > ~~~
 > {: .bash}
->
+> 
+> * Remove the `zipf_analysis` directory once the `zipf_analysis.tar.gz` file has been created.
 > * Update `all` to create `zipf_analysis.tar.gz`.
-> * Remove `zipf_analysis` and `zipf_analysis.tar.gz` when `make
->   clean` is called.
+> * Remove `zipf_analysis.tar.gz` when `make clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
 > 

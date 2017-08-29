@@ -13,12 +13,13 @@ all : $(ZIPF_ARCHIVE)
 
 $(ZIPF_ARCHIVE) : $(ZIPF_DIR)
 	tar -czf $@ $<
+	rm -rf $(ZIPF_DIR)
 
 $(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
-             $(DAT_FILES) $(PNG_FILES) \
+             $(DAT_FILES) $(PNG_FILES) $(TXT_FILES) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
-	cp $^ $@
+	rsync -Rr $^ $@/
 	touch $@
 
 ## results.txt : Generate Zipf summary table.
