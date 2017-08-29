@@ -102,7 +102,7 @@ The following figure shows the dependencies involved in building the `all` targe
 > Why does the Makefile rule for the archive directory add the Makefile to our archive of code, data, plots and Zipf summary table?
 >
 > > ## Solution
-> > Our code (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement
+> > Our code files (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement
 > > the individual parts of our workflow. They allow us to create `.dat`
 > > files from `.txt` files, `.png` files from `.dat` files and
 > > `results.txt`. Our Makefile, however, documents dependencies between
