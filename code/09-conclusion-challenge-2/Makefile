@@ -1,8 +1,9 @@
 include config.mk
 
-TXT_FILES=$(wildcard books/*.txt)
-DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
-PNG_FILES=$(patsubst books/%.txt, %.png, $(TXT_FILES))
+TXT_DIR=books
+TXT_FILES=$(wildcard $(TXT_DIR)/*.txt)
+DAT_FILES=$(patsubst $(TXT_DIR)/%.txt, %.dat, $(TXT_FILES))
+PNG_FILES=$(patsubst $(TXT_DIR)/%.txt, %.png, $(TXT_FILES))
 RESULTS_FILE=results.txt
 ZIPF_DIR=zipf_analysis
 ZIPF_ARCHIVE=$(ZIPF_DIR).tar.gz
@@ -13,13 +14,12 @@ all : $(ZIPF_ARCHIVE)
 
 $(ZIPF_ARCHIVE) : $(ZIPF_DIR)
 	tar -czf $@ $<
-	rm -rf $(ZIPF_DIR)
 
 $(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
-             $(DAT_FILES) $(PNG_FILES) $(TXT_FILES) \
+             $(DAT_FILES) $(PNG_FILES) $(TXT_DIR) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
-	rsync -Rr $^ $@/
+	cp -r $^ $@
 	touch $@
 
 ## results.txt : Generate Zipf summary table.
@@ -30,7 +30,7 @@ $(RESULTS_FILE) : $(DAT_FILES) $(ZIPF_SRC)
 .PHONY : dats
 dats : $(DAT_FILES)
 
-%.dat : books/%.txt $(COUNT_SRC)
+%.dat : $(TXT_DIR)/%.txt $(COUNT_SRC)
 	$(COUNT_EXE) $< $@
 
 ## pngs        : Plot word counts.
@@ -52,6 +52,7 @@ clean :
 ## variables   : Print variables.
 .PHONY : variables
 variables:
+	@echo TXT_DIR: $(TXT_DIR)
 	@echo TXT_FILES: $(TXT_FILES)
 	@echo DAT_FILES: $(DAT_FILES)
 	@echo PNG_FILES: $(PNG_FILES)
