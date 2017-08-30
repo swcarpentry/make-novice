@@ -58,13 +58,13 @@ The following figure shows the dependencies involved in building the `all` targe
 > ## Creating an Archive
 >
 > Often it is useful to create an archive file of your project that includes all data, code, 
-> and results. An archive file can packages many files into a single file that can easily be shared
-> with collaborators or downloaded as a single file. We can add steps to create the archive 
-> file inside the Makefile itself so it's easy to update our archive file as the project changes. 
+> and results. An archive file can packages many files into a single file that can easily be
+> downloaded and shared with collaborators. We can add steps to create the archive file inside
+> the Makefile itself so it's easy to update our archive file as the project changes. 
 >
 > 
-> Edit the Makefile to create an archive file of your project.  Add new rules update existing
-> rules, and add new variables to:
+> Edit the Makefile to create an archive file of your project.  Add new rules, update existing
+> rules and add new variables to:
 >
 > * Create a new directory called `zipf_analysis` in the project directory. 
 > * Copy all our code, data, plots and the Zipf summary table to this
