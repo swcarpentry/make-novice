@@ -57,8 +57,8 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Creating an Archive
 >
-> Often it is useful to create an archive file of your project that includes all data, code, 
-> and results. An archive file can packages many files into a single file that can easily be
+> Often it is useful to create an archive file of your project that includes all data, code 
+> and results. An archive file can package many files into a single file that can easily be
 > downloaded and shared with collaborators. We can add steps to create the archive file inside
 > the Makefile itself so it's easy to update our archive file as the project changes. 
 >
