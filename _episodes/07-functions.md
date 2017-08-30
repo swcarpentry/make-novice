@@ -18,24 +18,24 @@ At this point, we have the following Makefile:
 include config.mk
 
 # Generate summary table.
-results.txt : $(ZIPF_SRC) isles.dat abyss.dat last.dat
-	$(ZIPF_EXE) *.dat > $@
+results.txt : *.dat $(ZIPF_SRC)
+        $(ZIPF_EXE) *.dat > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $*.dat
+        $(COUNT_EXE) $< $*.dat
 
 .PHONY : clean
 clean :
-	rm -f *.dat
-	rm -f results.txt
+        rm -f *.dat
+        rm -f results.txt
 ~~~
 {: .make}
 
-Make has many [functions]({{ page.root }}/reference/#function) which can be used to
+Make has many [functions]({{ site.github.url }}/reference/#function) which can be used to
 write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
@@ -47,7 +47,7 @@ TXT_FILES=$(wildcard books/*.txt)
 ~~~
 {: .make}
 
-We can add a `.PHONY` target and rule to show the variable's value:
+We can add `.PHONY` target and rule to show the variable's value:
 
 ~~~
 .PHONY : variables
@@ -84,7 +84,7 @@ The following figure shows the dependencies embodied within our Makefile,
 involved in building the `results.txt` target,
 once we have introduced our function:
 
-![results.txt dependencies after introducing a function](../fig/07-functions.png "results.txt dependencies after introducing a function")
+![results.txt dependencies after introducing a function]({{ site.github.url }}/fig/07-functions.png "results.txt dependencies after introducing a function")
 
 `patsubst` ('pattern substitution') takes a pattern, a replacement string and a
 list of names in that order; each name in the list that matches the pattern is
@@ -138,14 +138,6 @@ clean :
 ~~~
 {: .make}
 
-Let's also tidy up the `%.dat` rule by using the automatic variable `$@` instead of `$*.dat`:
-
-```
-%.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
-```
-{: .make}
-
 Let's check:
 
 ~~~
@@ -164,11 +156,11 @@ python wordcount.py books/sierra.txt sierra.dat
 ~~~
 {: .output}
 
-We can also rewrite `results.txt`: 
+We can also rewrite `results.txt`:
 
 ~~~
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-        $(ZIPF_EXE) $(DAT_FILES) > $@
+        $(ZIPF_EXE) *.dat > $@
 ~~~
 {: .make}
 
@@ -187,9 +179,14 @@ python wordcount.py books/abyss.txt abyss.dat
 python wordcount.py books/isles.txt isles.dat
 python wordcount.py books/last.txt last.dat
 python wordcount.py books/sierra.txt sierra.dat
-python zipf_test.py  last.dat  isles.dat  abyss.dat  sierra.dat > results.txt
+python zipf_test.py *.dat > results.txt
 ~~~
 {: .output}
+
+We see that the problem we had when using the bash wild-card, `*.dat`,
+which required us to run `make dats` before `make results.txt` has
+now disappeared, since our functions allow us to create `.dat` file
+names from those `.txt` file names in `books/`.
 
 Let's check the `results.txt` file:
 
@@ -220,14 +217,14 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(ZIPF_EXE) *.dat > $@
 
 # Count words.
 .PHONY : dats
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+	$(COUNT_EXE) $< $*.dat
 
 .PHONY : clean
 clean :
@@ -256,26 +253,7 @@ ZIPF_EXE=python $(ZIPF_SRC)
 
 > ## Where We Are
 >
-> [This Makefile]({{ page.root }}/code/07-functions/Makefile)
-> and [its accompanying `config.mk`]({{ page.root }}/code/07-functions/config.mk)
+> [This Makefile]({{ site.github.url }}/code/07-functions/Makefile)
+> and [its accompanying `config.mk`]({{ site.github.url }}/code/07-functions/config.mk)
 > contain all of our work so far.
 {: .callout}
-
-> ## Adding more books
->
-> We can now do a better job at testing Zipf's rule by adding more books. 
-> The books we have used come from the [Project Gutenberg](http://www.gutenberg.org/) website.
-> Project Gutenberg offers thousands of free ebooks to download.
->
->  **Exercise instructions:**
->
-> * go to [Project Gutenberg](http://www.gutenberg.org/) and use the search box to find another book, 
-> for example ['The Picture of Dorian Gray'](https://www.gutenberg.org/ebooks/174) from Oscar Wilde.
-> * download the 'Plain Text UTF-8' version and save it to the `books` folder; 
-> choose a short name for the file (**that doesn't include spaces**) e.g. "dorian_gray.txt" 
-> because the filename is going to be used in the `results.txt` file
-> * optionally, open the file in a text editor and remove extraneous text at the beginning and end 
-> (look for the phrase `End of Project Gutenberg's [title], by [author]`)
-> * run `make` and check that the correct commands are run, given the dependency tree
-> * check the results.txt file to see how this book compares to the others
-{: .challenge}
