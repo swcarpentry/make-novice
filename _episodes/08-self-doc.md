@@ -51,7 +51,7 @@ The bash shell can help us here. It provides a command called
 [sed][sed-docs] which stands for 'stream editor'. `sed` reads in some
 text, does some filtering, and writes out the filtered text.
 
-So, we could write comments for our rules, and mark them up in a way
+So, we could write comments for our rules, and mark then up in a way
 which `sed` can detect. Since Make uses `#` for comments, we can use
 `##` for comments that describe what a rule does and that we want
 `sed` to detect. For example:
@@ -59,14 +59,14 @@ which `sed` can detect. Since Make uses `#` for comments, we can use
 ~~~
 ## results.txt : Generate Zipf summary table.
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-        $(ZIPF_EXE) $(DAT_FILES) > $@
+        $(ZIPF_EXE) *.dat > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
 dats : $(DAT_FILES)
 
 %.dat : books/%.txt $(COUNT_SRC)
-        $(COUNT_EXE) $< $@
+        $(COUNT_EXE) $< $*.dat
 
 ## clean       : Remove auto-generated files.
 .PHONY : clean
@@ -124,8 +124,8 @@ them for us.
 
 > ## Where We Are
 >
-> [This Makefile]({{ page.root }}/code/08-self-doc/Makefile)
-> and [its accompanying `config.mk`]({{ page.root }}/code/08-self-doc/config.mk)
+> [This Makefile]({{ site.github.url }}/code/08-self-doc/Makefile)
+> and [its accompanying `config.mk`]({{ site.github.url }}/code/08-self-doc/config.mk)
 > contain all of our work so far.
 {: .callout}
 

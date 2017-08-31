@@ -21,11 +21,10 @@ testing Zipf's Law in some of our favorite books.
 > often as the second most frequent word. This is [Zipf's Law][zipfs-law].
 {: .callout}
 
-We've compiled our raw data i.e. the books we want to analyze
+We've compiled our raw data, the books we want to analyze
+(check out e.g. `head books/isles.txt`)
 and have prepared several Python scripts that together make up our
 analysis pipeline.
-
-Let's take quick look at one of the books using the command `head books/isles.txt`.
 
 Our directory has the Python scripts and data files we
 we will be working with:
@@ -188,7 +187,6 @@ Run the script and check that the output is the same as before:
 
 ~~~
 $ bash run_pipeline.sh
-$ cat results.txt
 ~~~
 {: .bash}
 

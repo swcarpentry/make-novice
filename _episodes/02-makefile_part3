@@ -1,0 +1,8 @@
+> {: .solution}
+{: .challenge}
+
+The following figure shows the dependencies embodied within our
+Makefile, involved in building the `results.txt` target:
+
+![results.txt dependencies represented within the Makefile]({{ site.github.url }}/fig/02-makefile-challenge.png "results.txt dependencies represented within the Makefile")
+

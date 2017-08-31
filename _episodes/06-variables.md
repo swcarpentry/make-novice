@@ -16,8 +16,8 @@ Despite our efforts, our Makefile still has repeated content, namely
 the name of our script, `wordcount.py`. If we renamed our script we'd
 have to update our Makefile in multiple places.
 
-We can introduce a Make [variable]({{ page.root }}/reference/#variable) (called a
-[macro]({{ page.root }}/reference/#macro) in some versions of Make) to hold our
+We can introduce a Make [variable]({{ site.github.url }}/reference/#variable) (called a
+[macro]({{ site.github.url }}/reference/#macro) in some versions of Make) to hold our
 script name:
 
 ~~~
@@ -25,7 +25,7 @@ COUNT_SRC=wordcount.py
 ~~~
 {: .make}
 
-This is a variable [assignment]({{ page.root }}/reference/#assignment) -
+This is a variable [assignment]({{ site.github.url }}/reference/#assignment) -
 `COUNT_SRC` is assigned the value `wordcount.py`.
 
 `wordcount.py` is our script and it is invoked by passing it to
@@ -38,7 +38,7 @@ COUNT_EXE=python $(COUNT_SRC)
 {: .make}
 
 `$(...)` tells Make to replace a variable with its value when Make
-is run. This is a variable [reference]({{ page.root }}/reference/#reference). At
+is run. This is a variable [reference]({{ site.github.url }}/reference/#reference). At
 any place where we want to use the value of a variable we have to
 write it, or reference it, in this way.
 
@@ -60,8 +60,29 @@ used to implement our script from Python to R).
 > using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 >
 > > ## Solution
-> > [This Makefile]({{ page.root }}/code/06-variables-challenge/Makefile)
-> > contains a solution to this challenge.
+
+> > > ```Makefile
+> > > COUNT_SRC=wordcount.py
+> > > COUNT_EXE=python $(COUNT_SRC)
+> > > ZIPF_SRC=zipf_test.py
+> > > ZIPF_EXE=python $(ZIPF_SRC)
+> > > 
+> > > # Generate summary table.
+> > > results.txt : *.dat $(ZIPF_SRC)
+> > > 	$(ZIPF_EXE) *.dat > $@
+> > > 
+> > > # Count words.
+> > > .PHONY : dats
+> > > dats : isles.dat abyss.dat last.dat
+> > > 
+> > > %.dat : books/%.txt $(COUNT_SRC)
+> > > 	$(COUNT_EXE) $< $*.dat
+> > > 
+> > > .PHONY : clean
+> > > clean :
+> > > 	rm -f *.dat
+> > > 	rm -f results.txt
+> > > ```
 > {: .solution}
 {: .challenge}
 
@@ -106,7 +127,40 @@ flexible and reusable code.
 
 > ## Where We Are
 >
-> [This Makefile]({{ page.root }}/code/06-variables/Makefile)
-> and [its accompanying `config.mk`]({{ page.root }}/code/06-variables/config.mk)
+> [This Makefile]({{ site.github.url }}/code/06-variables/Makefile)
+
+> > ```Makefile
+> > include config.mk
+> > 
+> > # Generate summary table.
+> > results.txt : *.dat $(ZIPF_SRC)
+> > 	$(ZIPF_EXE) *.dat > $@
+> > 
+> > # Count words.
+> > .PHONY : dats
+> > dats : isles.dat abyss.dat last.dat
+> > 
+> > %.dat : books/%.txt $(COUNT_SRC)
+> > 	$(COUNT_EXE) $< $*.dat
+> > 
+> > .PHONY : clean
+> > clean :
+> > 	rm -f *.dat
+> > 	rm -f results.txt
+> > ```
+> and [its accompanying `config.mk`]({{ site.github.url }}/code/06-variables/config.mk)
+
+> > ```Makefile
+> > # Count words script.
+> > COUNT_SRC=wordcount.py
+> > COUNT_EXE=python $(COUNT_SRC)
+> > 
+> > # Test Zipf's rule
+> > ZIPF_SRC=zipf_test.py
+> > ZIPF_EXE=python $(ZIPF_SRC)
+> > ```
 > contain all of our work so far.
 {: .callout}
+
+
+
