@@ -26,7 +26,7 @@ papers.
 
 > ## Creating PNGs
 >
-> Add new rules, update existing rules, and add new macros to:
+> Add new rules, update existing rules, and add new variables to:
 >
 > * Create `.png` files from `.dat` files using `plotcount.py`.
 > * Remove all auto-generated files (`.dat`, `.png`,
@@ -57,10 +57,10 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Creating an Archive
 >
-> Add new rules, update existing rules, and add new macros to:
+> Add new rules, update existing rules, and add new variables to:
 >
->  * Define the name of a directory, `zipf_analysis`, to hold all our
->    code, data, plots and the Zipf summary table.
+> * Define the name of a directory, `zipf_analysis`, to hold all our
+>   code, data, plots and the Zipf summary table.
 > * Copy all our code, data, plots and the Zipf summary table to this
 >   directory.
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
