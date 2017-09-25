@@ -22,7 +22,7 @@ Create a file, called `Makefile`, with the following content:
 ~~~
 # Count words.
 isles.dat : books/isles.txt
-        python wordcount.py books/isles.txt isles.dat
+	python wordcount.py books/isles.txt isles.dat
 ~~~
 {: .make}
 
