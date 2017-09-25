@@ -19,7 +19,7 @@ rule]({{ page.root }}/reference/#pattern-rule) which can be used to build any
 
 ~~~
 %.dat : books/%.txt wordcount.py
-        python wordcount.py $< $*.dat
+	python wordcount.py $< $*.dat
 ~~~
 {: .make}
 
@@ -77,19 +77,19 @@ Our Makefile is now much shorter and cleaner:
 ~~~
 # Generate summary table.
 results.txt : zipf_test.py isles.dat abyss.dat last.dat
-        python $< *.dat > $@
+	python $< *.dat > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 %.dat : books/%.txt wordcount.py
-      python wordcount.py $< $*.dat
+	python wordcount.py $< $*.dat
 
 .PHONY : clean
 clean :
-      rm -f *.dat
-      rm -f results.txt
+	rm -f *.dat
+	rm -f results.txt
 ~~~
 {: .make}
 

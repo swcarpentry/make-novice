@@ -17,25 +17,25 @@ Our Makefile now looks like this:
 ~~~
 # Generate summary table.
 results.txt : isles.dat abyss.dat last.dat
-        python zipf_test.py $^ > $@
+	python zipf_test.py $^ > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
 isles.dat : books/isles.txt
-        python wordcount.py $< $@
+	python wordcount.py $< $@
 
 abyss.dat : books/abyss.txt
-        python wordcount.py $< $@
+	python wordcount.py $< $@
 
 last.dat : books/last.txt
-        python wordcount.py $< $@
+	python wordcount.py $< $@
 
 .PHONY : clean
 clean :
-        rm -f *.dat
-        rm -f results.txt
+	rm -f *.dat
+	rm -f results.txt
 ~~~
 {: .make}
 
@@ -62,13 +62,13 @@ data files also:
 
 ~~~
 isles.dat : books/isles.txt wordcount.py
-        python wordcount.py $< $@
+	python wordcount.py $< $@
 
 abyss.dat : books/abyss.txt wordcount.py
-        python wordcount.py $< $@
+	python wordcount.py $< $@
 
 last.dat : books/last.txt wordcount.py
-        python wordcount.py $< $@
+	python wordcount.py $< $@
 ~~~
 {: .make}
 
@@ -226,7 +226,7 @@ cover a better solution later on).
 
 ~~~
 results.txt : zipf_test.py isles.dat abyss.dat last.dat
-        python $< *.dat > $@
+	python $< *.dat > $@
 ~~~
 {: .make}
 

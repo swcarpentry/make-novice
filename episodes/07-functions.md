@@ -103,8 +103,8 @@ We can extend `variables` to show the value of `DAT_FILES` too:
 ~~~
 .PHONY : variables
 variables:
-        @echo TXT_FILES: $(TXT_FILES)
-        @echo DAT_FILES: $(DAT_FILES)
+	@echo TXT_FILES: $(TXT_FILES)
+	@echo DAT_FILES: $(DAT_FILES)
 ~~~
 {: .make}
 
@@ -133,8 +133,8 @@ dats : $(DAT_FILES)
 
 .PHONY : clean
 clean :
-        rm -f $(DAT_FILES)
-        rm -f results.txt
+	rm -f $(DAT_FILES)
+	rm -f results.txt
 ~~~
 {: .make}
 
@@ -168,7 +168,7 @@ We can also rewrite `results.txt`:
 
 ~~~
 results.txt : $(DAT_FILES) $(ZIPF_SRC)
-        $(ZIPF_EXE) $(DAT_FILES) > $@
+	$(ZIPF_EXE) $(DAT_FILES) > $@
 ~~~
 {: .make}
 
