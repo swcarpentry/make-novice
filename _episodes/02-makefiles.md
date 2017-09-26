@@ -22,7 +22,7 @@ Create a file, called `Makefile`, with the following content:
 ~~~
 # Count words.
 isles.dat : books/isles.txt
-        python wordcount.py books/isles.txt isles.dat
+	python wordcount.py books/isles.txt isles.dat
 ~~~
 {: .make}
 
@@ -186,7 +186,7 @@ Let's add another rule to the end of `Makefile`:
 
 ~~~
 abyss.dat : books/abyss.txt
-        python wordcount.py books/abyss.txt abyss.dat
+	python wordcount.py books/abyss.txt abyss.dat
 ~~~
 {: .make}
 
@@ -262,7 +262,7 @@ delete auto-generated files, like our `.dat` files:
 
 ~~~
 clean :
-        rm -f *.dat
+	rm -f *.dat
 ~~~
 {: .make}
 
@@ -400,14 +400,14 @@ Our Makefile now looks like this:
 dats : isles.dat abyss.dat
 
 isles.dat : books/isles.txt
-        python wordcount.py books/isles.txt isles.dat
+	python wordcount.py books/isles.txt isles.dat
 
 abyss.dat : books/abyss.txt
-        python wordcount.py books/abyss.txt abyss.dat
+	python wordcount.py books/abyss.txt abyss.dat
 
 .PHONY : clean
 clean :
-        rm -f *.dat
+	rm -f *.dat
 ~~~
 {: .make}
 
