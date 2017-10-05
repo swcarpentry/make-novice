@@ -26,7 +26,7 @@ papers.
 
 > ## Creating PNGs
 >
-> Add new rules, update existing rules and add new variables to:
+> Add new rules, update existing rules, and add new variables to:
 >
 > * Create `.png` files from `.dat` files using `plotcount.py`.
 > * Remove all auto-generated files (`.dat`, `.png`,

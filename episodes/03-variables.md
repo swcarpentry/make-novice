@@ -25,18 +25,18 @@ results.txt : isles.dat abyss.dat last.dat
 dats : isles.dat abyss.dat last.dat
 
 isles.dat : books/isles.txt
-        python wordcount.py books/isles.txt isles.dat
+	python wordcount.py books/isles.txt isles.dat
 
 abyss.dat : books/abyss.txt
-        python wordcount.py books/abyss.txt abyss.dat
+	python wordcount.py books/abyss.txt abyss.dat
 
 last.dat : books/last.txt
-        python wordcount.py books/last.txt last.dat
+	python wordcount.py books/last.txt last.dat
 
 .PHONY : clean
 clean :
-        rm -f *.dat
-        rm -f results.txt
+	rm -f *.dat
+	rm -f results.txt
 ~~~
 {: .make}
 
@@ -65,7 +65,7 @@ name of the results file name:
 
 ~~~
 results.txt : isles.dat abyss.dat last.dat
-        python zipf_test.py abyss.dat isles.dat last.dat > results.txt
+	python zipf_test.py abyss.dat isles.dat last.dat > results.txt
 ~~~
 {: .make}
 
@@ -74,7 +74,7 @@ with `$@`:
 
 ~~~
 results.txt : isles.dat abyss.dat last.dat
-        python zipf_test.py abyss.dat isles.dat last.dat > $@
+	python zipf_test.py abyss.dat isles.dat last.dat > $@
 ~~~
 {: .make}
 
@@ -86,7 +86,7 @@ We can replace the dependencies in the action with `$^`:
 
 ~~~
 results.txt : isles.dat abyss.dat last.dat
-        python zipf_test.py $^ > $@
+	python zipf_test.py $^ > $@
 ~~~
 {: .make}
 
