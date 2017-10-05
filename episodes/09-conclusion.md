@@ -57,12 +57,27 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Creating an Archive
 >
-> Add new rules, update existing rules, and add new variables to:
+> Often it is useful to create an archive file of your project that includes all data, code 
+> and results. An archive file can package many files into a single file that can easily be
+> downloaded and shared with collaborators. We can add steps to create the archive file inside
+> the Makefile itself so it's easy to update our archive file as the project changes. 
 >
-> * Define the name of a directory, `zipf_analysis`, to hold all our
->   code, data, plots and the Zipf summary table.
+> 
+> Edit the Makefile to create an archive file of your project.  Add new rules, update existing
+> rules and add new variables to:
+>
+> * Create a new directory called `zipf_analysis` in the project directory. 
 > * Copy all our code, data, plots and the Zipf summary table to this
->   directory.
+>   directory. The `cp -r` command can be used to copy files and directories
+>   into the new `zipf_analysis` directory:
+>
+> ~~~
+> $ cp -r [files and directories to copy] zipf_analysis/ 
+> ~~~
+> {: .bash}
+>
+> * Hint: create a new variable for the `books` directory so that it can be 
+>   copied to the new `zipf_analysis` directory
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
 >   bash command `tar` can be used, as follows:
 >
@@ -70,10 +85,9 @@ The following figure shows the dependencies involved in building the `all` targe
 > $ tar -czf zipf_analysis.tar.gz zipf_analysis
 > ~~~
 > {: .bash}
->
+> 
 > * Update `all` to create `zipf_analysis.tar.gz`.
-> * Remove `zipf_analysis` and `zipf_analysis.tar.gz` when `make
->   clean` is called.
+> * Remove `zipf_analysis.tar.gz` when `make clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
 > 
@@ -86,7 +100,8 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Archiving the Makefile
 >
-> Why does the Makefile rule for the archive directory add the Makefile to our archive of code, data, plots and Zipf summary table?
+> Why does the Makefile rule for the archive directory add the Makefile to our archive of code,
+> data, plots and Zipf summary table?
 >
 > > ## Solution
 > > Our code files (`wordcount.py`, `plotcount.py`, `zipf_test.py`) implement
