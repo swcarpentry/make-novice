@@ -52,7 +52,7 @@ Let us go through each line in turn:
   your cursor from one side of the TAB to the other. It should jump
   four or more spaces.
 * Together, the target, dependencies, and actions form a
-  a [rule]({{ page.root }}/reference/#rule).
+  [rule]({{ page.root }}/reference/#rule).
 
 Our rule above describes how to build the target `isles.dat` using the
 action `python wordcount.py` and the dependency `books/isles.txt`.
