@@ -27,8 +27,7 @@ analysis pipeline.
 
 Let's take quick look at one of the books using the command `head books/isles.txt`.
 
-Our directory has the Python scripts and data files we
-we will be working with:
+Our directory has the Python scripts and data files we will be working with:
 
 ~~~
 |- books
