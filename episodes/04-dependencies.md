@@ -115,7 +115,7 @@ in this episode).
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `wordcount.py` would introduce a [false
-> dependency]({{ page.root }}/reference/#false-dependency).
+> dependency]({{ page.root }}/reference#false-dependency).
 {: .callout}
 
 Intuitively, we should also add `wordcount.py` as dependency for
