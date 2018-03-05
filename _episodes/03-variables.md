@@ -78,7 +78,7 @@ results.txt : isles.dat abyss.dat last.dat
 ~~~
 {: .make}
 
-`$@` is a Make [automatic variable]({{ page.root }}/reference/#automatic-variable)
+`$@` is a Make [automatic variable]({{ page.root }}/reference#automatic-variable)
 which means 'the target of the current rule'. When Make is run it will
 replace this variable with the target name.
 

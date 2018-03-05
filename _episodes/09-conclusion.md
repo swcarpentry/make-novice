@@ -33,7 +33,7 @@ papers.
 >   `results.txt`).
 >
 > Finally, many Makefiles define a default [phony
-> target]({{ page.root }}/reference/#phony-target) called `all` as first target,
+> target]({{ page.root }}/reference#phony-target) called `all` as first target,
 > that will build what the Makefile has been written to build (e.g. in
 > our case, the `.png` files and the `results.txt` file). As others
 > may assume your Makefile conforms to convention and supports an
