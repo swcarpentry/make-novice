@@ -19,10 +19,14 @@ def plot_word_counts(counts, limit=10):
     position = np.arange(len(word_data))
     width = 1.0
     ax = plt.axes()
-    ax.set_xticks(position + (width / 2))
+    ax.set_xticks(position)
     ax.set_xticklabels(word_data)
     plt.bar(position, count_data, width, color='b')
     plt.title("Word Counts")
+    ax.set_ylabel("Counts")
+    ax.set_xlabel("Word")
+    plt.margins(x=0)
+
 
 def typeset_labels(labels=None, gap=5):
     """
