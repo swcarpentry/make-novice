@@ -25,7 +25,10 @@ def plot_word_counts(counts, limit=10):
     plt.title("Word Counts")
     ax.set_ylabel("Counts")
     ax.set_xlabel("Word")
-    plt.margins(x=0)
+    try:
+       plt.margins(x=0)
+    except ValueError:
+       return
 
 
 def typeset_labels(labels=None, gap=5):
