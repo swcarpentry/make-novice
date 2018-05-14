@@ -111,13 +111,13 @@ lesson-fixme :
 	@fgrep -i -n FIXME ${MARKDOWN_SRC} || true
 
 ## archive          : archive files needed by learners
-.PHONY :  archive
-archive : files/$(ZIP_FILE)
-
 BOOKS=data/books/*
 PYTHON_SRC=code/*.py
 ZIP_FILE=make-lesson.zip
 TEMP_DIR=make-lesson
+
+.PHONY :  archive
+archive : files/$(ZIP_FILE)
 
 files/$(ZIP_FILE) : $(BOOKS) $(PYTHON_SRC)
 	@mkdir -p $(TEMP_DIR)/books
