@@ -245,6 +245,7 @@ Another popular option is to comment out a subset of the lines in
 python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
 
+# Generate summary table
 # This line is also commented out because it doesn't need to be rerun.
 #python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
