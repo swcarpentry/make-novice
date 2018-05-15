@@ -236,7 +236,7 @@ Another popular option is to comment out a subset of the lines in
 ~~~
 # USAGE: bash run_pipeline.sh
 # to produce plots for isles and abyss
-# and the summary table for the Zipf's law tests
+# and the summary table for the Zipf's law tests.
 
 # These lines are commented out because they don't need to be rerun.
 #python wordcount.py books/isles.txt isles.dat
@@ -246,7 +246,7 @@ python plotcount.py isles.dat isles.png
 python plotcount.py abyss.dat abyss.png
 
 # This line is also commented out because it doesn't need to be rerun.
-python zipf_test.py abyss.dat isles.dat > results.txt
+#python zipf_test.py abyss.dat isles.dat > results.txt
 ~~~
 {: .bash}
 
