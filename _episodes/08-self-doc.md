@@ -58,7 +58,7 @@ which `sed` can detect. Since Make uses `#` for comments, we can use
 
 ~~~
 ## results.txt : Generate Zipf summary table.
-results.txt : $(DAT_FILES) $(ZIPF_SRC)
+results.txt : $(ZIPF_SRC) $(DAT_FILES)
 	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 ## dats        : Count words in text files.
