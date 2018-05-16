@@ -23,7 +23,7 @@ $(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
 	touch $@
 
 ## results.txt : Generate Zipf summary table.
-$(RESULTS_FILE) : $(DAT_FILES) $(ZIPF_SRC)
+$(RESULTS_FILE) : $(ZIPF_SRC) $(DAT_FILES)
 	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 ## dats        : Count words in text files.

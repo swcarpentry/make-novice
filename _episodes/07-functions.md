@@ -167,7 +167,7 @@ python wordcount.py books/sierra.txt sierra.dat
 We can also rewrite `results.txt`: 
 
 ~~~
-results.txt : $(DAT_FILES) $(ZIPF_SRC)
+results.txt : $(ZIPF_SRC) $(DAT_FILES)
 	$(ZIPF_EXE) $(DAT_FILES) > $@
 ~~~
 {: .make}
@@ -219,7 +219,7 @@ TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
-results.txt : $(DAT_FILES) $(ZIPF_SRC)
+results.txt : $(ZIPF_SRC) $(DAT_FILES) 
 	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 # Count words.
