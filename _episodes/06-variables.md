@@ -29,11 +29,12 @@ This is a variable [assignment]({{ page.root }}/reference#assignment) -
 `COUNT_SRC` is assigned the value `wordcount.py`.
 
 `wordcount.py` is our script and it is invoked by passing it to
-`python`. We can introduce another variable to represent this
+`python`. We can introduce another couple of variables to represent this
 execution:
 
 ~~~
-COUNT_EXE=python $(COUNT_SRC)
+LANGUAGE=python
+COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 ~~~
 {: .make}
 
@@ -42,8 +43,9 @@ is run. This is a variable [reference]({{ page.root }}/reference#reference). At
 any place where we want to use the value of a variable we have to
 write it, or reference it, in this way.
 
-Here we reference the variable `COUNT_SRC`. This tells Make to
-replace the variable `COUNT_SRC` with its value `wordcount.py`. When
+Here we reference the variables `LANGUAGE` and `COUNT_SRC`. This tells Make to
+replace the variable `LANGUAGE` with its value `python`,
+and to replace the variable `COUNT_SRC` with its value `wordcount.py`. When
 Make is run it will assign to `COUNT_EXE` the value `python
 wordcount.py`.
 
@@ -74,12 +76,13 @@ the original makefile). Let us create `config.mk`:
 
 ~~~
 # Count words script.
+LANGUAGE=python
 COUNT_SRC=wordcount.py
-COUNT_EXE=python $(COUNT_SRC)
+COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 
 # Test Zipf's rule
 ZIPF_SRC=zipf_test.py
-ZIPF_EXE=python $(ZIPF_SRC)
+ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
 {: .make}
 
