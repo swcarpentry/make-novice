@@ -1,7 +1,7 @@
 ---
 title: "Pattern Rules"
-teaching: 15
-exercises: 15
+teaching: 10
+exercises: 0
 questions:
 - "How can I define rules to operate on similar files?"
 objectives:
