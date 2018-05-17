@@ -1,7 +1,7 @@
 ---
 title: "Dependencies on Data and Code"
 teaching: 15
-exercises: 15
+exercises: 5
 questions:
 - "How can I write a Makefile to update things when my scripts have changed rather than my input files?"
 objectives:
