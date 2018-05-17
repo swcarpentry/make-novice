@@ -1,7 +1,8 @@
+LANGUAGE=python
 COUNT_SRC=wordcount.py
-COUNT_EXE=python $(COUNT_SRC)
+COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 ZIPF_SRC=zipf_test.py
-ZIPF_EXE=python $(ZIPF_SRC)
+ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 
 # Generate summary table.
 results.txt : $(ZIPF_SRC) isles.dat abyss.dat last.dat
