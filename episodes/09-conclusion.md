@@ -1,7 +1,7 @@
 ---
 title: "Conclusion"
-teaching: 15
-exercises: 15
+teaching: 5
+exercises: 30
 questions:
 - "What are the advantages and disadvantages of using tools like Make?"
 objectives:
