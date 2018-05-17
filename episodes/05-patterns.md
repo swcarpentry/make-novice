@@ -18,8 +18,8 @@ rule]({{ page.root }}/reference#pattern-rule) which can be used to build any
 `.dat` file from a `.txt` file in `books/`:
 
 ~~~
-%.dat : books/%.txt wordcount.py
-	python wordcount.py $< $*.dat
+%.dat : books/%.txt countwords.py
+	python countwords.py $< $*.dat
 ~~~
 {: .make}
 
@@ -30,7 +30,7 @@ which the rule matched.
 This rule can be interpreted as:
 "In order to build a file named `[something].dat` (the target)
 find a file named `books/[that same something].txt` (the dependency)
-and run `wordcount.py [the dependency] [the target]`."
+and run `countwords.py [the dependency] [the target]`."
 
 If we re-run Make,
 
@@ -43,9 +43,9 @@ $ make dats
 then we get:
 
 ~~~
-python wordcount.py books/isles.txt isles.dat
-python wordcount.py books/abyss.txt abyss.dat
-python wordcount.py books/last.txt last.dat
+python countwords.py books/isles.txt isles.dat
+python countwords.py books/abyss.txt abyss.dat
+python countwords.py books/last.txt last.dat
 ~~~
 {: .output}
 
@@ -60,7 +60,7 @@ $ make sierra.dat
 which gives the output below:
 
 ```
-python wordcount.py books/sierra.txt sierra.dat
+python countwords.py books/sierra.txt sierra.dat
 ```
 {: .output}
 
@@ -76,15 +76,15 @@ Our Makefile is now much shorter and cleaner:
 
 ~~~
 # Generate summary table.
-results.txt : zipf_test.py isles.dat abyss.dat last.dat
+results.txt : testzipf.py isles.dat abyss.dat last.dat
 	python $< *.dat > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
-%.dat : books/%.txt wordcount.py
-	python wordcount.py $< $*.dat
+%.dat : books/%.txt countwords.py
+	python countwords.py $< $*.dat
 
 .PHONY : clean
 clean :
@@ -106,8 +106,8 @@ the target of the current rule (see below),
 but then we wouldn't have learned about `$*`.
 
 ```
-%.dat : books/%.txt wordcount.py
-      python wordcount.py $< $@
+%.dat : books/%.txt countwords.py
+      python countwords.py $< $@
 ```
 {: .make}
 
