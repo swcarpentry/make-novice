@@ -22,7 +22,7 @@ Create a file, called `Makefile`, with the following content:
 ~~~
 # Count words.
 isles.dat : books/isles.txt
-	python wordcount.py books/isles.txt isles.dat
+	python countwords.py books/isles.txt isles.dat
 ~~~
 {: .make}
 
@@ -40,7 +40,7 @@ Let us go through each line in turn:
   file that is needed to build or update the target. Targets can have
   zero or more dependencies.
 * A colon, `:`, separates targets from dependencies.
-* `python wordcount.py books/isles.txt isles.dat` is an
+* `python countwords.py books/isles.txt isles.dat` is an
   [action]({{ page.root }}/reference#action), a command to run to build or update
   the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
@@ -55,7 +55,7 @@ Let us go through each line in turn:
   [rule]({{ page.root }}/reference#rule).
 
 Our rule above describes how to build the target `isles.dat` using the
-action `python wordcount.py` and the dependency `books/isles.txt`.
+action `python countwords.py` and the dependency `books/isles.txt`.
 
 Information that was implicit in our shell script - that we are
 generating a file called `isles.dat` and that creating this file
@@ -80,7 +80,7 @@ $ make
 By default, Make prints out the actions it executes:
 
 ~~~
-python wordcount.py books/isles.txt isles.dat
+python countwords.py books/isles.txt isles.dat
 ~~~
 {: .output}
 
@@ -163,7 +163,7 @@ $ make
 then it recreates `isles.dat`:
 
 ~~~
-python wordcount.py books/isles.txt isles.dat
+python countwords.py books/isles.txt isles.dat
 ~~~
 {: .output}
 
@@ -186,7 +186,7 @@ Let's add another rule to the end of `Makefile`:
 
 ~~~
 abyss.dat : books/abyss.txt
-	python wordcount.py books/abyss.txt abyss.dat
+	python countwords.py books/abyss.txt abyss.dat
 ~~~
 {: .make}
 
@@ -218,7 +218,7 @@ $ make abyss.dat
 Now, we get:
 
 ~~~
-python wordcount.py books/abyss.txt abyss.dat
+python countwords.py books/abyss.txt abyss.dat
 ~~~
 {: .output}
 
@@ -236,12 +236,12 @@ python wordcount.py books/abyss.txt abyss.dat
 > no rule in our Makefile, then we get message like:
 >
 > ~~~
-> $ make wordcount.py
+> $ make countwords.py
 > ~~~
 > {: .bash}
 >
 > ~~~
-> make: Nothing to be done for `wordcount.py'.
+> make: Nothing to be done for `countwords.py'.
 > ~~~
 > {: .output}
 >
@@ -373,8 +373,8 @@ $ make dats
 then Make creates the data files:
 
 ~~~
-python wordcount.py books/isles.txt isles.dat
-python wordcount.py books/abyss.txt abyss.dat
+python countwords.py books/isles.txt isles.dat
+python countwords.py books/abyss.txt abyss.dat
 ~~~
 {: .output}
 
@@ -400,10 +400,10 @@ Our Makefile now looks like this:
 dats : isles.dat abyss.dat
 
 isles.dat : books/isles.txt
-	python wordcount.py books/isles.txt isles.dat
+	python countwords.py books/isles.txt isles.dat
 
 abyss.dat : books/abyss.txt
-	python wordcount.py books/abyss.txt abyss.dat
+	python countwords.py books/abyss.txt abyss.dat
 
 .PHONY : clean
 clean :
@@ -423,7 +423,7 @@ our Makefile, involved in building the `dats` target:
 > 3. Write a new rule for `results.txt`, which creates the summary
 >    table. The rule needs to:
 >    * Depend upon each of the three `.dat` files.
->    * Invoke the action `python zipf_test.py abyss.dat isles.dat last.dat > results.txt`.
+>    * Invoke the action `python testzipf.py abyss.dat isles.dat last.dat > results.txt`.
 > 4. Put this rule at the top of the Makefile so that it is the default target.
 > 5. Update `clean` so that it removes `results.txt`.
 >
