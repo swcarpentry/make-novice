@@ -157,10 +157,10 @@ $ make dats
 We get:
 
 ~~~
-python wordcount.py books/abyss.txt abyss.dat
-python wordcount.py books/isles.txt isles.dat
-python wordcount.py books/last.txt last.dat
-python wordcount.py books/sierra.txt sierra.dat
+python countwords.py books/abyss.txt abyss.dat
+python countwords.py books/isles.txt isles.dat
+python countwords.py books/last.txt last.dat
+python countwords.py books/sierra.txt sierra.dat
 ~~~
 {: .output}
 
@@ -183,11 +183,11 @@ $ make results.txt
 We get:
 
 ~~~
-python wordcount.py books/abyss.txt abyss.dat
-python wordcount.py books/isles.txt isles.dat
-python wordcount.py books/last.txt last.dat
-python wordcount.py books/sierra.txt sierra.dat
-python zipf_test.py  last.dat  isles.dat  abyss.dat  sierra.dat > results.txt
+python countwords.py books/abyss.txt abyss.dat
+python countwords.py books/isles.txt isles.dat
+python countwords.py books/last.txt last.dat
+python countwords.py books/sierra.txt sierra.dat
+python testzipf.py  last.dat  isles.dat  abyss.dat  sierra.dat > results.txt
 ~~~
 {: .output}
 
@@ -246,11 +246,11 @@ Remember, the `config.mk` file contains:
 ~~~
 # Count words script.
 LANGUAGE=python
-COUNT_SRC=wordcount.py
+COUNT_SRC=countwords.py
 COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 
 # Test Zipf's rule
-ZIPF_SRC=zipf_test.py
+ZIPF_SRC=testzipf.py
 ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
 {: .make}

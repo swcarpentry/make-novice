@@ -36,16 +36,16 @@ Our directory has the Python scripts and data files we will be working with:
 |  |- last.txt
 |  |- LICENSE_TEXTS.md
 |  |- sierra.txt
-|- plotcount.py
-|- wordcount.py
-|- zipf_test.py
+|- plotcounts.py
+|- countwords.py
+|- testzipf.py
 ~~~
 {: .output}
 
 The first step is to count the frequency of each word in a book.
 
 ~~~
-$ python wordcount.py books/isles.txt isles.dat
+$ python countwords.py books/isles.txt isles.dat
 ~~~
 {: .bash}
 
@@ -75,7 +75,7 @@ number of words in the text file.
 We can do the same thing for a different book:
 
 ~~~
-$ python wordcount.py books/abyss.txt abyss.dat
+$ python countwords.py books/abyss.txt abyss.dat
 $ head -5 abyss.dat
 ~~~
 {: .bash}
@@ -90,11 +90,11 @@ to 1515 2.38057825267
 {: .output}
 
 Let's visualize the results.
-The script `plotcount.py` reads in a data file and plots the 10 most
+The script `plotcounts.py` reads in a data file and plots the 10 most
 frequently occurring words as a text-based bar plot:
 
 ~~~
-$ python plotcount.py isles.dat ascii
+$ python plotcounts.py isles.dat ascii
 ~~~
 {: .bash}
 
@@ -112,26 +112,26 @@ it    ###########
 ~~~
 {: .output}
 
-`plotcount.py` can also show the plot graphically:
+`plotcounts.py` can also show the plot graphically:
 
 ~~~
-$ python plotcount.py isles.dat show
+$ python plotcounts.py isles.dat show
 ~~~
 {: .bash}
 
 Close the window to exit the plot.
 
-`plotcount.py` can also create the plot as an image file (e.g. a PNG file):
+`plotcounts.py` can also create the plot as an image file (e.g. a PNG file):
 
 ~~~
-$ python plotcount.py isles.dat isles.png
+$ python plotcounts.py isles.dat isles.png
 ~~~
 {: .bash}
 
 Finally, let's test Zipf's law for these books:
 
 ~~~
-$ python zipf_test.py abyss.dat isles.dat
+$ python testzipf.py abyss.dat isles.dat
 ~~~
 {: .bash}
 
@@ -153,7 +153,7 @@ Together these scripts implement a common workflow:
 5. Save the graph as an image, so we can put it in a paper.
 6. Make a summary table of the analyses
 
-Running `wordcount.py` and `plotcount.py` at the shell prompt, as we
+Running `countwords.py` and `plotcounts.py` at the shell prompt, as we
 have been doing, is fine for one or two files. If, however, we had 5
 or 10 or 20 text files,
 or if the number of steps in the pipeline were to expand, this could turn into
@@ -172,14 +172,14 @@ Using your text editor of choice (e.g. nano), add the following to a new file na
 # to produce plots for isles and abyss
 # and the summary table for the Zipf's law tests
 
-python wordcount.py books/isles.txt isles.dat
-python wordcount.py books/abyss.txt abyss.dat
+python countwords.py books/isles.txt isles.dat
+python countwords.py books/abyss.txt abyss.dat
 
-python plotcount.py isles.dat isles.png
-python plotcount.py abyss.dat abyss.png
+python plotcounts.py isles.dat isles.png
+python plotcounts.py abyss.dat abyss.png
 
 # Generate summary table
-python zipf_test.py abyss.dat isles.dat > results.txt
+python testzipf.py abyss.dat isles.dat > results.txt
 ~~~
 {: .bash}
 
@@ -203,9 +203,9 @@ This shell script solves several problems in computational reproducibility:
 
 Despite these benefits it has a few shortcomings.
 
-Let's adjust the width of the bars in our plot produced by `plotcount.py`.
+Let's adjust the width of the bars in our plot produced by `plotcounts.py`.
 
-Edit `plotcount.py` so that the bars are 0.8 units wide instead of 1 unit.
+Edit `plotcounts.py` so that the bars are 0.8 units wide instead of 1 unit.
 (Hint: replace `width = 1.0` with `width = 0.8` in the definition of
 `plot_word_counts`.)
 
@@ -222,7 +222,7 @@ for-loop.)
 
 ~~~
 for book in abyss isles; do
-    python plotcount.py $book.dat $book.png
+    python plotcounts.py $book.dat $book.png
 done
 ~~~
 {: .bash}
@@ -239,15 +239,15 @@ Another popular option is to comment out a subset of the lines in
 # and the summary table for the Zipf's law tests.
 
 # These lines are commented out because they don't need to be rerun.
-#python wordcount.py books/isles.txt isles.dat
-#python wordcount.py books/abyss.txt abyss.dat
+#python countwords.py books/isles.txt isles.dat
+#python countwords.py books/abyss.txt abyss.dat
 
-python plotcount.py isles.dat isles.png
-python plotcount.py abyss.dat abyss.png
+python plotcounts.py isles.dat isles.png
+python plotcounts.py abyss.dat abyss.png
 
 # Generate summary table
 # This line is also commented out because it doesn't need to be rerun.
-#python zipf_test.py abyss.dat isles.dat > results.txt
+#python testzipf.py abyss.dat isles.dat > results.txt
 ~~~
 {: .bash}
 

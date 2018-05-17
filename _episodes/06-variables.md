@@ -13,7 +13,7 @@ keypoints:
 ---
 
 Despite our efforts, our Makefile still has repeated content, i.e.
-the name of our script -- `wordcount.py`, and the program we use to run it -- `python`.
+the name of our script -- `countwords.py`, and the program we use to run it -- `python`.
 If we renamed our script we'd have to update our Makefile in multiple places.
 
 We can introduce a Make [variable]({{ page.root }}/reference#variable) (called a
@@ -21,14 +21,14 @@ We can introduce a Make [variable]({{ page.root }}/reference#variable) (called a
 script name:
 
 ~~~
-COUNT_SRC=wordcount.py
+COUNT_SRC=countwords.py
 ~~~
 {: .make}
 
 This is a variable [assignment]({{ page.root }}/reference#assignment) -
-`COUNT_SRC` is assigned the value `wordcount.py`.
+`COUNT_SRC` is assigned the value `countwords.py`.
 
-`wordcount.py` is our script and it is invoked by passing it to
+`countwords.py` is our script and it is invoked by passing it to
 `python`. We can introduce another couple of variables to represent this
 execution:
 
@@ -45,9 +45,9 @@ write it, or reference it, in this way.
 
 Here we reference the variables `LANGUAGE` and `COUNT_SRC`. This tells Make to
 replace the variable `LANGUAGE` with its value `python`,
-and to replace the variable `COUNT_SRC` with its value `wordcount.py`. When
+and to replace the variable `COUNT_SRC` with its value `countwords.py`. When
 Make is run it will assign to `COUNT_EXE` the value `python
-wordcount.py`.
+countwords.py`.
 
 Defining the variable `COUNT_EXE` in this way avoids repeating `python` in our 
 Makefile, and allows us to easily
@@ -77,11 +77,11 @@ the original makefile). Let us create `config.mk`:
 ~~~
 # Count words script.
 LANGUAGE=python
-COUNT_SRC=wordcount.py
+COUNT_SRC=countwords.py
 COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 
 # Test Zipf's rule
-ZIPF_SRC=zipf_test.py
+ZIPF_SRC=testzipf.py
 ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
 {: .make}

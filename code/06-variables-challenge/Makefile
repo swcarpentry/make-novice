@@ -1,7 +1,7 @@
 LANGUAGE=python
-COUNT_SRC=wordcount.py
+COUNT_SRC=countwords.py
 COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
-ZIPF_SRC=zipf_test.py
+ZIPF_SRC=testzipf.py
 ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 
 # Generate summary table.
