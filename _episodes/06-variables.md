@@ -23,7 +23,7 @@ script name:
 ~~~
 COUNT_SRC=countwords.py
 ~~~
-{: .make}
+{: .language-make}
 
 This is a variable [assignment]({{ page.root }}/reference#assignment) -
 `COUNT_SRC` is assigned the value `countwords.py`.
@@ -36,7 +36,7 @@ execution:
 LANGUAGE=python
 COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 ~~~
-{: .make}
+{: .language-make}
 
 `$(...)` tells Make to replace a variable with its value when Make
 is run. This is a variable [reference]({{ page.root }}/reference#reference). At
@@ -84,14 +84,14 @@ COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 ZIPF_SRC=testzipf.py
 ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
-{: .make}
+{: .language-make}
 
 We can then import `config.mk` into `Makefile` using:
 
 ~~~
 include config.mk
 ~~~
-{: .make}
+{: .language-make}
 
 We can re-run Make to see that everything still works:
 
@@ -100,7 +100,7 @@ $ make clean
 $ make dats
 $ make results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 We have separated the configuration of our Makefile from its rules,
 the parts that do all the work. If we want to change our script name

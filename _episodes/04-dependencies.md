@@ -37,7 +37,7 @@ clean :
 	rm -f *.dat
 	rm -f results.txt
 ~~~
-{: .make}
+{: .language-make}
 
 Our data files are a product not only of our text files but the
 script, `countwords.py`, that processes the text files and creates the
@@ -51,7 +51,7 @@ $ make dats
 $ touch countwords.py
 $ make dats
 ~~~
-{: .bash}
+{: .language-bash}
 
 Nothing happens! Though we've updated `countwords.py` our data files
 are not updated because our rules for creating `.dat` files don't
@@ -70,7 +70,7 @@ abyss.dat : books/abyss.txt countwords.py
 last.dat : books/last.txt countwords.py
 	python countwords.py $< $@
 ~~~
-{: .make}
+{: .language-make}
 
 If we pretend to edit `countwords.py` and re-run Make,
 
@@ -78,7 +78,7 @@ If we pretend to edit `countwords.py` and re-run Make,
 $ touch countwords.py
 $ make dats
 ~~~
-{: .bash}
+{: .language-bash}
 
 then we get:
 
@@ -97,7 +97,7 @@ python countwords.py books/last.txt last.dat
 > $ touch countwords.py
 > $ make -n dats
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > This gives the same output to the screen as without the `-n` flag, but the commands are not actually run. Using this 'dry-run' mode is a good way to check that you have set up your Makefile properly before actually running the commands in it.
 >
@@ -127,7 +127,7 @@ happens to `results.txt` when we update `countwords.py`:
 $ touch countwords.py
 $ make results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 then we get:
 
@@ -157,7 +157,7 @@ downstream steps.
 > $ touch books/last.txt
 > $ make results.txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > 1. only `last.dat` is recreated
 > 2. all `.dat` files are recreated
@@ -183,14 +183,14 @@ downstream steps.
 > > results.txt : isles.dat abyss.dat last.dat testzipf.py
 > >         python testzipf.py $^ > $@
 > > ~~~
-> > {: .make}
+> > {: .language-make}
 > >
 > > `testzipf.py` becomes a part of `$^`, thus the command becomes
 > >
 > > ~~~
 > > python testzipf.py abyss.dat isles.dat last.dat testzipf.py > results.txt
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > This results in an error from `testzipf.py` as it tries to parse the
 > > script as if it were a `.dat` file. Try this by running:
@@ -198,7 +198,7 @@ downstream steps.
 > > ~~~
 > > $ make results.txt
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > You'll get
 > >
@@ -228,7 +228,7 @@ cover a better solution later on).
 results.txt : testzipf.py isles.dat abyss.dat last.dat
 	python $< *.dat > $@
 ~~~
-{: .make}
+{: .language-make}
 
 > ## Where We Are
 >
