@@ -18,7 +18,7 @@ After the exercise at the end of the previous episode, our Makefile looked like 
 ~~~
 # Generate summary table.
 results.txt : isles.dat abyss.dat last.dat
-        python testzipf.py abyss.dat isles.dat last.dat > results.txt
+	python testzipf.py abyss.dat isles.dat last.dat > results.txt
 
 # Count words.
 .PHONY : dats
@@ -38,7 +38,7 @@ clean :
 	rm -f *.dat
 	rm -f results.txt
 ~~~
-{: .make}
+{: .language-make}
 
 Our Makefile has a lot of duplication. For example, the names of text
 files and data files are repeated in many places throughout the
@@ -67,7 +67,7 @@ name of the results file name:
 results.txt : isles.dat abyss.dat last.dat
 	python testzipf.py abyss.dat isles.dat last.dat > results.txt
 ~~~
-{: .make}
+{: .language-make}
 
 Looking at the results file name first, we can replace it in the action
 with `$@`:
@@ -76,7 +76,7 @@ with `$@`:
 results.txt : isles.dat abyss.dat last.dat
 	python testzipf.py abyss.dat isles.dat last.dat > $@
 ~~~
-{: .make}
+{: .language-make}
 
 `$@` is a Make [automatic variable]({{ page.root }}/reference#automatic-variable)
 which means 'the target of the current rule'. When Make is run it will
@@ -88,7 +88,7 @@ We can replace the dependencies in the action with `$^`:
 results.txt : isles.dat abyss.dat last.dat
 	python testzipf.py $^ > $@
 ~~~
-{: .make}
+{: .language-make}
 
 `$^` is another automatic variable which means 'all the dependencies
 of the current rule'. Again, when Make is run it will replace this
@@ -100,7 +100,7 @@ Let's update our text files and re-run our rule:
 $ touch books/*.txt
 $ make results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 We get:
 
@@ -121,7 +121,7 @@ python testzipf.py isles.dat abyss.dat last.dat > results.txt
 > $ touch *.dat
 > $ make results.txt
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > 1. nothing
 > 2. all files recreated
@@ -140,7 +140,7 @@ python testzipf.py isles.dat abyss.dat last.dat > results.txt
 > > $ touch books/*.txt
 > > $ make results.txt
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > you will find that the `.dat` files as well as `results.txt` are recreated.
 > {: .solution}
