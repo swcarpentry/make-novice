@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import sys
 from collections import Sequence
 
-from wordcount import load_word_counts
+from countwords import load_word_counts
 
 
 def plot_word_counts(counts, limit=10):
