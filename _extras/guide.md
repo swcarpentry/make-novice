@@ -59,9 +59,9 @@ Data files are in `data/books`.
 You can either create a simple Git repository for students to clone
 which contains:
 
-* `wordcount.py`
-* `plotcount.py`
-* `zipf_test.py`
+* `countwords.py`
+* `plotcounts.py`
+* `testzipf.py`
 * `books/`
 
 Or, ask students to download
