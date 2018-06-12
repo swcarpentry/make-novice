@@ -171,6 +171,6 @@ $ export LANGUAGE=en_US.UTF-8
 {: .bash}
 
 [graphviz]: http://www.graphviz.org/
-[lesson-example]: https://github.com/swcarpentry/lesson-example/
+[lesson-example]: https://github.com/carpentries/lesson-example/
 [makefile2graph]: https://github.com/lindenb/makefile2graph
 [zipfile]: {{ page.root }}/files/make-lesson.zip
