@@ -74,7 +74,7 @@ The following figure shows the dependencies involved in building the `all` targe
 > ~~~
 > $ cp -r [files and directories to copy] zipf_analysis/ 
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > * Hint: create a new variable for the `books` directory so that it can be 
 >   copied to the new `zipf_analysis` directory
@@ -84,7 +84,7 @@ The following figure shows the dependencies involved in building the `all` targe
 > ~~~
 > $ tar -czf zipf_analysis.tar.gz zipf_analysis
 > ~~~
-> {: .bash}
+> {: .language-bash}
 > 
 > * Update `all` to create `zipf_analysis.tar.gz`.
 > * Remove `zipf_analysis.tar.gz` when `make clean` is called.

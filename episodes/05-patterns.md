@@ -21,7 +21,7 @@ rule]({{ page.root }}/reference#pattern-rule) which can be used to build any
 %.dat : books/%.txt countwords.py
 	python countwords.py $< $*.dat
 ~~~
-{: .make}
+{: .language-make}
 
 `%` is a Make [wildcard]({{ page.root }}/reference#wildcard).  `$*` is a special
 variable which gets replaced by the [stem]({{ page.root }}/reference#stem) with
@@ -38,7 +38,7 @@ If we re-run Make,
 $ make clean
 $ make dats
 ~~~
-{: .bash}
+{: .language-bash}
 
 then we get:
 
@@ -55,7 +55,7 @@ and that our new rule will work no matter what stem is being matched.
 ```
 $ make sierra.dat
 ```
-{: .bash}
+{: .language-bash}
 
 which gives the output below:
 
@@ -91,7 +91,7 @@ clean :
 	rm -f *.dat
 	rm -f results.txt
 ~~~
-{: .make}
+{: .language-make}
 
 > ## Where We Are
 >
@@ -107,7 +107,7 @@ but then we wouldn't have learned about `$*`.
 
 ```
 %.dat : books/%.txt countwords.py
-      python countwords.py $< $@
+	python countwords.py $< $@
 ```
-{: .make}
+{: .language-make}
 
