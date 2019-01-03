@@ -47,14 +47,14 @@ The first step is to count the frequency of each word in a book.
 ~~~
 $ python countwords.py books/isles.txt isles.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 Let's take a quick peek at the result.
 
 ~~~
 $ head -5 isles.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 This shows us the top 5 lines in the output file:
 
@@ -78,7 +78,7 @@ We can do the same thing for a different book:
 $ python countwords.py books/abyss.txt abyss.dat
 $ head -5 abyss.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 the 4044 6.35449402891
@@ -96,7 +96,7 @@ frequently occurring words as a text-based bar plot:
 ~~~
 $ python plotcounts.py isles.dat ascii
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 the   ########################################################################
@@ -117,7 +117,7 @@ it    ###########
 ~~~
 $ python plotcounts.py isles.dat show
 ~~~
-{: .bash}
+{: .language-bash}
 
 Close the window to exit the plot.
 
@@ -126,14 +126,14 @@ Close the window to exit the plot.
 ~~~
 $ python plotcounts.py isles.dat isles.png
 ~~~
-{: .bash}
+{: .language-bash}
 
 Finally, let's test Zipf's law for these books:
 
 ~~~
 $ python testzipf.py abyss.dat isles.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Book	First	Second	Ratio
@@ -181,7 +181,7 @@ python plotcounts.py abyss.dat abyss.png
 # Generate summary table
 python testzipf.py abyss.dat isles.dat > results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 Run the script and check that the output is the same as before:
 
@@ -189,7 +189,7 @@ Run the script and check that the output is the same as before:
 $ bash run_pipeline.sh
 $ cat results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 This shell script solves several problems in computational reproducibility:
 
@@ -225,7 +225,7 @@ for book in abyss isles; do
     python plotcounts.py $book.dat $book.png
 done
 ~~~
-{: .bash}
+{: .language-bash}
 
 With this approach, however,
 we don't get many of the benefits of having a shell script in the first place.
@@ -249,7 +249,7 @@ python plotcounts.py abyss.dat abyss.png
 # This line is also commented out because it doesn't need to be rerun.
 #python testzipf.py abyss.dat isles.dat > results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 Then, we would run our modified shell script using `bash run_pipeline.sh`.
 
