@@ -39,8 +39,11 @@ follow this lesson:
 
 #### Linux
 
-Make is a standard tool on Linux systems and should already be available.
+Make is a standard tool on most Linux systems and should already be available.
 Check if you already have Make installed by typing `make -v` into a terminal.
+
+One exception is Debian, and you should install Make from the terminal using
+`sudo apt-get install make`.
 
 #### OSX
 
