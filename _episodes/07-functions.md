@@ -80,12 +80,6 @@ TXT_FILES: books/abyss.txt books/isles.txt books/last.txt books/sierra.txt
 
 Note how `sierra.txt` is now included too.
 
-The following figure shows the dependencies embodied within our Makefile,
-involved in building the `results.txt` target,
-once we have introduced our function:
-
-![results.txt dependencies after introducing a function](../fig/07-functions.png "results.txt dependencies after introducing a function")
-
 `patsubst` ('pattern substitution') takes a pattern, a replacement string and a
 list of names in that order; each name in the list that matches the pattern is
 replaced by the replacement string. Again, we can save the result in a
@@ -164,7 +158,7 @@ python countwords.py books/sierra.txt sierra.dat
 ~~~
 {: .output}
 
-We can also rewrite `results.txt`: 
+We can also rewrite `results.txt`:
 
 ~~~
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
@@ -219,7 +213,7 @@ TXT_FILES=$(wildcard books/*.txt)
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
-results.txt : $(ZIPF_SRC) $(DAT_FILES) 
+results.txt : $(ZIPF_SRC) $(DAT_FILES)
 	$(ZIPF_EXE) $(DAT_FILES) > $@
 
 # Count words.
@@ -255,6 +249,12 @@ ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
 {: .language-make}
 
+The following figure shows the dependencies embodied within our Makefile,
+involved in building the `results.txt` target,
+now we have introduced our function:
+
+![results.txt dependencies after introducing a function](../fig/07-functions.png "results.txt dependencies after introducing a function")
+
 > ## Where We Are
 >
 > [This Makefile]({{ page.root }}/code/07-functions/Makefile)
@@ -264,18 +264,18 @@ ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 
 > ## Adding more books
 >
-> We can now do a better job at testing Zipf's rule by adding more books. 
+> We can now do a better job at testing Zipf's rule by adding more books.
 > The books we have used come from the [Project Gutenberg](http://www.gutenberg.org/) website.
 > Project Gutenberg offers thousands of free ebooks to download.
 >
 >  **Exercise instructions:**
 >
-> * go to [Project Gutenberg](http://www.gutenberg.org/) and use the search box to find another book, 
+> * go to [Project Gutenberg](http://www.gutenberg.org/) and use the search box to find another book,
 > for example ['The Picture of Dorian Gray'](https://www.gutenberg.org/ebooks/174) from Oscar Wilde.
-> * download the 'Plain Text UTF-8' version and save it to the `books` folder; 
-> choose a short name for the file (**that doesn't include spaces**) e.g. "dorian_gray.txt" 
+> * download the 'Plain Text UTF-8' version and save it to the `books` folder;
+> choose a short name for the file (**that doesn't include spaces**) e.g. "dorian_gray.txt"
 > because the filename is going to be used in the `results.txt` file
-> * optionally, open the file in a text editor and remove extraneous text at the beginning and end 
+> * optionally, open the file in a text editor and remove extraneous text at the beginning and end
 > (look for the phrase `End of Project Gutenberg's [title], by [author]`)
 > * run `make` and check that the correct commands are run, given the dependency tree
 > * check the results.txt file to see how this book compares to the others
