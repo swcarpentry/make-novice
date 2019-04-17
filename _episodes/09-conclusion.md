@@ -67,8 +67,9 @@ The following figure shows the dependencies involved in building the `all` targe
 > rules and add new variables to:
 >
 > * Create a new directory called `zipf_analysis` in the project directory.
-> * Copy all our code, data, plots and the Zipf summary table to this
->   directory. The `cp -r` command can be used to copy files and directories
+> * Copy all our code, data, plots, the Zipf summary table, the Makefile and config.mk
+>   to this directory.
+>   The `cp -r` command can be used to copy files and directories
 >   into the new `zipf_analysis` directory:
 >
 >   ~~~
@@ -86,7 +87,7 @@ The following figure shows the dependencies involved in building the `all` targe
 >   ~~~
 >   {: .language-bash}
 >
-> * Update `all` to create `zipf_analysis.tar.gz`.
+> * Update the target `all` so that it creates `zipf_analysis.tar.gz`.
 > * Remove `zipf_analysis.tar.gz` when `make clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
