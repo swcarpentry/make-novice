@@ -57,40 +57,41 @@ The following figure shows the dependencies involved in building the `all` targe
 
 > ## Creating an Archive
 >
-> Often it is useful to create an archive file of your project that includes all data, code 
+> Often it is useful to create an archive file of your project that includes all data, code
 > and results. An archive file can package many files into a single file that can easily be
 > downloaded and shared with collaborators. We can add steps to create the archive file inside
-> the Makefile itself so it's easy to update our archive file as the project changes. 
+> the Makefile itself so it's easy to update our archive file as the project changes.
 >
-> 
+>
 > Edit the Makefile to create an archive file of your project.  Add new rules, update existing
 > rules and add new variables to:
 >
-> * Create a new directory called `zipf_analysis` in the project directory. 
-> * Copy all our code, data, plots and the Zipf summary table to this
->   directory. The `cp -r` command can be used to copy files and directories
+> * Create a new directory called `zipf_analysis` in the project directory.
+> * Copy all our code, data, plots, the Zipf summary table, the Makefile and config.mk
+>   to this directory.
+>   The `cp -r` command can be used to copy files and directories
 >   into the new `zipf_analysis` directory:
 >
-> ~~~
-> $ cp -r [files and directories to copy] zipf_analysis/ 
-> ~~~
-> {: .language-bash}
+>   ~~~
+>   $ cp -r [files and directories to copy] zipf_analysis/
+>   ~~~
+>   {: .language-bash}
 >
-> * Hint: create a new variable for the `books` directory so that it can be 
+> * Hint: create a new variable for the `books` directory so that it can be
 >   copied to the new `zipf_analysis` directory
 > * Create an archive, `zipf_analysis.tar.gz`, of this directory. The
 >   bash command `tar` can be used, as follows:
 >
-> ~~~
-> $ tar -czf zipf_analysis.tar.gz zipf_analysis
-> ~~~
-> {: .language-bash}
-> 
-> * Update `all` to create `zipf_analysis.tar.gz`.
+>   ~~~
+>   $ tar -czf zipf_analysis.tar.gz zipf_analysis
+>   ~~~
+>   {: .language-bash}
+>
+> * Update the target `all` so that it creates `zipf_analysis.tar.gz`.
 > * Remove `zipf_analysis.tar.gz` when `make clean` is called.
 > * Print the values of any additional variables you have defined when
 >   `make variables` is called.
-> 
+>
 > > ## Solution
 > > [This Makefile]({{ page.root }}/code/09-conclusion-challenge-2/Makefile)
 > > and [this `config.mk`]({{ page.root }}/code/09-conclusion-challenge-2/config.mk)
@@ -106,8 +107,8 @@ The following figure shows the dependencies involved in building the `all` targe
 > > ## Solution
 > > Our code files (`countwords.py`, `plotcounts.py`, `testzipf.py`) implement
 > > the individual parts of our workflow. They allow us to create `.dat`
-> > files from `.txt` files, `.png` files from `.dat` files and
-> > `results.txt`. Our Makefile, however, documents dependencies between
+> > files from `.txt` files, and `results.txt` and `.png` files from `.dat` files.
+> > Our Makefile, however, documents dependencies between
 > > our code, raw data, derived data, and plots, as well as implementing
 > > our workflow as a whole. `config.mk` contains configuration information
 > > for our Makefile, so it must be archived too.
@@ -124,7 +125,7 @@ The following figure shows the dependencies involved in building the `all` targe
 > > archive directory, the archive directory's timestamp must be updated with `touch`
 > > so that the rule that makes `zipf_analysis.tar.gz` knows to run again;
 > > without this `touch`, `zipf_analysis.tar.gz` will only be created the first time
-> > the rule is run and will not be updated on subsequent runs even if the contents 
+> > the rule is run and will not be updated on subsequent runs even if the contents
 > > of the archive directory have changed.
 > {: .solution}
 {: .challenge}
