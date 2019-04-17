@@ -8,7 +8,7 @@ RESULTS_FILE=results.txt
 ZIPF_DIR=zipf_analysis
 ZIPF_ARCHIVE=$(ZIPF_DIR).tar.gz
 
-## all         : Generate archive of code, data, plots and Zipf summary table.
+## all         : Generate archive of code, data, plots, summary table, Makefile, and config.mk.
 .PHONY : all
 all : $(ZIPF_ARCHIVE)
 
