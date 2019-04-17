@@ -107,8 +107,8 @@ The following figure shows the dependencies involved in building the `all` targe
 > > ## Solution
 > > Our code files (`countwords.py`, `plotcounts.py`, `testzipf.py`) implement
 > > the individual parts of our workflow. They allow us to create `.dat`
-> > files from `.txt` files, `.png` files from `.dat` files and
-> > `results.txt`. Our Makefile, however, documents dependencies between
+> > files from `.txt` files, and `results.txt` and `.png` files from `.dat` files.
+> > Our Makefile, however, documents dependencies between
 > > our code, raw data, derived data, and plots, as well as implementing
 > > our workflow as a whole. `config.mk` contains configuration information
 > > for our Makefile, so it must be archived too.
