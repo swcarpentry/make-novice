@@ -22,12 +22,12 @@ reports and papers for publication.
 
 ## Overall
 
-The overall lesson can be done in a 2 hour slot.
+The overall lesson can be done in 3.5 hours.
 
 Solutions for challenges are used in subsequent topics.
 
-A number of example Makefiles, including sample solutions to
-challenges, are in `code/samples` and are identified below.
+A number of example Makefiles, including sample solutions to challenges,
+are in subdirectories of `code` for the corresponding episodes.
 
 It can be useful to use two windows during the lesson, one with the terminal where you run the `make` commands, the other with the Makefile opened in a text editor all the time. This makes it possible to refer to the Makefile while explaining the output from the commandline, for example. Make sure, though, that the text in both windows is readable from the back of the room.
 
@@ -77,7 +77,7 @@ $ make make-lesson.zip
 ## Beware of Spaces!
 
 The single most commonly occurring problem will be students using
-spaces instead of TABs when intending actions.
+spaces instead of TABs when indenting actions.
 
 ## Makefile Dependency Images
 
