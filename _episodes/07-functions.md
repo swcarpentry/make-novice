@@ -1,6 +1,6 @@
 ---
 title: "Functions"
-teaching: 15
+teaching: 20
 exercises: 5
 questions:
 - "How *else* can I eliminate redundancy in my Makefiles?"
