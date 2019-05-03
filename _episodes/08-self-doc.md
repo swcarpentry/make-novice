@@ -1,6 +1,6 @@
 ---
 title: "Self-Documenting Makefiles"
-teaching: 15
+teaching: 10
 exercises: 0
 questions:
 - "How should I document a Makefile?"
