@@ -3,7 +3,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
-from collections import Sequence
+try:
+    from collections.abc import Sequence
+except ImportError:
+    from collections import Sequence
 
 from countwords import load_word_counts
 
