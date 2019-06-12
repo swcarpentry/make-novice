@@ -59,7 +59,7 @@ rewrite the script using another language (e.g. switch from Python to R)).
 >
 > Update `Makefile` so that the `%.dat` rule
 > references the variables `COUNT_SRC` and `COUNT_EXE`.
-> Then do the same for the `zipf-test.py` script
+> Then do the same for the `testzipf.py` script
 > and the `results.txt` rule,
 > using `ZIPF_SRC` and `ZIPF_EXE` as variable names
 >
