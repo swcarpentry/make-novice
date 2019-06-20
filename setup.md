@@ -58,7 +58,7 @@ Use the Software Carpentry [Windows installer](https://github.com/swcarpentry/wi
 
 Python2 or Python3, Numpy and Matplotlib are required.
 They can be installed separately, but the easiest approach is to install 
-Anaconda python <https://www.continuum.io/downloads> which includes all of the
+[Anaconda](https://www.anaconda.com/distribution/) which includes all of the
 necessary python software.
 
 [zip-file]: {{ page.root }}/files/make-lesson.zip
