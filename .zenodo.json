@@ -1,0 +1,131 @@
+{
+  "contributors": [
+    {
+      "type": "Editor",
+      "name": "Gerard Capes"
+    }
+  ],
+  "creators": [
+    {
+      "name": "Greg Wilson",
+      "orcid": "0000-0001-8659-8979"
+    },
+    {
+      "name": "Gerard Capes"
+    },
+    {
+      "name": "Raniere Silva"
+    },
+    {
+      "name": "Mike Jackson",
+      "orcid": "0000-0002-1765-8234"
+    },
+    {
+      "name": "Andrew Boughton",
+      "orcid": "0000-0002-0318-4912"
+    },
+    {
+      "name": "Lex Nederbragt",
+      "orcid": "0000-0001-5539-0999"
+    },
+    {
+      "name": "Rémi Emonet",
+      "orcid": "0000-0002-1870-1329"
+    },
+    {
+      "name": "Deborah Gertrude Digges"
+    },
+    {
+      "name": "Brandon Curtis"
+    },
+    {
+      "name": "Andy Kleinhesselink",
+      "orcid": "0000-0003-2149-2027"
+    },
+    {
+      "name": "Luiz Irber",
+      "orcid": "0000-0003-4371-9659"
+    },
+    {
+      "name": "François Michonneau",
+      "orcid": "0000-0002-9092-966X"
+    },
+    {
+      "name": "Trevor Bekolay",
+      "orcid": "0000-0001-5215-7999"
+    },
+    {
+      "name": "John Blischak",
+      "orcid": "0000-0003-2634-9879"
+    },
+    {
+      "name": "David E. Bernholdt",
+      "orcid": "0000-0001-7874-3064"
+    },
+    {
+      "name": "Jonah Duckles",
+      "orcid": "0000-0002-8985-3119"
+    },
+    {
+      "name": "Satya Mishra"
+    },
+    {
+      "name": "Jake Lever"
+    },
+    {
+      "name": "Michael Culshaw-Maurer",
+      "orcid": "0000-0003-2205-8679"
+    },
+    {
+      "name": "Pete Bachant",
+      "orcid": "0000-0003-4039-6954"
+    },
+    {
+      "name": "Samuel Lelièvre"
+    },
+    {
+      "name": "Adam Richie-Halford"
+    },
+    {
+      "name": "Ana Costa Conrado",
+      "orcid": "0000-0001-6345-987X"
+    },
+    {
+      "name": "Andrew Fraser"
+    },
+    {
+      "name": "Andy Teucher",
+      "orcid": "0000-0002-7840-692X"
+    },
+    {
+      "name": "Anna Krystalli"
+    },
+    {
+      "name": "Bill Mills",
+      "orcid": "0000-0002-5887-6270"
+    },
+    {
+      "name": "Jason Sherman"
+    },
+    {
+      "name": "Juan F Fung",
+      "orcid": "0000-0002-0820-787X"
+    },
+    {
+      "name": "Kate Hertweck",
+      "orcid": "0000-0002-4026-4612"
+    },
+    {
+      "name": "Matthew Thomas"
+    },
+    {
+      "name": "Piotr Banaszkiewicz"
+    },
+    {
+      "name": "Radovan Bast"
+    }
+  ],
+  "license": {
+    "id": "CC-BY-4.0"
+  }
+}
