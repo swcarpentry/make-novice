@@ -174,3 +174,7 @@ $ export LANGUAGE=en_US.UTF-8
 [lesson-example]: https://github.com/carpentries/lesson-example/
 [makefile2graph]: https://github.com/lindenb/makefile2graph
 [zipfile]: {{ page.root }}/files/make-lesson.zip
+
+## Beware of different Make implementations!
+
+The "Automation and Make" lesson is based on GNU Make. Although it is very rare, on some systems (e.g. AIX) you might find `make` not pointing to GNU Make and `gmake` needs to be used instead. 
