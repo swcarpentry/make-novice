@@ -15,5 +15,5 @@ Maintainer(s):
 
 * [Gerard Capes][capes-gerard]
 
-[capes-gerard]: http://software-carpentry.org/team/#capes_gerard
+[capes-gerard]: https://carpentries.org/instructors/#gcapes
 [lesson-example]: https://swcarpentry.github.com/lesson-example/
