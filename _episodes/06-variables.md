@@ -72,7 +72,7 @@ rewrite the script using another language (e.g. switch from Python to R)).
 We place variables at the top of a Makefile so they are easy to
 find and modify. Alternatively, we can pull them out into a new
 file that just holds variable definitions (i.e. delete them from
-the original makefile). Let us create `config.mk`:
+the original Makefile). Let us create `config.mk`:
 
 ~~~
 # Count words script.
