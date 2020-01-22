@@ -310,5 +310,5 @@ Make, we mean GNU Make.
 [cmake]: http://www.cmake.org/
 [doit]: http://pydoit.org/
 [gnu-make]: http://www.gnu.org/software/make/
-[nmake]: https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx
+[nmake]: https://docs.microsoft.com/en-us/cpp/build/reference/nmake-reference
 [zipfs-law]: http://en.wikipedia.org/wiki/Zipf%27s_law
