@@ -145,7 +145,7 @@ $ ls -l books/isles.txt isles.dat
 {: .language-bash}
 
 then we see that `isles.dat`, the target, is now older
-than`books/isles.txt`, its dependency:
+than `books/isles.txt`, its dependency:
 
 ~~~
 -rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
