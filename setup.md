@@ -52,7 +52,8 @@ You will need to have Xcode installed (download from the
 Check if you already have Make installed by typing `make -v` into a terminal. 
 
 #### Windows
-Use the Software Carpentry [Windows installer](https://github.com/swcarpentry/windows-installer).
+Use the Software Carpentry
+[Windows installer](https://github.com/swcarpentry/windows-installer).
 
 ### Python
 

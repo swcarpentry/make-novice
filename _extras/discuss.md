@@ -6,7 +6,8 @@ title: Discussion
 ## Parallel Execution
 
 Make can build dependencies in _parallel_ sub-processes, via its `--jobs`
-flag (or its `-j` abbreviation) which specifies the number of sub-processes to use e.g.
+flag (or its `-j` abbreviation) which specifies the number of sub-processes to
+use e.g.
 
 ~~~
 $ make --jobs 4 results.txt
@@ -213,6 +214,8 @@ occurring research activities using Make:
 [why-use-make]: http://bost.ocks.org/mike/make/
 
 ## Return messages and `.PHONY` target behaviour
-`Up to date` vs `Nothing to be done` is discussed in [episode 2]({{page.root}}/02-makefiles/).
+`Up to date` vs `Nothing to be done` is discussed in
+[episode 2]({{page.root}}/02-makefiles/).
 
-A more detailed discussion can be read on [issue 98](https://github.com/swcarpentry/make-novice/issues/98#issuecomment-307361751).
+A more detailed discussion can be read on
+[issue 98](https://github.com/swcarpentry/make-novice/issues/98#issuecomment-307361751).

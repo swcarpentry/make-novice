@@ -35,8 +35,8 @@ clean :
 ~~~
 {: .language-make}
 
-Make has many [functions]({{ page.root }}/reference#function) which can be used to
-write more complex rules. One example is `wildcard`. `wildcard` gets a
+Make has many [functions]({{ page.root }}/reference#function) which can be used
+to write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files
 (files ending in `.txt`) and save these in a variable by adding this at
@@ -132,7 +132,8 @@ clean :
 ~~~
 {: .language-make}
 
-Let's also tidy up the `%.dat` rule by using the automatic variable `$@` instead of `$*.dat`:
+Let's also tidy up the `%.dat` rule by using the automatic variable `$@` instead
+of `$*.dat`:
 
 ```
 %.dat : books/%.txt $(COUNT_SRC)
