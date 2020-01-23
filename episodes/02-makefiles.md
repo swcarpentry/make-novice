@@ -27,8 +27,8 @@ isles.dat : books/isles.txt
 {: .language-make}
 
 This is a [build file]({{ page.root }}/reference#build-file), which for
-Make is called a [Makefile]({{ page.root }}/reference#makefile) - a file executed
-by Make. Note how it resembles one of the lines from our shell script.
+Make is called a [Makefile]({{ page.root }}/reference#makefile) - a file
+executed by Make. Note how it resembles one of the lines from our shell script.
 
 Let us go through each line in turn:
 
@@ -41,8 +41,8 @@ Let us go through each line in turn:
   zero or more dependencies.
 * A colon, `:`, separates targets from dependencies.
 * `python countwords.py books/isles.txt isles.dat` is an
-  [action]({{ page.root }}/reference#action), a command to run to build or update
-  the target using the dependencies. Targets can have zero or more
+  [action]({{ page.root }}/reference#action), a command to run to build or
+  update the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
   from its dependencies and can be considered to be
   a shell script.
@@ -145,7 +145,7 @@ $ ls -l books/isles.txt isles.dat
 {: .language-bash}
 
 then we see that `isles.dat`, the target, is now older
-than`books/isles.txt`, its dependency:
+than `books/isles.txt`, its dependency:
 
 ~~~
 -rw-r--r--    1 mjj      Administ   323972 Jun 12 10:35 books/isles.txt
@@ -205,10 +205,10 @@ make: `isles.dat' is up to date.
 {: .output}
 
 Nothing happens because Make attempts to build the first target it
-finds in the Makefile, the [default
-target]({{ page.root }}/reference#default-target), which is `isles.dat` which is
-already up-to-date. We need to explicitly tell Make we want to build
-`abyss.dat`:
+finds in the Makefile, the
+[default target]({{ page.root }}/reference#default-target), which is
+`isles.dat` which is already up-to-date. We need to explicitly tell Make we want
+to build `abyss.dat`:
 
 ~~~
 $ make abyss.dat

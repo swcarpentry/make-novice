@@ -29,7 +29,11 @@ Solutions for challenges are used in subsequent topics.
 A number of example Makefiles, including sample solutions to challenges,
 are in subdirectories of `code` for the corresponding episodes.
 
-It can be useful to use two windows during the lesson, one with the terminal where you run the `make` commands, the other with the Makefile opened in a text editor all the time. This makes it possible to refer to the Makefile while explaining the output from the commandline, for example. Make sure, though, that the text in both windows is readable from the back of the room.
+It can be useful to use two windows during the lesson, one with the terminal
+where you run the `make` commands, the other with the Makefile opened in a text
+editor all the time. This makes it possible to refer to the Makefile while
+explaining the output from the commandline, for example. Make sure, though,
+that the text in both windows is readable from the back of the room.
 
 ## Setting up Make
 
@@ -99,7 +103,7 @@ dot - graphviz version 2.26.0 (20091210.2329)
 ~~~
 {: .output}
 
-To install GraphViz on Ubuntu 14.04.3 and 15.10:
+To install GraphViz on Ubuntu:
 
 ~~~
 $ sudo apt-get install graphviz
@@ -139,8 +143,8 @@ See `commands.mk`'s `diagrams` target.
 
 ## UnicodeDecodeError troubleshooting
 
-When processing `books/last.txt` with Python 3 and vanilla shell environment on Arch Linux
-the following error has appeared:
+When processing `books/last.txt` with Python 3 and vanilla shell environment on
+Arch Linux the following error has appeared:
 
 ~~~
 $ python wordcount.py books/last.txt last.dat
@@ -160,8 +164,8 @@ UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 6862: ordin
 ~~~
 {: .output}
 
-The workaround was to define encoding for the terminal session (this can be either done at the command line
-or placed in the `.bashrc` or equivalent):
+The workaround was to define encoding for the terminal session (this can be
+either done at the command line or placed in the `.bashrc` or equivalent):
 
 ~~~
 $ export LC_ALL=en_US.UTF-8
@@ -172,8 +176,9 @@ $ export LANGUAGE=en_US.UTF-8
 
 ## Beware of different Make implementations!
 
-The lesson is based on GNU Make. Although it is very rare, on some systems (e.g. AIX) 
-you might find `make` not pointing to GNU Make and `gmake` needs to be used instead. 
+The lesson is based on GNU Make. Although it is very rare, on some systems
+(e.g. AIX) you might find `make` not pointing to GNU Make and `gmake` needs to
+be used instead.
 
 [graphviz]: http://www.graphviz.org/
 [lesson-example]: https://github.com/carpentries/lesson-example/

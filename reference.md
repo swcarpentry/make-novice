@@ -82,7 +82,7 @@ Rules:
 target : dependency1 dependency2 ...
 	action1
 	action2
-        ...
+	...
 ~~~
 {: .make}
 
@@ -134,7 +134,7 @@ Phony targets:
 ~~~
 .PHONY : clean
 clean :
-       rm -f *.dat
+	rm -f *.dat
 ~~~
 {: .make}
 
@@ -153,7 +153,7 @@ Pattern rules:
 
 ~~~
 %.dat : books/%.txt $(COUNT_SRC)
-        $(COUNT_EXE) $< $@
+	$(COUNT_EXE) $< $@
 ~~~
 {: .make}
 
@@ -182,7 +182,7 @@ Suppress printing of actions:
 ~~~
 .PHONY : variables
 variables:
-        @echo TXT_FILES: $(TXT_FILES)
+	@echo TXT_FILES: $(TXT_FILES)
 ~~~
 {: .make}
 
