@@ -105,9 +105,9 @@ python countwords.py books/last.txt last.dat
 
 The following figure shows the dependencies embodied within our
 Makefile, involved in building the `results.txt` target, after adding
-`countwords.py` and `testzipf.py` as dependencies to their respective target files
-(i.e. how the Makefile should look after completing the rest of the exercises
-in this episode).
+`countwords.py` and `testzipf.py` as dependencies to their respective target
+files (i.e. how the Makefile should look after completing the rest of the
+exercises in this episode).
 
 ![results.txt dependencies after adding countwords.py and testzipf.py as dependencies](../fig/04-dependencies.png "results.txt dependencies after adding countwords.py and testzipf.py as dependencies")
 
