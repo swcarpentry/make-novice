@@ -13,8 +13,9 @@ keypoints:
 ---
 
 Despite our efforts, our Makefile still has repeated content, i.e.
-the name of our script -- `countwords.py`, and the program we use to run it -- `python`.
-If we renamed our script we'd have to update our Makefile in multiple places.
+the name of our script -- `countwords.py`, and the program we use to run it --
+`python`. If we renamed our script we'd have to update our Makefile in multiple
+places.
 
 We can introduce a Make [variable]({{ page.root }}/reference#variable) (called a
 [macro]({{ page.root }}/reference#macro) in some versions of Make) to hold our
@@ -52,8 +53,8 @@ countwords.py`.
 Defining the variable `COUNT_EXE` in this way avoids repeating `python` in our 
 Makefile, and allows us to easily
 change how our script is run (e.g. we might want to use a different
-version of Python and need to change `python` to `python2` -- or we might want to
-rewrite the script using another language (e.g. switch from Python to R)).
+version of Python and need to change `python` to `python2` -- or we might want
+to rewrite the script using another language (e.g. switch from Python to R)).
 
 > ## Use Variables
 >

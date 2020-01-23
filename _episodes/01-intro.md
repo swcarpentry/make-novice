@@ -25,7 +25,8 @@ We've compiled our raw data i.e. the books we want to analyze
 and have prepared several Python scripts that together make up our
 analysis pipeline.
 
-Let's take quick look at one of the books using the command `head books/isles.txt`.
+Let's take quick look at one of the books using the command
+`head books/isles.txt`.
 
 Our directory has the Python scripts and data files we will be working with:
 
@@ -164,8 +165,8 @@ seconds.
 The most common solution to the tedium of data processing is to write
 a shell script that runs the whole pipeline from start to finish.
 
-Using your text editor of choice (e.g. nano), add the following to a new file named
-`run_pipeline.sh`.
+Using your text editor of choice (e.g. nano), add the following to a new file
+named `run_pipeline.sh`.
 
 ~~~
 # USAGE: bash run_pipeline.sh
