@@ -103,7 +103,7 @@ dot - graphviz version 2.26.0 (20091210.2329)
 ~~~
 {: .output}
 
-To install GraphViz on Ubuntu 14.04.3 and 15.10:
+To install GraphViz on Ubuntu:
 
 ~~~
 $ sudo apt-get install graphviz
