@@ -15,7 +15,7 @@ all : $(ZIPF_ARCHIVE)
 $(ZIPF_ARCHIVE) : $(ZIPF_DIR)
 	tar -czf $@ $<
 
-$(ZIPF_DIR): Makefile config.mk $(RESULTS_FILE) \
+$(ZIPF_DIR): $(MAKEFILE_LIST) $(RESULTS_FILE) \
              $(DAT_FILES) $(PNG_FILES) $(TXT_DIR) \
              $(COUNT_SRC) $(PLOT_SRC) $(ZIPF_SRC)
 	mkdir -p $@
@@ -52,6 +52,7 @@ clean :
 ## variables   : Print variables.
 .PHONY : variables
 variables:
+	@echo MAKEFILE_LIST: $(MAKEFILE_LIST)
 	@echo TXT_DIR: $(TXT_DIR)
 	@echo TXT_FILES: $(TXT_FILES)
 	@echo DAT_FILES: $(DAT_FILES)
@@ -60,5 +61,5 @@ variables:
 	@echo ZIPF_ARCHIVE: $(ZIPF_ARCHIVE)
 
 .PHONY : help
-help : Makefile
+help : $(MAKEFILE_LIST)
 	@sed -n 's/^##//p' $<
