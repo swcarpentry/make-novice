@@ -95,7 +95,7 @@ help : Makefile
 ~~~
 {: .language-make}
 
-This rule depends upon the Makefile itself. It runs `sed` on the first
+This rule depends upon the Makefile itself, assumed to be named `Makefile`. It runs `sed` on the first
 dependency of the rule, which is our Makefile, and tells `sed` to get
 all the lines that begin with `##`, which `sed` then prints for us.
 
@@ -121,6 +121,31 @@ remember to add, update or remove a comment next to the rule. So long
 as we respect our convention of using `##` for such comments, then our
 `help` rule will take care of detecting these comments and printing
 them for us.
+
+Our `help` target depends on our Makefile to be called `Makefile`. But
+what if our Makefile is renamed or we chose a different name to start
+with? Remember that if we call our Makefile something like 
+`MyOtherMakefile` we have to indicate it to `make`using the `-f` flag
+such as in `make -f MyOtherMakefile`. In case our Makefile has a 
+different name we could simply change the `help` dependency to `MyOtherMakefile`
+instead of `Makefile`. However `make` has a dedicated variable called `MAKEFILE_LIST` 
+which automatically includes the makefile name(s). Therefore, to enhance the 
+reusability of our code, we could change our `help` target to feature the 
+`MAKEFILE_LIST` variable:
+
+~~~
+.PHONY : help
+help : $(MAKEFILE_LIST)
+	@sed -n 's/^##//p' $<
+~~~
+{: .language-make}
+
+We can then obtain help by running
+
+~~~
+$ make -f MyOtherMakefile help
+~~~
+{: .language-bash}
 
 > ## Where We Are
 >
