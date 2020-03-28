@@ -125,13 +125,13 @@ them for us.
 Our `help` target depends on our Makefile to be called `Makefile`. But
 what if our Makefile is renamed or we chose a different name to start
 with? Remember that if we call our Makefile something like 
-`MyOtherMakefile` we have to indicate it to `make`using the `-f` flag
+`MyOtherMakefile` we have to indicate it to `make` using the `-f` flag
 such as in `make -f MyOtherMakefile`. In case our Makefile has a 
 different name we could simply change the `help` dependency to `MyOtherMakefile`
 instead of `Makefile`. However `make` has a dedicated variable called `MAKEFILE_LIST` 
-which automatically includes the makefile name(s). Therefore, to enhance the 
-reusability of our code, we could change our `help` target to feature the 
-`MAKEFILE_LIST` variable:
+which automatically includes the makefile and configuration file(s) names.
+Therefore, to enhance the reusability of our code, we could change our `help`
+target to feature the `MAKEFILE_LIST` variable:
 
 ~~~
 .PHONY : help
@@ -140,7 +140,8 @@ help : $(MAKEFILE_LIST)
 ~~~
 {: .language-make}
 
-We can then obtain help by running
+Note that we would need to be careful not to use `##` for comments in our
+configuration files. We can then obtain help by running
 
 ~~~
 $ make -f MyOtherMakefile help
