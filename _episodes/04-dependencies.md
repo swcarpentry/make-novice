@@ -115,7 +115,7 @@ exercises in this episode).
 >
 > `.txt` files are input files and have no dependencies. To make these
 > depend on `countwords.py` would introduce a [false
-> dependency]({{ page.root }}/reference#false-dependency).
+> dependency]({{ page.root }}/reference.html#false-dependency).
 {: .callout}
 
 Intuitively, we should also add `countwords.py` as dependency for

@@ -35,7 +35,7 @@ clean :
 ~~~
 {: .language-make}
 
-Make has many [functions]({{ page.root }}/reference#function) which can be used
+Make has many [functions]({{ page.root }}/reference.html#function) which can be used
 to write more complex rules. One example is `wildcard`. `wildcard` gets a
 list of files matching some pattern, which we can then save in a
 variable. So, for example, we can get a list of all our text files

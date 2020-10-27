@@ -1,6 +1,5 @@
 ---
 layout: reference
-root: .
 ---
 
 ## Running Make
@@ -10,7 +9,7 @@ To run Make:
 ~~~
 $ make
 ~~~
-{: .bash}
+{: .language-bash}
 
 Make will look for a Makefile called `Makefile` and will build the
 default target, the first target in the Makefile.
@@ -20,14 +19,14 @@ To use a Makefile with a different name, use the `-f` flag e.g.
 ~~~
 $ make -f build-files/analyze.mk
 ~~~
-{: .bash}
+{: .language-bash}
 
 To build a specific target, provide it as an argument e.g.
 
 ~~~
 $ make isles.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 If the target is up-to-date, Make will print a message like:
 
@@ -42,14 +41,14 @@ running the actions, use the `--dry-run` flag e.g.
 ~~~
 $ make --dry-run isles.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 Alternatively, use the abbreviation `-n`.
 
 ~~~
 $ make -n isles.dat
 ~~~
-{: .bash}
+{: .language-bash}
 
 ## Trouble Shooting
 
@@ -84,7 +83,7 @@ target : dependency1 dependency2 ...
 	action2
 	...
 ~~~
-{: .make}
+{: .language-make}
 
 * Each rule has a target, a file to be created, or built.
 * Each rule has zero or more dependencies, files that are needed to
@@ -110,7 +109,7 @@ Comments:
 ~~~
 # This is a Make comment.
 ~~~
-{: .make}
+{: .language-make}
 
 Line continuation character:
 
@@ -119,7 +118,7 @@ ARCHIVE = isles.dat isles.png \
           abyss.dat abyss.png \
           sierra.dat sierra.png
 ~~~
-{: .make}
+{: .language-make}
 
 * If a list of dependencies or an action is too long, a Makefile can
   become more difficult to read.
@@ -136,7 +135,7 @@ Phony targets:
 clean :
 	rm -f *.dat
 ~~~
-{: .make}
+{: .language-make}
 
 * Phony targets are a short-hand for sequences of actions.
 * No file with the target name is built when a rule with a phony
@@ -155,7 +154,7 @@ Pattern rules:
 %.dat : books/%.txt $(COUNT_SRC)
 	$(COUNT_EXE) $< $@
 ~~~
-{: .make}
+{: .language-make}
 
 * The Make wildcard, `%`, specifies a pattern.
 * If Make finds a dependency matching the pattern, then the pattern is
@@ -170,7 +169,7 @@ Defining and using variables:
 COUNT_SRC=wordcount.py
 COUNT_EXE=python $(COUNT_SRC)
 ~~~
-{: .make}
+{: .language-make}
 
 * A variable is assigned a value. For example, `COUNT_SRC`
   is assigned the value `wordcount.py`.
@@ -184,7 +183,7 @@ Suppress printing of actions:
 variables:
 	@echo TXT_FILES: $(TXT_FILES)
 ~~~
-{: .make}
+{: .language-make}
 
 * Prefix an action by `@` to instruct Make not to print that action.
 
@@ -193,14 +192,14 @@ Include the contents of a Makefile in another Makefile:
 ~~~
 include config.mk
 ~~~
-{: .make}
+{: .language-make}
 
 wildcard function:
 
 ~~~
 TXT_FILES=$(wildcard books/*.txt)
 ~~~
-{: .make}
+{: .language-make}
 
 * Looks for all files matching a pattern e.g. `books/*.txt`, and
   return these in a list.
@@ -212,7 +211,7 @@ patsubst ('path substitution') function:
 ~~~
 DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 ~~~
-{: .make}
+{: .language-make}
 
 * Every string that matches `books/%.txt` in `$(TXT_FILES)` is
   replaced by `%.dat` and the strings are returned in a list.
@@ -230,7 +229,7 @@ Default targets:
 ~~~
 .DEFAULT_GOAL := all
 ~~~
-{: .make}
+{: .language-make}
 
 ## Manuals
 
