@@ -26,22 +26,22 @@ isles.dat : books/isles.txt
 ~~~
 {: .language-make}
 
-This is a [build file]({{ page.root }}/reference#build-file), which for
-Make is called a [Makefile]({{ page.root }}/reference#makefile) - a file
+This is a [build file]({{ page.root }}/reference.html#build-file), which for
+Make is called a [Makefile]({{ page.root }}/reference.html#makefile) - a file
 executed by Make. Note how it resembles one of the lines from our shell script.
 
 Let us go through each line in turn:
 
 * `#` denotes a *comment*. Any text from `#` to the end of the line is
   ignored by Make.
-* `isles.dat` is a [target]({{ page.root }}/reference#target), a file to be
+* `isles.dat` is a [target]({{ page.root }}/reference.html#target), a file to be
   created, or built.
-* `books/isles.txt` is a [dependency]({{ page.root }}/reference#dependency), a
+* `books/isles.txt` is a [dependency]({{ page.root }}/reference.html#dependency), a
   file that is needed to build or update the target. Targets can have
   zero or more dependencies.
 * A colon, `:`, separates targets from dependencies.
 * `python countwords.py books/isles.txt isles.dat` is an
-  [action]({{ page.root }}/reference#action), a command to run to build or
+  [action]({{ page.root }}/reference.html#action), a command to run to build or
   update the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
   from its dependencies and can be considered to be
@@ -52,7 +52,7 @@ Let us go through each line in turn:
   your cursor from one side of the TAB to the other. It should jump
   four or more spaces.
 * Together, the target, dependencies, and actions form a
-  [rule]({{ page.root }}/reference#rule).
+  [rule]({{ page.root }}/reference.html#rule).
 
 Our rule above describes how to build the target `isles.dat` using the
 action `python countwords.py` and the dependency `books/isles.txt`.
@@ -173,7 +173,7 @@ been updated since the target, then the actions are re-run to update
 the target. Using this approach, Make knows to only rebuild the files
 that, either directly or indirectly, depend on the file that
 changed. This is called an [incremental
-build]({{ page.root }}/reference#incremental-build).
+build]({{ page.root }}/reference.html#incremental-build).
 
 > ## Makefiles as Documentation
 >
@@ -206,7 +206,7 @@ make: `isles.dat' is up to date.
 
 Nothing happens because Make attempts to build the first target it
 finds in the Makefile, the
-[default target]({{ page.root }}/reference#default-target), which is
+[default target]({{ page.root }}/reference.html#default-target), which is
 `isles.dat` which is already up-to-date. We need to explicitly tell Make we want
 to build `abyss.dat`:
 
@@ -308,7 +308,7 @@ rule has no dependencies, assumes that `clean` has been built and is
 up-to-date and so does not execute the rule's actions. As we are using
 `clean` as a short-hand, we need to tell Make to always execute this
 rule if we run `make clean`, by telling Make that this is a
-[phony target]({{ page.root }}/reference#phony-target), that it does not build
+[phony target]({{ page.root }}/reference.html#phony-target), that it does not build
 anything. This we do by marking the target as `.PHONY`:
 
 ~~~
@@ -334,7 +334,7 @@ rm -f *.dat
 
 We can add a similar command to create all the data files. We can put
 this at the top of our Makefile so that it is the [default
-target]({{ page.root }}/reference#default-target), which is executed by default
+target]({{ page.root }}/reference.html#default-target), which is executed by default
 if no target is given to the `make` command:
 
 ~~~
@@ -379,7 +379,7 @@ python countwords.py books/abyss.txt abyss.dat
 {: .output}
 
 If we run `dats` again, then Make will see that the dependencies (isles.dat
-and abyss.dat) are already up to date. 
+and abyss.dat) are already up to date.
 Given the target `dats` has no actions, there is `nothing to be done`:
 ~~~
 $ make dats
