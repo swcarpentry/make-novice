@@ -11,7 +11,7 @@ use e.g.
 ~~~
 $ make --jobs 4 results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 If we have independent dependencies then these can be built at the
 same time. For example, `abyss.dat` and `isles.dat` are mutually
@@ -124,14 +124,14 @@ shell variables can be confused and can be in conflict.
 > plots:
 > 	for book in $(BOOKS); do python plotcount.py $book.dat $book.png; done
 > ~~~
-> {: .make}
+> {: .language-make}
 >
 > the action that would be passed to the shell to execute would be:
 >
 > ~~~
 > for book in abyss isles; do python plotcount.py ook.dat ook.png; done
 > ~~~
-> {: .bash}
+> {: .language-bash}
 >
 > Notice that make substituted `$(BOOKS)`, as expected, but it also
 > substituted `$book`, even though we intended it to be a shell variable.
@@ -149,14 +149,14 @@ shell variables can be confused and can be in conflict.
 > plots:
 > 	for book in $(BOOKS); do python plotcount.py $$book.dat $$book.png; done
 > ~~~
-> {: .make}
+> {: .language-make}
 >
 > which produces the correct shell command:
 >
 > ~~~
 > for book in abyss isles; do python plotcount.py $book.dat $book.png; done
 > ~~~
-> {: .bash}
+> {: .language-bash}
 {: .discussion}
 
 ## Make and Reproducible Research

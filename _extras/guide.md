@@ -74,7 +74,7 @@ To recreate `make-lesson.zip`, run:
 ~~~
 $ make make-lesson.zip
 ~~~
-{: .bash}
+{: .language-bash}
 
 ## Beware of Spaces!
 
@@ -95,7 +95,7 @@ To install GraphViz on Scientific Linux 6:
 $ sudo yum install graphviz
 $ dot -V
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
 dot - graphviz version 2.26.0 (20091210.2329)
 ~~~
@@ -107,7 +107,7 @@ To install GraphViz on Ubuntu:
 $ sudo apt-get install graphviz
 $ dot -V
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
 dot - graphviz version 2.38.0 (20140413.2041)
 ~~~
@@ -124,7 +124,7 @@ $ export PATH=~/makefile2graph/:$PATH
 $ cd
 $ which makefile2graph
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
 /home/ubuntu/makefile2graph/makefile2graph
 ~~~
@@ -135,7 +135,7 @@ To create the image files for the lesson:
 ~~~
 $ make diagrams
 ~~~
-{: .bash}
+{: .language-bash}
 
 See `commands.mk`'s `diagrams` target.
 
@@ -147,7 +147,7 @@ Arch Linux the following error has appeared:
 ~~~
 $ python wordcount.py books/last.txt last.dat
 ~~~
-{: .bash}
+{: .language-bash}
 ~~~
 Traceback (most recent call last):
   File "wordcount.py", line 131, in <module>
@@ -170,7 +170,7 @@ $ export LC_ALL=en_US.UTF-8
 $ export LANG=en_US.UTF-8
 $ export LANGUAGE=en_US.UTF-8
 ~~~
-{: .bash}
+{: .language-bash}
 
 ## Beware of different Make implementations!
 
