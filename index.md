@@ -1,6 +1,7 @@
 ---
 layout: lesson
 root: .
+permalink: index.html
 ---
 
 Make is a tool which can run commands to read files, process these
@@ -36,5 +37,5 @@ the same concepts as Make.
 
 > ## Setup
 > In order to follow this lesson, you will need to download some files.
-> Please follow instructions on the [setup]({{ page.root }}/setup) page.
+> Please follow instructions on the [setup]({{ page.root }}{% link setup.md %}) page.
 {: .prereq}

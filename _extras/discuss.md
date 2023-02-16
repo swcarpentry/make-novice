@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Discussion
 ---
 
@@ -12,7 +11,7 @@ use e.g.
 ~~~
 $ make --jobs 4 results.txt
 ~~~
-{: .bash}
+{: .language-bash}
 
 If we have independent dependencies then these can be built at the
 same time. For example, `abyss.dat` and `isles.dat` are mutually
@@ -51,7 +50,7 @@ For a detailed explanation, see:
 
 ## Make and Version Control
 
-Imagine that we manage our Makefiles using a version control 
+Imagine that we manage our Makefiles using a version control
 system such as Git.
 
 Let's say we'd like to run the workflow developed in this lesson
@@ -62,18 +61,18 @@ To do this we could edit `config.mk` each time by replacing
 `COUNT_SRC=wordcount.py` with `COUNT_SRC=wordcount2.py` or
 `COUNT_SRC=wordcount3.py`,
 but this would be detected as a change by the version control system.
-This is a minor configuration change, rather than a change to the 
+This is a minor configuration change, rather than a change to the
 workflow, and so we probably would rather avoid committing this change
 to our repository each time we decide to test a different counting script.
 
-An alternative is to leave `config.mk` untouched, by overwriting the value 
+An alternative is to leave `config.mk` untouched, by overwriting the value
 of `COUNT_SRC` at the command line instead:
 
 ```
 $ make variables COUNT_SRC=wordcount2.py
 ```
 
-The configuration file then simply contains the default values for the 
+The configuration file then simply contains the default values for the
 workflow, and by overwriting the defaults at the command line you can
 maintain a neater and more meaningful version control history.
 
@@ -114,50 +113,50 @@ shell variables can be confused and can be in conflict.
   (e.g., `$$HOME`).
 
 > ## Detailed Example of Shell Variable Quoting
-> 
+>
 > Say we had the following `Makefile` (and the .dat files had already
 > been created):
-> 
+>
 > ~~~
 > BOOKS = abyss isles
-> 
+>
 > .PHONY: plots
 > plots:
 > 	for book in $(BOOKS); do python plotcount.py $book.dat $book.png; done
-> ~~~	
-> {: .make}
-> 
+> ~~~
+> {: .language-make}
+>
 > the action that would be passed to the shell to execute would be:
-> 
+>
 > ~~~
 > for book in abyss isles; do python plotcount.py ook.dat ook.png; done
 > ~~~
-> {: .bash}
-> 
+> {: .language-bash}
+>
 > Notice that make substituted `$(BOOKS)`, as expected, but it also
 > substituted `$book`, even though we intended it to be a shell variable.
 > Moreover, because we didn't use `$(NAME)` (or `${NAME}`) syntax, make
 > interpreted it as the single character variable `$b` (which we haven't
 > defined, so it has a null value) followed by the text "ook".
-> 
+>
 > In order to get the desired behavior, we have to write `$$book` instead
-> of `$book`: 
-> 
+> of `$book`:
+>
 > ~~~
 > BOOKS = abyss isles
-> 
+>
 > .PHONY: plots
 > plots:
 > 	for book in $(BOOKS); do python plotcount.py $$book.dat $$book.png; done
-> ~~~	
-> {: .make}
-> 
+> ~~~
+> {: .language-make}
+>
 > which produces the correct shell command:
-> 
+>
 > ~~~
 > for book in abyss isles; do python plotcount.py $book.dat $book.png; done
 > ~~~
-> {: .bash}
+> {: .language-bash}
 {: .discussion}
 
 ## Make and Reproducible Research
