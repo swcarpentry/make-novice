@@ -171,6 +171,11 @@ one input file to be named when it is invoked.
 Make provides an automatic variable for this, `$<` which means 'the
 first dependency of the current rule'.
 
+> Besides the few introduced automatic variables, there are many more
+> used for different purposes. For more information you can refer to the
+> [documentation][automatic-variables].
+{: .callout}
+
 > ## Rewrite `.dat` Rules to Use Automatic Variables
 >
 > Rewrite each `.dat` rule to use the automatic variables `$@` ('the
@@ -184,3 +189,6 @@ first dependency of the current rule'.
 > > for a solution to this challenge.
 > {: .solution}
 {: .challenge}
+
+[automatic-variables]: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
+
