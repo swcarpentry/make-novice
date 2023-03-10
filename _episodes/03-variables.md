@@ -60,6 +60,12 @@ Makefile but forget to rename it elsewhere.
 {: .callout}
 
 Let us set about removing some of the repetition from our Makefile.
+For this purpose we will use some of so-called [automatic variables]({{ page.root }}/reference.html#automatic-variable)
+that are build into the Make language. 
+
+Because the name of the target is often repeated within the action
+code, Make defines an automatic variable `$@`. When Make is run, the
+variable `$@` is expanded as the target name of our rule.
 
 In our `results.txt` rule we duplicate the data file names and the
 name of the results file name:
@@ -79,11 +85,7 @@ results.txt : isles.dat abyss.dat last.dat
 ~~~
 {: .language-make}
 
-`$@` is a Make
-[automatic variable]({{ page.root }}/reference.html#automatic-variable)
-which means 'the target of the current rule'. When Make is run it will
-replace this variable with the target name.
-
+Another useful automatic variable is `$^` which is expanded as the names of all the prerequisites of the current rule.
 We can replace the dependencies in the action with `$^`:
 
 ~~~
@@ -92,15 +94,20 @@ results.txt : isles.dat abyss.dat last.dat
 ~~~
 {: .language-make}
 
-`$^` is another automatic variable which means 'all the dependencies
-of the current rule'. Again, when Make is run it will replace this
-variable with the dependencies.
-
 Let's update our text files and re-run our rule:
 
 ~~~
 $ touch books/*.txt
 $ make results.txt
+~~~
+{: .language-bash}
+
+Alternativelly, we can also use the options `-B` or its long
+equivalent `--always-make` to generate the targets unconditionally,
+without considering the timestamps of the files.  Hence, running
+
+~~~
+$ make -B results.txt
 ~~~
 {: .language-bash}
 
@@ -113,6 +120,8 @@ python countwords.py books/last.txt last.dat
 python testzipf.py isles.dat abyss.dat last.dat > results.txt
 ~~~
 {: .output}
+
+So we see that the automatic variables `$@` and `$^` were expanded correctly.
 
 
 > ## Update Dependencies
