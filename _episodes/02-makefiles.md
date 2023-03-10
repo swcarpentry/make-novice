@@ -17,7 +17,19 @@ keypoints:
 - "Use `.PHONY` to mark targets that don't correspond to files."
 ---
 
-Create a file, called `Makefile`, with the following content:
+First let's ensure we start from scratch and delete the `.dat` and
+`.png` files we created in the introduction. Make sure your current
+directory is the `make-lesson` you have created in the setup and run:
+
+~~~
+$ rm *.dat *.png
+~~~
+{: .language-bash}
+
+Now we can create create a [build file]({{ page.root }}/reference.html#build-file)
+called [`Makefile`]({{ page.root }}/reference.html#makefile) with our first 
+[rule]({{ page.root }}/reference.html#rule) (e.g. using a command `nano Makefile` 
+and copy-pasting the following content):
 
 ~~~
 # Count words.
@@ -26,14 +38,10 @@ isles.dat : books/isles.txt
 ~~~
 {: .language-make}
 
-This is a [build file]({{ page.root }}/reference.html#build-file), which for
-Make is called a [Makefile]({{ page.root }}/reference.html#makefile) - a file
-executed by Make. Note how it resembles one of the lines from our shell script.
-
-Let us go through each line in turn:
+Let's explain what is on each of the lines:
 
 * `#` denotes a *comment*. Any text from `#` to the end of the line is
-  ignored by Make.
+  ignored by Make but can be very helpful for anyone reading your Makefile.
 * `isles.dat` is a [target]({{ page.root }}/reference.html#target), a file to be
   created, or built.
 * `books/isles.txt` is a [dependency]({{ page.root }}/reference.html#dependency), a
@@ -44,13 +52,7 @@ Let us go through each line in turn:
   [action]({{ page.root }}/reference.html#action), a command to run to build or
   update the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
-  from its dependencies and can be considered to be
-  a shell script.
-* Actions are indented using a single TAB character, *not* 8 spaces. This
-  is a legacy of Make's 1970's origins. If the difference between
-  spaces and a TAB character isn’t obvious in your editor, try moving
-  your cursor from one side of the TAB to the other. It should jump
-  four or more spaces.
+  from its dependencies and are executed similarly to a shell script.
 * Together, the target, dependencies, and actions form a
   [rule]({{ page.root }}/reference.html#rule).
 
@@ -61,38 +63,50 @@ Information that was implicit in our shell script - that we are
 generating a file called `isles.dat` and that creating this file
 requires `books/isles.txt` - is now made explicit by Make's syntax.
 
-Let's first ensure we start from scratch and delete the `.dat` and `.png`
-files we created earlier:
+> ## Actions separator
+>
+> Actions are indented using a single TAB character, *not* 8 spaces. This
+> is a legacy of Make's 1970's origins. If the difference between
+> spaces and a TAB character isn’t obvious in your editor, try moving
+> your cursor from one side of the TAB to the other. It should jump
+> four or more spaces.
+>
+> If we later run into the following problem
+> 
+> ~~~
+> Makefile:3: *** missing separator.  Stop.
+> ~~~
+> {: .error}
+> 
+> then we have used a space instead of a TAB characters to indent one of
+> our actions.
+{: .callout}
 
-~~~
-$ rm *.dat *.png
-~~~
-{: .language-bash}
+By default, Make looks for a build file called `Makefile`, although it
+is a good practice to keep to this naming convention it does not have
+to be the case.  This happens especially when more build files are
+present within the directory.  In such cases we sometimes use the
+suffix `.mk` (e.g. `install.mk`, `common.mk`).  The selection of the
+non-default build file (e.g. if our build file is called `FILE`) is
+then done using a command-line option `-f FILE`, `--file FILE` or
+`--makefile FILE`.
 
-By default, Make looks for a Makefile, called `Makefile`, and we can
-run Make as follows:
+So having saved the `Makefile` with our first rule, we can finally
+run Make by executing the following command:
 
 ~~~
 $ make
 ~~~
 {: .language-bash}
 
-By default, Make prints out the actions it executes:
+By default, Make prints out the actions it executes, so we see the output:
 
 ~~~
 python countwords.py books/isles.txt isles.dat
 ~~~
 {: .output}
 
-If we see,
-
-~~~
-Makefile:3: *** missing separator.  Stop.
-~~~
-{: .error}
-
-then we have used a space instead of a TAB characters to indent one of
-our actions.
+Which reminds us of one of the lines in the scripts in the introduction.
 
 Let's see if we got what we expected.
 
@@ -103,31 +117,17 @@ head -5 isles.dat
 
 The first 5 lines of `isles.dat` should look exactly like before.
 
-> ## Makefiles Do Not Have to be Called `Makefile`
->
-> We don't have to call our Makefile `Makefile`. However, if we call it
-> something else we need to tell Make where to find it. This we can do
-> using `-f` flag. For example, if our Makefile is named `MyOtherMakefile`:
->
-> ~~~
-> $ make -f MyOtherMakefile
-> ~~~
-> {: .language-bash}
->
->
-> Sometimes, the suffix `.mk` will be used to identify Makefiles that
-> are not called `Makefile` e.g. `install.mk`, `common.mk` etc.
-{: .callout}
-
-When we re-run our Makefile, Make now informs us that:
+When we re-run `make` now it informs us that:
 
 ~~~
 make: `isles.dat' is up to date.
 ~~~
 {: .output}
 
-This is because our target, `isles.dat`, has now been created, and
-Make will not create it again. To see how this works, let's pretend to
+This is because our target, `isles.dat`, has now been created and 
+it's timestamp is newer than the timestamp of it's dependency `books/isles.txt`
+For this reason Make realizes that it is up to date and will not create it again. 
+To see how this works, let's pretend to
 update one of the text files. Rather than opening the file in an
 editor, we can use the shell `touch` command to update its timestamp
 (which would happen if we did edit the file):
@@ -153,19 +153,8 @@ than `books/isles.txt`, its dependency:
 ~~~
 {: .output}
 
-If we run Make again,
-
-~~~
-$ make
-~~~
-{: .language-bash}
-
-then it recreates `isles.dat`:
-
-~~~
-python countwords.py books/isles.txt isles.dat
-~~~
-{: .output}
+If we run `make` again it compares the timestamps and find out that
+the `isles.dat` is out-dated and hence it recreates.
 
 When it is asked to build a target, Make checks the 'last modification
 time' of both the target and its dependencies. If any dependency has
@@ -190,7 +179,7 @@ abyss.dat : books/abyss.txt
 ~~~
 {: .language-make}
 
-If we run Make,
+If we run Make
 
 ~~~
 $ make
@@ -204,11 +193,15 @@ make: `isles.dat' is up to date.
 ~~~
 {: .output}
 
-Nothing happens because Make attempts to build the first target it
-finds in the Makefile, the
-[default target]({{ page.root }}/reference.html#default-target), which is
-`isles.dat` which is already up-to-date. We need to explicitly tell Make we want
-to build `abyss.dat`:
+This means that even though we have added yet another rule, the new
+target `abyss.dat` has not been build. What Make actually did when we
+run it without any command line arguments is to try to build its
+[default target]({{ page.root }}/reference.html#default-target) which
+is the first target it finds. Since this is `isles.dat`, which is
+already up-to-date it was not recreated.
+
+If we want to build a non-default target we need to specify it
+explicitely as the command line argument:
 
 ~~~
 $ make abyss.dat
@@ -283,8 +276,8 @@ rm -f *.dat
 ~~~
 {: .output}
 
-There is no actual thing built called `clean`. Rather, it is a
-short-hand that we can use to execute a useful sequence of
+During this action Make does not generate an object called `clean`. Instead `clean` is just a
+short-hand target that we can use to execute a useful sequence of
 actions. Such targets, though very useful, can lead to problems. For
 example, let us recreate our data files, create a directory called
 `clean`, then run Make:
@@ -303,9 +296,12 @@ make: `clean' is up to date.
 ~~~
 {: .output}
 
-Make finds a file (or directory) called `clean` and, as its `clean`
-rule has no dependencies, assumes that `clean` has been built and is
-up-to-date and so does not execute the rule's actions. As we are using
+What happened is that
+Make found a  directory called `clean` and, as its `clean`.
+Since the `clean` rule has no dependencies, it assumes that `clean` directory has already been built (and is
+up-to-date) and so it does not execute the rule's actions. 
+
+As we are using
 `clean` as a short-hand, we need to tell Make to always execute this
 rule if we run `make clean`, by telling Make that this is a
 [phony target]({{ page.root }}/reference.html#phony-target), that it does not build
@@ -333,7 +329,7 @@ rm -f *.dat
 {: .output}
 
 We can add a similar command to create all the data files. We can put
-this at the top of our Makefile so that it is the [default
+this as the first target at the top of our Makefile so that it is the [default
 target]({{ page.root }}/reference.html#default-target), which is executed by default
 if no target is given to the `make` command:
 
@@ -343,11 +339,22 @@ dats : isles.dat abyss.dat
 ~~~
 {: .language-make}
 
-This is an example of a rule that has dependencies that are targets of
-other rules. When Make runs, it will check to see if the dependencies
-exist and, if not, will see if rules are available that will create
-these. If such rules exist it will invoke these first, otherwise
-Make will raise an error.
+In this example, the rule for `dats` has dependencies that are targets
+of other rules (e.g. `isles.dat`, `abyss.dat`). When that happens,
+Make goes to the rules for the creation of those dependencies and
+tries to assess if they need to be generated, i.e. do not exist or are
+out-dated. In such a case Make will generate those dependencies again.
+
+It remain to say that also the dependencies that are targets of other
+rules can themself have dependencies that are targets of other
+rules. In such a case Make will continue the assesment of what needs
+to be regenerated until it gets to the rules that only dependend on
+files that are not themself targets of other rules. This way the
+dependencies form a so-called [directed acyclic
+graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+
+If the dependencies refer to non-existent file that does not even have
+a rule for its creation or the Make will raise an error.
 
 > ## Dependencies
 >
@@ -357,11 +364,12 @@ Make will raise an error.
 >
 > Dependencies must form a directed acyclic graph. A target cannot
 > depend on a dependency which itself, or one of its dependencies,
-> depends on that target.
+> depends on that target. If that happens the dependency will be
+> dropped.
 {: .callout}
 
-This rule is also an example of a rule that has no actions. It is used
-purely to trigger the build of its dependencies, if needed.
+The rule `dat` is also an example of a rule that has no actions. It is
+used purely to trigger the build of its dependencies, if needed.
 
 If we run,
 
@@ -378,8 +386,8 @@ python countwords.py books/abyss.txt abyss.dat
 ~~~
 {: .output}
 
-If we run `dats` again, then Make will see that the dependencies (isles.dat
-and abyss.dat) are already up to date.
+If we run `make dats` again, then Make will see that the dependencies (`isles.dat`
+and `abyss.dat`) are already up to date.
 Given the target `dats` has no actions, there is `nothing to be done`:
 ~~~
 $ make dats
