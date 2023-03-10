@@ -44,6 +44,8 @@ Our directory has the Python scripts and data files we will be working with:
 {: .output}
 
 The first step is to count the frequency of each word in a book.
+For this purpose we will use a python script `countwords.py` which takes two command line arguments.
+The first argument is the input file (`books/isles.txt`) and the second is the output file that is generated (here `isles.dat`) by processing the input.
 
 ~~~
 $ python countwords.py books/isles.txt isles.dat
@@ -165,8 +167,9 @@ seconds.
 The most common solution to the tedium of data processing is to write
 a shell script that runs the whole pipeline from start to finish.
 
-Using your text editor of choice (e.g. nano), add the following to a new file
-named `run_pipeline.sh`.
+So to reproduce the tasks that we have just done we create a new file
+named `run_pipeline.sh` in which we place the commands one by one.
+Using a text editor of your choice (e.g. for nano use the command `nano run_pipeline.sh`) copy and paste the following text and save it.
 
 ~~~
 # USAGE: bash run_pipeline.sh
@@ -261,9 +264,7 @@ What we really want is an executable _description_ of our pipeline that
 allows software to do the tricky part for us:
 figuring out what steps need to be rerun.
 
-Make was developed by
-Stuart Feldman in 1977 as a Bell Labs summer intern, and remains in
-widespread use today. Make can execute the commands needed to run our
+For our pipeline Make can execute the commands needed to run our
 analysis and plot our results. Like shell scripts it allows us to
 execute complex sequences of commands via a single shell
 command. Unlike shell scripts it explicitly records the dependencies
@@ -281,29 +282,39 @@ new files, for example:
 * Compile source code into executable programs or libraries.
 
 There are now many build tools available, for example [Apache
-ANT][apache-ant], [doit][doit], and [nmake][nmake] for Windows. There
-are also build tools that build scripts for use with these build tools
-and others e.g. [GNU Autoconf][autoconf] and [CMake][cmake]. Which is
-best for you depends on your requirements, intended usage, and
-operating system. However, they all share the same fundamental
-concepts as Make.
+ANT][apache-ant], [doit][doit], and [nmake][nmake] for Windows.
+Which is best for you depends on your requirements,
+intended usage, and operating system. However, they all share the same
+fundamental concepts as Make.
+
+Also, you might come across build generation scripts e.g. [GNU
+Autoconf][autoconf] and [CMake][cmake].  Those tools do not run the
+pipelines directly, but rather generate files for use with the build
+tools.
+
 
 > ## Why Use Make if it is Almost 40 Years Old?
 >
-> Today, researchers working with legacy codes in C or FORTRAN, which
-> are very common in high-performance computing, will, very likely
+> Make development was started by Stuart Feldman in 1977 as a Bell
+> Labs summer intern. Since then it has been undergoing an active
+> development and several implementations are available. Since it
+> solves a common issue of workflow management, it remains in
+> widespread use even today.
+>
+> Researchers working with legacy codes in C or FORTRAN, which are
+> very common in high-performance computing, will, very likely
 > encounter Make.
 >
-> Researchers are also finding Make of use in implementing
-> reproducible research workflows, automating data analysis and
-> visualisation (using Python or R) and combining tables and plots
-> with text to produce reports and papers for publication.
+> Researchers can use Make for implementing reproducible
+> research workflows, automating data analysis and visualisation
+> (using Python or R) and combining tables and plots with text to
+> produce reports and papers for publication.
 >
 > Make's fundamental concepts are common across build tools.
 {: .callout}
 
-[GNU Make][gnu-make] is a free, fast, well-documented, and very popular
-Make implementation. From now on, we will focus on it, and when we say
+[GNU Make][gnu-make] is a free-libre, fast, [well-documented](gnu-make-documentation),
+and very popular Make implementation. From now on, we will focus on it, and when we say
 Make, we mean GNU Make.
 
 [autoconf]: http://www.gnu.org/software/autoconf/autoconf.html
@@ -313,3 +324,4 @@ Make, we mean GNU Make.
 [gnu-make]: http://www.gnu.org/software/make/
 [nmake]: https://docs.microsoft.com/en-us/cpp/build/reference/nmake-reference
 [zipfs-law]: http://en.wikipedia.org/wiki/Zipf%27s_law
+[gnu-make-documentation]: https://www.gnu.org/software/make/manual/html_node/index.html
