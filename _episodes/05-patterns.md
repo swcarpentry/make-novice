@@ -18,19 +18,18 @@ rule]({{ page.root }}/reference.html#pattern-rule) which can be used to build an
 `.dat` file from a `.txt` file in `books/`:
 
 ~~~
-%.dat : books/%.txt countwords.py
-	python countwords.py $< $*.dat
+%.dat : countwords.py books/%.txt
+	python $^ $@
 ~~~
 {: .language-make}
 
-`%` is a Make [wildcard]({{ page.root }}/reference.html#wildcard).  `$*` is a special
-variable which gets replaced by the [stem]({{ page.root }}/reference.html#stem) with
-which the rule matched.
+`%` is a Make [wildcard]({{ page.root }}/reference.html#wildcard),
+matching any number of any characters.
 
 This rule can be interpreted as:
 "In order to build a file named `[something].dat` (the target)
 find a file named `books/[that same something].txt` (the dependency)
-and run `countwords.py [the dependency] [the target]`."
+and run `python [the dependencies] [the target]`."
 
 If we re-run Make,
 
@@ -77,14 +76,14 @@ Our Makefile is now much shorter and cleaner:
 ~~~
 # Generate summary table.
 results.txt : testzipf.py isles.dat abyss.dat last.dat
-	python $< *.dat > $@
+	python $^ > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
-%.dat : books/%.txt countwords.py
-	python countwords.py $< $*.dat
+%.dat : countwords.py books/%.txt
+	python $^ $@
 
 .PHONY : clean
 clean :
