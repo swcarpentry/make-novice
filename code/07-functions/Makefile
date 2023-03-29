@@ -5,14 +5,14 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(LANGUAGE) $^ > $@
 
 # Count words.
 .PHONY : dats
 dats : $(DAT_FILES)
 
-%.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+%.dat : $(COUNT_SRC) books/%.txt
+	$(LANGUAGE) $^ $@
 
 .PHONY : clean
 clean :
