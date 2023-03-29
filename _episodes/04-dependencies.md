@@ -72,7 +72,7 @@ last.dat : books/last.txt countwords.py
 ~~~
 {: .language-make}
 
-If we pretend to edit `countwords.py` now and re-run Make,
+If we pretend to edit `countwords.py` and re-run Make,
 
 ~~~
 $ touch countwords.py
@@ -106,12 +106,12 @@ python countwords.py books/last.txt last.dat
 The following figure shows a graph of the dependencies, that are
 involved in building the target `results.txt`. Notice the recently
 added dependencies `countwords.py` and `testzipf.py`.  This is how the
-Makefile should look like after completing the rest of the exercises
+Makefile should look after completing the rest of the exercises
 in this episode.
 
 ![results.txt dependencies after adding countwords.py and testzipf.py as dependencies](../fig/04-dependencies.png "results.txt dependencies after adding countwords.py and testzipf.py as dependencies")
 
-> ## Why the `.txt` Files Don't Depend on `countwords.py`?
+> ## Why Don't the `.txt` Files Depend on `countwords.py`?
 >
 > `.txt` files are input files and as such have no dependencies. To make these
 > depend on `countwords.py` would introduce a [false

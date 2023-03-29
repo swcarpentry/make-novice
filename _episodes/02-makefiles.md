@@ -26,7 +26,7 @@ $ rm *.dat *.png
 ~~~
 {: .language-bash}
 
-Now we can create create a [build file]({{ page.root }}/reference.html#build-file)
+Now we can create a [build file]({{ page.root }}/reference.html#build-file)
 called [`Makefile`]({{ page.root }}/reference.html#makefile) with our first 
 [rule]({{ page.root }}/reference.html#rule) (e.g. using a command `nano Makefile` 
 and copy-pasting the following content):
@@ -63,33 +63,34 @@ Information that was implicit in our shell script - that we are
 generating a file called `isles.dat` and that creating this file
 requires `books/isles.txt` - is now made explicit by Make's syntax.
 
-> ## Actions separator
->
-> Actions are indented using a single TAB character, *not* 8 spaces. This
-> is a legacy of Make's 1970's origins. If the difference between
-> spaces and a TAB character isn’t obvious in your editor, try moving
-> your cursor from one side of the TAB to the other. It should jump
-> four or more spaces.
->
-> If we later run into the following problem
-> 
-> ~~~
-> Makefile:3: *** missing separator.  Stop.
-> ~~~
-> {: .error}
-> 
-> then we have used a space instead of a TAB characters to indent one of
-> our actions.
+## Actions separator
+
+Actions are indented using a single TAB character, *not* 8 spaces. This
+is a legacy of Make's 1970's origins. If the difference between
+spaces and a TAB character isn’t obvious in your editor, try moving
+your cursor from one side of the TAB to the other. It should jump
+four or more spaces.
+
+If we later run into the following problem
+
+~~~
+Makefile:3: *** missing separator.  Stop.
+~~~
+{: .error}
+
+then we have used a space instead of a TAB characters to indent one of
+our actions.
+
+> By default, Make looks for a build file called `Makefile`, although it
+> is a good practice to keep to this naming convention it does not have
+> to be the case.  This happens especially when more build files are
+> present within the directory.  In such cases we sometimes use the
+> suffix `.mk` (e.g. `install.mk`, `common.mk`).  The selection of the
+> non-default build file (e.g. if our build file is called `FILE`) is
+> then done using a command-line option `-f FILE`, `--file FILE` or
+> `--makefile FILE`.
 {: .callout}
 
-By default, Make looks for a build file called `Makefile`, although it
-is a good practice to keep to this naming convention it does not have
-to be the case.  This happens especially when more build files are
-present within the directory.  In such cases we sometimes use the
-suffix `.mk` (e.g. `install.mk`, `common.mk`).  The selection of the
-non-default build file (e.g. if our build file is called `FILE`) is
-then done using a command-line option `-f FILE`, `--file FILE` or
-`--makefile FILE`.
 
 So having saved the `Makefile` with our first rule, we can finally
 run Make by executing the following command:
@@ -297,8 +298,8 @@ make: `clean' is up to date.
 {: .output}
 
 What happened is that
-Make found a  directory called `clean` and, as its `clean`.
-Since the `clean` rule has no dependencies, it assumes that `clean` directory has already been built (and is
+Make found a  directory called `clean` and, as the `clean`
+rule has no dependencies, it assumes that `clean` directory is the actual target, has already been built (and is
 up-to-date) and so it does not execute the rule's actions. 
 
 As we are using
@@ -343,18 +344,16 @@ In this example, the rule for `dats` has dependencies that are targets
 of other rules (e.g. `isles.dat`, `abyss.dat`). When that happens,
 Make goes to the rules for the creation of those dependencies and
 tries to assess if they need to be generated, i.e. do not exist or are
-out-dated. In such a case Make will generate those dependencies again.
+outdated. In such a case Make will generate those dependencies again.
 
-It remain to say that also the dependencies that are targets of other
-rules can themself have dependencies that are targets of other
-rules. In such a case Make will continue the assesment of what needs
-to be regenerated until it gets to the rules that only dependend on
-files that are not themself targets of other rules. This way the
-dependencies form a so-called [directed acyclic
+
+This process can continue until it gets to the rules that only
+dependend on files that are not themselves targets of other
+rules. This way the dependencies form a so-called [directed acyclic
 graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
-If the dependencies refer to non-existent file that does not even have
-a rule for its creation or the Make will raise an error.
+If the dependencies refer to any non-existent file that does not even have
+a rule for its creation, Make will raise an error.
 
 > ## Dependencies
 >
@@ -368,7 +367,7 @@ a rule for its creation or the Make will raise an error.
 > dropped.
 {: .callout}
 
-The rule `dat` is also an example of a rule that has no actions. It is
+The rule `dats` is also an example of a rule that has no actions. It is
 used purely to trigger the build of its dependencies, if needed.
 
 If we run,

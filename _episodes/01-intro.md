@@ -302,7 +302,7 @@ Which is best for you depends on your requirements,
 intended usage, and operating system. However, they all share the same
 fundamental concepts as Make.
 
-Also, you might get across build generation scripts e.g. [GNU
+Also, you might come across build generation scripts e.g. [GNU
 Autoconf][autoconf] and [CMake][cmake].  Those tools do not run the
 pipelines directly, but rather generate files for use with the build
 tools.
