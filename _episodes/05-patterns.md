@@ -28,7 +28,7 @@ matching any number of any characters.
 
 This rule can be interpreted as:
 "In order to build a file named `[something].dat` (the target)
-find a file named `books/[that same something].txt` (the dependency)
+find a file named `books/[that same something].txt` (one of the dependencies)
 and run `python [the dependencies] [the target]`."
 
 If we re-run Make,
@@ -97,16 +97,4 @@ clean :
 > [This Makefile]({{ page.root }}/code/05-patterns/Makefile)
 > contains all of our work so far.
 {: .callout}
-
-This episode has introduced pattern rules, and used the `$*` variable
-in the `dat` rule in order to explain how to use it.
-Arguably, a neater solution would have been to use `$@` to refer to
-the target of the current rule (see below),
-but then we wouldn't have learned about `$*`.
-
-```
-%.dat : books/%.txt countwords.py
-	python countwords.py $< $@
-```
-{: .language-make}
 
