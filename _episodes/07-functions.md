@@ -19,14 +19,14 @@ include config.mk
 
 # Generate summary table.
 results.txt : $(ZIPF_SRC) isles.dat abyss.dat last.dat
-	$(ZIPF_EXE) *.dat > $@
+	$(LANGUAGE) $^ > $@
 
 # Count words.
 .PHONY : dats
 dats : isles.dat abyss.dat last.dat
 
-%.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $*.dat
+%.dat : $(COUNT_SRC) books/%.txt
+	$(LANGUAGE) $^ $@
 
 .PHONY : clean
 clean :
@@ -132,14 +132,6 @@ clean :
 ~~~
 {: .language-make}
 
-Let's also tidy up the `%.dat` rule by using the automatic variable `$@` instead
-of `$*.dat`:
-
-```
-%.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
-```
-{: .language-make}
 
 Let's check:
 
@@ -163,7 +155,7 @@ We can also rewrite `results.txt`:
 
 ~~~
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(LANGUAGE) $^ > $@
 ~~~
 {: .language-make}
 
@@ -215,14 +207,14 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(LANGUAGE) S^ > $@
 
 # Count words.
 .PHONY : dats
 dats : $(DAT_FILES)
 
-%.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+%.dat : $(COUNT_SRC) books/%.txt
+	$(LANGUAGE) $^ $@
 
 .PHONY : clean
 clean :
@@ -242,11 +234,9 @@ Remember, the `config.mk` file contains:
 # Count words script.
 LANGUAGE=python
 COUNT_SRC=countwords.py
-COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 
 # Test Zipf's rule
 ZIPF_SRC=testzipf.py
-ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
 {: .language-make}
 

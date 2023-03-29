@@ -29,13 +29,10 @@ COUNT_SRC=countwords.py
 This is a variable [assignment]({{ page.root }}/reference.html#assignment) -
 `COUNT_SRC` is assigned the value `countwords.py`.
 
-`countwords.py` is our script and it is invoked by passing it to
-`python`. We can introduce another couple of variables to represent this
-execution:
+We can do the same thing with the interpreter language used to run the script:
 
 ~~~
 LANGUAGE=python
-COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 ~~~
 {: .language-make}
 
@@ -46,11 +43,9 @@ write it, or reference it, in this way.
 
 Here we reference the variables `LANGUAGE` and `COUNT_SRC`. This tells Make to
 replace the variable `LANGUAGE` with its value `python`,
-and to replace the variable `COUNT_SRC` with its value `countwords.py`. When
-Make is run it will assign to `COUNT_EXE` the value `python
-countwords.py`.
+and to replace the variable `COUNT_SRC` with its value `countwords.py`.
 
-Defining the variable `COUNT_EXE` in this way avoids repeating `python` in our 
+Defining the variable `LANGUAGE` in this way avoids repeating `python` in our
 Makefile, and allows us to easily
 change how our script is run (e.g. we might want to use a different
 version of Python and need to change `python` to `python2` -- or we might want
@@ -59,10 +54,10 @@ to rewrite the script using another language (e.g. switch from Python to R)).
 > ## Use Variables
 >
 > Update `Makefile` so that the `%.dat` rule
-> references the variables `COUNT_SRC` and `COUNT_EXE`.
+> references the variable `COUNT_SRC`.
 > Then do the same for the `testzipf.py` script
 > and the `results.txt` rule,
-> using `ZIPF_SRC` and `ZIPF_EXE` as variable names
+> using `ZIPF_SRC` as the variable name.
 >
 > > ## Solution
 > > [This Makefile]({{ page.root }}/code/06-variables-challenge/Makefile)
@@ -79,11 +74,9 @@ the original Makefile). Let us create `config.mk`:
 # Count words script.
 LANGUAGE=python
 COUNT_SRC=countwords.py
-COUNT_EXE=$(LANGUAGE) $(COUNT_SRC)
 
 # Test Zipf's rule
 ZIPF_SRC=testzipf.py
-ZIPF_EXE=$(LANGUAGE) $(ZIPF_SRC)
 ~~~
 {: .language-make}
 
@@ -103,7 +96,7 @@ $ make results.txt
 ~~~
 {: .language-bash}
 
-We have separated the configuration of our Makefile from its rules,
+We have separated the configuration of our Makefile from its rules --
 the parts that do all the work. If we want to change our script name
 or how it is executed we just need to edit our configuration file, not
 our source code in `Makefile`. Decoupling code from configuration in
