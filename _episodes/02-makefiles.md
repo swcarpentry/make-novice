@@ -33,7 +33,7 @@ executed by Make. Note how it resembles one of the lines from our shell script.
 Let us go through each line in turn:
 
 * `#` denotes a *comment*. Any text from `#` to the end of the line is
-  ignored by Make.
+  ignored by Make but could be very helpful for anyone reading your Makefile.
 * `isles.dat` is a [target]({{ page.root }}/reference.html#target), a file to be
   created, or built.
 * `books/isles.txt` is a [dependency]({{ page.root }}/reference.html#dependency), a
@@ -44,8 +44,7 @@ Let us go through each line in turn:
   [action]({{ page.root }}/reference.html#action), a command to run to build or
   update the target using the dependencies. Targets can have zero or more
   actions. These actions form a recipe to build the target
-  from its dependencies and can be considered to be
-  a shell script.
+  from its dependencies and are executed similarly to a shell script.
 * Actions are indented using a single TAB character, *not* 8 spaces. This
   is a legacy of Make's 1970's origins. If the difference between
   spaces and a TAB character isn’t obvious in your editor, try moving
@@ -360,7 +359,7 @@ Make will raise an error.
 > depends on that target.
 {: .callout}
 
-This rule is also an example of a rule that has no actions. It is used
+This rule (`dats`) is also an example of a rule that has no actions. It is used
 purely to trigger the build of its dependencies, if needed.
 
 If we run,
@@ -378,8 +377,8 @@ python countwords.py books/abyss.txt abyss.dat
 ~~~
 {: .output}
 
-If we run `dats` again, then Make will see that the dependencies (isles.dat
-and abyss.dat) are already up to date.
+If we run `make dats` again, then Make will see that the dependencies (`isles.dat`
+and `abyss.dat`) are already up to date.
 Given the target `dats` has no actions, there is `nothing to be done`:
 ~~~
 $ make dats
