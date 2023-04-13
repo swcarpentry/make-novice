@@ -39,10 +39,10 @@ clean :
 ~~~
 {: .language-make}
 
-Our data files are a product not only of our text files but the
-script, `countwords.py`, that processes the text files and creates the
-data files. A change to `countwords.py` (e.g. to add a new column of
-summary data or remove an existing one) results in changes to the
+Our data files are produced using not only the input text files but also the
+script `countwords.py` that processes the text files and creates the
+data files. A change to `countwords.py` (e.g. adding a new column of
+summary data or removing an existing one) results in changes to the
 `.dat` files it outputs. So, let's pretend to edit `countwords.py`,
 using `touch`, and re-run Make:
 
@@ -103,24 +103,24 @@ python countwords.py books/last.txt last.dat
 >
 {: .callout}
 
-The following figure shows the dependencies embodied within our
-Makefile, involved in building the `results.txt` target, after adding
-`countwords.py` and `testzipf.py` as dependencies to their respective target
-files (i.e. how the Makefile should look after completing the rest of the
-exercises in this episode).
+The following figure shows a graph of the dependencies, that are
+involved in building the target `results.txt`. Notice the recently
+added dependencies `countwords.py` and `testzipf.py`.  This is how the
+Makefile should look after completing the rest of the exercises
+in this episode.
 
 ![results.txt dependencies after adding countwords.py and testzipf.py as dependencies](../fig/04-dependencies.png "results.txt dependencies after adding countwords.py and testzipf.py as dependencies")
 
 > ## Why Don't the `.txt` Files Depend on `countwords.py`?
 >
-> `.txt` files are input files and have no dependencies. To make these
+> `.txt` files are input files and as such have no dependencies. To make these
 > depend on `countwords.py` would introduce a [false
-> dependency]({{ page.root }}/reference.html#false-dependency).
+> dependency]({{ page.root }}/reference.html#false-dependency) which is not desirable.
 {: .callout}
 
-Intuitively, we should also add `countwords.py` as dependency for
-`results.txt`, as the final table should be rebuilt as we remake the
-`.dat` files. However, it turns out we don't have to! Let's see what
+Intuitively, we should also add `countwords.py` as a dependency for
+`results.txt`, because the final table should be rebuilt if we remake the
+`.dat` files. However, it turns out we don't have to do that! Let's see what
 happens to `results.txt` when we update `countwords.py`:
 
 ~~~
