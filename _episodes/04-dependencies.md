@@ -217,16 +217,16 @@ downstream steps.
 {: .challenge}
 
 We still have to add the `testzipf.py` script as dependency to
-`results.txt`. Given the answer to the challenge above, we cannot use
-`$^` in the rule.
-We can however move `testzipf.py` to be the
-first dependency and then use `$<` to refer to it.
-In order to refer to the `.dat` files, we can just use `*.dat` for now (we will
-cover a better solution later on).
+`results.txt`.
+Given the answer to the challenge above,
+we need to make a couple of small changes so that we can still use automatic variables.
+
+We'll move `testzipf.py` to be the first dependency and then edit the action
+so that we pass all the dependencies as arguments to python using `$^`.
 
 ~~~
 results.txt : testzipf.py isles.dat abyss.dat last.dat
-	python $< *.dat > $@
+	python $^ > $@
 ~~~
 {: .language-make}
 

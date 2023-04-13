@@ -10,21 +10,21 @@ all : results.txt $(PNG_FILES)
 
 ## results.txt : Generate Zipf summary table.
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
-	$(ZIPF_EXE) $(DAT_FILES) > $@
+	$(LANGUAGE) $^ > $@
 
 ## dats        : Count words in text files.
 .PHONY : dats
 dats : $(DAT_FILES)
 
-%.dat : books/%.txt $(COUNT_SRC)
-	$(COUNT_EXE) $< $@
+%.dat : $(COUNT_SRC) books/%.txt
+	$(LANGUAGE) $^ $@
 
 ## pngs        : Plot word counts.
 .PHONY : pngs
 pngs : $(PNG_FILES)
 
-%.png : %.dat $(PLOT_SRC)
-	$(PLOT_EXE) $< $@
+%.png : $(PLOT_SRC) %.dat
+	$(LANGUAGE) $^ $@
 
 ## clean       : Remove auto-generated files.
 .PHONY : clean
