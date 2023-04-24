@@ -99,7 +99,7 @@ clean :
 
 ## Where We Are
 
-[This Makefile](code/05-patterns/Makefile)
+[This Makefile](files/code/05-patterns/Makefile)
 contains all of our work so far.
 
 

@@ -222,16 +222,15 @@ Default targets:
 
 ## Glossary
 
-{:auto\_ids}
-action
+[action]{#action}
 :   The steps a [build manager](#build-manager) must take to create or
 update a file or other object.
 
-assignment
+[assignment]{#assignment}
 :   A request that [Make](#make) stores something in a
 [variable](#variable).
 
-automatic variable
+[automatic variable]{#automatic-variable}
 :   A variable whose value is automatically redefined for each
 [rule](#rule). [Make](#make)'s automatic variables include `$@`,
 which holds the rule's [target](#target), `$^`, which holds its
@@ -240,56 +239,56 @@ its dependencies, and `$*`, which holds the [stem](#stem) with which
 the pattern was matched. Automatic variables are typically used in
 [pattern rules](#pattern-rule).
 
-build file
+[build file]{#build-file}
 :   A description of [dependencies](#dependency) and [rules](#rule)
 for a [build manager](#build-manager).
 
-build manager
+[build manager]{#build-manager}
 :   A program, such as [Make](#make), whose main purpose is to build or
 update software, documentation, web sites, data files, images, and
 other things.
 
-default rule
+[default rule]{#default-rule}
 :   The [rule](#rule) that is executed if no [target](#target) is
 specified when a [build manager](#build-manager) is run.
 
-default target
+[default target]{#default-target}
 :   The [target](#target) of the [default rule](#default-rule).
 
-dependency
+[dependency]{#dependency}
 :   A file that a [target](#target) depends on. If any of a target's
 [dependencies](#dependency) are newer than the target itself, the
 target needs to be updated. A target's dependencies are also
 called its prerequisites. If a target's dependencies do not exist,
 then they need to be built first.
 
-false dependency
+[false dependency]{#false-dependency}
 :   This can refer to a [dependency](#dependency) that is artificial.
 e.g. a false dependency is introduced if a data analysis script
 is added as a dependency to the data files that the script
 analyses.
 
-function
+[function]{#function}
 :   A built-in [Make](#make) utility that performs some operation, for
 example gets a list of files matching a pattern.
 
-incremental build
+[incremental build]{#incremental-build}
 :   The feature of a [build manager](#build-manager) by
 which it only rebuilds files that, either directory
 or indirectly, depend on a file that was changed.
 
-macro
+[macro]{#macro}
 :   Used as a synonym for [variable](#variable) in certain versions of
 [Make](#make).
 
-Make
+[Make]{#make}
 :   A popular [build manager](#build-manager), from GNU, created in 1977.
 
-Makefile
+[Makefile]{#makefile}
 :   A [build file](#build-file) used by [Make](#make), which, by
 default, are named `Makefile`.
 
-pattern rule
+[pattern rule]{#pattern-rule}
 :   A [rule](#rule) that specifies a general way to build or update an
 entire class of files that can be managed the same way. For
 example, a pattern rule can specify how to compile any C file
@@ -298,37 +297,37 @@ file rather than a single, specific data file. Pattern rules
 typically make use of [automatic variables](#automatic-variable)
 and [wildcards](#wildcard).
 
-phony target
+[phony target]{#phony-target}
 :   A [target](#target) that does not correspond to a file or other
 object. Phony targets are usually symbolic names for sequences of
 [actions](#action).
 
-prerequisite
+[prerequisite]{#prerequisite}
 :   A synonym for [dependency](#dependency).
 
-reference
+[reference]{#reference}
 :   A request that [Make](#make) substitutes the name of a
 [variable](#variable) for its value.
 
-rule
+[rule]{#rule}
 :   A specification of a [target](#target)'s
 [dependencies](#dependency) and what [actions](#action) need to be
 executed to build or update the target.
 
-stem
+[stem]{#stem}
 :   The part of the target that was matched by the pattern rule. If
 the target is `file.dat` and the target pattern was `%.dat`, then
 the stem `$*` is `file`.
 
-target
+[target]{#target}
 :   A thing to be created or updated, for example a file. Targets can
 have [dependencies](#dependency) that must exist, and be
 up-to-date, before the target itself can be built or updated.
 
-variable
+[variable]{#variable}
 :   A symbolic name for something in a [Makefile](#makefile).
 
-wildcard
+[wildcard]{#wildcard}
 :   A pattern that can be specified in [dependencies](#dependency) and
 [targets](#target). If [Make](#make) finds a dependency matching
 the pattern, then the pattern is substituted into the

@@ -125,8 +125,8 @@ them for us.
 
 ## Where We Are
 
-[This Makefile](code/08-self-doc/Makefile)
-and [its accompanying `config.mk`](code/08-self-doc/config.mk)
+[This Makefile](files/code/08-self-doc/Makefile)
+and [its accompanying `config.mk`](files/code/08-self-doc/config.mk)
 contain all of our work so far.
 
 

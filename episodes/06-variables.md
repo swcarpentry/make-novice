@@ -68,7 +68,7 @@ using `ZIPF_SRC` as the variable name.
 
 ## Solution
 
-[This Makefile](code/06-variables-challenge/Makefile)
+[This Makefile](files/code/06-variables-challenge/Makefile)
 contains a solution to this challenge.
 
 
@@ -116,8 +116,8 @@ flexible and reusable code.
 
 ## Where We Are
 
-[This Makefile](code/06-variables/Makefile)
-and [its accompanying `config.mk`](code/06-variables/config.mk)
+[This Makefile](files/code/06-variables/Makefile)
+and [its accompanying `config.mk`](files/code/06-variables/config.mk)
 contain all of our work so far.
 
 

@@ -411,13 +411,13 @@ our Makefile, involved in building the `dats` target:
 4. Put this rule at the top of the Makefile so that it is the default target.
 5. Update `clean` so that it removes `results.txt`.
 
-The starting Makefile is [here](code/02-makefile/Makefile).
+The starting Makefile is [here](files/code/02-makefile/Makefile).
 
 :::::::::::::::  solution
 
 ## Solution
 
-See [this file](code/02-makefile-challenge/Makefile) for a solution.
+See [this file](files/code/02-makefile-challenge/Makefile) for a solution.
 
 
 

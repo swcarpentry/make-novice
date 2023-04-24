@@ -55,8 +55,8 @@ Makefile, in this case your new `all` target.
 
 ## Solution
 
-[This Makefile](code/09-conclusion-challenge-1/Makefile)
-and [this `config.mk`](code/09-conclusion-challenge-1/config.mk)
+[This Makefile](files/code/09-conclusion-challenge-1/Makefile)
+and [this `config.mk`](files/code/09-conclusion-challenge-1/config.mk)
 contain a solution to this challenge.
 
 
@@ -114,8 +114,8 @@ rules and add new variables to:
 
 ## Solution
 
-[This Makefile](code/09-conclusion-challenge-2/Makefile)
-and [this `config.mk`](code/09-conclusion-challenge-2/config.mk)
+[This Makefile](files/code/09-conclusion-challenge-2/Makefile)
+and [this `config.mk`](files/code/09-conclusion-challenge-2/config.mk)
 contain a solution to this challenge.
 
 

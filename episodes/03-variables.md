@@ -177,14 +177,14 @@ first dependency of the current rule'.
 Rewrite each `.dat` rule to use the automatic variables `$@` ('the
 target of the current rule') and `$<` ('the first dependency of the
 current rule').
-[This file](code/03-variables/Makefile) contains
+[This file](files/code/03-variables/Makefile) contains
 the Makefile immediately before the challenge.
 
 :::::::::::::::  solution
 
 ## Solution
 
-See [this file](code/03-variables-challenge/Makefile)
+See [this file](files/code/03-variables-challenge/Makefile)
 for a solution to this challenge.
 
 

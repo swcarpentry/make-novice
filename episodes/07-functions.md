@@ -238,8 +238,8 @@ now we have introduced our function:
 
 ## Where We Are
 
-[This Makefile](code/07-functions/Makefile)
-and [its accompanying `config.mk`](code/07-functions/config.mk)
+[This Makefile](files/code/07-functions/Makefile)
+and [its accompanying `config.mk`](files/code/07-functions/config.mk)
 contain all of our work so far.
 
 

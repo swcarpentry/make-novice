@@ -246,7 +246,7 @@ results.txt : testzipf.py isles.dat abyss.dat last.dat
 
 ## Where We Are
 
-[This Makefile](code/04-dependencies/Makefile)
+[This Makefile](files/code/04-dependencies/Makefile)
 contains everything done so far in this topic.
 
 
