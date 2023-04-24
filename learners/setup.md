@@ -15,18 +15,16 @@ You need to download some files to follow this lesson:
 4. Navigate to the directory where you downloaded the file.
 
 5. Unpack `make-lesson.zip`:
-
-   ~~~
-   $ unzip make-lesson.zip
-   ~~~
-   {: .source}
+  
+  ```source
+  $ unzip make-lesson.zip
+  ```
 
 6. Change into the `make-lesson` directory:
-
-   ~~~
-   $ cd make-lesson
-   ~~~
-   {: .source}
+  
+  ```source
+  $ cd make-lesson
+  ```
 
 ## Software
 
@@ -50,6 +48,7 @@ You will need to have Xcode installed (download from the
 Check if you already have Make installed by typing `make -v` into a terminal.
 
 #### Windows
+
 Use the Software Carpentry
 [Windows installer](https://github.com/swcarpentry/windows-installer).
 
@@ -60,4 +59,7 @@ They can be installed separately, but the easiest approach is to install
 [Anaconda](https://www.anaconda.com/distribution/) which includes all of the
 necessary python software.
 
-[zip-file]: {{ page.root }}/files/make-lesson.zip
+[zip-file]: files/make-lesson.zip
+
+
+

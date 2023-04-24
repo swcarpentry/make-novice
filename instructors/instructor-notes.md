@@ -38,10 +38,10 @@ that the text in both windows is readable from the back of the room.
 Recommend instructors and students use `nano` as the text editor for
 this lesson because
 
-* it runs in all three major operating systems,
-* it runs inside the shell (switching windows can be confusing to
+- it runs in all three major operating systems,
+- it runs inside the shell (switching windows can be confusing to
   students), and
-* it has shortcut help at the bottom of the window.
+- it has shortcut help at the bottom of the window.
 
 Please point out to students during setup that they can and should use
 another text editor if they're already familiar with it.
@@ -61,20 +61,19 @@ Data files are in `data/books`.
 You can either create a simple Git repository for students to clone
 which contains:
 
-* `countwords.py`
-* `plotcounts.py`
-* `testzipf.py`
-* `books/`
+- `countwords.py`
+- `plotcounts.py`
+- `testzipf.py`
+- `books/`
 
 Or, ask students to download
 [make-lesson.zip][zipfile] from this repository.
 
 To recreate `make-lesson.zip`, run:
 
-~~~
+```bash
 $ make make-lesson.zip
-~~~
-{: .language-bash}
+```
 
 ## Beware of Spaces!
 
@@ -85,37 +84,35 @@ spaces instead of TABs when indenting actions.
 
 Some of these pages use images of Makefile dependencies, in the `fig` directory.
 
-These are created using [makefile2graph][makefile2graph],
+These are created using [makefile2graph],
 which is assumed to be in the `PATH`.
 This tool, in turn, needs the `dot` tool, part of [GraphViz][graphviz].
 
 To install GraphViz on Scientific Linux 6:
 
-~~~
+```bash
 $ sudo yum install graphviz
 $ dot -V
-~~~
-{: .language-bash}
-~~~
+```
+
+```output
 dot - graphviz version 2.26.0 (20091210.2329)
-~~~
-{: .output}
+```
 
 To install GraphViz on Ubuntu:
 
-~~~
+```bash
 $ sudo apt-get install graphviz
 $ dot -V
-~~~
-{: .language-bash}
-~~~
+```
+
+```output
 dot - graphviz version 2.38.0 (20140413.2041)
-~~~
-{: .output}
+```
 
 To download and build makefile2graph on Linux:
 
-~~~
+```bash
 $ cd
 $ git clone https://github.com/lindenb/makefile2graph
 $ cd makefile2graph/
@@ -123,19 +120,17 @@ $ make
 $ export PATH=~/makefile2graph/:$PATH
 $ cd
 $ which makefile2graph
-~~~
-{: .language-bash}
-~~~
+```
+
+```output
 /home/ubuntu/makefile2graph/makefile2graph
-~~~
-{: .output}
+```
 
 To create the image files for the lesson:
 
-~~~
+```bash
 $ make diagrams
-~~~
-{: .language-bash}
+```
 
 See `commands.mk`'s `diagrams` target.
 
@@ -144,11 +139,11 @@ See `commands.mk`'s `diagrams` target.
 When processing `books/last.txt` with Python 3 and vanilla shell environment on
 Arch Linux the following error has appeared:
 
-~~~
+```bash
 $ python wordcount.py books/last.txt last.dat
-~~~
-{: .language-bash}
-~~~
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 131, in <module>
     word_count(input_file, output_file, min_length)
@@ -159,18 +154,16 @@ Traceback (most recent call last):
   File "/usr/lib/python3.6/encodings/ascii.py", line 26, in decode
     return codecs.ascii_decode(input, self.errors)[0]
 UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 6862: ordinal not in range(128)
-~~~
-{: .output}
+```
 
 The workaround was to define encoding for the terminal session (this can be
 either done at the command line or placed in the `.bashrc` or equivalent):
 
-~~~
+```bash
 $ export LC_ALL=en_US.UTF-8
 $ export LANG=en_US.UTF-8
 $ export LANGUAGE=en_US.UTF-8
-~~~
-{: .language-bash}
+```
 
 ## Beware of different Make implementations!
 
@@ -178,7 +171,9 @@ The lesson is based on GNU Make. Although it is very rare, on some systems
 (e.g. AIX) you might find `make` not pointing to GNU Make and `gmake` needs to
 be used instead.
 
-[graphviz]: http://www.graphviz.org/
-[lesson-example]: https://github.com/carpentries/lesson-example/
+[zipfile]: files/make-lesson.zip
 [makefile2graph]: https://github.com/lindenb/makefile2graph
-[zipfile]: {{ page.root }}/files/make-lesson.zip
+[graphviz]: https://www.graphviz.org/
+
+
+

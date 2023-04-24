@@ -1,43 +1,46 @@
 ---
-title: "Variables"
+title: Variables
 teaching: 15
 exercises: 5
-questions:
-- "How can I eliminate redundancy in my Makefiles?"
-objectives:
-- "Use variables in a Makefile."
-- "Explain the benefits of decoupling configuration from computation."
-keypoints:
-- "Define variables by assigning values to names."
-- "Reference variables using `$(...)`."
 ---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Use variables in a Makefile.
+- Explain the benefits of decoupling configuration from computation.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How can I eliminate redundancy in my Makefiles?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Despite our efforts, our Makefile still has repeated content, i.e.
 the name of our script -- `countwords.py`, and the program we use to run it --
 `python`. If we renamed our script we'd have to update our Makefile in multiple
 places.
 
-We can introduce a Make [variable]({{ page.root }}/reference.html#variable) (called a
-[macro]({{ page.root }}/reference.html#macro) in some versions of Make) to hold our
+We can introduce a Make [variable](../learners/reference.md#variable) (called a
+[macro](../learners/reference.md#macro) in some versions of Make) to hold our
 script name:
 
-~~~
+```make
 COUNT_SRC=countwords.py
-~~~
-{: .language-make}
+```
 
-This is a variable [assignment]({{ page.root }}/reference.html#assignment) -
+This is a variable [assignment](../learners/reference.md#assignment) -
 `COUNT_SRC` is assigned the value `countwords.py`.
 
 We can do the same thing with the interpreter language used to run the script:
 
-~~~
+```make
 LANGUAGE=python
-~~~
-{: .language-make}
+```
 
 `$(...)` tells Make to replace a variable with its value when Make
-is run. This is a variable [reference]({{ page.root }}/reference.html#reference). At
+is run. This is a variable [reference](../learners/reference.md#reference). At
 any place where we want to use the value of a variable we have to
 write it, or reference it, in this way.
 
@@ -51,50 +54,56 @@ change how our script is run (e.g. we might want to use a different
 version of Python and need to change `python` to `python2` -- or we might want
 to rewrite the script using another language (e.g. switch from Python to R)).
 
-> ## Use Variables
->
-> Update `Makefile` so that the `%.dat` rule
-> references the variable `COUNT_SRC`.
-> Then do the same for the `testzipf.py` script
-> and the `results.txt` rule,
-> using `ZIPF_SRC` as the variable name.
->
-> > ## Solution
-> > [This Makefile]({{ page.root }}/code/06-variables-challenge/Makefile)
-> > contains a solution to this challenge.
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Use Variables
+
+Update `Makefile` so that the `%.dat` rule
+references the variable `COUNT_SRC`.
+Then do the same for the `testzipf.py` script
+and the `results.txt` rule,
+using `ZIPF_SRC` as the variable name.
+
+:::::::::::::::  solution
+
+## Solution
+
+[This Makefile](code/06-variables-challenge/Makefile)
+contains a solution to this challenge.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We place variables at the top of a Makefile so they are easy to
 find and modify. Alternatively, we can pull them out into a new
 file that just holds variable definitions (i.e. delete them from
 the original Makefile). Let us create `config.mk`:
 
-~~~
+```make
 # Count words script.
 LANGUAGE=python
 COUNT_SRC=countwords.py
 
 # Test Zipf's rule
 ZIPF_SRC=testzipf.py
-~~~
-{: .language-make}
+```
 
 We can then import `config.mk` into `Makefile` using:
 
-~~~
+```make
 include config.mk
-~~~
-{: .language-make}
+```
 
 We can re-run Make to see that everything still works:
 
-~~~
+```bash
 $ make clean
 $ make dats
 $ make results.txt
-~~~
-{: .language-bash}
+```
 
 We have separated the configuration of our Makefile from its rules --
 the parts that do all the work. If we want to change our script name
@@ -103,9 +112,22 @@ our source code in `Makefile`. Decoupling code from configuration in
 this way is good programming practice, as it promotes more modular,
 flexible and reusable code.
 
-> ## Where We Are
->
-> [This Makefile]({{ page.root }}/code/06-variables/Makefile)
-> and [its accompanying `config.mk`]({{ page.root }}/code/06-variables/config.mk)
-> contain all of our work so far.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Where We Are
+
+[This Makefile](code/06-variables/Makefile)
+and [its accompanying `config.mk`](code/06-variables/config.mk)
+contain all of our work so far.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Define variables by assigning values to names.
+- Reference variables using `$(...)`.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
