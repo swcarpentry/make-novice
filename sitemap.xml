@@ -37,7 +37,13 @@
     <loc>https://swcarpentry.github.io/make-novice/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/make-novice/aio.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/make-novice/discuss.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/make-novice/images.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/make-novice/index.html</loc>
@@ -79,16 +85,34 @@
     <loc>https://swcarpentry.github.io/make-novice/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/make-novice/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/make-novice/instructor/discuss.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/make-novice/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/make-novice/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/make-novice/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/make-novice/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/make-novice/instructor/profiles.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/make-novice/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/make-novice/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/make-novice/key-points.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/make-novice/profiles.html</loc>
