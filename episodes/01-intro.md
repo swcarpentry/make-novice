@@ -310,7 +310,7 @@ Make's fundamental concepts are common across build tools.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-[GNU Make][gnu-make] is a free-libre, fast, [well-documented](gnu-make-documentation),
+[GNU Make][gnu-make] is a free-libre, fast, [well-documented][gnu-make-documentation],
 and very popular Make implementation. From now on, we will focus on it, and when we say
 Make, we mean GNU Make.
 
@@ -321,6 +321,7 @@ Make, we mean GNU Make.
 [autoconf]: https://www.gnu.org/software/autoconf/autoconf.html
 [cmake]: https://www.cmake.org/
 [gnu-make]: https://www.gnu.org/software/make/
+[gnu-make-documentation]: https://www.gnu.org/software/make/#documentation
 
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
