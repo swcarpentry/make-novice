@@ -372,12 +372,12 @@ last.dat : books/last.txt countwords.py
 python countwords.py books/abyss.txt abyss.dat
 python countwords.py books/last.txt last.dat</code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="dry-run" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="dry-run" class="callout-inner">
-<h3 class="callout-title">Dry run<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Dry run<a class="anchor" aria-label="anchor" href="#dry-run"></a>
 </h3>
 <div class="callout-content">
 <p><code>make</code> can show the commands it will execute without
@@ -400,13 +400,13 @@ involved in building the target <code>results.txt</code>. Notice the
 recently added dependencies <code>countwords.py</code> and
 <code>testzipf.py</code>. This is how the Makefile should look after
 completing the rest of the exercises in this episode.</p>
-<figure><img src="../fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="callout2" class="callout callout">
+<figure><img src="../fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout-inner">
 <h3 class="callout-title">Why Don’t the <code>.txt</code> Files Depend
-on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#callout2"></a>
+on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the-.txt-files-depend-on-countwords.py"></a>
 </h3>
 <div class="callout-content">
 <p><code>.txt</code> files are input files and as such have no
@@ -446,12 +446,12 @@ files) are newer than the target file (<code>results.txt</code>) and
 thus it recreates <code>results.txt</code>. This is an example of the
 power of <code>make</code>: updating a subset of the files in the
 pipeline triggers rerunning the appropriate downstream steps.</p>
-<div id="challenge1" class="callout challenge">
+<div id="updating-one-input-file" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="updating-one-input-file" class="callout-inner">
-<h3 class="callout-title">Updating One Input File<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Updating One Input File<a class="anchor" aria-label="anchor" href="#updating-one-input-file"></a>
 </h3>
 <div class="callout-content">
 <p>What will happen if you now execute:</p>
@@ -477,7 +477,7 @@ recreated</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><code>3.</code> only <code>last.dat</code> and
 <code>results.txt</code> are recreated.</p>
@@ -486,14 +486,14 @@ recreated</li>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="testzipf.py-as-a-dependency-of-results.txt." class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="testzipf.py-as-a-dependency-of-results.txt." class="callout-inner">
 <h3 class="callout-title">
 <code>testzipf.py</code> as a Dependency of
-<code>results.txt</code>.<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<code>results.txt</code>.<a class="anchor" aria-label="anchor" href="#testzipf.py-as-a-dependency-of-results.txt."></a>
 </h3>
 <div class="callout-content">
 <p>What would happen if you added <code>testzipf.py</code> as dependency
@@ -508,7 +508,7 @@ of <code>results.txt</code>, and why?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>If you change the rule for the <code>results.txt</code> file like
 this:</p>
@@ -555,12 +555,12 @@ then edit the action so that we pass all the dependencies as arguments
 to python using <code>$^</code>.</p>
 <pre class="make"><code>results.txt : testzipf.py isles.dat abyss.dat last.dat
 	python $^ &gt; $@</code></pre>
-<div id="callout3" class="callout callout">
+<div id="where-we-are" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="../files/code/04-dependencies/Makefile">This Makefile</a>
@@ -616,7 +616,7 @@ change to C will indirectly trigger an update to A.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -640,7 +640,7 @@ change to C will indirectly trigger an update to A.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/instructor/04-dependencies.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>

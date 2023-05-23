@@ -366,12 +366,12 @@
 </div>
 <p>Let’s imagine that we’re interested in testing Zipf’s Law in some of
 our favorite books.</p>
-<div id="callout1" class="callout callout">
+<div id="zipfs-law" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="zipfs-law" class="callout-inner">
-<h3 class="callout-title">Zipf’s Law<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Zipf’s Law<a class="anchor" aria-label="anchor" href="#zipfs-law"></a>
 </h3>
 <div class="callout-content">
 <p>The most frequently-occurring word occurs approximately twice as
@@ -628,13 +628,13 @@ fundamental concepts as Make.</p>
 Autoconf</a> and <a href="https://www.cmake.org/" class="external-link">CMake</a>. Those tools
 do not run the pipelines directly, but rather generate files for use
 with the build tools.</p>
-<div id="callout2" class="callout callout">
+<div id="why-use-make-if-it-is-almost-40-years-old" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="why-use-make-if-it-is-almost-40-years-old" class="callout-inner">
 <h3 class="callout-title">Why Use Make if it is Almost 40 Years
-Old?<a class="anchor" aria-label="anchor" href="#callout2"></a>
+Old?<a class="anchor" aria-label="anchor" href="#why-use-make-if-it-is-almost-40-years-old"></a>
 </h3>
 <div class="callout-content">
 <p>Make development was started by Stuart Feldman in 1977 as a Bell Labs
@@ -789,13 +789,13 @@ of our actions.</p>
 </div>
 <p>The first 5 lines of <code>isles.dat</code> should look exactly like
 before.</p>
-<div id="callout1" class="callout callout">
+<div id="makefiles-do-not-have-to-be-called-makefile" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="makefiles-do-not-have-to-be-called-makefile" class="callout-inner">
 <h3 class="callout-title">Makefiles Do Not Have to be Called
-<code>Makefile</code><a class="anchor" aria-label="anchor" href="#callout1"></a>
+<code>Makefile</code><a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
 </h3>
 <div class="callout-content">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if
@@ -862,12 +862,12 @@ dependency has been updated since the target, then the actions are
 re-run to update the target. Using this approach, Make knows to only
 rebuild the files that, either directly or indirectly, depend on the
 file that changed. This is called an <a href="reference.html#incremental-build">incremental build</a>.</p>
-<div id="callout2" class="callout callout">
+<div id="makefiles-as-documentation" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="makefiles-as-documentation" class="callout-inner">
-<h3 class="callout-title">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#makefiles-as-documentation"></a>
 </h3>
 <div class="callout-content">
 <p>By explicitly recording the inputs to and outputs from steps in our
@@ -906,12 +906,12 @@ explicitly tell Make we want to build <code>abyss.dat</code>:</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/abyss.txt abyss.dat</code></pre>
 </div>
-<div id="callout3" class="callout callout">
+<div id="up-to-date-versus-nothing-to-be-done" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="up-to-date-versus-nothing-to-be-done" class="callout-inner">
-<h3 class="callout-title">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#up-to-date-versus-nothing-to-be-done"></a>
 </h3>
 <div class="callout-content">
 <p>If we ask Make to build a file that already exists and is up to date,
@@ -1020,12 +1020,12 @@ of other rules. When Make runs, it will check to see if the dependencies
 exist and, if not, will see if rules are available that will create
 these. If such rules exist it will invoke these first, otherwise Make
 will raise an error.</p>
-<div id="callout4" class="callout callout">
+<div id="dependencies" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="dependencies" class="callout-inner">
-<h3 class="callout-title">Dependencies<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h3>
 <div class="callout-content">
 <p>The order of rebuilding dependencies is arbitrary. You should not
@@ -1084,12 +1084,12 @@ clean :
 <p>The following figure shows a graph of the dependencies embodied
 within our Makefile, involved in building the <code>dats</code>
 target:</p>
-<figure><img src="../fig/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" class="figure mx-auto d-block"></figure><div id="challenge1" class="callout challenge">
+<figure><img src="../fig/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" class="figure mx-auto d-block"></figure><div id="write-two-new-rules" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="write-two-new-rules" class="callout-inner">
-<h3 class="callout-title">Write Two New Rules<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Write Two New Rules<a class="anchor" aria-label="anchor" href="#write-two-new-rules"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -1212,12 +1212,12 @@ files and data files are repeated in many places throughout the
 Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
 Makefile but forget to rename it elsewhere.</p>
-<div id="callout1" class="callout callout">
+<div id="d.r.y.-dont-repeat-yourself" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="d.r.y.-dont-repeat-yourself" class="callout-inner">
-<h3 class="callout-title">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
 </h3>
 <div class="callout-content">
 <p>In many programming languages, the bulk of the language features are
@@ -1266,12 +1266,12 @@ python countwords.py books/abyss.txt abyss.dat
 python countwords.py books/last.txt last.dat
 python testzipf.py isles.dat abyss.dat last.dat &gt; results.txt</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="update-dependencies" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="update-dependencies" class="callout-inner">
-<h3 class="callout-title">Update Dependencies<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Update Dependencies<a class="anchor" aria-label="anchor" href="#update-dependencies"></a>
 </h3>
 <div class="callout-content">
 <p>What will happen if you now execute:</p>
@@ -1328,13 +1328,13 @@ will soon do) then we don’t want these being passed as input files to
 when it is invoked.</p>
 <p>Make provides an automatic variable for this, <code>$&lt;</code>
 which means ‘the first dependency of the current rule’.</p>
-<div id="challenge2" class="callout challenge">
+<div id="rewrite-.dat-rules-to-use-automatic-variables" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="rewrite-.dat-rules-to-use-automatic-variables" class="callout-inner">
 <h3 class="callout-title">Rewrite <code>.dat</code> Rules to Use
-Automatic Variables<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+Automatic Variables<a class="anchor" aria-label="anchor" href="#rewrite-.dat-rules-to-use-automatic-variables"></a>
 </h3>
 <div class="callout-content">
 <p>Rewrite each <code>.dat</code> rule to use the automatic variables
@@ -1478,12 +1478,12 @@ last.dat : books/last.txt countwords.py
 python countwords.py books/abyss.txt abyss.dat
 python countwords.py books/last.txt last.dat</code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="dry-run" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="dry-run" class="callout-inner">
-<h3 class="callout-title">Dry run<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Dry run<a class="anchor" aria-label="anchor" href="#dry-run"></a>
 </h3>
 <div class="callout-content">
 <p><code>make</code> can show the commands it will execute without
@@ -1506,13 +1506,13 @@ involved in building the target <code>results.txt</code>. Notice the
 recently added dependencies <code>countwords.py</code> and
 <code>testzipf.py</code>. This is how the Makefile should look after
 completing the rest of the exercises in this episode.</p>
-<figure><img src="../fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="callout2" class="callout callout">
+<figure><img src="../fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout-inner">
 <h3 class="callout-title">Why Don’t the <code>.txt</code> Files Depend
-on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#callout2"></a>
+on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the-.txt-files-depend-on-countwords.py"></a>
 </h3>
 <div class="callout-content">
 <p><code>.txt</code> files are input files and as such have no
@@ -1552,12 +1552,12 @@ files) are newer than the target file (<code>results.txt</code>) and
 thus it recreates <code>results.txt</code>. This is an example of the
 power of <code>make</code>: updating a subset of the files in the
 pipeline triggers rerunning the appropriate downstream steps.</p>
-<div id="challenge1" class="callout challenge">
+<div id="updating-one-input-file" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="updating-one-input-file" class="callout-inner">
-<h3 class="callout-title">Updating One Input File<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Updating One Input File<a class="anchor" aria-label="anchor" href="#updating-one-input-file"></a>
 </h3>
 <div class="callout-content">
 <p>What will happen if you now execute:</p>
@@ -1585,7 +1585,7 @@ recreated</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><code>3.</code> only <code>last.dat</code> and
 <code>results.txt</code> are recreated.</p>
@@ -1594,14 +1594,14 @@ recreated</li>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="testzipf.py-as-a-dependency-of-results.txt." class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="testzipf.py-as-a-dependency-of-results.txt." class="callout-inner">
 <h3 class="callout-title">
 <code>testzipf.py</code> as a Dependency of
-<code>results.txt</code>.<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<code>results.txt</code>.<a class="anchor" aria-label="anchor" href="#testzipf.py-as-a-dependency-of-results.txt."></a>
 </h3>
 <div class="callout-content">
 <p>What would happen if you added <code>testzipf.py</code> as dependency
@@ -1616,7 +1616,7 @@ of <code>results.txt</code>, and why?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>If you change the rule for the <code>results.txt</code> file like
 this:</p>
@@ -1663,12 +1663,12 @@ then edit the action so that we pass all the dependencies as arguments
 to python using <code>$^</code>.</p>
 <pre class="make"><code>results.txt : testzipf.py isles.dat abyss.dat last.dat
 	python $^ &gt; $@</code></pre>
-<div id="callout3" class="callout callout">
+<div id="where-we-are" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="../files/code/04-dependencies/Makefile">This Makefile</a>
@@ -1768,12 +1768,12 @@ is being matched.</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/sierra.txt sierra.dat</code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="using-make-wildcards" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="using-make-wildcards" class="callout-inner">
-<h3 class="callout-title">Using Make Wildcards<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Using Make Wildcards<a class="anchor" aria-label="anchor" href="#using-make-wildcards"></a>
 </h3>
 <div class="callout-content">
 <p>The Make <code>%</code> wildcard can only be used in a target and in
@@ -1799,12 +1799,12 @@ dats : isles.dat abyss.dat last.dat
 clean :
 	rm -f *.dat
 	rm -f results.txt</code></pre>
-<div id="callout2" class="callout callout">
+<div id="where-we-are" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="../files/code/05-patterns/Makefile">This Makefile</a> contains
@@ -1892,12 +1892,12 @@ change how our script is run (e.g. we might want to use a different
 version of Python and need to change <code>python</code> to
 <code>python2</code> – or we might want to rewrite the script using
 another language (e.g. switch from Python to R)).</p>
-<div id="challenge1" class="callout challenge">
+<div id="use-variables" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="use-variables" class="callout-inner">
-<h3 class="callout-title">Use Variables<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Use Variables<a class="anchor" aria-label="anchor" href="#use-variables"></a>
 </h3>
 <div class="callout-content">
 <p>Update <code>Makefile</code> so that the <code>%.dat</code> rule
@@ -1949,12 +1949,12 @@ how it is executed we just need to edit our configuration file, not our
 source code in <code>Makefile</code>. Decoupling code from configuration
 in this way is good programming practice, as it promotes more modular,
 flexible and reusable code.</p>
-<div id="callout1" class="callout callout">
+<div id="where-we-are" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="../files/code/06-variables/Makefile">This Makefile</a> and <a href="../files/code/06-variables/config.mk">its accompanying
@@ -2042,13 +2042,13 @@ variable’s value:</p>
 <pre class="make"><code>.PHONY : variables
 variables:
 	@echo TXT_FILES: $(TXT_FILES)</code></pre>
-<div id="callout1" class="callout callout">
+<div id="echo" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="echo" class="callout-inner">
 <h3 class="callout-title">
-<span class="citation">@echo</span><a class="anchor" aria-label="anchor" href="#callout1"></a>
+<span class="citation">@echo</span><a class="anchor" aria-label="anchor" href="#echo"></a>
 </h3>
 <div class="callout-content">
 <p>Make prints actions as it executes them. Using <code>@</code> at the
@@ -2198,12 +2198,12 @@ variables:
 <p>The following figure shows the dependencies embodied within our
 Makefile, involved in building the <code>results.txt</code> target, now
 we have introduced our function:</p>
-<figure><img src="../fig/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" class="figure mx-auto d-block"></figure><div id="callout2" class="callout callout">
+<figure><img src="../fig/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" class="figure mx-auto d-block"></figure><div id="where-we-are" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="../files/code/07-functions/Makefile">This Makefile</a> and <a href="../files/code/07-functions/config.mk">its accompanying
@@ -2211,12 +2211,12 @@ we have introduced our function:</p>
 </div>
 </div>
 </div>
-<div id="discussion1" class="callout discussion">
+<div id="adding-more-books" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="adding-more-books" class="callout-inner">
-<h3 class="callout-title">Adding more books<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Adding more books<a class="anchor" aria-label="anchor" href="#adding-more-books"></a>
 </h3>
 <div class="callout-content">
 <p>We can now do a better job at testing Zipf’s rule by adding more
@@ -2385,12 +2385,12 @@ remember to add, update or remove a comment next to the rule. So long as
 we respect our convention of using <code>##</code> for such comments,
 then our <code>help</code> rule will take care of detecting these
 comments and printing them for us.</p>
-<div id="callout1" class="callout callout">
+<div id="where-we-are" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="../files/code/08-self-doc/Makefile">This Makefile</a> and <a href="../files/code/08-self-doc/config.mk">its accompanying
@@ -2458,12 +2458,12 @@ files that were used to create these have changed in some way.</p>
 serve as a form of documentation, recording dependencies between code,
 scripts, tools, configurations, raw data, derived data, plots, and
 papers.</p>
-<div id="challenge1" class="callout challenge">
+<div id="creating-pngs" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="creating-pngs" class="callout-inner">
-<h3 class="callout-title">Creating PNGs<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Creating PNGs<a class="anchor" aria-label="anchor" href="#creating-pngs"></a>
 </h3>
 <div class="callout-content">
 <p>Add new rules, update existing rules, and add new variables to:</p>
@@ -2495,7 +2495,7 @@ first target it finds in the Makefile, in this case your new
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><a href="../files/code/09-conclusion-challenge-1/Makefile">This
 Makefile</a> and <a href="../files/code/09-conclusion-challenge-1/config.mk">this
@@ -2506,12 +2506,12 @@ Makefile</a> and <a href="../files/code/09-conclusion-challenge-1/config.mk">thi
 </div>
 <p>The following figure shows the dependencies involved in building the
 <code>all</code> target, once we’ve added support for images:</p>
-<figure><img src="../fig/09-conclusion-challenge-1.png" title="results.txt dependencies once images have been added" alt="results.txt dependencies once images have been added" class="figure mx-auto d-block"></figure><div id="challenge2" class="callout challenge">
+<figure><img src="../fig/09-conclusion-challenge-1.png" title="results.txt dependencies once images have been added" alt="results.txt dependencies once images have been added" class="figure mx-auto d-block"></figure><div id="creating-an-archive" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="creating-an-archive" class="callout-inner">
-<h3 class="callout-title">Creating an Archive<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Creating an Archive<a class="anchor" aria-label="anchor" href="#creating-an-archive"></a>
 </h3>
 <div class="callout-content">
 <p>Often it is useful to create an archive file of your project that
@@ -2566,7 +2566,7 @@ when <code>make variables</code> is called.</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><a href="../files/code/09-conclusion-challenge-2/Makefile">This
 Makefile</a> and <a href="../files/code/09-conclusion-challenge-2/config.mk">this
@@ -2575,12 +2575,12 @@ Makefile</a> and <a href="../files/code/09-conclusion-challenge-2/config.mk">thi
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="archiving-the-makefile" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="archiving-the-makefile" class="callout-inner">
-<h3 class="callout-title">Archiving the Makefile<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Archiving the Makefile<a class="anchor" aria-label="anchor" href="#archiving-the-makefile"></a>
 </h3>
 <div class="callout-content">
 <p>Why does the Makefile rule for the archive directory add the Makefile
@@ -2595,7 +2595,7 @@ to our archive of code, data, plots and Zipf summary table?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Our code files (<code>countwords.py</code>,
 <code>plotcounts.py</code>, <code>testzipf.py</code>) implement the
@@ -2611,13 +2611,13 @@ too.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="touch-the-archive-directory" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="touch-the-archive-directory" class="callout-inner">
 <h3 class="callout-title">
-<code>touch</code> the Archive Directory<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<code>touch</code> the Archive Directory<a class="anchor" aria-label="anchor" href="#touch-the-archive-directory"></a>
 </h3>
 <div class="callout-content">
 <p>Why does the Makefile rule for the archive directory
@@ -2633,7 +2633,7 @@ plots and summary table into it?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>A directory’s timestamp is not automatically updated when files are
 copied into it. If the code, data, plots, and summary table are updated
@@ -2687,7 +2687,7 @@ by documenting how to reproduce results.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -2711,8 +2711,8 @@ by documenting how to reproduce results.</li>
   "url": "https://swcarpentry.github.io/make-novice/instructor/aio.html",
   "identifier": "https://swcarpentry.github.io/make-novice/instructor/aio.html",
   "dateCreated": "2015-06-18",
-  "dateModified": "2023-05-16",
-  "datePublished": "2023-05-16"
+  "dateModified": "2023-05-23",
+  "datePublished": "2023-05-23"
 }
 
   </script><script>

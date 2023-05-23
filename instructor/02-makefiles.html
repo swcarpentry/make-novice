@@ -386,13 +386,13 @@ of our actions.</p>
 </div>
 <p>The first 5 lines of <code>isles.dat</code> should look exactly like
 before.</p>
-<div id="callout1" class="callout callout">
+<div id="makefiles-do-not-have-to-be-called-makefile" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="makefiles-do-not-have-to-be-called-makefile" class="callout-inner">
 <h3 class="callout-title">Makefiles Do Not Have to be Called
-<code>Makefile</code><a class="anchor" aria-label="anchor" href="#callout1"></a>
+<code>Makefile</code><a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
 </h3>
 <div class="callout-content">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if
@@ -459,12 +459,12 @@ dependency has been updated since the target, then the actions are
 re-run to update the target. Using this approach, Make knows to only
 rebuild the files that, either directly or indirectly, depend on the
 file that changed. This is called an <a href="reference.html#incremental-build">incremental build</a>.</p>
-<div id="callout2" class="callout callout">
+<div id="makefiles-as-documentation" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="makefiles-as-documentation" class="callout-inner">
-<h3 class="callout-title">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#makefiles-as-documentation"></a>
 </h3>
 <div class="callout-content">
 <p>By explicitly recording the inputs to and outputs from steps in our
@@ -503,12 +503,12 @@ explicitly tell Make we want to build <code>abyss.dat</code>:</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/abyss.txt abyss.dat</code></pre>
 </div>
-<div id="callout3" class="callout callout">
+<div id="up-to-date-versus-nothing-to-be-done" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="up-to-date-versus-nothing-to-be-done" class="callout-inner">
-<h3 class="callout-title">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#up-to-date-versus-nothing-to-be-done"></a>
 </h3>
 <div class="callout-content">
 <p>If we ask Make to build a file that already exists and is up to date,
@@ -615,12 +615,12 @@ of other rules. When Make runs, it will check to see if the dependencies
 exist and, if not, will see if rules are available that will create
 these. If such rules exist it will invoke these first, otherwise Make
 will raise an error.</p>
-<div id="callout4" class="callout callout">
+<div id="dependencies" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="dependencies" class="callout-inner">
-<h3 class="callout-title">Dependencies<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h3>
 <div class="callout-content">
 <p>The order of rebuilding dependencies is arbitrary. You should not
@@ -679,12 +679,12 @@ clean :
 <p>The following figure shows a graph of the dependencies embodied
 within our Makefile, involved in building the <code>dats</code>
 target:</p>
-<figure><img src="../fig/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" class="figure mx-auto d-block"></figure><div id="challenge1" class="callout challenge">
+<figure><img src="../fig/02-makefile.png" title="Dependencies represented within the Makefile" alt="Dependencies represented within the Makefile" class="figure mx-auto d-block"></figure><div id="write-two-new-rules" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="write-two-new-rules" class="callout-inner">
-<h3 class="callout-title">Write Two New Rules<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Write Two New Rules<a class="anchor" aria-label="anchor" href="#write-two-new-rules"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Write a new rule for <code>last.dat</code>, created from
@@ -769,7 +769,7 @@ files.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -793,7 +793,7 @@ files.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/instructor/02-makefiles.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>

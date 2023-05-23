@@ -333,12 +333,12 @@ files and data files are repeated in many places throughout the
 Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
 Makefile but forget to rename it elsewhere.</p>
-<div id="callout1" class="callout callout">
+<div id="d.r.y.-dont-repeat-yourself" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="d.r.y.-dont-repeat-yourself" class="callout-inner">
-<h3 class="callout-title">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
 </h3>
 <div class="callout-content">
 <p>In many programming languages, the bulk of the language features are
@@ -387,12 +387,12 @@ python countwords.py books/abyss.txt abyss.dat
 python countwords.py books/last.txt last.dat
 python testzipf.py isles.dat abyss.dat last.dat &gt; results.txt</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="update-dependencies" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="update-dependencies" class="callout-inner">
-<h3 class="callout-title">Update Dependencies<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Update Dependencies<a class="anchor" aria-label="anchor" href="#update-dependencies"></a>
 </h3>
 <div class="callout-content">
 <p>What will happen if you now execute:</p>
@@ -447,13 +447,13 @@ will soon do) then we don’t want these being passed as input files to
 when it is invoked.</p>
 <p>Make provides an automatic variable for this, <code>$&lt;</code>
 which means ‘the first dependency of the current rule’.</p>
-<div id="challenge2" class="callout challenge">
+<div id="rewrite-.dat-rules-to-use-automatic-variables" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="rewrite-.dat-rules-to-use-automatic-variables" class="callout-inner">
 <h3 class="callout-title">Rewrite <code>.dat</code> Rules to Use
-Automatic Variables<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+Automatic Variables<a class="anchor" aria-label="anchor" href="#rewrite-.dat-rules-to-use-automatic-variables"></a>
 </h3>
 <div class="callout-content">
 <p>Rewrite each <code>.dat</code> rule to use the automatic variables
@@ -527,7 +527,7 @@ current rule.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -551,7 +551,7 @@ current rule.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/03-variables.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>

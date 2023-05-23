@@ -315,12 +315,12 @@ files that were used to create these have changed in some way.</p>
 serve as a form of documentation, recording dependencies between code,
 scripts, tools, configurations, raw data, derived data, plots, and
 papers.</p>
-<div id="challenge1" class="callout challenge">
+<div id="creating-pngs" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="creating-pngs" class="callout-inner">
-<h3 class="callout-title">Creating PNGs<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Creating PNGs<a class="anchor" aria-label="anchor" href="#creating-pngs"></a>
 </h3>
 <div class="callout-content">
 <p>Add new rules, update existing rules, and add new variables to:</p>
@@ -350,7 +350,7 @@ first target it finds in the Makefile, in this case your new
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><a href="files/code/09-conclusion-challenge-1/Makefile">This
 Makefile</a> and <a href="files/code/09-conclusion-challenge-1/config.mk">this
@@ -361,12 +361,12 @@ Makefile</a> and <a href="files/code/09-conclusion-challenge-1/config.mk">this
 </div>
 <p>The following figure shows the dependencies involved in building the
 <code>all</code> target, once we’ve added support for images:</p>
-<figure><img src="fig/09-conclusion-challenge-1.png" title="results.txt dependencies once images have been added" alt="results.txt dependencies once images have been added" class="figure mx-auto d-block"></figure><div id="challenge2" class="callout challenge">
+<figure><img src="fig/09-conclusion-challenge-1.png" title="results.txt dependencies once images have been added" alt="results.txt dependencies once images have been added" class="figure mx-auto d-block"></figure><div id="creating-an-archive" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="creating-an-archive" class="callout-inner">
-<h3 class="callout-title">Creating an Archive<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Creating an Archive<a class="anchor" aria-label="anchor" href="#creating-an-archive"></a>
 </h3>
 <div class="callout-content">
 <p>Often it is useful to create an archive file of your project that
@@ -419,7 +419,7 @@ when <code>make variables</code> is called.</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><a href="files/code/09-conclusion-challenge-2/Makefile">This
 Makefile</a> and <a href="files/code/09-conclusion-challenge-2/config.mk">this
@@ -428,12 +428,12 @@ Makefile</a> and <a href="files/code/09-conclusion-challenge-2/config.mk">this
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="archiving-the-makefile" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="archiving-the-makefile" class="callout-inner">
-<h3 class="callout-title">Archiving the Makefile<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Archiving the Makefile<a class="anchor" aria-label="anchor" href="#archiving-the-makefile"></a>
 </h3>
 <div class="callout-content">
 <p>Why does the Makefile rule for the archive directory add the Makefile
@@ -448,7 +448,7 @@ to our archive of code, data, plots and Zipf summary table?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Our code files (<code>countwords.py</code>,
 <code>plotcounts.py</code>, <code>testzipf.py</code>) implement the
@@ -464,13 +464,13 @@ too.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="touch-the-archive-directory" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="touch-the-archive-directory" class="callout-inner">
 <h3 class="callout-title">
-<code>touch</code> the Archive Directory<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<code>touch</code> the Archive Directory<a class="anchor" aria-label="anchor" href="#touch-the-archive-directory"></a>
 </h3>
 <div class="callout-content">
 <p>Why does the Makefile rule for the archive directory
@@ -486,7 +486,7 @@ plots and summary table into it?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>A directory’s timestamp is not automatically updated when files are
 copied into it. If the code, data, plots, and summary table are updated
@@ -547,7 +547,7 @@ by documenting how to reproduce results.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -571,7 +571,7 @@ by documenting how to reproduce results.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/09-conclusion.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>
