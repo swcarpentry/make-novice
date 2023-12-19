@@ -50,7 +50,7 @@
     </div>
   </div>
   <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav software" aria-label="Main Navigation"><div class="container-fluid nav-container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
@@ -62,7 +62,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-      <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="search button" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -118,7 +118,7 @@
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle">
+      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
@@ -161,15 +161,14 @@
               <div id="flush-collapseEleven" class="accordion-collapse show collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlush11">
 
                 <div class="accordion-body">
-                  <div class="accordion accordion-flush" id="accordionFlush1">
+                  <?xml version="1.0" encoding="UTF-8"?><div class="accordion accordion-flush" id="accordionFlush1">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading1">
-        <a href="index.html">Summary and Schedule</a>
+      <a href="index.html">Summary and Schedule</a>
     </div>
-<!--/div.accordion-header-->
-        
+    <!--/div.accordion-header-->
   </div>
-<!--/div.accordion-item-->
+  <!--/div.accordion-item-->
 </div>
 <!--/div.accordion-flush-->
 
@@ -339,12 +338,12 @@
         
 <section id="aio-01-intro"><p>Content from <a href="01-intro.html">Introduction</a></p>
 <hr>
-<p> Last updated on 2023-04-25 | 
+<p>Last updated on 2023-04-25 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/01-intro.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 25 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -671,7 +670,7 @@ and when we say Make, we mean GNU Make.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -682,12 +681,12 @@ things that are out of date.</li>
 </div>
 </div></section><section id="aio-02-makefiles"><p>Content from <a href="02-makefiles.html">Makefiles</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/02-makefiles.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 40 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -803,8 +802,7 @@ before.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="makefiles-do-not-have-to-be-called-makefile" class="callout-inner">
-<h3 class="callout-title">Makefiles Do Not Have to be Called
-<code>Makefile</code><a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
+<h3 class="callout-title">Makefiles Do Not Have to be Called<code>Makefile</code><a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
 </h3>
 <div class="callout-content">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if
@@ -1126,11 +1124,9 @@ target.</li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>See <a href="../files/code/02-makefile-challenge/Makefile">this file</a>
 for a solution.</p>
@@ -1145,7 +1141,7 @@ Makefile, involved in building the <code>results.txt</code> target:</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -1159,12 +1155,12 @@ files.</li>
 </div>
 </div></section><section id="aio-03-variables"><p>Content from <a href="03-variables.html">Automatic Variables</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/03-variables.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 15 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -1302,11 +1298,9 @@ python testzipf.py isles.dat abyss.dat last.dat &gt; results.txt</code></pre>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><code>4.</code> Only <code>results.txt</code> recreated.</p>
 <p>The rules for <code>*.dat</code> are not executed because their
@@ -1342,7 +1336,7 @@ which means ‘the first dependency of the current rule’.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="rewrite-.dat-rules-to-use-automatic-variables" class="callout-inner">
-<h3 class="callout-title">Rewrite <code>.dat</code> Rules to Use
+<h3 class="callout-title">Rewrite<code>.dat</code>Rules to Use
 Automatic Variables<a class="anchor" aria-label="anchor" href="#rewrite-.dat-rules-to-use-automatic-variables"></a>
 </h3>
 <div class="callout-content">
@@ -1356,11 +1350,9 @@ Makefile immediately before the challenge.</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>See <a href="../files/code/03-variables-challenge/Makefile">this
 file</a> for a solution to this challenge.</p>
@@ -1373,7 +1365,7 @@ file</a> for a solution to this challenge.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -1387,12 +1379,12 @@ current rule.</li>
 </div>
 </div></section><section id="aio-04-dependencies"><p>Content from <a href="04-dependencies.html">Dependencies on Data and Code</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/04-dependencies.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 20 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -1520,8 +1512,8 @@ completing the rest of the exercises in this episode.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout-inner">
-<h3 class="callout-title">Why Don’t the <code>.txt</code> Files Depend
-on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the-.txt-files-depend-on-countwords.py"></a>
+<h3 class="callout-title">Why Don’t the<code>.txt</code>Files Depend
+on<code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the-.txt-files-depend-on-countwords.py"></a>
 </h3>
 <div class="callout-content">
 <p><code>.txt</code> files are input files and as such have no
@@ -1590,11 +1582,9 @@ recreated</li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><code>3.</code> only <code>last.dat</code> and
 <code>results.txt</code> are recreated.</p>
@@ -1609,8 +1599,7 @@ recreated</li>
 </div>
 <div id="testzipf.py-as-a-dependency-of-results.txt." class="callout-inner">
 <h3 class="callout-title">
-<code>testzipf.py</code> as a Dependency of
-<code>results.txt</code>.<a class="anchor" aria-label="anchor" href="#testzipf.py-as-a-dependency-of-results.txt."></a>
+<code>testzipf.py</code>as a Dependency of<code>results.txt</code>.<a class="anchor" aria-label="anchor" href="#testzipf.py-as-a-dependency-of-results.txt."></a>
 </h3>
 <div class="callout-content">
 <p>What would happen if you added <code>testzipf.py</code> as dependency
@@ -1621,11 +1610,9 @@ of <code>results.txt</code>, and why?</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>If you change the rule for the <code>results.txt</code> file like
 this:</p>
@@ -1690,7 +1677,7 @@ contains everything done so far in this topic.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -1703,12 +1690,12 @@ change to C will indirectly trigger an update to A.</li>
 </div>
 </div></section><section id="aio-05-patterns"><p>Content from <a href="05-patterns.html">Pattern Rules</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/05-patterns.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 10 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -1826,7 +1813,7 @@ all of our work so far.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -1839,12 +1826,12 @@ of files in actions.</li>
 </div>
 </div></section><section id="aio-06-variables"><p>Content from <a href="06-variables.html">Variables</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/06-variables.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 20 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -1919,9 +1906,7 @@ using <code>ZIPF_SRC</code> as the variable name.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
@@ -1976,7 +1961,7 @@ flexible and reusable code.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -1987,12 +1972,12 @@ flexible and reusable code.</p>
 </div>
 </div></section><section id="aio-07-functions"><p>Content from <a href="07-functions.html">Functions</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/07-functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 25 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -2257,7 +2242,7 @@ others</li>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -2271,12 +2256,12 @@ pattern.</li>
 </div>
 </div></section><section id="aio-08-self-doc"><p>Content from <a href="08-self-doc.html">Self-Documenting Makefiles</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/08-self-doc.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 10 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -2412,7 +2397,7 @@ comments and printing them for us.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -2423,12 +2408,12 @@ target to extract and format them.</li>
 </div>
 </div></section><section id="aio-09-conclusion"><p>Content from <a href="09-conclusion.html">Conclusion</a></p>
 <hr>
-<p> Last updated on 2023-04-24 | 
+<p>Last updated on 2023-04-24 |
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/09-conclusion.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 35 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 35 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -2500,11 +2485,9 @@ first target it finds in the Makefile, in this case your new
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><a href="../files/code/09-conclusion-challenge-1/Makefile">This
 Makefile</a> and <a href="../files/code/09-conclusion-challenge-1/config.mk">this
@@ -2571,11 +2554,9 @@ when <code>make variables</code> is called.</p></li>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><a href="../files/code/09-conclusion-challenge-2/Makefile">This
 Makefile</a> and <a href="../files/code/09-conclusion-challenge-2/config.mk">this
@@ -2600,11 +2581,9 @@ to our archive of code, data, plots and Zipf summary table?</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Our code files (<code>countwords.py</code>,
 <code>plotcounts.py</code>, <code>testzipf.py</code>) implement the
@@ -2626,7 +2605,7 @@ too.</p>
 </div>
 <div id="touch-the-archive-directory" class="callout-inner">
 <h3 class="callout-title">
-<code>touch</code> the Archive Directory<a class="anchor" aria-label="anchor" href="#touch-the-archive-directory"></a>
+<code>touch</code>the Archive Directory<a class="anchor" aria-label="anchor" href="#touch-the-archive-directory"></a>
 </h3>
 <div class="callout-content">
 <p>Why does the Makefile rule for the archive directory
@@ -2638,11 +2617,9 @@ plots and summary table into it?</p>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>A directory’s timestamp is not automatically updated when files are
 copied into it. If the code, data, plots, and summary table are updated
@@ -2662,7 +2639,7 @@ changed.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -2681,30 +2658,28 @@ by documenting how to reproduce results.</li>
 <!--/div.row-->
       		<footer class="row footer mx-md-3"><hr>
 <div class="col-md-6">
-				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
         
         <a href="https://github.com/swcarpentry/make-novice/edit/main/README.md" class="external-link">Edit on GitHub</a>
         
 	
-        | <a href="https://github.com/swcarpentry/make-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
+        | <a href="https://github.com/swcarpentry/make-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/swcarpentry/make-novice/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/swcarpentry/make-novice/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
         
-        <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
+        <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
-        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.15.0" class="external-link">sandpaper (0.15.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.4.0" class="external-link">varnish (0.4.0)</a>.</p>
+        <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.1" class="external-link">sandpaper (0.16.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
-			<i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back to top"></i><br><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
+      <i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back To Top"></i><br><!-- <span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top --><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
 		</a>
 	</div>
   <script type="application/ld+json">
@@ -2720,8 +2695,8 @@ by documenting how to reproduce results.</li>
   "url": "https://swcarpentry.github.io/make-novice/instructor/aio.html",
   "identifier": "https://swcarpentry.github.io/make-novice/instructor/aio.html",
   "dateCreated": "2015-06-18",
-  "dateModified": "2023-12-12",
-  "datePublished": "2023-12-12"
+  "dateModified": "2023-12-19",
+  "datePublished": "2023-12-19"
 }
 
   </script><script>
