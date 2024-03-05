@@ -342,13 +342,12 @@ files and data files are repeated in many places throughout the
 Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
 Makefile but forget to rename it elsewhere.</p>
-<div id="d.r.y.-dont-repeat-yourself" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="d.r.y.-dont-repeat-yourself" class="callout-inner">
-<h3 class="callout-title">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="d-r-y--dont-repeat-yourself">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d-r-y--dont-repeat-yourself"></a></h3>
 <div class="callout-content">
 <p>In many programming languages, the bulk of the language features are
 there to allow the programmer to describe long-winded computational
@@ -384,8 +383,8 @@ replace this variable with the dependencies.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -408,8 +407,8 @@ python testzipf.py isles.dat abyss.dat last.dat &gt; results.txt</code></pre>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch <span class="pp">*</span>.dat</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> touch <span class="pp">*</span>.dat</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <ol style="list-style-type: decimal"><li>nothing</li>
 <li>all files recreated</li>
@@ -432,8 +431,8 @@ corresponding <code>.txt</code> files haven’t been modified.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>you will find that the <code>.dat</code> files as well as
 <code>results.txt</code> are recreated.</p>
@@ -561,7 +560,7 @@ current rule.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/03-variables.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

@@ -295,7 +295,7 @@ specifies the number of sub-processes to use e.g.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make <span class="at">--jobs</span> 4 results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> make <span class="at">--jobs</span> 4 results.txt</span></code></pre>
 </div>
 <p>If we have independent dependencies then these can be built at the
 same time. For example, <code>abyss.dat</code> and
@@ -409,7 +409,7 @@ plots:
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python</span> plotcount.py ook.dat ook.png<span class="kw">;</span> <span class="cf">done</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python</span> plotcount.py ook.dat ook.png<span class="kw">;</span> <span class="cf">done</span></span></code></pre>
 </div>
 <p>Notice that make substituted <code>$(BOOKS)</code>, as expected, but
 it also substituted <code>$book</code>, even though we intended it to be
@@ -428,7 +428,7 @@ plots:
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python</span> plotcount.py <span class="va">$book</span>.dat <span class="va">$book</span>.png<span class="kw">;</span> <span class="cf">done</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span> <span class="ex">python</span> plotcount.py <span class="va">$book</span>.dat <span class="va">$book</span>.png<span class="kw">;</span> <span class="cf">done</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -535,7 +535,7 @@ discussed in <a href="02-makefiles.html">episode 2</a>.</p>
   "identifier": "https://swcarpentry.github.io/make-novice/discuss.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

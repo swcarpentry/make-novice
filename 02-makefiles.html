@@ -363,14 +363,14 @@ Make’s syntax.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="pp">*</span>.dat <span class="pp">*</span>.png</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="pp">*</span>.dat <span class="pp">*</span>.png</span></code></pre>
 </div>
 <p>By default, Make looks for a Makefile, called <code>Makefile</code>,
 and we can run Make as follows:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
 </div>
 <p>By default, Make prints out the actions it executes:</p>
 <div class="codewrapper">
@@ -390,17 +390,18 @@ of our actions.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-5</span> isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-5</span> isles.dat</span></code></pre>
 </div>
 <p>The first 5 lines of <code>isles.dat</code> should look exactly like
 before.</p>
-<div id="makefiles-do-not-have-to-be-called-makefile" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="makefiles-do-not-have-to-be-called-makefile" class="callout-inner">
-<h3 class="callout-title">Makefiles Do Not Have to be Called<code>Makefile</code><a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="makefiles-do-not-have-to-be-called-makefile">Makefiles Do Not Have to be Called
+<code>Makefile</code>
+<a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a></h3>
 <div class="callout-content">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if
 we call it something else we need to tell Make where to find it. This we
@@ -409,7 +410,7 @@ can do using <code>-f</code> flag. For example, if our Makefile is named
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-f</span> MyOtherMakefile</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-f</span> MyOtherMakefile</span></code></pre>
 </div>
 <p>Sometimes, the suffix <code>.mk</code> will be used to identify
 Makefiles that are not called <code>Makefile</code>
@@ -431,14 +432,14 @@ timestamp (which would happen if we did edit the file):</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/isles.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> touch books/isles.txt</span></code></pre>
 </div>
 <p>If we compare the timestamps of <code>books/isles.txt</code> and
 <code>isles.dat</code>,</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> books/isles.txt isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> books/isles.txt isles.dat</span></code></pre>
 </div>
 <p>then we see that <code>isles.dat</code>, the target, is now older
 than <code>books/isles.txt</code>, its dependency:</p>
@@ -452,7 +453,7 @@ than <code>books/isles.txt</code>, its dependency:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
 </div>
 <p>then it recreates <code>isles.dat</code>:</p>
 <div class="codewrapper">
@@ -466,13 +467,12 @@ dependency has been updated since the target, then the actions are
 re-run to update the target. Using this approach, Make knows to only
 rebuild the files that, either directly or indirectly, depend on the
 file that changed. This is called an <a href="reference.html#incremental-build">incremental build</a>.</p>
-<div id="makefiles-as-documentation" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="makefiles-as-documentation" class="callout-inner">
-<h3 class="callout-title">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#makefiles-as-documentation"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="makefiles-as-documentation">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#makefiles-as-documentation"></a></h3>
 <div class="callout-content">
 <p>By explicitly recording the inputs to and outputs from steps in our
 analysis and the dependencies between files, Makefiles act as a type of
@@ -487,7 +487,7 @@ documentation, reducing the number of things we have to remember.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -502,7 +502,7 @@ explicitly tell Make we want to build <code>abyss.dat</code>:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make abyss.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">$</span> make abyss.dat</span></code></pre>
 </div>
 <p>Now, we get:</p>
 <div class="codewrapper">
@@ -510,13 +510,12 @@ explicitly tell Make we want to build <code>abyss.dat</code>:</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/abyss.txt abyss.dat</code></pre>
 </div>
-<div id="up-to-date-versus-nothing-to-be-done" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="up-to-date-versus-nothing-to-be-done" class="callout-inner">
-<h3 class="callout-title">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#up-to-date-versus-nothing-to-be-done"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="up-to-date-versus-nothing-to-be-done">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#up-to-date-versus-nothing-to-be-done"></a></h3>
 <div class="callout-content">
 <p>If we ask Make to build a file that already exists and is up to date,
 then Make informs us that:</p>
@@ -530,7 +529,7 @@ rule in our Makefile, then we get message like:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make countwords.py</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> make countwords.py</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -562,7 +561,7 @@ specify this target,</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -578,9 +577,9 @@ us recreate our data files, create a directory called
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make isles.dat abyss.dat</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir clean</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">$</span> make isles.dat abyss.dat</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">$</span> mkdir clean</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -603,7 +602,7 @@ build anything. This we do by marking the target as
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -622,13 +621,12 @@ of other rules. When Make runs, it will check to see if the dependencies
 exist and, if not, will see if rules are available that will create
 these. If such rules exist it will invoke these first, otherwise Make
 will raise an error.</p>
-<div id="dependencies" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="dependencies" class="callout-inner">
-<h3 class="callout-title">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a></h3>
 <div class="callout-content">
 <p>The order of rebuilding dependencies is arbitrary. You should not
 assume that they will be built in the order in which they are
@@ -646,7 +644,7 @@ if needed.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>then Make creates the data files:</p>
 <div class="codewrapper">
@@ -662,7 +660,7 @@ there is <code>nothing to be done</code>:</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -803,7 +801,7 @@ files.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/02-makefiles.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

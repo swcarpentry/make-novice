@@ -329,8 +329,8 @@ and run <code>python [the dependencies] [the target]</code>.”</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -346,7 +346,7 @@ is being matched.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make sierra.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> make sierra.dat</span></code></pre>
 </div>
 <p>which gives the output below:</p>
 <div class="codewrapper">
@@ -354,13 +354,12 @@ is being matched.</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/sierra.txt sierra.dat</code></pre>
 </div>
-<div id="using-make-wildcards" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="using-make-wildcards" class="callout-inner">
-<h3 class="callout-title">Using Make Wildcards<a class="anchor" aria-label="anchor" href="#using-make-wildcards"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="using-make-wildcards">Using Make Wildcards<a class="anchor" aria-label="anchor" href="#using-make-wildcards"></a></h3>
 <div class="callout-content">
 <p>The Make <code>%</code> wildcard can only be used in a target and in
 its dependencies. It cannot be used in actions. In actions, you may
@@ -385,13 +384,12 @@ dats : isles.dat abyss.dat last.dat
 clean :
 	rm -f *.dat
 	rm -f results.txt</code></pre>
-<div id="where-we-are" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a></h3>
 <div class="callout-content">
 <p><a href="files/code/05-patterns/Makefile">This Makefile</a> contains
 all of our work so far.</p>
@@ -475,7 +473,7 @@ of files in actions.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/05-patterns.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

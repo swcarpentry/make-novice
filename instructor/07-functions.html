@@ -346,14 +346,12 @@ variable’s value:</p>
 <pre class="make"><code>.PHONY : variables
 variables:
 	@echo TXT_FILES: $(TXT_FILES)</code></pre>
-<div id="echo" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="echo" class="callout-inner">
-<h3 class="callout-title">
-<span class="citation">@echo</span><a class="anchor" aria-label="anchor" href="#echo"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="echo"><span class="citation">@echo</span><a class="anchor" aria-label="anchor" href="#echo"></a></h3>
 <div class="callout-content">
 <p>Make prints actions as it executes them. Using <code>@</code> at the
 start of an action tells Make not to print this action. So, by using
@@ -367,7 +365,7 @@ of <code>echo</code> (the variable’s value being printed) but not the
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -393,7 +391,7 @@ variables:
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -416,8 +414,8 @@ clean :
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -435,8 +433,8 @@ python countwords.py books/sierra.txt sierra.dat</code></pre>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -452,7 +450,7 @@ python testzipf.py  last.dat  isles.dat  abyss.dat  sierra.dat &gt; results.txt<
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -502,13 +500,12 @@ variables:
 <p>The following figure shows the dependencies embodied within our
 Makefile, involved in building the <code>results.txt</code> target, now
 we have introduced our function:</p>
-<figure><img src="../fig/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" class="figure mx-auto d-block"></figure><div id="where-we-are" class="callout callout">
+<figure><img src="../fig/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a></h3>
 <div class="callout-content">
 <p><a href="../files/code/07-functions/Makefile">This Makefile</a> and <a href="../files/code/07-functions/config.mk">its accompanying
 <code>config.mk</code></a> contain all of our work so far.</p>
@@ -623,7 +620,7 @@ pattern.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/instructor/07-functions.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

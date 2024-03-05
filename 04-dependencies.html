@@ -347,9 +347,9 @@ and re-run Make:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> make dats</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>Nothing happens! Though we’ve updated <code>countwords.py</code> our
 data files are not updated because our rules for creating
@@ -369,8 +369,8 @@ last.dat : books/last.txt countwords.py
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -380,21 +380,20 @@ last.dat : books/last.txt countwords.py
 python countwords.py books/abyss.txt abyss.dat
 python countwords.py books/last.txt last.dat</code></pre>
 </div>
-<div id="dry-run" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="dry-run" class="callout-inner">
-<h3 class="callout-title">Dry run<a class="anchor" aria-label="anchor" href="#dry-run"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="dry-run">Dry run<a class="anchor" aria-label="anchor" href="#dry-run"></a></h3>
 <div class="callout-content">
 <p><code>make</code> can show the commands it will execute without
 actually running them if we pass the <code>-n</code> flag:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-n</span> dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-n</span> dats</span></code></pre>
 </div>
 <p>This gives the same output to the screen as without the
 <code>-n</code> flag, but the commands are not actually run. Using this
@@ -408,14 +407,13 @@ involved in building the target <code>results.txt</code>. Notice the
 recently added dependencies <code>countwords.py</code> and
 <code>testzipf.py</code>. This is how the Makefile should look after
 completing the rest of the exercises in this episode.</p>
-<figure><img src="fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout callout">
+<figure><img src="fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout-inner">
-<h3 class="callout-title">Why Don’t the<code>.txt</code>Files Depend
-on<code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the-.txt-files-depend-on-countwords.py"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="why-dont-the--txt-files-depend-on-countwords-py">Why Don’t the <code>.txt</code> Files Depend
+on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the--txt-files-depend-on-countwords-py"></a></h3>
 <div class="callout-content">
 <p><code>.txt</code> files are input files and as such have no
 dependencies. To make these depend on <code>countwords.py</code> would
@@ -432,8 +430,8 @@ out we don’t have to do that! Let’s see what happens to
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -466,8 +464,8 @@ pipeline triggers rerunning the appropriate downstream steps.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/last.txt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> touch books/last.txt</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <ol style="list-style-type: decimal"><li>only <code>last.dat</code> is recreated</li>
 <li>all <code>.dat</code> files are recreated</li>
@@ -483,7 +481,7 @@ recreated</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><code>3.</code> only <code>last.dat</code> and
 <code>results.txt</code> are recreated.</p>
@@ -511,7 +509,7 @@ of <code>results.txt</code>, and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>If you change the rule for the <code>results.txt</code> file like
 this:</p>
@@ -522,7 +520,7 @@ command becomes</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat last.dat testzipf.py <span class="op">&gt;</span> results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat last.dat testzipf.py <span class="op">&gt;</span> results.txt</span></code></pre>
 </div>
 <p>This results in an error from <code>testzipf.py</code> as it tries to
 parse the script as if it were a <code>.dat</code> file. Try this by
@@ -530,7 +528,7 @@ running:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>You’ll get</p>
 <div class="codewrapper">
@@ -558,13 +556,12 @@ then edit the action so that we pass all the dependencies as arguments
 to python using <code>$^</code>.</p>
 <pre class="make"><code>results.txt : testzipf.py isles.dat abyss.dat last.dat
 	python $^ &gt; $@</code></pre>
-<div id="where-we-are" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a></h3>
 <div class="callout-content">
 <p><a href="files/code/04-dependencies/Makefile">This Makefile</a>
 contains everything done so far in this topic.</p>
@@ -648,7 +645,7 @@ change to C will indirectly trigger an update to A.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/04-dependencies.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

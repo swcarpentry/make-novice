@@ -316,13 +316,12 @@
 </div>
 <p>Let’s imagine that we’re interested in testing Zipf’s Law in some of
 our favorite books.</p>
-<div id="zipfs-law" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="zipfs-law" class="callout-inner">
-<h3 class="callout-title">Zipf’s Law<a class="anchor" aria-label="anchor" href="#zipfs-law"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="zipfs-law">Zipf’s Law<a class="anchor" aria-label="anchor" href="#zipfs-law"></a></h3>
 <div class="callout-content">
 <p>The most frequently-occurring word occurs approximately twice as
 often as the second most frequent word. This is <a href="https://en.wikipedia.org/wiki/Zipf%27s_law" class="external-link">Zipf’s Law</a>.</p>
@@ -358,13 +357,13 @@ input.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/isles.txt isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/isles.txt isles.dat</span></code></pre>
 </div>
 <p>Let’s take a quick peek at the result.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> isles.dat</span></code></pre>
 </div>
 <p>This shows us the top 5 lines in the output file:</p>
 <div class="codewrapper">
@@ -384,8 +383,8 @@ file.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/abyss.txt abyss.dat</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> abyss.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/abyss.txt abyss.dat</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> abyss.dat</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -402,7 +401,7 @@ a text-based bar plot:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat ascii</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat ascii</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -422,7 +421,7 @@ it    ###########</code></pre>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat show</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat show</span></code></pre>
 </div>
 <p>Close the window to exit the plot.</p>
 <p><code>plotcounts.py</code> can also create the plot as an image file
@@ -430,13 +429,13 @@ it    ###########</code></pre>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat isles.png</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat isles.png</span></code></pre>
 </div>
 <p>Finally, let’s test Zipf’s law for these books:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python testzipf.py abyss.dat isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> python testzipf.py abyss.dat isles.dat</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -469,25 +468,25 @@ save it.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> countwords.py books/isles.txt isles.dat</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> countwords.py books/abyss.txt abyss.dat</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat <span class="op">&gt;</span> results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="ex">python</span> countwords.py books/isles.txt isles.dat</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="ex">python</span> countwords.py books/abyss.txt abyss.dat</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat <span class="op">&gt;</span> results.txt</span></code></pre>
 </div>
 <p>Run the script and check that the output is the same as before:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bash run_pipeline.sh</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> bash run_pipeline.sh</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
 </div>
 <p>This shell script solves several problems in computational
 reproducibility:</p>
@@ -516,9 +515,9 @@ themselves using a for-loop.)</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">python</span> plotcounts.py <span class="va">$book</span>.dat <span class="va">$book</span>.png</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>    <span class="ex">python</span> plotcounts.py <span class="va">$book</span>.dat <span class="va">$book</span>.png</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="cf">done</span></span></code></pre>
 </div>
 <p>With this approach, however, we don’t get many of the benefits of
 having a shell script in the first place.</p>
@@ -527,20 +526,20 @@ having a shell script in the first place.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests.</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># These lines are commented out because they don't need to be rerun.</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#python countwords.py books/isles.txt isles.dat</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#python countwords.py books/abyss.txt abyss.dat</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is also commented out because it doesn't need to be rerun.</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#python testzipf.py abyss.dat isles.dat &gt; results.txt</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests.</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co"># These lines are commented out because they don't need to be rerun.</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#python countwords.py books/isles.txt isles.dat</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#python countwords.py books/abyss.txt abyss.dat</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co"># This line is also commented out because it doesn't need to be rerun.</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#python testzipf.py abyss.dat isles.dat &gt; results.txt</span></span></code></pre>
 </div>
 <p>Then, we would run our modified shell script using
 <code>bash run_pipeline.sh</code>.</p>
@@ -572,14 +571,13 @@ fundamental concepts as Make.</p>
 Autoconf</a> and <a href="https://www.cmake.org/" class="external-link">CMake</a>. Those tools
 do not run the pipelines directly, but rather generate files for use
 with the build tools.</p>
-<div id="why-use-make-if-it-is-almost-40-years-old" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="why-use-make-if-it-is-almost-40-years-old" class="callout-inner">
-<h3 class="callout-title">Why Use Make if it is Almost 40 Years
-Old?<a class="anchor" aria-label="anchor" href="#why-use-make-if-it-is-almost-40-years-old"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="why-use-make-if-it-is-almost-40-years-old">Why Use Make if it is Almost 40 Years
+Old?<a class="anchor" aria-label="anchor" href="#why-use-make-if-it-is-almost-40-years-old"></a></h3>
 <div class="callout-content">
 <p>Make development was started by Stuart Feldman in 1977 as a Bell Labs
 summer intern. Since then it has been undergoing an active development
@@ -676,7 +674,7 @@ things that are out of date.</li>
   "identifier": "https://swcarpentry.github.io/make-novice/01-intro.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-25",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

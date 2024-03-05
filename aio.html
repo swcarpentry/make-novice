@@ -372,12 +372,12 @@
 </div>
 <p>Let’s imagine that we’re interested in testing Zipf’s Law in some of
 our favorite books.</p>
-<div id="zipfs-law" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="zipfs-law" class="callout-inner">
-<h3 class="callout-title">Zipf’s Law<a class="anchor" aria-label="anchor" href="#zipfs-law"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="zipfs-law">Zipf’s Law<a class="anchor" aria-label="anchor" href="#zipfs-law"></a>
 </h3>
 <div class="callout-content">
 <p>The most frequently-occurring word occurs approximately twice as
@@ -414,13 +414,13 @@ input.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/isles.txt isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/isles.txt isles.dat</span></code></pre>
 </div>
 <p>Let’s take a quick peek at the result.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> isles.dat</span></code></pre>
 </div>
 <p>This shows us the top 5 lines in the output file:</p>
 <div class="codewrapper">
@@ -440,8 +440,8 @@ file.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/abyss.txt abyss.dat</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> abyss.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> python countwords.py books/abyss.txt abyss.dat</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-5</span> abyss.dat</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -458,7 +458,7 @@ a text-based bar plot:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat ascii</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat ascii</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -478,7 +478,7 @@ it    ###########</code></pre>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat show</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat show</span></code></pre>
 </div>
 <p>Close the window to exit the plot.</p>
 <p><code>plotcounts.py</code> can also create the plot as an image file
@@ -486,13 +486,13 @@ it    ###########</code></pre>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat isles.png</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> python plotcounts.py isles.dat isles.png</span></code></pre>
 </div>
 <p>Finally, let’s test Zipf’s law for these books:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python testzipf.py abyss.dat isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> python testzipf.py abyss.dat isles.dat</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -527,25 +527,25 @@ save it.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> countwords.py books/isles.txt isles.dat</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> countwords.py books/abyss.txt abyss.dat</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat <span class="op">&gt;</span> results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="ex">python</span> countwords.py books/isles.txt isles.dat</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="ex">python</span> countwords.py books/abyss.txt abyss.dat</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat <span class="op">&gt;</span> results.txt</span></code></pre>
 </div>
 <p>Run the script and check that the output is the same as before:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bash run_pipeline.sh</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> bash run_pipeline.sh</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
 </div>
 <p>This shell script solves several problems in computational
 reproducibility:</p>
@@ -576,9 +576,9 @@ themselves using a for-loop.)</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">python</span> plotcounts.py <span class="va">$book</span>.dat <span class="va">$book</span>.png</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> abyss isles<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>    <span class="ex">python</span> plotcounts.py <span class="va">$book</span>.dat <span class="va">$book</span>.png</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="cf">done</span></span></code></pre>
 </div>
 <p>With this approach, however, we don’t get many of the benefits of
 having a shell script in the first place.</p>
@@ -587,20 +587,20 @@ having a shell script in the first place.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests.</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># These lines are commented out because they don't need to be rerun.</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#python countwords.py books/isles.txt isles.dat</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#python countwords.py books/abyss.txt abyss.dat</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is also commented out because it doesn't need to be rerun.</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#python testzipf.py abyss.dat isles.dat &gt; results.txt</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># USAGE: bash run_pipeline.sh</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># to produce plots for isles and abyss</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># and the summary table for the Zipf's law tests.</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co"># These lines are commented out because they don't need to be rerun.</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#python countwords.py books/isles.txt isles.dat</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#python countwords.py books/abyss.txt abyss.dat</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="ex">python</span> plotcounts.py isles.dat isles.png</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="ex">python</span> plotcounts.py abyss.dat abyss.png</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co"># Generate summary table</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co"># This line is also commented out because it doesn't need to be rerun.</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#python testzipf.py abyss.dat isles.dat &gt; results.txt</span></span></code></pre>
 </div>
 <p>Then, we would run our modified shell script using
 <code>bash run_pipeline.sh</code>.</p>
@@ -634,12 +634,12 @@ fundamental concepts as Make.</p>
 Autoconf</a> and <a href="https://www.cmake.org/" class="external-link">CMake</a>. Those tools
 do not run the pipelines directly, but rather generate files for use
 with the build tools.</p>
-<div id="why-use-make-if-it-is-almost-40-years-old" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="why-use-make-if-it-is-almost-40-years-old" class="callout-inner">
-<h3 class="callout-title">Why Use Make if it is Almost 40 Years
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="why-use-make-if-it-is-almost-40-years-old">Why Use Make if it is Almost 40 Years
 Old?<a class="anchor" aria-label="anchor" href="#why-use-make-if-it-is-almost-40-years-old"></a>
 </h3>
 <div class="callout-content">
@@ -763,14 +763,14 @@ Make’s syntax.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="pp">*</span>.dat <span class="pp">*</span>.png</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="pp">*</span>.dat <span class="pp">*</span>.png</span></code></pre>
 </div>
 <p>By default, Make looks for a Makefile, called <code>Makefile</code>,
 and we can run Make as follows:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
 </div>
 <p>By default, Make prints out the actions it executes:</p>
 <div class="codewrapper">
@@ -790,16 +790,18 @@ of our actions.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-5</span> isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-5</span> isles.dat</span></code></pre>
 </div>
 <p>The first 5 lines of <code>isles.dat</code> should look exactly like
 before.</p>
-<div id="makefiles-do-not-have-to-be-called-makefile" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="makefiles-do-not-have-to-be-called-makefile" class="callout-inner">
-<h3 class="callout-title">Makefiles Do Not Have to be Called<code>Makefile</code><a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="makefiles-do-not-have-to-be-called-makefile">Makefiles Do Not Have to be Called
+<code>Makefile</code>
+<a class="anchor" aria-label="anchor" href="#makefiles-do-not-have-to-be-called-makefile"></a>
 </h3>
 <div class="callout-content">
 <p>We don’t have to call our Makefile <code>Makefile</code>. However, if
@@ -809,7 +811,7 @@ can do using <code>-f</code> flag. For example, if our Makefile is named
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-f</span> MyOtherMakefile</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-f</span> MyOtherMakefile</span></code></pre>
 </div>
 <p>Sometimes, the suffix <code>.mk</code> will be used to identify
 Makefiles that are not called <code>Makefile</code>
@@ -831,14 +833,14 @@ timestamp (which would happen if we did edit the file):</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/isles.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> touch books/isles.txt</span></code></pre>
 </div>
 <p>If we compare the timestamps of <code>books/isles.txt</code> and
 <code>isles.dat</code>,</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> books/isles.txt isles.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> books/isles.txt isles.dat</span></code></pre>
 </div>
 <p>then we see that <code>isles.dat</code>, the target, is now older
 than <code>books/isles.txt</code>, its dependency:</p>
@@ -852,7 +854,7 @@ than <code>books/isles.txt</code>, its dependency:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
 </div>
 <p>then it recreates <code>isles.dat</code>:</p>
 <div class="codewrapper">
@@ -866,12 +868,12 @@ dependency has been updated since the target, then the actions are
 re-run to update the target. Using this approach, Make knows to only
 rebuild the files that, either directly or indirectly, depend on the
 file that changed. This is called an <a href="reference.html#incremental-build">incremental build</a>.</p>
-<div id="makefiles-as-documentation" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="makefiles-as-documentation" class="callout-inner">
-<h3 class="callout-title">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#makefiles-as-documentation"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="makefiles-as-documentation">Makefiles as Documentation<a class="anchor" aria-label="anchor" href="#makefiles-as-documentation"></a>
 </h3>
 <div class="callout-content">
 <p>By explicitly recording the inputs to and outputs from steps in our
@@ -887,7 +889,7 @@ documentation, reducing the number of things we have to remember.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">$</span> make</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -902,7 +904,7 @@ explicitly tell Make we want to build <code>abyss.dat</code>:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make abyss.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">$</span> make abyss.dat</span></code></pre>
 </div>
 <p>Now, we get:</p>
 <div class="codewrapper">
@@ -910,12 +912,12 @@ explicitly tell Make we want to build <code>abyss.dat</code>:</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/abyss.txt abyss.dat</code></pre>
 </div>
-<div id="up-to-date-versus-nothing-to-be-done" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="up-to-date-versus-nothing-to-be-done" class="callout-inner">
-<h3 class="callout-title">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#up-to-date-versus-nothing-to-be-done"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="up-to-date-versus-nothing-to-be-done">“Up to Date” Versus “Nothing to be Done”<a class="anchor" aria-label="anchor" href="#up-to-date-versus-nothing-to-be-done"></a>
 </h3>
 <div class="callout-content">
 <p>If we ask Make to build a file that already exists and is up to date,
@@ -930,7 +932,7 @@ rule in our Makefile, then we get message like:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make countwords.py</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> make countwords.py</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -964,7 +966,7 @@ specify this target,</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -980,9 +982,9 @@ us recreate our data files, create a directory called
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make isles.dat abyss.dat</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir clean</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">$</span> make isles.dat abyss.dat</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">$</span> mkdir clean</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -1005,7 +1007,7 @@ build anything. This we do by marking the target as
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="ex">$</span> make clean</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -1024,12 +1026,12 @@ of other rules. When Make runs, it will check to see if the dependencies
 exist and, if not, will see if rules are available that will create
 these. If such rules exist it will invoke these first, otherwise Make
 will raise an error.</p>
-<div id="dependencies" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="dependencies" class="callout-inner">
-<h3 class="callout-title">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h3>
 <div class="callout-content">
 <p>The order of rebuilding dependencies is arbitrary. You should not
@@ -1048,7 +1050,7 @@ if needed.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>then Make creates the data files:</p>
 <div class="codewrapper">
@@ -1064,7 +1066,7 @@ there is <code>nothing to be done</code>:</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1213,12 +1215,12 @@ files and data files are repeated in many places throughout the
 Makefile. Makefiles are a form of code and, in any code, repeated code
 can lead to problems e.g. we rename a data file in one part of the
 Makefile but forget to rename it elsewhere.</p>
-<div id="d.r.y.-dont-repeat-yourself" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="d.r.y.-dont-repeat-yourself" class="callout-inner">
-<h3 class="callout-title">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="d-r-y--dont-repeat-yourself">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d-r-y--dont-repeat-yourself"></a>
 </h3>
 <div class="callout-content">
 <p>In many programming languages, the bulk of the language features are
@@ -1255,8 +1257,8 @@ replace this variable with the dependencies.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -1279,8 +1281,8 @@ python testzipf.py isles.dat abyss.dat last.dat &gt; results.txt</code></pre>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch <span class="pp">*</span>.dat</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> touch <span class="pp">*</span>.dat</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <ol style="list-style-type: decimal">
 <li>nothing</li>
@@ -1305,8 +1307,8 @@ corresponding <code>.txt</code> files haven’t been modified.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> touch books/<span class="pp">*</span>.txt</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>you will find that the <code>.dat</code> files as well as
 <code>results.txt</code> are recreated.</p>
@@ -1441,9 +1443,9 @@ and re-run Make:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> make dats</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>Nothing happens! Though we’ve updated <code>countwords.py</code> our
 data files are not updated because our rules for creating
@@ -1463,8 +1465,8 @@ last.dat : books/last.txt countwords.py
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -1474,12 +1476,12 @@ last.dat : books/last.txt countwords.py
 python countwords.py books/abyss.txt abyss.dat
 python countwords.py books/last.txt last.dat</code></pre>
 </div>
-<div id="dry-run" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="dry-run" class="callout-inner">
-<h3 class="callout-title">Dry run<a class="anchor" aria-label="anchor" href="#dry-run"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="dry-run">Dry run<a class="anchor" aria-label="anchor" href="#dry-run"></a>
 </h3>
 <div class="callout-content">
 <p><code>make</code> can show the commands it will execute without
@@ -1487,8 +1489,8 @@ actually running them if we pass the <code>-n</code> flag:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-n</span> dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">$</span> make <span class="at">-n</span> dats</span></code></pre>
 </div>
 <p>This gives the same output to the screen as without the
 <code>-n</code> flag, but the commands are not actually run. Using this
@@ -1502,13 +1504,13 @@ involved in building the target <code>results.txt</code>. Notice the
 recently added dependencies <code>countwords.py</code> and
 <code>testzipf.py</code>. This is how the Makefile should look after
 completing the rest of the exercises in this episode.</p>
-<figure><img src="fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout callout">
+<figure><img src="fig/04-dependencies.png" title="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" alt="results.txt dependencies after adding countwords.py and testzipf.py as dependencies" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="why-dont-the-.txt-files-depend-on-countwords.py" class="callout-inner">
-<h3 class="callout-title">Why Don’t the<code>.txt</code>Files Depend
-on<code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the-.txt-files-depend-on-countwords.py"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="why-dont-the--txt-files-depend-on-countwords-py">Why Don’t the <code>.txt</code> Files Depend
+on <code>countwords.py</code>?<a class="anchor" aria-label="anchor" href="#why-dont-the--txt-files-depend-on-countwords-py"></a>
 </h3>
 <div class="callout-content">
 <p><code>.txt</code> files are input files and as such have no
@@ -1526,8 +1528,8 @@ out we don’t have to do that! Let’s see what happens to
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> touch countwords.py</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -1560,8 +1562,8 @@ pipeline triggers rerunning the appropriate downstream steps.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> touch books/last.txt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> touch books/last.txt</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <ol style="list-style-type: decimal">
 <li>only <code>last.dat</code> is recreated</li>
@@ -1579,7 +1581,7 @@ recreated</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><code>3.</code> only <code>last.dat</code> and
 <code>results.txt</code> are recreated.</p>
@@ -1607,7 +1609,7 @@ of <code>results.txt</code>, and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>If you change the rule for the <code>results.txt</code> file like
 this:</p>
@@ -1618,7 +1620,7 @@ command becomes</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat last.dat testzipf.py <span class="op">&gt;</span> results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">python</span> testzipf.py abyss.dat isles.dat last.dat testzipf.py <span class="op">&gt;</span> results.txt</span></code></pre>
 </div>
 <p>This results in an error from <code>testzipf.py</code> as it tries to
 parse the script as if it were a <code>.dat</code> file. Try this by
@@ -1626,7 +1628,7 @@ running:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>You’ll get</p>
 <div class="codewrapper">
@@ -1654,12 +1656,12 @@ then edit the action so that we pass all the dependencies as arguments
 to python using <code>$^</code>.</p>
 <pre class="make"><code>results.txt : testzipf.py isles.dat abyss.dat last.dat
 	python $^ &gt; $@</code></pre>
-<div id="where-we-are" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="files/code/04-dependencies/Makefile">This Makefile</a>
@@ -1733,8 +1735,8 @@ and run <code>python [the dependencies] [the target]</code>.”</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -1750,7 +1752,7 @@ is being matched.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make sierra.dat</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> make sierra.dat</span></code></pre>
 </div>
 <p>which gives the output below:</p>
 <div class="codewrapper">
@@ -1758,12 +1760,12 @@ is being matched.</p>
 </h3>
 <pre class="output" tabindex="0"><code>python countwords.py books/sierra.txt sierra.dat</code></pre>
 </div>
-<div id="using-make-wildcards" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="using-make-wildcards" class="callout-inner">
-<h3 class="callout-title">Using Make Wildcards<a class="anchor" aria-label="anchor" href="#using-make-wildcards"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="using-make-wildcards">Using Make Wildcards<a class="anchor" aria-label="anchor" href="#using-make-wildcards"></a>
 </h3>
 <div class="callout-content">
 <p>The Make <code>%</code> wildcard can only be used in a target and in
@@ -1789,12 +1791,12 @@ dats : isles.dat abyss.dat last.dat
 clean :
 	rm -f *.dat
 	rm -f results.txt</code></pre>
-<div id="where-we-are" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="files/code/05-patterns/Makefile">This Makefile</a> contains
@@ -1926,9 +1928,9 @@ using:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">$</span> make dats</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>We have separated the configuration of our Makefile from its rules –
 the parts that do all the work. If we want to change our script name or
@@ -1936,12 +1938,12 @@ how it is executed we just need to edit our configuration file, not our
 source code in <code>Makefile</code>. Decoupling code from configuration
 in this way is good programming practice, as it promotes more modular,
 flexible and reusable code.</p>
-<div id="where-we-are" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="files/code/06-variables/Makefile">This Makefile</a> and <a href="files/code/06-variables/config.mk">its accompanying
@@ -2028,12 +2030,12 @@ variable’s value:</p>
 <pre class="make"><code>.PHONY : variables
 variables:
 	@echo TXT_FILES: $(TXT_FILES)</code></pre>
-<div id="echo" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="echo" class="callout-inner">
-<h3 class="callout-title">
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="echo">
 <span class="citation">@echo</span><a class="anchor" aria-label="anchor" href="#echo"></a>
 </h3>
 <div class="callout-content">
@@ -2049,7 +2051,7 @@ of <code>echo</code> (the variable’s value being printed) but not the
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -2075,7 +2077,7 @@ variables:
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> make variables</span></code></pre>
 </div>
 <p>then we get:</p>
 <div class="codewrapper">
@@ -2098,8 +2100,8 @@ clean :
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="ex">$</span> make dats</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -2117,8 +2119,8 @@ python countwords.py books/sierra.txt sierra.dat</code></pre>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make clean</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> make clean</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="ex">$</span> make results.txt</span></code></pre>
 </div>
 <p>We get:</p>
 <div class="codewrapper">
@@ -2134,7 +2136,7 @@ python testzipf.py  last.dat  isles.dat  abyss.dat  sierra.dat &gt; results.txt<
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">$</span> cat results.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2184,12 +2186,12 @@ variables:
 <p>The following figure shows the dependencies embodied within our
 Makefile, involved in building the <code>results.txt</code> target, now
 we have introduced our function:</p>
-<figure><img src="fig/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" class="figure mx-auto d-block"></figure><div id="where-we-are" class="callout callout">
+<figure><img src="fig/07-functions.png" title="results.txt dependencies after introducing a function" alt="results.txt dependencies after introducing a function" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="files/code/07-functions/Makefile">This Makefile</a> and <a href="files/code/07-functions/config.mk">its accompanying
@@ -2290,7 +2292,7 @@ at the Makefile itself unless we want to. For our Makefile, running a
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make help</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> make help</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2354,7 +2356,7 @@ which <code>sed</code> then prints for us.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make help</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> make help</span></code></pre>
 </div>
 <p>we get:</p>
 <div class="codewrapper">
@@ -2370,12 +2372,12 @@ remember to add, update or remove a comment next to the rule. So long as
 we respect our convention of using <code>##</code> for such comments,
 then our <code>help</code> rule will take care of detecting these
 comments and printing them for us.</p>
-<div id="where-we-are" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="where-we-are" class="callout-inner">
-<h3 class="callout-title">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="where-we-are">Where We Are<a class="anchor" aria-label="anchor" href="#where-we-are"></a>
 </h3>
 <div class="callout-content">
 <p><a href="files/code/08-self-doc/Makefile">This Makefile</a> and <a href="files/code/08-self-doc/config.mk">its accompanying
@@ -2515,7 +2517,7 @@ can be used to copy files and directories into the new
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> [files and directories to copy] zipf_analysis/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> [files and directories to copy] zipf_analysis/</span></code></pre>
 </div>
 </li>
 <li><p>Hint: create a new variable for the <code>books</code> directory
@@ -2528,7 +2530,7 @@ follows:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-czf</span> zipf_analysis.tar.gz zipf_analysis</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> tar <span class="at">-czf</span> zipf_analysis.tar.gz zipf_analysis</span></code></pre>
 </div>
 </li>
 <li><p>Update the target <code>all</code> so that it creates
@@ -2686,8 +2688,8 @@ by documenting how to reproduce results.</li>
   "url": "https://swcarpentry.github.io/make-novice/aio.html",
   "identifier": "https://swcarpentry.github.io/make-novice/aio.html",
   "dateCreated": "2015-06-18",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
