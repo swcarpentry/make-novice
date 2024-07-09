@@ -46,7 +46,7 @@
             </li>
           </ul></li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
@@ -170,7 +170,7 @@
                 </div><!--/div.accordion-flush-->
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
-      
+
             <hr></div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordionFlush11">
@@ -189,7 +189,7 @@
     <div class="accordion-header" id="flush-heading1">
         <a href="index.html">Summary and Setup</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -198,7 +198,7 @@
     <div class="accordion-header" id="flush-heading2">
         <a href="01-intro.html">1. Introduction</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -207,7 +207,7 @@
     <div class="accordion-header" id="flush-heading3">
         <a href="02-makefiles.html">2. Makefiles</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -216,7 +216,7 @@
     <div class="accordion-header" id="flush-heading4">
         <a href="03-variables.html">3. Automatic Variables</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -225,7 +225,7 @@
     <div class="accordion-header" id="flush-heading5">
         <a href="04-dependencies.html">4. Dependencies on Data and Code</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -234,7 +234,7 @@
     <div class="accordion-header" id="flush-heading6">
         <a href="05-patterns.html">5. Pattern Rules</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -243,7 +243,7 @@
     <div class="accordion-header" id="flush-heading7">
         <a href="06-variables.html">6. Variables</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -252,7 +252,7 @@
     <div class="accordion-header" id="flush-heading8">
         <a href="07-functions.html">7. Functions</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -261,7 +261,7 @@
     <div class="accordion-header" id="flush-heading9">
         <a href="08-self-doc.html">8. Self-Documenting Makefiles</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -270,7 +270,7 @@
     <div class="accordion-header" id="flush-heading10">
         <a href="09-conclusion.html">9. Conclusion</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -302,10 +302,10 @@
               </div>
             </div>
             <hr class="half-width resources"><a href="aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
-            
+
             </div>
           </div><!-- /div.accordion -->
         </div><!-- /div.sidebar-inner -->
@@ -333,19 +333,19 @@
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Discussion</h1>
         <p>Last updated on 2023-04-24 |
-        
+
         <a href="https://github.com/swcarpentry/make-novice/edit/main/learners/discuss.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        
-        
-        
+
+
+
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 
         
 
-<section id="parallel-execution"><h2 class="section-heading">Parallel Execution<a class="anchor" aria-label="anchor" href="#parallel-execution"></a>
-</h2>
+<section><h2 class="section-heading" id="parallel-execution">Parallel Execution<a class="anchor" aria-label="anchor" href="#parallel-execution"></a>
+<a class="anchor" aria-label="anchor" href="#parallel-execution"></a></h2>
 <hr class="half-width"><p>Make can build dependencies in <em>parallel</em> sub-processes, via
 its <code>--jobs</code> flag (or its <code>-j</code> abbreviation) which
 specifies the number of sub-processes to use e.g.</p>
@@ -362,8 +362,8 @@ the same time. Likewise for <code>abyss.png</code> and
 your analysis, this can greatly speed up your build process.</p>
 <p>For more information see the GNU Make manual chapter on <a href="https://www.gnu.org/software/make/manual/html_node/Parallel.html" class="external-link">Parallel
 Execution</a>.</p>
-</section><section id="different-types-of-assignment"><h2 class="section-heading">Different Types of Assignment<a class="anchor" aria-label="anchor" href="#different-types-of-assignment"></a>
-</h2>
+</section><section><h2 class="section-heading" id="different-types-of-assignment">Different Types of Assignment<a class="anchor" aria-label="anchor" href="#different-types-of-assignment"></a>
+<a class="anchor" aria-label="anchor" href="#different-types-of-assignment"></a></h2>
 <hr class="half-width"><p>Some Makefiles may contain <code>:=</code> instead of <code>=</code>.
 Your Makefile may behave differently depending upon which you use and
 how you use it:</p>
@@ -389,8 +389,8 @@ variable assignment</a>
 <li>GNU Make <a href="https://www.gnu.org/software/make/manual/html_node/Flavors.html#Flavors" class="external-link">The
 Two Flavors of Variables</a>
 </li>
-</ul></section><section id="make-and-version-control"><h2 class="section-heading">Make and Version Control<a class="anchor" aria-label="anchor" href="#make-and-version-control"></a>
-</h2>
+</ul></section><section><h2 class="section-heading" id="make-and-version-control">Make and Version Control<a class="anchor" aria-label="anchor" href="#make-and-version-control"></a>
+<a class="anchor" aria-label="anchor" href="#make-and-version-control"></a></h2>
 <hr class="half-width"><p>Imagine that we manage our Makefiles using a version control system
 such as Git.</p>
 <p>Let’s say we’d like to run the workflow developed in this lesson for
@@ -412,8 +412,8 @@ instead:</p>
 <p>The configuration file then simply contains the default values for
 the workflow, and by overwriting the defaults at the command line you
 can maintain a neater and more meaningful version control history.</p>
-</section><section id="make-variables-and-shell-variables"><h2 class="section-heading">Make Variables and Shell Variables<a class="anchor" aria-label="anchor" href="#make-variables-and-shell-variables"></a>
-</h2>
+</section><section><h2 class="section-heading" id="make-variables-and-shell-variables">Make Variables and Shell Variables<a class="anchor" aria-label="anchor" href="#make-variables-and-shell-variables"></a>
+<a class="anchor" aria-label="anchor" href="#make-variables-and-shell-variables"></a></h2>
 <hr class="half-width"><p>Makefiles embed shell scripts within them, as the actions that are
 executed to update an object. More complex actions could well include
 shell variables. There are several ways in which make variables and
@@ -490,8 +490,8 @@ plots:
 </div>
 </div>
 </div>
-</section><section id="make-and-reproducible-research"><h2 class="section-heading">Make and Reproducible Research<a class="anchor" aria-label="anchor" href="#make-and-reproducible-research"></a>
-</h2>
+</section><section><h2 class="section-heading" id="make-and-reproducible-research">Make and Reproducible Research<a class="anchor" aria-label="anchor" href="#make-and-reproducible-research"></a>
+<a class="anchor" aria-label="anchor" href="#make-and-reproducible-research"></a></h2>
 <hr class="half-width"><p>Blog articles, papers, and tutorials on automating commonly occurring
 research activities using Make:</p>
 <ul><li><p><a href="https://kbroman.org/minimal_make/" class="external-link">minimal make</a> by
@@ -527,8 +527,8 @@ Quality-Assurance</a>. Front. Neuroinform. 10:2. doi:
 Build Tool?</a> A review of popular build tools (including Make) in
 terms of their strengths and weaknesses for common build-related use
 cases in software development.</p></li>
-</ul></section><section id="return-messages-and-.phony-target-behaviour"><h2 class="section-heading">Return messages and <code>.PHONY</code> target behaviour<a class="anchor" aria-label="anchor" href="#return-messages-and-.phony-target-behaviour"></a>
-</h2>
+</ul></section><section><h2 class="section-heading" id="return-messages-and--phony-target-behaviour">Return messages and <code>.PHONY</code> target behaviour<a class="anchor" aria-label="anchor" href="#return-messages-and-.phony-target-behaviour"></a>
+<a class="anchor" aria-label="anchor" href="#return-messages-and--phony-target-behaviour"></a></h2>
 <hr class="half-width"><p><code>Up to date</code> vs <code>Nothing to be done</code> is
 discussed in <a href="02-makefiles.html">episode 2</a>.</p>
 <p>A more detailed discussion can be read on <a href="https://github.com/swcarpentry/make-novice/issues/98#issuecomment-307361751" class="external-link">issue
@@ -556,18 +556,18 @@ discussed in <a href="02-makefiles.html">episode 2</a>.</p>
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/swcarpentry/make-novice/edit/main/learners/discuss.md" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/swcarpentry/make-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/swcarpentry/make-novice/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/swcarpentry/make-novice/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -592,7 +592,7 @@ discussed in <a href="02-makefiles.html">episode 2</a>.</p>
   "identifier": "https://swcarpentry.github.io/make-novice/discuss.html",
   "dateCreated": "2015-06-18",
   "dateModified": "2023-04-24",
-  "datePublished": "2024-07-02"
+  "datePublished": "2024-07-09"
 }
 
   </script><script>
