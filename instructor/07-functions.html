@@ -337,7 +337,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Functions</h1>
-        <p>Last updated on 2023-04-24 |
+        <p>Last updated on 2026-02-17 |
 
         <a href="https://github.com/swcarpentry/make-novice/edit/main/episodes/07-functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -531,7 +531,7 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
-	$(LANGUAGE) S^ &gt; $@
+	$(LANGUAGE) $^ &gt; $@
 
 # Count words.
 .PHONY : dats
@@ -680,7 +680,7 @@ pattern.</li>
   "url": "https://swcarpentry.github.io/make-novice/instructor/07-functions.html",
   "identifier": "https://swcarpentry.github.io/make-novice/instructor/07-functions.html",
   "dateCreated": "2015-06-18",
-  "dateModified": "2023-04-24",
+  "dateModified": "2026-02-17",
   "datePublished": "2026-02-17"
 }
 
