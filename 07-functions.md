@@ -197,7 +197,7 @@ DAT_FILES=$(patsubst books/%.txt, %.dat, $(TXT_FILES))
 
 # Generate summary table.
 results.txt : $(ZIPF_SRC) $(DAT_FILES)
-	$(LANGUAGE) S^ > $@
+	$(LANGUAGE) $^ > $@
 
 # Count words.
 .PHONY : dats
