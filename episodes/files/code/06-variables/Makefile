@@ -9,7 +9,7 @@ results.txt : $(ZIPF_SRC) isles.dat abyss.dat last.dat
 dats : isles.dat abyss.dat last.dat
 
 %.dat : $(COUNT_SRC) books/%.txt
-	$(LANGUAGE) $^
+	$(LANGUAGE) $^ $@
 
 .PHONY : clean
 clean :
